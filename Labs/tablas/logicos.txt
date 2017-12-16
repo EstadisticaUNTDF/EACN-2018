@@ -1,0 +1,11 @@
+Operador;Descripción
+<;menor que
+<=;menor o igual que
+>;mayor que
+>=;mayor o igual que
+==;exactamente igual a
+!=;no igual a
+!x;no x
+x | y;x *O* y
+x & y;x *E* y
+isTRUE(x);comprueba si x es verdadero  
