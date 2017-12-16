@@ -1,5 +1,23 @@
-book_filename: "bookdown-demo"
+book_filename: "laboratorios"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Capítulo "
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Ecuación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    def: 'Definición '
+    cor: 'Corolario '
+    prp: 'Proposición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    proof: 'Prueba. '
+    remark: 'Comentario. '
+    solution: 'Solución. '
 delete_merged_file: true
+rmd_files:
+  [
+    "Introduccion.Rmd"
+  ]
