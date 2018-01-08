@@ -715,9 +715,9 @@ de cortina y de macizo. La unidad de medida son metros cúbicos de madera.
 1. ¿Qué columnas hay y cuantos datos encuentran?
 2. Calculen una nueva columna `total`con el total de metros cúbicos. 
 Pista: pueden usar la función `mutate` que funciona de manera similar a `summarise`
-2. Seleccionen los datos de la provincia de Neuquén.
 3. Calculen el promedio y la suma total de metros cúbicos por provincia.
 4. Ordenen las provincias por el totla de metros cúbicos. 
 5. Grafiquen cada uno de los datos de cada provincia, distiguiendo si se trata
 de metros cúbicos de cortina o de macizo. 
-
+6. Seleccionen los datos de la provincia de Neuquén.
+7. Grafiquen los datos de cada departamento de Neuquén
