@@ -43,7 +43,6 @@ span.exercise{
 
 span.exercise:after{
   content: "\a"; /* Insert a line break after */
-  white-space: pre; 
 }
 
 hr {
