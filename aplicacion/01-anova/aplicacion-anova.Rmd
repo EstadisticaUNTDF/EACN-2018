@@ -1,0 +1,50 @@
+---
+title: "Aplicación ANOVA"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre**:
+
+
+
+Complete los siguientes ejercicios.
+
+
+1. Un diseño experimental se dice que está desbalanceado cuando:
+
+.........................................................................
+
+2. La diferencia entre un ANOVA de efectos aleatorios y de efectos es que 
+en el primero ...................................... mientras que en el 
+segundo ....................................
+
+3. En cuatro estaciones meteorológicas de Ushuaia se midió la concentración
+de  material particulado respirable menor a 10 micrones durante 31 días de 
+enero. Complete la siguiente tabla y decida si hay diferencias significativas
+entre las estaciones.
+
+
+Fuente de variación | SC          | GL    | CM   | F | $F_{crit}$
+--------------------|-------------|-------|------|---|-----------
+Entre               |             |       |      |   |
+Dentro              | 786         |       |      |   |
+Total               | 874.25      |       |      |   |
+
+
+4. ¿Cuantos contrastes ortogonales se pueden hacer?
+
+
+5. Complete la tabla con contrastes ortogonales.
+
+Estación | c | c | c | c
+---------|---|---|---|---
+E1       |   |   |   |
+E2       |   |   |   |
+E3       |   |   |   |
+E4       |   |   |   |
