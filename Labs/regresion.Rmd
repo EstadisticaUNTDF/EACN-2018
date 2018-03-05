@@ -1,21 +1,20 @@
 
 # Regresión
 
-En las ciencias naturales es usual querer explicar una variable con otras. Las
-variables que se quieren explicar son las variables dependientes y las que se
-usan para explicar son las llamadas variables explicatorias o también 
-independientes. A estos modelos se los conoce como modelos de regresión. 
-Aunque las variables estén relacionadas esto no implica que haya una relación 
-causal entre ellas. Sin un modelo causal que explique la 
-manera que las variables se relación se está incurriendo una falacia del tipo
-*cum hoc ergo propter hoc*. Por ejemplo, en la 
-Figura \@ref(fig:regresion-espuria) se muestra que la relación entre los 
-limones frescos importados desde México (ton) y tasa de mortalidad total en 
-autopistas de EE.UU. Según esta regresión al ¡aumentar la importación de 
-disminuye la tasa de mortalidad! Este resultado carece de lógica ya que no hay
-una forma en que la importación de limones afecte la mortalidad. Por este motivo
-hay que ser cuidadoso en cuanto a las conclusiones que se realizan con los 
-resultados.
+En las ciencias naturales es usual querer explicar una variable con otras.
+Las variables que se quieren explicar son las variables dependientes y las
+que se usan para explicar son las llamadas variables explicatorias o también
+independientes. A estos modelos se los conoce como modelos de regresión. Aunque
+las variables estén relacionadas esto no implica que haya una relación causal
+entre ellas. Sin un modelo causal que explique la manera que las variables
+se relación se está incurriendo una falacia del tipo *cum hoc ergo propter
+hoc*. Por ejemplo, en la Figura \@ref(fig:regresion-espuria) se muestra que
+la relación entre los limones frescos importados desde México (ton) y tasa de
+mortalidad total en autopistas de EE.UU. Según esta regresión al ¡aumentar la
+importación de disminuye la tasa de mortalidad! Este resultado carece de lógica
+ya que no hay una forma en que la importación de limones afecte la mortalidad.
+Por este motivo hay que ser cuidadoso en cuanto a las conclusiones que se
+realizan con los resultados.
 
 
 (ref:regresion-espuria) Ejemplo de regresión espuria. Limones frescos importados

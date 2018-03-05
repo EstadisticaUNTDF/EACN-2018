@@ -2,6 +2,7 @@
 
 ```{r setup, include = FALSE} 
 library(pander)
+library(tidyverse)
 ```
 
 Una parte muy importante del análisis de datos, es el manejo de ellos. Como
@@ -447,17 +448,22 @@ spread(data = race_largo, key = time, value = score)
 Lean los datos de 
 
 ```{r eval=FALSE}
-load("")
+load("data/calidad-del-aire-2017.RData")
 ```
 
 Son datos de calidad del aire de la ciudad de Buenos Aires
 
 1. ¿Qué columnas hay y cuantos datos encuentran?
-2. Calculen una nueva columna `total`con el total de metros cúbicos. 
-Pista: pueden usar la función `mutate` que funciona de manera similar a `summarise`
-3. Calculen el promedio y la suma total de metros cúbicos por provincia.
-4. Ordenen las provincias por el totla de metros cúbicos. 
-5. Grafiquen cada uno de los datos de cada provincia, distiguiendo si se trata
-de metros cúbicos de cortina o de macizo. 
-6. Seleccionen los datos de la provincia de Neuquén.
-7. Grafiquen los datos de cada departamento de Neuquén
+2. ¿En que tipo de formato está? ¿Largo o ancho?
+2. Cambien los datos a formato largo. *Pista*: Usen `gather` para llegar a
+`FECHA`, `HORA`, `Columna`, `Valor`, luego Usen la función `separate` para
+separar el lugar del tipo de variable. Finalmente, con spread llevenlo a 
+un formato más adecuado para trabajar.
+3. Calculen el promedio por lugar para las distintas variables. *Pista*: el
+formato más largo que crearon como paso intermedio arriba hace que el trabajo 
+sea más corto.
+4. Ordenen los lugares por la contaminación con material particulado. 
+5. Grafiquen cada uno de los datos de cada lugar, por fecha. Usen facetas para
+cada variable y un color distinto para cada lugar.
+6. Seleccionen los datos de parque Centenario.
+7. Grafiquen los datos de parque Centenario.
