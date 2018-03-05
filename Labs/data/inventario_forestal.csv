@@ -1,0 +1,331 @@
+provincia;departamento;genero_id;unimedcort_id;cortina;unimedmac_id;macizo
+Corrientes;Bella Vista;Pinus spp. ;m3;sd;m3;12884
+Corrientes;Bella Vista;Eucalyptus spp.;m3;sd;m3;157746
+Corrientes;Beron de Astrada;Pinus spp. ;m3;sd;m3;33377
+Corrientes;Beron de Astrada;Eucalyptus spp.;m3;sd;m3;46142
+Corrientes;Capital;Pinus spp. ;m3;sd;m3;368
+Corrientes;Capital;Eucalyptus spp.;m3;sd;m3;18002
+Corrientes;Concepcion;Pinus spp. ;m3;sd;m3;6321256
+Corrientes;Concepcion;Eucalyptus spp.;m3;sd;m3;2668495
+Corrientes;Curuzu Cuatia;Pinus spp. ;m3;sd;m3;53199
+Corrientes;Curuzu Cuatia;Eucalyptus spp.;m3;sd;m3;655533
+Corrientes;Empedrado;Pinus spp. ;m3;sd;m3;42250
+Corrientes;Empedrado;Eucalyptus spp.;m3;sd;m3;88112
+Corrientes;Esquina;Pinus spp. ;m3;sd;m3;1036298
+Corrientes;Esquina;Eucalyptus spp.;m3;sd;m3;258744
+Corrientes;General Alvear;Pinus spp. ;m3;sd;m3;2490935
+Corrientes;General Alvear;Eucalyptus spp.;m3;sd;m3;574893
+Corrientes;General Paz;Pinus spp. ;m3;sd;m3;30684
+Corrientes;General Paz;Eucalyptus spp.;m3;sd;m3;616321
+Corrientes;Goya;Pinus spp. ;m3;sd;m3;322909
+Corrientes;Goya;Eucalyptus spp.;m3;sd;m3;1408788
+Corrientes;Itati;Pinus spp. ;m3;sd;m3;900
+Corrientes;Itati;Eucalyptus spp.;m3;sd;m3;38210
+Corrientes;Ituzaingo;Pinus spp. ;m3;sd;m3;13224081
+Corrientes;Ituzaingo;Eucalyptus spp.;m3;sd;m3;2577610
+Corrientes;Lavalle;Pinus spp. ;m3;sd;m3;164153
+Corrientes;Lavalle;Eucalyptus spp.;m3;sd;m3;531935
+Corrientes;Mburucuya;Pinus spp. ;m3;sd;m3;23058
+Corrientes;Mburucuya;Eucalyptus spp.;m3;sd;m3;266677
+Corrientes;Mercedes;Pinus spp. ;m3;sd;m3;88786
+Corrientes;Mercedes;Eucalyptus spp.;m3;sd;m3;337879
+Corrientes;Monte Caseros;Pinus spp. ;m3;sd;m3;71235
+Corrientes;Monte Caseros;Eucalyptus spp.;m3;sd;m3;4755302
+Corrientes;Paso de los Libres;Pinus spp. ;m3;sd;m3;2226464
+Corrientes;Paso de los Libres;Eucalyptus spp.;m3;sd;m3;9446575
+Corrientes;Saladas;Pinus spp. ;m3;sd;m3;36122
+Corrientes;Saladas;Eucalyptus spp.;m3;sd;m3;796327
+Corrientes;San Cosme;Pinus spp. ;m3;sd;m3;19948
+Corrientes;San Cosme;Eucalyptus spp.;m3;sd;m3;29677
+Corrientes;San Luis del Palmar;Pinus spp. ;m3;sd;m3;19323
+Corrientes;San Luis del Palmar;Eucalyptus spp.;m3;sd;m3;43619
+Corrientes;San Martin;Pinus spp. ;m3;sd;m3;3957014
+Corrientes;San Martin;Eucalyptus spp.;m3;sd;m3;612248
+Corrientes;San Miguel;Pinus spp. ;m3;sd;m3;2149865
+Corrientes;San Miguel;Eucalyptus spp.;m3;sd;m3;1149873
+Corrientes;San Roque;Pinus spp. ;m3;sd;m3;1489640
+Corrientes;San Roque;Eucalyptus spp.;m3;sd;m3;752259
+Corrientes;Santo Tome;Pinus spp. ;m3;sd;m3;20029671
+Corrientes;Santo Tome;Eucalyptus spp.;m3;sd;m3;3929106
+Corrientes;Sauce;Pinus spp. ;m3;sd;m3;0
+Corrientes;Sauce;Eucalyptus spp.;m3;sd;m3;157327
+Entre Rios;Colon;Pinus spp. ;m3;sd;m3;657043
+Entre Rios;Concordia;Pinus spp. ;m3;sd;m3;418617
+Entre Rios;Federacion;Pinus spp. ;m3;sd;m3;65463
+Entre Rios;Colon;Eucalyptus spp.;m3;sd;m3;9535020
+Entre Rios;Concordia;Eucalyptus spp.;m3;sd;m3;4810525
+Entre Rios;Federacion;Eucalyptus spp.;m3;sd;m3;2200481
+Mendoza;General Alvear;Populus spp.;m3;16002,87;m3;5885
+Mendoza;Guaymallen;Populus spp.;m3;sd;m3;0
+Mendoza;Junin;Populus spp.;m3;sd;m3;0
+Mendoza;La Paz;Populus spp.;m3;sd;m3;2375
+Mendoza;Las Heras;Populus spp.;m3;sd;m3;51793
+Mendoza;Lavalle;Populus spp.;m3;13933,13;m3;7141
+Mendoza;Lujan de Cuyo;Populus spp.;m3;804,67;m3;0
+Mendoza;Maipu;Populus spp.;m3;13411,87;m3;0
+Mendoza;Malargue;Populus spp.;m3;944,68;m3;4617
+Mendoza;Rivadavia;Populus spp.;m3;sd;m3;0
+Mendoza;San Carlos;Populus spp.;m3;58310,53;m3;278024
+Mendoza;San Martin;Populus spp.;m3;sd;m3;0
+Mendoza;San Rafael;Populus spp.;m3;66301,98;m3;15743
+Mendoza;Santa Rosa;Populus spp.;m3;21917,31;m3;1275
+Mendoza;Tunuyan;Populus spp.;m3;41185,94;m3;233581
+Mendoza;Tupungato;Populus spp.;m3;1301,98;m3;3669
+San Juan;Calingasta;Populus spp.;m3;21562,54;m3;36064
+San Juan;Iglesia;Populus spp.;m3;10099,31;m3;34042
+San Juan;Sarmiento;Populus spp.;m3;11431,03;m3;61801
+Buenos Aires;Patagones;Pinus spp.;m3;sd;m3;sd
+Buenos Aires;Patagones;Otros;m3;5,903,211,813;m3;sd
+Buenos Aires;Patagones;Populus spp.;m3;304,7;m3;sd
+Buenos Aires;Patagones;Salix spp.;m3;sd;m3;sd
+Chubut;Biedma;Pinus spp.;m3;5,529,327,473;m3;sd
+Chubut;Biedma;Otros;m3;2,103,795,471;m3;sd
+Chubut;Biedma;Populus spp.;m3;11209,1;m3;sd
+Chubut;Biedma;Salix spp.;m3;1,102,840,228;m3;sd
+Chubut;Cushamen;Pinus spp.;m3;3,690,053,059;m3;668455,47
+Chubut;Cushamen;Otros;m3;1,310,214,204;m3;5130,82
+Chubut;Cushamen;Populus spp.;m3;70108,7;m3;2185,53
+Chubut;Cushamen;Salix spp.;m3;6,868,333,691;m3;5,41
+Chubut;Escalante;Pinus spp.;m3;1,614,484,512;m3;sd
+Chubut;Escalante;Otros;m3;6,142,781,777;m3;sd
+Chubut;Escalante;Populus spp.;m3;327,3;m3;sd
+Chubut;Escalante;Salix spp.;m3;3,220,135,677;m3;sd
+Chubut;Futaleufu;Pinus spp.;m3;222,709,743;m3;353863,65
+Chubut;Futaleufu;Otros;m3;8,473,648,035;m3;1559,37
+Chubut;Futaleufu;Populus spp.;m3;45148;m3;577,25
+Chubut;Futaleufu;Salix spp.;m3;4,442,009,718;m3;31,91
+Chubut;Gaiman;Pinus spp.;m3;7,363,909,389;m3;509,07
+Chubut;Gaiman;Otros;m3;2,836,897,611;m3;2,09
+Chubut;Gaiman;Populus spp.;m3;150414,5;m3;1626,86
+Chubut;Gaiman;Salix spp.;m3;1,497,072,321;m3;0,07
+Chubut;Gastre;Pinus spp.;m3;3,319,184,101;m3;sd
+Chubut;Gastre;Otros;m3;1,262,881,338;m3;sd
+Chubut;Gastre;Populus spp.;m3;6728,7;m3;sd
+Chubut;Gastre;Salix spp.;m3;6,620,207,913;m3;sd
+Chubut;Languineo;Pinus spp.;m3;4,954,926,288;m3;239993,54
+Chubut;Languineo;Otros;m3;1,885,247,624;m3;16,42
+Chubut;Languineo;Populus spp.;m3;10346,1;m3;104,16
+Chubut;Languineo;Salix spp.;m3;9,882,742,633;m3;0,51
+Chubut;Rawson;Pinus spp.;m3;4,956,945,917;m3;132,58
+Chubut;Rawson;Otros;m3;194,470,978;m3;sd
+Chubut;Rawson;Populus spp.;m3;101157,5;m3;1313,23
+Chubut;Rawson;Salix spp.;m3;9,886,770,842;m3;sd
+Chubut;Rio Senguer;Pinus spp.;m3;2,275,967,132;m3;2329,02
+Chubut;Rio Senguer;Otros;m3;8,659,587,207;m3;1,4
+Chubut;Rio Senguer;Populus spp.;m3;46856;m3;417,08
+Chubut;Rio Senguer;Salix spp.;m3;4,687,604,101;m3;0,04
+Chubut;Sarmiento;Pinus spp.;m3;8,257,682,256;m3;367,42
+Chubut;Sarmiento;Otros;m3;3,141,878,396;m3;2,15
+Chubut;Sarmiento;Populus spp.;m3;169276,7;m3;13,66
+Chubut;Sarmiento;Salix spp.;m3;1,653,045,014;m3;0,07
+Chubut;Tehuelches;Pinus spp.;m3;4,579,214,806;m3;165292,49
+Chubut;Tehuelches;Otros;m3;1,742,297,127;m3;3,59
+Chubut;Tehuelches;Populus spp.;m3;928,3;m3;380,11
+Chubut;Tehuelches;Salix spp.;m3;9,133,375,305;m3;0,11
+Chubut;Telsen;Pinus spp.;m3;7,546,877,726;m3;sd
+Chubut;Telsen;Otros;m3;287,143,188;m3;sd
+Chubut;Telsen;Populus spp.;m3;153;m3;sd
+Chubut;Telsen;Salix spp.;m3;1,505,246,414;m3;sd
+La Pampa;Caleu Caleu;Pinus spp.;m3;1,914,236,044;m3;sd
+La Pampa;Caleu Caleu;Otros;m3;sd;m3;sd
+La Pampa;Caleu Caleu;Populus spp.;m3;1,072,618,261;m3;1426,4
+La Pampa;Caleu Caleu;Salix spp.;m3;sd;m3;sd
+La Pampa;Puelen;Pinus spp.;m3;9,181,168,025;m3;sd
+La Pampa;Puelen;Otros;m3;sd;m3;sd
+La Pampa;Puelen;Populus spp.;m3;5,144,552,839;m3;46764,65
+La Pampa;Puelen;Salix spp.;m3;sd;m3;sd
+Neuquen;Alumine;Otros;m3;1,406,831,766;m3;sd
+Neuquen;Alumine;Populus spp.;m3;21721,6;m3;3952,46
+Neuquen;Alumine;Salix spp.;m3;sd;m3;sd
+Neuquen;Anelo;Populus spp.;m3;419744,8;m3;90058,08
+Neuquen;Anelo;Salix spp.;m3;sd;m3;sd
+Neuquen;Catan Lil;Otros;m3;820,290,638;m3;1,05
+Neuquen;Catan Lil;Populus spp.;m3;12665,3;m3;12821,65
+Neuquen;Catan Lil;Salix spp.;m3;sd;m3;sd
+Neuquen;Collon Cura;Otros;m3;4,821,714,381;m3;0,91
+Neuquen;Collon Cura;Populus spp.;m3;7444,8;m3;10953,65
+Neuquen;Collon Cura;Salix spp.;m3;sd;m3;sd
+Neuquen;Confluencia;Otros;m3;2,679,533,535;m3;2,86
+Neuquen;Confluencia;Populus spp.;m3;410936,7;m3;50403,67
+Neuquen;Confluencia;Salix spp.;m3;sd;m3;sd
+Neuquen;Huiliches;Otros;m3;1,624,539,987;m3;186,69
+Neuquen;Huiliches;Populus spp.;m3;25083;m3;24402,56
+Neuquen;Huiliches;Salix spp.;m3;sd;m3;sd
+Neuquen;Lacar;Otros;m3;27,485,105;m3;40,21
+Neuquen;Lacar;Populus spp.;m3;42437,2;m3;23595,96
+Neuquen;Lacar;Salix spp.;m3;sd;m3;sd
+Neuquen;Loncopue;Otros;m3;7,735,067,317;m3;sd
+Neuquen;Loncopue;Populus spp.;m3;11943;m3;829,84
+Neuquen;Loncopue;Salix spp.;m3;sd;m3;sd
+Neuquen;Picun Leufu;Otros;m3;7,372,152,954;m3;0,15
+Neuquen;Picun Leufu;Populus spp.;m3;113826,5;m3;97191,04
+Neuquen;Picun Leufu;Salix spp.;m3;sd;m3;sd
+Neuquen;Picunches;Otros;m3;4,139,368,565;m3;0,09
+Neuquen;Picunches;Populus spp.;m3;63912,1;m3;3444,55
+Neuquen;Picunches;Salix spp.;m3;sd;m3;sd
+Neuquen;Zapala;Otros;m3;1,909,782,165;m3;0,06
+Neuquen;Zapala;Populus spp.;m3;29487,1;m3;1301,37
+Neuquen;Zapala;Salix spp.;m3;sd;m3;sd
+Rio Negro;Adolfo Alsina;Pinus spp.;m3;sd;m3;sd
+Rio Negro;Adolfo Alsina;Otros;m3;4,672,893,376;m3;sd
+Rio Negro;Adolfo Alsina;Populus spp.;m3;241191,7;m3;3176,88
+Rio Negro;Adolfo Alsina;Salix spp.;m3;sd;m3;sd
+Rio Negro;Avellaneda;Otros;m3;9,024,168,922;m3;61,1
+Rio Negro;Avellaneda;Populus spp.;m3;781502,7;m3;200837,97
+Rio Negro;Avellaneda;Salix spp.;m3;sd;m3;sd
+Rio Negro;Bariloche;Otros;m3;4,225,555,431;m3;1880,6
+Rio Negro;Bariloche;Populus spp.;m3;3572,8;m3;134442,51
+Rio Negro;Bariloche;Salix spp.;m3;2,043,363,268;m3;sd
+Rio Negro;Conesa;Pinus spp.;m3;sd;m3;17,6
+Rio Negro;Conesa;Otros;m3;1,929,984,544;m3;0,12
+Rio Negro;Conesa;Populus spp.;m3;165467,1;m3;15127,76
+Rio Negro;Conesa;Salix spp.;m3;9,332,878,458;m3;sd
+Rio Negro;El Cuy;Otros;m3;1,461,311,963;m3;3,71
+Rio Negro;El Cuy;Populus spp.;m3;123726,4;m3;14172,55
+Rio Negro;El Cuy;Salix spp.;m3;706,650,578;m3;sd
+Rio Negro;General Roca;Otros;m3;2,618,625,614;m3;11,02
+Rio Negro;General Roca;Populus spp.;m3;1994544,1;m3;223383,77
+Rio Negro;General Roca;Salix spp.;m3;5,179,837,321;m3;sd
+Rio Negro;Pichi Mahuida;Pinus spp.;m3;sd;m3;sd
+Rio Negro;Pichi Mahuida;Otros;m3;1,316,348,981;m3;sd
+Rio Negro;Pichi Mahuida;Populus spp.;m3;112025,8;m3;8217,78
+Rio Negro;Pichi Mahuida;Salix spp.;m3;7,730,810,282;m3;sd
+Rio Negro;Valcheta;Pinus spp.;m3;sd;m3;sd
+Rio Negro;Valcheta;Otros;m3;2,592,091,509;m3;sd
+Rio Negro;Valcheta;Populus spp.;m3;21916,5;m3;sd
+Rio Negro;Valcheta;Salix spp.;m3;1,253,464,701;m3;sd
+Misiones;25 de Mayo;Pinus spp.;m3;sd;m3;1179089
+Misiones;25 de Mayo;Eucalyptus spp.;m3;sd;m3;365910
+Misiones;25 de Mayo;Araucaria spp.;m3;sd;m3;33129
+Misiones;Apostoles;Pinus spp.;m3;sd;m3;453314
+Misiones;Apostoles;Eucalyptus spp.;m3;sd;m3;202317
+Misiones;Apostoles;Araucaria spp.;m3;sd;m3;sd
+Misiones;Cainguas;Pinus spp.;m3;sd;m3;798574
+Misiones;Cainguas;Eucalyptus spp.;m3;sd;m3;285124
+Misiones;Cainguas;Araucaria spp.;m3;sd;m3;41121
+Misiones;Candelaria;Pinus spp.;m3;sd;m3;1271033
+Misiones;Candelaria;Eucalyptus spp.;m3;sd;m3;51202
+Misiones;Candelaria;Araucaria spp.;m3;sd;m3;sd
+Misiones;Capital;Pinus spp.;m3;sd;m3;1143449
+Misiones;Capital;Eucalyptus spp.;m3;sd;m3;88290
+Misiones;Capital;Araucaria spp.;m3;sd;m3;17550
+Misiones;Concepción;Pinus spp.;m3;sd;m3;1397175
+Misiones;Concepción;Eucalyptus spp.;m3;sd;m3;144557
+Misiones;Concepción;Araucaria spp.;m3;sd;m3;sd
+Misiones;El Dorado;Pinus spp.;m3;sd;m3;7459788
+Misiones;El Dorado;Eucalyptus spp.;m3;sd;m3;803812
+Misiones;El Dorado;Araucaria spp.;m3;sd;m3;887589
+Misiones;Gral. Manuel Belgrano;Pinus spp.;m3;sd;m3;813764
+Misiones;Gral. Manuel Belgrano;Eucalyptus spp.;m3;sd;m3;254404
+Misiones;Gral. Manuel Belgrano;Araucaria spp.;m3;sd;m3;191033
+Misiones;Guarani;Pinus spp.;m3;sd;m3;1421327
+Misiones;Guarani;Eucalyptus spp.;m3;sd;m3;422142
+Misiones;Guarani;Araucaria spp.;m3;sd;m3;104295
+Misiones;Iguazu;Pinus spp.;m3;sd;m3;10051070
+Misiones;Iguazu;Eucalyptus spp.;m3;sd;m3;677186
+Misiones;Iguazu;Araucaria spp.;m3;sd;m3;502154
+Misiones;Libertador General San Martín;Pinus spp.;m3;sd;m3;4388394
+Misiones;Libertador General San Martín;Eucalyptus spp.;m3;sd;m3;638262
+Misiones;Libertador General San Martín;Araucaria spp.;m3;sd;m3;496107
+Misiones;Leandro N. Alem;Pinus spp.;m3;sd;m3;808793
+Misiones;Leandro N. Alem;Eucalyptus spp.;m3;sd;m3;190895
+Misiones;Leandro N. Alem;Araucaria spp.;m3;sd;m3;2166
+Misiones;Montecarlo;Pinus spp.;m3;sd;m3;6237496
+Misiones;Montecarlo;Eucalyptus spp.;m3;sd;m3;1005851
+Misiones;Montecarlo;Araucaria spp.;m3;sd;m3;527097
+Misiones;Obera;Pinus spp.;m3;sd;m3;1849472
+Misiones;Obera;Eucalyptus spp.;m3;sd;m3;345146
+Misiones;Obera;Araucaria spp.;m3;sd;m3;34854
+Misiones;San Ignacio;Pinus spp.;m3;sd;m3;4346940
+Misiones;San Ignacio;Eucalyptus spp.;m3;sd;m3;284957
+Misiones;San Ignacio;Araucaria spp.;m3;sd;m3;62879
+Misiones;San Javier;Pinus spp.;m3;sd;m3;533715
+Misiones;San Javier;Eucalyptus spp.;m3;sd;m3;135671
+Misiones;San Javier;Araucaria spp.;m3;sd;m3;681
+Misiones;San Pedro;Pinus spp.;m3;sd;m3;1908947
+Misiones;San Pedro;Eucalyptus spp.;m3;sd;m3;497938
+Misiones;San Pedro;Araucaria spp.;m3;sd;m3;304564
+Chubut;Cushamen;Pseudotsuga spp.;m3;sd;m3;17129,36
+Chubut;Futaleufu;Pseudotsuga spp.;m3;sd;m3;1615,51
+Chubut;Gaiman;Pseudotsuga spp.;m3;sd;m3;10,64
+Chubut;Languineo;Pseudotsuga spp.;m3;sd;m3;287,51
+Chubut;Rawson;Pseudotsuga spp.;m3;sd;m3;sd
+Chubut;Rio Senguer;Pseudotsuga spp.;m3;sd;m3;54,53
+Chubut;Sarmiento;Pseudotsuga spp.;m3;sd;m3;10,97
+Chubut;Tehuelches;Pseudotsuga spp.;m3;sd;m3;450,82
+La Pampa;Caleu Caleu;Pseudotsuga spp.;m3;sd;m3;sd
+La Pampa;Puelen;Pseudotsuga spp.;m3;sd;m3;sd
+Neuquen;Alumine;Pinus spp.;m3;sd;m3;848928,24
+Neuquen;Alumine;Pseudotsuga spp.;m3;sd;m3;2368,08
+Neuquen;Anelo;Otros;m3;sd;m3;3,77
+Neuquen;Anelo;Pinus spp.;m3;sd;m3;16596,94
+Neuquen;Anelo;Pseudotsuga spp.;m3;sd;m3;375,61
+Neuquen;Catan Lil;Pinus spp.;m3;sd;m3;11971,83
+Neuquen;Catan Lil;Pseudotsuga spp.;m3;sd;m3;2112,97
+Neuquen;Chos Malal;Otros;m3;sd;m3;sd
+Neuquen;Chos Malal;Pinus spp.;m3;sd;m3;348,19
+Neuquen;Chos Malal;Populus spp.;m3;sd;m3;sd
+Neuquen;Chos Malal;Pseudotsuga spp.;m3;sd;m3;sd
+Neuquen;Chos Malal;Salix spp.;m3;sd;m3;sd
+Neuquen;Collon Cura;Pinus spp.;m3;sd;m3;4175,3
+Neuquen;Collon Cura;Pseudotsuga spp.;m3;sd;m3;15,08
+Neuquen;Confluencia;Pinus spp.;m3;sd;m3;7640,71
+Neuquen;Confluencia;Pseudotsuga spp.;m3;sd;m3;47,26
+Neuquen;Huiliches;Pinus spp.;m3;sd;m3;294705,4
+Neuquen;Huiliches;Pseudotsuga spp.;m3;sd;m3;2997,14
+Neuquen;Lacar;Pinus spp.;m3;sd;m3;451847,24
+Neuquen;Lacar;Pseudotsuga spp.;m3;sd;m3;4605,36
+Neuquen;Loncopue;Pinus spp.;m3;sd;m3;15906,11
+Neuquen;Loncopue;Pseudotsuga spp.;m3;sd;m3;sd
+Neuquen;Los Lagos;Otros;m3;sd;m3;4,87
+Neuquen;Los Lagos;Pinus spp.;m3;sd;m3;38554,94
+Neuquen;Los Lagos;Populus spp.;m3;sd;m3;2320,75
+Neuquen;Los Lagos;Pseudotsuga spp.;m3;sd;m3;302,49
+Neuquen;Los Lagos;Salix spp.;m3;sd;m3;sd
+Neuquen;Minas;Otros;m3;sd;m3;sd
+Neuquen;Minas;Pinus spp.;m3;sd;m3;649868
+Neuquen;Minas;Populus spp.;m3;sd;m3;16467,58
+Neuquen;Minas;Pseudotsuga spp.;m3;sd;m3;1935,68
+Neuquen;Minas;Salix spp.;m3;sd;m3;sd
+Neuquen;Norquin;Otros;m3;sd;m3;24,83
+Neuquen;Norquin;Pinus spp.;m3;sd;m3;272615,86
+Neuquen;Norquin;Populus spp.;m3;sd;m3;12542,31
+Neuquen;Norquin;Pseudotsuga spp.;m3;sd;m3;648,77
+Neuquen;Norquin;Salix spp.;m3;sd;m3;sd
+Neuquen;Pehuenches;Otros;m3;sd;m3;0,27
+Neuquen;Pehuenches;Pinus spp.;m3;sd;m3;984,03
+Neuquen;Pehuenches;Populus spp.;m3;sd;m3;5481,79
+Neuquen;Pehuenches;Pseudotsuga spp.;m3;sd;m3;4,42
+Neuquen;Pehuenches;Salix spp.;m3;sd;m3;sd
+Neuquen;Picun Leufu;Pinus spp.;m3;sd;m3;5146,45
+Neuquen;Picun Leufu;Pseudotsuga spp.;m3;sd;m3;454,55
+Neuquen;Picunches;Pinus spp.;m3;sd;m3;8519,88
+Neuquen;Picunches;Pseudotsuga spp.;m3;sd;m3;1,47
+Neuquen;Zapala;Pinus spp.;m3;sd;m3;1300,51
+Neuquen;Zapala;Pseudotsuga spp.;m3;sd;m3;1,03
+Rio Negro;25 de Mayo;Otros;m3;sd;m3;sd
+Rio Negro;25 de Mayo;Pinus spp.;m3;sd;m3;sd
+Rio Negro;25 de Mayo;Populus spp.;m3;sd;m3;14,78
+Rio Negro;25 de Mayo;Pseudotsuga spp.;m3;sd;m3;sd
+Rio Negro;25 de Mayo;Salix spp.;m3;sd;m3;sd
+Rio Negro;Adolfo Alsina;Pseudotsuga spp.;m3;sd;m3;sd
+Rio Negro;Avellaneda;Pinus spp.;m3;sd;m3;8934,9
+Rio Negro;Avellaneda;Pseudotsuga spp.;m3;sd;m3;1008,16
+Rio Negro;Bariloche;Pinus spp.;m3;sd;m3;121588,39
+Rio Negro;Bariloche;Pseudotsuga spp.;m3;sd;m3;15569,14
+Rio Negro;Conesa;Pseudotsuga spp.;m3;sd;m3;2,01
+Rio Negro;El Cuy;Pinus spp.;m3;sd;m3;5968,92
+Rio Negro;El Cuy;Pseudotsuga spp.;m3;sd;m3;61,28
+Rio Negro;General Roca;Pinus spp.;m3;sd;m3;7421,08
+Rio Negro;General Roca;Pseudotsuga spp.;m3;sd;m3;240,12
+Rio Negro;Norquinco;Otros;m3;sd;m3;49,67
+Rio Negro;Norquinco;Pinus spp.;m3;sd;m3;50944,6
+Rio Negro;Norquinco;Populus spp.;m3;sd;m3;16398,43
+Rio Negro;Norquinco;Pseudotsuga spp.;m3;sd;m3;842,59
+Rio Negro;Norquinco;Salix spp.;m3;sd;m3;sd
+Rio Negro;Pichi Mahuida;Pseudotsuga spp.;m3;sd;m3;sd
+Rio Negro;Pilcaniyeu;Otros;m3;sd;m3;240,28
+Rio Negro;Pilcaniyeu;Pinus spp.;m3;sd;m3;53536,24
+Rio Negro;Pilcaniyeu;Populus spp.;m3;sd;m3;79470,09
+Rio Negro;Pilcaniyeu;Pseudotsuga spp.;m3;sd;m3;5833,91
+Rio Negro;Pilcaniyeu;Salix spp.;m3;sd;m3;sd
