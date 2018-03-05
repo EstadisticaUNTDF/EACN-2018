@@ -1,5 +1,9 @@
 # Manejo de datos
 
+```{r setup, include = FALSE} 
+library(pander)
+```
+
 Una parte muy importante del análisis de datos, es el manejo de ellos. Como
 seleccionar columnas, filtrar datos, y realizar operaciones sobre ellos. Vamos
 a usar el paquete `dplyr` y `tidyr` para el manejo. Los paquetes 
@@ -211,6 +215,48 @@ nombres %>%
 2. Seleccionen las últimas 10 filas.
 ```
 
+## Seleccionando columnas
+
+La función para seleccionar columnas es `seletc()`. Hay muchas formas de 
+seleccionar columnas. La más obvia es por nombre de la columna:
+
+```{r seleccionar-columnas-nombre}
+nombres %>% 
+  select(nombre, cantidad)
+```
+
+También es posible seleccionar varias columnas usando secuencias:
+
+```{r}
+nombres %>% 
+  select(nombre:cantidad)
+```
+
+De la misma forma se puede eliminar columnas usando el signo `-`.
+
+```{r}
+ nombres %>% 
+  select(-anio)
+```
+
+Se pueden renombrar columnas 
+
+```{r}
+nombres %>% 
+  select(año = anio)
+```
+
+Pero se eliminan las no seleccionadas. Se puede renombrar sin tener que 
+seleccionar el resto usando la función `rename`
+
+```{r}
+nombres %>% 
+  select(año = anio)
+```
+
+Hay muchas más formas de seleccionar columnas, pueden referirse a la 
+ayuda `?select`, `?select_at` y también a este excelente [tutorial][https://suzan.rbind.io/2018/01/dplyr-tutorial-1/] (en inglés).
+  
 ## Agregando columnas
 
 Otra operación muy común es agregar nuevas columnas o variables. Por ejemplo
@@ -222,11 +268,11 @@ una valor para cada fila. Por ejemplo:
 
 ```{r}
 nombres %>% 
-  mutate(log_cantidad = log10(cantidad) )
+  mutate(log_cantidad = log10(cantidad))
 ```
 
-
-
+Cualquier operación que funcione con vectores funciona con `mutate()`. También
+funciona se pueden modificar columnas si el nombre que asignamos ya está puesto.
 
 ## Operaciones por grupos
 
@@ -274,8 +320,18 @@ nombres_comunes %>%
   summarise(total = sum(cantidad))
 ```
 
-Por defecto esta ordenado alfabeticamente por nombre. Podemos ordenarlo según
-algún otro criterio con la función `arrange()`. Esta función ordena de manera
+Además de usar la función `summarise()` se puede usar la función `mutate` que
+va a hacer que queden la misma cantidad de casos. Por ejemplo, calcular el 
+número acumulado de personas con el mismo nombre en a través de los años:
+
+```{r}
+nombres %>% 
+  group_by(nombre) %>% 
+  arrange(anio, .by_group = TRUE) %>% 
+  mutate(acumulado = cumsum(cantidad))
+```
+
+Acá hay una función nueva, `arrange()`. Lo que hace. Esta función ordena de manera
 creciente (0-9, a-z) un conjunto de datos. Por ejemplo:
 
 ```{r orden, eval=final_knit}
@@ -304,18 +360,97 @@ Ordenen el resultado del total de nombres que calcularon en el ejercicio
 \@ref(exr:nombre-comun)
 ```
 
+## Formato Ancho y Formato Largo
+
+Los datos en general vienen en uno de dos formatos:
+
+* Formato Ancho: cada fila se corresponde a varias observaciones, parte de la
+información está en el nombre de las columnas.
+* Formato Largo: cada fila corresponde a una única observación.
 
 
-# Por su cuenta
+```{r ancho, echo = FALSE}
+race <- read.table(header = TRUE, check.names = FALSE, text = "
+   Name    50  100  150  200  250  300  350
+   Carla  1.2  1.8  2.2  2.3  3.0  2.5  1.8
+   Mace   1.5  1.1  1.9  2.0  3.6  3.0  2.5
+   Lea    1.7  1.6  2.3  2.7  2.6  2.2  2.6
+   Karen  1.3  1.7  1.9  2.2  3.2  1.5  1.9
+ ")
+pander(race, caption = "(#tab:ancho) Ejemplo de formato ancho. Cada fila corresponde a un
+       individuo denotado por el nombre y cada columna corresponde al puntaje
+       obtenido en una prueba bajo distintos tiempos. ")
+```
+
+La tabla anterior es un ejemplo de formato ancho. Es cómoda para leer para 
+nosotros pero no es cómoda para trabajar para las computadoras. Por ejemplo,
+¿Cómo hacen para indicar que columna es la variable independiente y cual es la
+de respuesta? No se puede porque la variable indepediente es ¡el nombre de la 
+columna!
+
+La forma para poder graficarlo, o analizarlo facilmente es poner esto datos 
+en formato largo. Así quedará una columna para el nombre, otra con los tiempos
+y otra con el puntaje.
+
+```{r largo, echo=FALSE}
+gather(race, key = time, value = score, -Name) %>% 
+  pander(caption = "(#tab:largo) Ejemplo de formato largo. Cada fila corresponde a un
+       observación denotado por el nombre, el tiempo y el puntaje.")
+```
+
+De esta forma, será fácil indicar que columna corresponde al eje de las 
+ordenadas, cual al de las abscisas para hacer un gráfico o cual es la variable
+independiente y cual la dependiente en una regresión.
+
+Hay una función que nos permite llevar los datos en formato ancho a formato
+largo:  `gather()` (*recoger*). Tiene tres argumntos: `data` el objeto, `key`
+el nombre de la nueva columna que contendrá la identificación del dato, es decir
+los viejos nombres de columna, y `value` la nueva columna que contendrá los 
+valores. Por ejemplo:
+
+```{r}
+gather(data = race, key = time, value = score)
+```
+
+¡Pero que ha pasado aquí! No es el mismo resultado que en la Tabla 
+\@ref(tab:largo). Por defecto, la función `gather()` recoge todas las columnas
+del objeto. Para evitar que lo haga con todas hay que indicar con un signo menos.
+
+```{r}
+race_largo <- gather(data = race, key = time, value = score, -Name)
+race_largo
+```
+
+También funciona indicar cuales son las columnas que debe recoger escribiendo 
+su nombre.
+
+```{r}
+gather(data = race, key = time, value = score, `50`, `100`, `150`, `200`, `250`,
+       `300`, `350`)
+```
+
+Claro que en este caso es mucho más largo hacerlo de esta forma y además hay que
+delimitar cada número con acentos graves "`" porque no es un nombre válido en
+*R*. Los nombres válidos son aquellos que empiezan con letras o puntos y 
+no contienen signos de operaciones matemáticas ni espacios dentro.
+
+Para poner los datos en formato ancho está la función `spread()` (*expandir*).
+Los argumentos son los mismos que tiene `gather()`.
+
+```{r}
+spread(data = race_largo, key = time, value = score)
+```
+
+
+## Por su cuenta
 
 Lean los datos de 
 
 ```{r eval=FALSE}
-load("inventario.RData")
+load("")
 ```
 
-Son datos del inventario de plantaciones forestales. Están dividades en plantaciones
-de cortina y de macizo. La unidad de medida son metros cúbicos de madera.
+Son datos de calidad del aire de la ciudad de Buenos Aires
 
 1. ¿Qué columnas hay y cuantos datos encuentran?
 2. Calculen una nueva columna `total`con el total de metros cúbicos. 
