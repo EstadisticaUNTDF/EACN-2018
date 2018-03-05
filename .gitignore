@@ -1,7 +1,10 @@
 .Rproj.user
 .Rhistory
 .RData
+*.md
+*.hmtl
 _publish.R
 _book
 _bookdown_files
 rsconnect
+*_files
