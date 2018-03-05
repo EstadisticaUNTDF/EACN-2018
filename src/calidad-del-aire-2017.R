@@ -25,11 +25,17 @@ calidad_de_aire_2017 <-
     ),
     trim_ws = TRUE
   )
-View(calidad_de_aire_2017)
+
 
 calidad_de_aire_2017 <- calidad_de_aire_2017 %>% 
   mutate(HORA = ifelse(HORA == 24, 0, HORA),
          FECHA = ifelse(HORA == 0, FECHA + days(1), FECHA) %>% 
-           as.Date(origin = "1970-01-01"))
+           as.Date(origin = "1970-01-01"),
+         HORA = HORA %>% parse_time(format = "%H"))
+
+calidad_de_aire_2017 <- calidad_de_aire_2017 %>% 
+  rename(CO_LABOCA = CO_LA_BOCA,
+         NO2_LABOCA = NO2_LA_BOCA,
+         PM10_LABOCA = PM10_LA_BOCA)
 
 save(calidad_de_aire_2017, file = "Labs/data/calidad-del-aire-2017.RData")
