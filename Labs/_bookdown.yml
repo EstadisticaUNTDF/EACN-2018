@@ -1,4 +1,5 @@
 book_filename: "laboratorios"
+new_session: yes
 language:
   ui:
     chapter_name: "Capítulo "
@@ -19,5 +20,15 @@ language:
 delete_merged_file: true
 rmd_files:
   [
-    "Introduccion.Rmd"
+    "index.Rmd",
+    "Introduccion.Rmd",
+    
+    "No-Parametrico-Teoria.Rmd",
+    "No-Parametrico.Rmd",
+    
+    "anova.Rmd",
+    "anova-no-parametrico.Rmd",
+    "anova-dos-factores.Rmd",
+    
+    "diseno-experimental.Rmd"
   ]
