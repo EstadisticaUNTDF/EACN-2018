@@ -365,7 +365,7 @@ nivel que corresponde al tratamiento control (`ref`)
 
 
 ```{r}
-contrast(objetct = alga.em, method = "trt.vs.ctrl", ref = 4)
+contrast(object = alga.em, method = "trt.vs.ctrl", ref = 4)
 ```
 
 
