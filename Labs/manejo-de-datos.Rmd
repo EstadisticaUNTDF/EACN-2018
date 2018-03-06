@@ -3,6 +3,8 @@
 ```{r setup, include = FALSE} 
 library(pander)
 library(tidyverse)
+final_knit <-  FALSE
+solucion <- FALSE
 ```
 
 Una parte muy importante del análisis de datos, es el manejo de ellos. Como
