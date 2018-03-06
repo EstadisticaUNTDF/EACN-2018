@@ -34,8 +34,14 @@ el cambio de la variable aleatoria según el cambio de la variable predictora:
 
 $$
 Y = \beta_0 + \beta_1 X
+(\#eq:reg1)
 $$
 
-Por ejemplo:
+Por ejemplo, el se tiene la edad y la longitud de alas de gorriones de varias
+edades en la Tabla \@ref(tab:gorriones). La edad es la variable independiente y
+la longitud de ala es la variable dependiente. Se busca ajustar un modelo como 
+en el da la Ecuación \@ref(eq:reg1). En la Figura \@ref(fig:gorriones-reg) la 
+recta que mejor ajusta a esto datos en azul. Sin embargo, el ajuste no es
+perfecto. 
 
 

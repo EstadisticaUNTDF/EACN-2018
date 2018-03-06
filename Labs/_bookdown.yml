@@ -22,13 +22,21 @@ rmd_files:
   [
     "index.Rmd",
     "Introduccion.Rmd",
+    "Graficos.Rmd",
+    "manejo-de-datos.Rmd",
     
     "No-Parametrico-Teoria.Rmd",
     "No-Parametrico.Rmd",
     
     "anova.Rmd",
+    "anova-problemas.Rmd",
+    
     "anova-no-parametrico.Rmd",
     "anova-dos-factores.Rmd",
     
-    "diseno-experimental.Rmd"
+    "diseno-experimental.Rmd",
+    
+    "regresion.Rmd",
+    
+    "ordenacion.Rmd"
   ]
