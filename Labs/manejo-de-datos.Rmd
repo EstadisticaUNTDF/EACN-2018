@@ -12,7 +12,7 @@ seleccionar columnas, filtrar datos, y realizar operaciones sobre ellos. Vamos
 a usar el paquete `dplyr` y `tidyr` para el manejo. Los paquetes 
 extienden la funcionalidad de *R* agregando nuevas funciones.
 
-```{r cargar-datos, eval=final_knit}
+```{r cargar-datos}
 library("dplyr")
 
 nombres <- readRDS("data/nombres-1980-1999.RDS")
