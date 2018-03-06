@@ -96,7 +96,7 @@ leveneTest(nitro ~ trt, data = nitro)
 Como ven ambas funciones trabajan de manera similar a `aov()`. Ambas aceptan
 formulas y necesitan del argumento `data `.
 
-```{exersice}
+```{exercise}
 ¿Qué concluirían si el test de Bartlett rechaza la hipótesis nula y el de 
 Levene no lo hace?
 ```
