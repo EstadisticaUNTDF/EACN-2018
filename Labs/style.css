@@ -21,6 +21,14 @@ div.exercise {
   border-spacing: 0;
 }
 
+div.atencion {
+  background-color: #ffd400;
+  border-width: medium 0 0 0;
+  border-color: #897200;
+  border-style: solid;
+  border-spacing: 0;
+}
+
 span.exercise{
     position:relative;
     top:-2px;
