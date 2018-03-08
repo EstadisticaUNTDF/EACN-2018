@@ -1,6 +1,12 @@
 
 # Regresión
 
+```{r setup, include = FALSE}
+library(tidyverse)
+library(pander)
+```
+
+
 En las ciencias naturales es usual querer explicar una variable con otras.
 Las variables que se quieren explicar son las variables dependientes y las
 que se usan para explicar son las llamadas variables explicatorias o también
@@ -33,7 +39,7 @@ El objetivo de esta técnica es obtener una ecuación lineal que explique
 el cambio de la variable aleatoria según el cambio de la variable predictora:
 
 $$
-Y = \beta_0 + \beta_1 X
+Y_i = \beta_0 + \beta_1 X_i
 (\#eq:reg1)
 $$
 
@@ -42,10 +48,34 @@ edades en la Tabla \@ref(tab:gorriones). La edad es la variable independiente y
 la longitud de ala es la variable dependiente. Se busca ajustar un modelo como 
 en el da la Ecuación \@ref(eq:reg1). En la Figura \@ref(fig:gorriones-reg) la 
 recta que mejor ajusta a esto datos en azul. Sin embargo, el ajuste no es
-perfecto. 
+perfecto. La diferencia entre el valor ajustado o predicho y el valor observado
+es el error que se comete. Ese error se simboliza con la letra griega epsilon y
+debe ser incluido en el modelo:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
+(\#eq:reg2)
+$$
+
+Se asume que $\epsilon_i\sim N\left ( 0, \sigma^2 \right )$ y por lo tanto
+$\sum \epsilon_i = 0$. El método que se usa para encontrar los estimadores de
+los $\beta_i$ consiste en minimizar el cuadrado de los errores. Por eso,
+el método se lo conoce como mínimos cuadrados o mínimos cuadrados ordinarios.
+Afortunadamente se pueden resolver de manera analítica por las siguientes 
+ecuaciones
+
+$$
+\begin{aligned}
+b_1 &= \frac{\sum(X_i-\bar X)(Y_i-\bar Y)}{\sum (X_i-\bar X)^{2}}=
+\frac{\sum X_iY_i-\frac{\left (\sum X_i\right)\left ( \sum Y_i\right )}{n}}{\sum X_i^2-\frac{\left (\sum X_i \right )^2}{n}}\\
+
+b_0 &= \bar Y - b_1\bar X
+\end{aligned}
+$$
 
 
-```{r}
+
+```{r gorriones-datos, echo = FALSE}
 gorriones <- tribble(
  ~Edad, ~ Longitud, 
   3,       1.4,    
@@ -66,4 +96,22 @@ gorriones <- tribble(
 pander(gorriones, caption = "(#tab:gorriones) Edad en días y longitud
                     de ala en centímetros de 13 gorriones.")
 ```
+
+(ref:gorriones-grafico) Gráfico de dispersión de edad en días y longitud
+                    de ala en centímetros de 13 gorriones. En azul línea de 
+                    regresión estimada con mínimos cuadrados ordinarios. En rojo
+                    el error cometido por la regresión entre los valores estimados
+                    y los valores observados.
+
+```{r gorriones-grafico, echo = FALSE, fig.cap = "(ref:gorriones-grafico)"}
+
+m1 <- lm(Longitud ~ Edad, data = gorriones)
+gorriones <- modelr::add_predictions(gorriones, m1)
+
+ggplot(gorriones, aes(Edad, Longitud)) +
+  geom_segment(aes(xend = Edad, yend = pred), color = "red") +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
 
