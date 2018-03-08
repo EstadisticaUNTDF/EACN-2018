@@ -24,7 +24,7 @@ library(compute.es)
 ## Problemas
 
 ```{r cargar-datos}
-load("../data/anova-simple.RData")
+load(url("https://git.io/anova-simple.RData"))
 ```
 
 
