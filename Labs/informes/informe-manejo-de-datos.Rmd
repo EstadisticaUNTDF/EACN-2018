@@ -1,0 +1,114 @@
+---
+title: "Informe Manejo de Datos"
+author: "Su Nombre"
+date: "`r format(Sys.time(), "%A, %d de %B de %Y ")`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Cargar paquetes
+library(pander)
+library(tidyverse)
+```
+
+
+### Cargar datos
+
+```{r cargar-datos}
+if(!file.exists("data/nombres-1980-1999.RDS")){
+  dir.create("data")
+  download.file(url = "https://git.io/nombres-1980-1999.RData", destfile = "data/nombres-1980-1999.RData")
+}
+
+load("data/nombres-1980-1999.RData")
+```
+
+
+### Ejericio 4.1
+
+Escriban el nombre del objeto o usen la función `glimpse` para ver que tiene
+dentro el objeto `nombres`.
+
+1. ¿Cuantas columnas tiene y como se llaman?
+2. ¿Que tipo de dato tiene cada columna?
+
+
+```{r glimpse}
+
+```
+
+
+### Ejercicio 4.2
+
+Prueben cambiar el nombre por el suyo y el año por su año de nacimiento. 
+
+```{r filter}
+nombres %>% 
+  filter(nombre == "") %>% 
+  filter(anio == )
+```
+
+
+
+### Ejercicio 4.3
+
+¿Cómo filtrarían los nombres raros excluyéndolos del conjunto de datos? 
+  
+  Guarden el resultado como nombres_comunes y calculen el total por nombre.
+
+Nota: Por coherencia, definamos nombres raros como los que son menos de 100.
+
+### Ejercicio 4.4
+
+¿Qué resultado darán las siguientes evaluaciones? Piensen que resultado tendría
+que dar y luego comprueben lo que piensan con lo que les devuelve R.
+
+```{r}
+  1. TRUE | FALSE | TRUE
+  2. TRUE | FALSE & TRUE
+  3. TRUE | (FALSE & TRUE)
+  4. TRUE != FALSE & TRUE
+  5. !(TRUE | FALSE) & TRUE
+```
+
+### Ejercicio 4.5
+
+Anteriormente usamos dos operaciones de `filter()` para seleccionar el nombre y
+el año. Pero es posible usar solo una con los operadores lógicos que vimos. 
+Intenten hacerlo.
+
+### Ejercicio 4.6
+
+1. ¿Qué sucede si olvidan los paréntesis en el código de arriba?
+2. Seleccionen las últimas 10 filas.
+
+#### Ejercicio 4.7
+
+Ordenen el resultado del total de nombres que calcularon en el ejercicio 4.3
+
+## Por su cuenta
+
+```{r cargar-datos-por-su-cuenta}
+load(url("git.io/calidad-del-aire-2017.RData"))
+
+```
+1. ¿Qué columnas hay y cuantos datos encuentran?
+2. ¿En que tipo de formato está? ¿Largo o ancho?
+3. Cambien los datos a formato largo. *Pista*: Usen `gather` para llegar a
+`FECHA`, `HORA`, `Columna`, `Valor`, luego Usen la función `separate` para
+separar el lugar del tipo de variable. Finalmente, con spread llevenlo a 
+un formato más adecuado para trabajar.
+4. Calculen el promedio por lugar para las distintas variables. *Pista*: el
+formato más largo que crearon como paso intermedio arriba hace que el trabajo 
+sea más corto.
+5. Ordenen los lugares por la contaminación con material particulado. 
+6. Grafiquen cada uno de los datos de cada lugar, por fecha. Usen facetas para
+cada variable y un color distinto para cada lugar.
+7. Seleccionen los datos de parque Centenario.
+8. Grafiquen los datos de parque Centenario.
+
+
+
+

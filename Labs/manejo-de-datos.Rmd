@@ -1,10 +1,26 @@
 # Manejo de datos
 
+
+```{block, type = "atencion"}
+
+Antes de comenzar bajen el archivo donde realizarán su informe reproducible.
+En la consola copien este código:
+
+`download.file(url = "git.io/informe-manejo", destfile = "informe-manejo-de-datos.Rmd")`
+
+Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre 
+por el suyo en el encabezado y mientras leen este capítulo respondan las 
+preguntas.
+
+```
+
 ```{r setup, include = FALSE} 
 library(pander)
 library(tidyverse)
-final_knit <-  FALSE
+final_knit <-  TRUE
 solucion <- FALSE
+
+knitr::opts_chunk$set(cache = TRUE)
 ```
 
 Una parte muy importante del análisis de datos, es el manejo de ellos. Como
@@ -85,6 +101,9 @@ luego filtramos la columna `anio` solo los años que sean iguales a 1984.
 Prueben cambiar el nombre por el suyo y el año por su año de nacimiento. 
 ```
 
+
+
+
 El operador que usamos para la igualdad es `==`. Este operador, de igualdad,
 es parte de la familia de operadores lógicos, o booleanos en terminología
 de ciencias de la información. Son lógicos porque van a comparar valores y
@@ -107,6 +126,25 @@ x <- 1:10
 # Todos los valores distintos a 5
 x != 5
 ```
+
+
+```{exercise ejercicio-8, label="nombre-comun", name="Nombres comunes"}
+¿Cómo filtrarían los nombres raros excluyéndolos del conjunto de datos? 
+  
+  Guarden el resultado como nombres_comunes y calculen el total por nombre.
+
+Nota: Por coherencia, definamos nombres raros como los que son menos de 100.
+```
+
+
+```{r solucion-suma-nombres, echo=solucion, eval=final_knit, results='hide'}
+nombres_comunes <- nombres %>% 
+  filter(cantidad > 100)
+nombres_comunes %>% 
+  group_by(nombre) %>% 
+  summarise(total = sum(cantidad))
+```
+
 
 Otro operador muy útil es el de negación `!` que invierte las comparaciones,
 convierte los falsos en verdaderos y los verdaderos en falsos. Siguiendo nuestro
@@ -193,7 +231,7 @@ Otra forma de seleccionar datos es por posición. Es decir, seleccionar los
 primeras diez filas:
 
 ```{r primeros-10}
-nombres %>% 
+nombres_comunes %>% 
   slice(1:10)
 
 ```
@@ -201,18 +239,18 @@ nombres %>%
 O seleccionar las primeras 10 filas que corresponden números primos:
 
 ```{r primos}
-nombres %>% 
+nombres_comunes %>% 
   slice(c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29))
 ```
 
 También es posible eliminar las filas según posición:
 
 ```{r}
-nombres %>% 
+nombres_comunes %>% 
   slice(-(1:10)) #Tengan en cuenta los parentesis extra
 ```
 
-```{exercise ejercicio-8}
+```{exercise ejercicio-9}
 
 1. ¿Qué sucede si olvidan los paréntesis en el código de arriba?
 2. Seleccionen las últimas 10 filas.
@@ -224,28 +262,28 @@ La función para seleccionar columnas es `seletc()`. Hay muchas formas de
 seleccionar columnas. La más obvia es por nombre de la columna:
 
 ```{r seleccionar-columnas-nombre}
-nombres %>% 
+nombres_comunes %>% 
   select(nombre, cantidad)
 ```
 
 También es posible seleccionar varias columnas usando secuencias:
 
 ```{r}
-nombres %>% 
+nombres_comunes %>% 
   select(nombre:cantidad)
 ```
 
 De la misma forma se puede eliminar columnas usando el signo `-`.
 
 ```{r}
- nombres %>% 
+ nombres_comunes %>% 
   select(-anio)
 ```
 
 Se pueden renombrar columnas 
 
 ```{r}
-nombres %>% 
+nombres_comunes %>% 
   select(año = anio)
 ```
 
@@ -253,7 +291,7 @@ Pero se eliminan las no seleccionadas. Se puede renombrar sin tener que
 seleccionar el resto usando la función `rename`
 
 ```{r}
-nombres %>% 
+nombres_comunes %>% 
   select(año = anio)
 ```
 
@@ -275,7 +313,9 @@ nombres %>%
 ```
 
 Cualquier operación que funcione con vectores funciona con `mutate()`. También
-funciona se pueden modificar columnas si el nombre que asignamos ya está puesto.
+funciona se pueden modificar columnas si el nombre que asignamos ya está usado
+dentro de nuestro *data frame*.
+
 
 ## Operaciones por grupos
 
@@ -284,7 +324,7 @@ Por ejemplo, calcular el número total de personas con cada nombre. Podrían
 hacerlo de esta forma:
 
 ```{r filtrado, eval=final_knit}
-nombres %>% 
+nombres_comunes %>% 
   filter(nombre == "Luciano") %>% 
   summarise(total = sum(cantidad))
 ```
@@ -296,7 +336,7 @@ forma más fácil y es usando `group_by()`. Un ejemplo:
 ```{r agrupado, eval=final_knit}
 # No intenten hacerlo en sus computadoras
 # Los datos tienen más de 3 millones de registros y va a tomar un tiempo
-nombres %>% 
+nombres_comunes %>% 
   group_by(nombre) %>% 
   summarise(total = sum(cantidad))
 ```
@@ -306,29 +346,13 @@ muchos errores de entrada de datos, como nombres todo en mayúsculas, versiones
 del mismo nombre con tilde y sin tilde, etc. Para evitar todo ese "ruido", 
 podríamos filtrar los nombres raros que son mayoría de las entradas.
 
-```{exercise ejercicio-8, label="nombre-comun", name="Nombres comunes"}
-¿Cómo filtrarían los nombres raros excluyéndolos del conjunto de datos? 
-  
-  Guarden el resultado como nombres_comunes y calculen el total por nombre.
-
-Nota: Por coherencia, definamos nombres raros como los que son menos de 100.
-```
-
-
-```{r solucion-suma-nombres, echo=solucion, eval=final_knit}
-nombres_comunes <- nombres %>% 
-  filter(cantidad > 100)
-nombres_comunes %>% 
-  group_by(nombre) %>% 
-  summarise(total = sum(cantidad))
-```
 
 Además de usar la función `summarise()` se puede usar la función `mutate` que
 va a hacer que queden la misma cantidad de casos. Por ejemplo, calcular el 
 número acumulado de personas con el mismo nombre en a través de los años:
 
 ```{r}
-nombres %>% 
+nombres_comunes %>% 
   group_by(nombre) %>% 
   arrange(anio, .by_group = TRUE) %>% 
   mutate(acumulado = cumsum(cantidad))
@@ -358,7 +382,7 @@ nombres_comunes %>%
   arrange(cantidad, nombre)
 ```
 
-```{exercise ejercicio-9, name="Orden de totales"}
+```{exercise ejercicio-10, name="Orden de totales"}
 Ordenen el resultado del total de nombres que calcularon en el ejercicio 
 \@ref(exr:nombre-comun)
 ```
@@ -450,7 +474,7 @@ spread(data = race_largo, key = time, value = score)
 Lean los datos de 
 
 ```{r eval=FALSE}
-load("data/calidad-del-aire-2017.RData")
+load(url("git.io/calidad-del-aire-2017.RData"))
 ```
 
 Son datos de calidad del aire de la ciudad de Buenos Aires
