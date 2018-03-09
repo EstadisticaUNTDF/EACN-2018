@@ -299,8 +299,9 @@ En todos los casos indicar la hipótesis nula y la alternativa. Graficar y reali
 
 Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
 
-```{r}
+```{r cargar-datos}
 load("data/dos_muestras_np.RData")
+cat(ls())
 ```
 
 
@@ -530,7 +531,7 @@ araña
 ```{r araña-analisis, echo=solucion, eval=solucion }
 araña %$% wilcox.test(Tiempo ~ Especie, alternative = "two.sided")
 ```
-No hay diferencias significativas (p>0.1) en las eficiencias de captura entre las especies. Tampoco parece haber diferencias biológicamente significativas.
+
 
 12. Un productor de fruta fina está convencido que la producción en el Bolsón es
 más alta que en Esquel. Para ello tomó datos producción de distintas parcelas en
