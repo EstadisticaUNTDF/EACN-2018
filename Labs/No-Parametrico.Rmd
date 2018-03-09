@@ -301,7 +301,6 @@ Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
 
 ```{r cargar-datos}
 load("data/dos_muestras_np.RData")
-cat(ls())
 ```
 
 
@@ -522,14 +521,14 @@ introdujo una mosca en cada caja. El ecólogo determinó para cada araña el tie
 en segundos que tardó en capturar la mosca. Los resultados fueron:
 Tiempo de captura de la mosca en segundos.
 
-```{r araña, results='markup'}
-araña
+```{r arana, results='markup'}
+arana
 ```
 
 ¿Existen diferencias en las eficiencias de captura entre las especies de araña?
 
-```{r araña-analisis, echo=solucion, eval=solucion }
-araña %$% wilcox.test(Tiempo ~ Especie, alternative = "two.sided")
+```{r arana-analisis, echo=solucion, eval=solucion }
+arana %$% wilcox.test(Tiempo ~ Especie, alternative = "two.sided")
 ```
 
 
