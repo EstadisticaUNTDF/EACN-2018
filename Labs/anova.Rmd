@@ -10,7 +10,7 @@ library(pander)
 library(agricolae)
 library(car)
 library(pwr)
-library(lsmeans)
+library(emmeans)
 library(nortest) #normality test
 theme_set(theme_classic())
 
