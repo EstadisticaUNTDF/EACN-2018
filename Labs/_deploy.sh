@@ -8,10 +8,9 @@ set -e
 git config --global user.email "luciano.selzer@gmail.com"
 git config --global user.name "Luciano Selzer"
 
-cd Labs
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
 cd book-output
-cp -r ../_book/* ./
+cp -r ../Labs/_book/* ./
 git add --all *
 git commit -m"Update the book" || true
 git push -q origin gh-pages
