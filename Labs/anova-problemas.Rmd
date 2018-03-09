@@ -1,5 +1,8 @@
 ```{r setup, include=FALSE}
 # Setup -------------------------------------------------------------------
+if(!require(ggfortify)) devtools::install_github("sinhrks/ggfortify")
+
+
 library(pander)
 library(tidyverse)
 library(ggfortify)
