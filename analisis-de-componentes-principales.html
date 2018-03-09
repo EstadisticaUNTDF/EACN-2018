@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Avanzada para Ciencias Naturales</title>
+  <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Avanzada para Ciencias Naturales" />
+  
+  <meta name="twitter:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+<meta name="author" content="Dr. Luciano Selzer">
+
+
+<meta name="date" content="2018-03-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="ordenacion-en-espacios-reducidos.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Laboratorios de Estadística Avanzada</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> El libro</a></li>
+<li class="chapter" data-level="2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introducción a <em>R</em> y RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#analisis-reproducible"><i class="fa fa-check"></i><b>2.2</b> Análisis Reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.1</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#integrando-codigo"><i class="fa fa-check"></i><b>2.3</b> Integrando código</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Visualización de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#introduccion"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#el-conjunto-de-datos-mpg"><i class="fa fa-check"></i><b>3.2</b> El conjunto de datos <code>mpg</code></a></li>
+<li class="chapter" data-level="3.3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#graficos-con-ggplot"><i class="fa fa-check"></i><b>3.3</b> Gráficos con ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#mapeando"><i class="fa fa-check"></i><b>3.4</b> Mapeando</a></li>
+<li class="chapter" data-level="3.5" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#formas-geometricas"><i class="fa fa-check"></i><b>3.5</b> Formas geometricas</a></li>
+<li class="chapter" data-level="3.6" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#transformaciones-estadisticas"><i class="fa fa-check"></i><b>3.6</b> Transformaciones Estadísticas</a></li>
+<li class="chapter" data-level="3.7" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#ajuste-de-posiciones"><i class="fa fa-check"></i><b>3.7</b> Ajuste de Posiciones</a></li>
+<li class="chapter" data-level="3.8" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#sistemas-de-coordenadas"><i class="fa fa-check"></i><b>3.8</b> Sistemas de Coordenadas</a></li>
+<li class="chapter" data-level="3.9" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#personalizando-el-grafico"><i class="fa fa-check"></i><b>3.9</b> Personalizando el gráfico</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html"><i class="fa fa-check"></i><b>4</b> Manejo de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-datos"><i class="fa fa-check"></i><b>4.1</b> Seleccionando datos</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-columnas"><i class="fa fa-check"></i><b>4.2</b> Seleccionando columnas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#agregando-columnas"><i class="fa fa-check"></i><b>4.3</b> Agregando columnas</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#operaciones-por-grupos"><i class="fa fa-check"></i><b>4.4</b> Operaciones por grupos</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formato-ancho-y-formato-largo"><i class="fa fa-check"></i><b>4.5</b> Formato Ancho y Formato Largo</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#por-su-cuenta"><i class="fa fa-check"></i><b>4.6</b> Por su cuenta</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>5</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
+<li class="chapter" data-level="5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>5.1</b> Datos</a></li>
+<li class="chapter" data-level="5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>5.2</b> Supuestos</a></li>
+<li class="chapter" data-level="5.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>5.3</b> Procedimiento básico</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>5.4</b> Estadísticos</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>5.4.1</b> Variante Wilcoxon (W)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>5.4.2</b> Variante Mann-Whitney (U)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>5.5</b> Hipótesis</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>5.5.1</b> Prueba a dos colas</a></li>
+<li class="chapter" data-level="5.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>5.5.2</b> Prueba de una cola a la izquierda</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>5.6</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>5.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>5.7.1</b> Supuestos</a></li>
+<li class="chapter" data-level="5.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>5.7.2</b> Estadísticos</a></li>
+<li class="chapter" data-level="5.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>5.7.3</b> Hipótesis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>6</b> Ejercicios de dos muestras no paramétrico</a><ul>
+<li class="chapter" data-level="6.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>6.1</b> Reproduciendo el algoritmo manualmente</a></li>
+<li class="chapter" data-level="6.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>6.2</b> Funciones no paramétricas en <em>R</em></a></li>
+<li class="chapter" data-level="6.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>6.3</b> Fórmulas</a></li>
+<li class="chapter" data-level="6.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas"><i class="fa fa-check"></i><b>6.4</b> Problemas</a></li>
+<li class="chapter" data-level="6.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>6.5</b> Algunos conceptos importantes</a></li>
+<li class="chapter" data-level="6.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>6.6</b> Diseño de Estudios de ANOVA</a></li>
+<li class="chapter" data-level="6.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>6.7</b> Planificación De Experimentos</a></li>
+<li class="chapter" data-level="6.8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#usos-del-anova"><i class="fa fa-check"></i><b>6.8</b> Usos Del ANOVA</a></li>
+<li class="chapter" data-level="6.9" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>6.9</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>6.9.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ideas-basicas"><i class="fa fa-check"></i><b>6.9.2</b> Ideas Básicas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>6.10</b> Comprobación de los Supuestos</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>6.10.1</b> Prueba para igualdad de varianzas</a></li>
+<li class="chapter" data-level="6.10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>6.10.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
+<li class="chapter" data-level="6.10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#residuos"><i class="fa fa-check"></i><b>6.10.3</b> Residuos</a></li>
+<li class="chapter" data-level="6.10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-residuos"><i class="fa fa-check"></i><b>6.10.4</b> Gráficos de Residuos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones"><i class="fa fa-check"></i><b>6.11</b> Transformaciones</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>6.11.1</b> Transformaciones para estabilizar las Varianzas</a></li>
+<li class="chapter" data-level="6.11.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>6.11.2</b> Transformaciones para corregir la falta de normalidad</a></li>
+<li class="chapter" data-level="6.11.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>6.11.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>6.12</b> Formulación Del Modelo I De ANOVA.</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>6.12.1</b> Características importantes del modelo</a></li>
+<li class="chapter" data-level="6.12.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.12.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.12.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>6.12.3</b> Ajustando El Modelo</a></li>
+<li class="chapter" data-level="6.12.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>6.12.4</b> Estimadores De Mínimos Cuadrados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>6.13</b> Partición De La Suma De Cuadrados Total</a><ul>
+<li class="chapter" data-level="6.13.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas-computatorias"><i class="fa fa-check"></i><b>6.13.1</b> Fórmulas computatorias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuadrados-medios"><i class="fa fa-check"></i><b>6.14</b> Cuadrados Medios</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>6.14.1</b> Esperanza de los Cuadrados Medios</a></li>
+<li class="chapter" data-level="6.14.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentarios-1"><i class="fa fa-check"></i><b>6.14.2</b> Comentarios</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.15</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-estadistica"><i class="fa fa-check"></i><b>6.15.1</b> Prueba Estadística</a></li>
+<li class="chapter" data-level="6.15.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>6.15.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
+<li class="chapter" data-level="6.15.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#regla-de-decision"><i class="fa fa-check"></i><b>6.15.3</b> Regla De Decisión</a></li>
+<li class="chapter" data-level="6.15.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentario"><i class="fa fa-check"></i><b>6.15.4</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>6.16</b> Formulación Alternativa Del Modelo I</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.16.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.17</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.18" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>6.18</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
+<li class="chapter" data-level="6.18.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.2</b> Estimación de los efectos de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comparaciones-multiples"><i class="fa fa-check"></i><b>6.18.3</b> Comparaciones múltiples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.19" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>6.19</b> Planificación Del Tamaño Muestral</a><ul>
+<li class="chapter" data-level="6.19.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>6.19.1</b> Potencia De La Prueba F</a></li>
+</ul></li>
+<li class="chapter" data-level="6.20" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>6.20</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
+<li class="chapter" data-level="6.20.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>6.20.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
+<li class="chapter" data-level="6.20.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>6.20.2</b> Características importantes del Modelo</a></li>
+<li class="chapter" data-level="6.20.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>6.20.3</b> Cuestiones de Interés</a></li>
+<li class="chapter" data-level="6.20.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>6.20.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
+<li class="chapter" data-level="6.20.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.20.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+<li class="chapter" data-level="6.20.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>6.20.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
+<li class="chapter" data-level="6.20.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>6.20.7</b> Modelo De Efectos Aleatorios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>7</b> Problemas ANOVA Simple</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>7.0.1</b> Recordatorio</a></li>
+<li class="chapter" data-level="7.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas-1"><i class="fa fa-check"></i><b>7.1</b> Problemas</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>7.1.1</b> Contrastes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> ANOVA No Paramétrico</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>8.1</b> Pruebas para varias muestras independientes</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>8.1.1</b> Prueba de la mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>8.2</b> Prueba de Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>8.2.1</b> Datos</a></li>
+<li class="chapter" data-level="8.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>8.2.2</b> Supuestos</a></li>
+<li class="chapter" data-level="8.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>8.2.3</b> Procedimiento</a></li>
+<li class="chapter" data-level="8.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>8.2.4</b> Hipótesis</a></li>
+<li class="chapter" data-level="8.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-2"><i class="fa fa-check"></i><b>8.2.5</b> Contrastes</a></li>
+<li class="chapter" data-level="8.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>8.2.6</b> Comentarios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>9</b> ANOVA DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>9.1</b> Ventajas de los estudios multifactoriales</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>9.1.1</b> Eficiencia:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>9.2</b> Elementos del Modelo</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>9.2.1</b> Efectos principales</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>9.3</b> Representación gráfica</a></li>
+<li class="chapter" data-level="9.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>9.4</b> Interacción</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>9.4.1</b> Interacciones no importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>9.5.1</b> Modelo de las medias de celdas</a></li>
+<li class="chapter" data-level="9.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>9.5.2</b> Modelo de los efectos de los factores</a></li>
+<li class="chapter" data-level="9.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>9.5.3</b> ANOVA (MODELO I)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>9.6</b> Prueba de F</a></li>
+<li class="chapter" data-level="9.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-3"><i class="fa fa-check"></i><b>9.7</b> Contrastes</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>9.7.1</b> Entre Filas</a></li>
+<li class="chapter" data-level="9.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>9.7.2</b> Entre columnas</a></li>
+<li class="chapter" data-level="9.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>9.7.3</b> Interacción</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>9.8</b> Potencia de la prueba F</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>9.8.1</b> Interacción</a></li>
+<li class="chapter" data-level="9.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>9.8.2</b> Prueba para el factor principal A:</a></li>
+<li class="chapter" data-level="9.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>9.8.3</b> Prueba para el factor principal B:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>9.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>9.9.1</b> Modelo sin interacción</a></li>
+<li class="chapter" data-level="9.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>9.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>9.10.1</b> Modelo aleatorio (Modelo II)</a></li>
+<li class="chapter" data-level="9.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>9.10.2</b> Modelo Mixto (Modelo III)</a></li>
+<li class="chapter" data-level="9.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>9.10.3</b> Pruebas estadísticas</a></li>
+<li class="chapter" data-level="9.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>9.10.4</b> Estimación de los componentes de la varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html"><i class="fa fa-check"></i><b>10</b> DISEÑOS EXPERIMENTALES</a><ul>
+<li class="chapter" data-level="10.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#bloques-al-azar"><i class="fa fa-check"></i><b>10.1</b> Bloques al azar</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#diseno-de-experimentos"><i class="fa fa-check"></i><b>10.1.1</b> Diseño de experimentos</a></li>
+<li class="chapter" data-level="10.1.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#elementos-de-los-disenos-de-bloques-al-azar"><i class="fa fa-check"></i><b>10.1.2</b> Elementos de los Diseños de Bloques al Azar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#criterios-para-definir-los-bloques"><i class="fa fa-check"></i><b>10.1.3</b> Criterios para definir los bloques</a></li>
+<li class="chapter" data-level="10.1.4" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#ventajas-y-desventajas"><i class="fa fa-check"></i><b>10.1.4</b> Ventajas y desventajas</a></li>
+<li class="chapter" data-level="10.1.5" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#modelo"><i class="fa fa-check"></i><b>10.1.5</b> Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza-y-pruebas"><i class="fa fa-check"></i><b>10.2</b> Análisis de la varianza y pruebas</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza"><i class="fa fa-check"></i><b>10.2.1</b> Análisis de la varianza</a></li>
+<li class="chapter" data-level="10.2.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#prueba-de-tukey-de-aditividad"><i class="fa fa-check"></i><b>10.2.2</b> Prueba de Tukey de Aditividad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>11</b> Regresión</a><ul>
+<li class="chapter" data-level="11.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>11.1</b> Regresión Lineal Simple</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>12</b> Ordenación en Espacios Reducidos</a></li>
+<li class="chapter" data-level="13" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>13</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>13.1</b> Biplots</a></li>
+<li class="chapter" data-level="13.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Avanzada para Ciencias Naturales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analisis-de-componentes-principales" class="section level1">
+<h1><span class="header-section-number">Capítulo 13</span> Análisis de componentes principales</h1>
+<p>Supongamos que tenemos una distribución multivariada normal, el primer eje
+principal es la línea que atraviesa la mayor dimensión del elipsoide de densidad
+que describe la densidad. De la misma manera, los siguientes ejes principales
+(ortogonales entre sí, es decir en ángulo recto e incorrelados, y sucesivamente
+más cortos) atraviesan las siguientes dimensiones del elipsoide
+<span class="math inline">\(p\)</span>-dimensional. Por lo tanto, pueden encontrarse un número <span class="math inline">\(p\)</span> de ejes
+principales de una matriz de datos de <span class="math inline">\(p\)</span> variables.</p>
+<p>Las relaciones entre las variables pueden representarse con una matriz cuadrada
+<span class="math inline">\(\mathbf{S}_{p \times p}\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{S} = \begin{bmatrix}
+\sigma_{11} &amp; \sigma_{12} &amp; \cdots &amp; \sigma_{1p} \\
+\sigma_{21} &amp; \sigma_{22} &amp; \cdots &amp; \sigma_{2p} \\
+ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sigma_{p1} &amp; \sigma_{p2} &amp; \cdots &amp; \sigma_{pp} \\
+\end{bmatrix}
+\]</span></p>
+<p>Donde la diagonal es la varianza de una variable y fuera de ellas se encuentran
+las covarianzas</p>
+<p>Los ejes principales de una matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> pueden
+encontrarse resolviendo la ecuación:</p>
+<p><span class="math display">\[
+\left( \mathbf{S} - \lambda_{k}\mathbf{I} \right)\mathbf{u}_{k} = 0
+\]</span></p>
+<p>Cuya ecuación característica es:</p>
+<p><span class="math display">\[
+\left| \mathbf{S} - \lambda_{k}\mathbf{I} \right| = 0
+\]</span></p>
+<p>Se usa para computar los autovalores. Los autovectores <span class="math inline">\(\mathbf{u}_{k}\)</span>
+asociados a los <span class="math inline">\(\lambda_{k}\)</span> se encuentran poniendo los distintos valores de
+<span class="math inline">\(\lambda_{k}\)</span> en la primera ecuación. Estos autovectores son los ejes
+principales de la matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span>. Los componentes
+principales tienen las siguientes propiedades:</p>
+<ol style="list-style-type: decimal">
+<li><p>Dado que cualquier matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> es simétrica, sus
+ejes principales <span class="math inline">\(u_{k}\)</span> son ortogonales entre sí. Es decir, que
+representan direcciones linealmente independientes en el elipsoide de
+densidad de la distribución de objetos.</p></li>
+<li><p>Los autovalores <span class="math inline">\(\lambda_{k}\)</span> de una matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span>
+dan la cantidad de varianza que corresponde a cada uno de los sucesivos ejes
+principales.</p></li>
+<li><p>Dadas las dos primeras propiedades, el análisis de componentes principales
+puede resumir, en unas pocas dimensiones, la mayor parte de la variabilidad
+de una matriz de dispersión con un gran número de variables. También provee
+de una medida de la variabilidad explicada por cada uno de esos pocos ejes
+principales independientes.</p></li>
+</ol>
+<p>Un ejemplo sencillo usando solo dos variables, algo que en la práctica nunca
+sucede, pero resulta útil como ejemplo</p>
+<span class="math inline">\(Y = \begin{bmatrix} 2 &amp; 1 \\ 3 &amp; 4 \\ 5 &amp; 0 \\ 7 &amp; 6 \\ 9 &amp; 2 \\ \end{bmatrix}\)</span> luego de centrar con las medias de las columnas $y
+-  =
+<span class="math display">\[\begin{bmatrix}  - 3.2 &amp; - 1.6 \\  -
+2.2 &amp; 1.4 \\  - 0.2 &amp; - 2.6 \\ 1.8 &amp; 3.4 \\ 3.8 &amp; - 0.6 \\ \end{bmatrix}\]</span>
+<p>$</p>
+<p>Calculando la matriz de dispersión:</p>
+<p><span class="math display">\[
+S = \frac{1}{n - 1}\left\lbrack y - \overline{y} \right\rbrack^{&#39;}\left\lbrack y - \overline{y} \right\rbrack = \begin{bmatrix}
+8.2 &amp; 1.6 \\
+1.6 &amp; 5.8 \\
+\end{bmatrix}
+\]</span></p>
+<p>La ecuación característica correspondiente es:</p>
+<p><span class="math display">\[
+\left| S - \lambda_{k}I \right| = \left| \begin{bmatrix}
+8.2 &amp; 1.6 \\
+1.6 &amp; 5.8 \\
+\end{bmatrix} - \begin{bmatrix}
+\lambda_{k} &amp; 0 \\
+0 &amp; \lambda_{k} \\
+\end{bmatrix} \right| = 0
+\]</span></p>
+<p>Tiene dos autovalores, <span class="math inline">\(\lambda_{1} = 9\)</span> y <span class="math inline">\(\lambda_{2} = 2\)</span>. La varianza
+total es la misma, pero particionada de otra manera. La suma de la varianza en
+la diagonal de <span class="math inline">\(\mathbf{S}\)</span> es <span class="math inline">\(8.2 + 5.8 = 14\)</span>, y la suma de los dos
+autovalores es <span class="math inline">\((9 + 5) = 14\)</span>. El primer componente principal tiene el 64.3%
+de la varianza (<span class="math inline">\(\lambda_{1} = 9)\)</span> y el segundo el resto, 35.7%. Hay tantos
+autovalores como variables, pero cada autovalor tiene cada vez menos varianza.
+Con los valores de <span class="math inline">\(\lambda_{k}\)</span> podemos calcular los autovectores con la
+ecuación:</p>
+<p><span class="math display">\[
+\left( \mathbf{S} - \lambda_{k}\mathbf{I} \right)\mathbf{u}_{k} = 0
+\]</span></p>
+<p>Una vez que los vectores son normalizados (i.e. la longitud es uno,
+<span class="math inline">\(\mathbf{u}^{&#39;}\mathbf{u} = 1\)</span>) se convierten en columnas de la matriz
+<span class="math inline">\(\mathbf{U}\)</span>:</p>
+<p><span class="math display">\[
+U = \begin{bmatrix}
+0.8944 &amp; - 0.4472 \\
+0.4472 &amp; 0.8944 \\
+\end{bmatrix}
+\]</span></p>
+<p>Los signos de la matriz son totalmente arbitrarios, si se multiplica por -1 se
+consigue una imagen especular que es igual de buena representando los datos.</p>
+<p>Los autovectores son ortogonales entre sí (incorrelados). Podemos comprobarlo
+con su producto cruzado <span class="math inline">\(\mathbf{u}_{1}^{&#39;}\mathbf{u}_{2} = \left( 0.8944 \times \left( - 0.4472 \right) \right) + \left( 0.4472 \times 0.8944 \right) = 0\)</span>. Además, los elementos de <span class="math inline">\(\mathbf{U}\)</span> son los cosenos del ángulo entre
+las variables originales. Usando esta propiedad, se puede ver que los ejes
+principales especifican una rotación de los ejes de <span class="math inline">\(\left( \operatorname{}{0.8944} \right) = 2634^{&#39;}\)</span>.</p>
+<p>Los elementos de los autovectores también son pesos (<em>loadings</em>) de las
+variables originales. Por lo tanto, la posición del objeto <span class="math inline">\(x_{i}\)</span> en el
+primer eje principal está dada por la siguiente función o combinación linear:</p>
+<p><span class="math display">\[
+f_{i1} = \left( y_{i1} - {\overline{y}}_{1} \right)u_{11} + \ldots + \left( y_{ip} - {\overline{y}}_{p} \right)u_{p1} = \left\lbrack y - \overline{y} \right\rbrack_{i}\mathbf{u}_{1}
+\]</span></p>
+<p>Los valores de <span class="math inline">\(\left( y_{ij} - {\overline{y}}_{j} \right)\)</span>
+son los valores del objeto <span class="math inline">\(i\)</span> en las variables <span class="math inline">\(j\)</span> centrados y los valores
+de <span class="math inline">\(u_{i1}\)</span> son lo pesos de las variables en el primer autovector. Las
+posiciones de los objetos con respecto a los ejes principales están dadas en la
+matriz F de variables transformadas. Es llamada <em>matriz de valores de
+componentes</em>:</p>
+<p><span class="math display">\[
+\mathbf{F} = \left\lbrack y - \overline{y} \right\rbrack\mathbf{U}
+\]</span></p>
+<p>Para el ejemplo esto sería:</p>
+<p><span class="math display">\[
+\mathbf{F} = \begin{bmatrix}
+ - 3.2 &amp; - 1.6 \\
+ - 2.2 &amp; 1.4 \\
+ - 0.2 &amp; - 2.6 \\
+1.8 &amp; 3.4 \\
+3.8 &amp; - 0.6 \\
+\end{bmatrix}\begin{bmatrix}
+0.8944 &amp; - 0.4472 \\
+0.4472 &amp; 0.8944 \\
+\end{bmatrix} = \begin{bmatrix}
+ - 3.578 &amp; 0 \\
+ - 1.342 &amp; 2.236 \\
+ - 1.342 &amp; - 2.236 \\
+3.130 &amp; 2.236 \\
+3.130 &amp; - 2.236 \\
+\end{bmatrix}
+\]</span></p>
+<p>En este caso simple, con solo dos variables, los componentes principales son una
+representación perfecta de la variabilidad y es solo una rotación de estas dos
+variables. Cuando hay más de dos variables, como es usual, el análisis de
+componentes principales también realiza una rotación del sistema de
+variables-ejes, pero en un espacio multidimensional. En este caso, los
+componentes principales I y II definen un plano que permite la representación de
+la mayor variabilidad. Los objetos son proyectados en este plano de tal forma
+que conserven, lo más posible, las distancias euclídeas que tienen en el espacio
+multidimensional de las variables originales.</p>
+<p>La posición relativa de los objetos en el espacio p-dimensional rotado de los
+componentes principales son las mismas que en el espacio p-dimensional de las
+variables originales. Esto significa que <strong>las distancias euclídeas entre los
+objetos se conservan a través de la rotación de los ejes</strong>. Esta es una de las
+propiedades más importantes de análisis de componentes principales.</p>
+<p>La calidad de la representación en un espacio euclídeo reducido con m
+dimensiones puede ser estudiada con la relación</p>
+<p><span class="math display">\[
+\left( \sum_{k = 1}^{m}{\ \lambda_{k}} \right)/\left( \sum_{k = 1}^{p}{\ \lambda_{k}} \right)
+\]</span></p>
+<p>Esta relación es equivalente al coeficiente de determinación (<span class="math inline">\(R^{2}\)</span>) en el
+análisis de regresión.</p>
+<p>El análisis componentes principales se pueden usar para estudiar el rol de las
+variables en la conformación de los componentes principales. Esto se puede ver
+en varias maneras: matriz de autovectores, proyección en un espacio reducido
+(matriz $^{1/2}$), y proyección en un espacio
+reducido (matriz <strong>U</strong>)</p>
+<ol style="list-style-type: decimal">
+<li>La matriz de autovectores – Como la matriz U contiene los autovectores
+normalizados, la diagonal <span class="math inline">\(\mathbf{U}&#39;\mathbf{U}\)</span> es igual 1 y los
+elementos fuera de la marginal es igual 0 porque los autovectores son
+ortogonales entre sí.</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{U}^{&#39;}\mathbf{U} = \mathbf{I}
+\]</span></p>
+<p>Por lo tanto, las variables tienen longitud de unidad en el espacio
+multidimensional y están a 90° entre sí (ortogonales) dado que los autovectores
+son ortogonales entre sí. Esto es así porque el análisis de componentes es una
+rotación en el espacio multidimensional. Además, al normalizar los autovectores
+normaliza los ejes de las variables:</p>
+<p><span class="math display">\[
+\begin{align*}
+  \mathbf{U} = 
+    &amp;\begin{bmatrix}
+      u_{11}\hphantom{0000} &amp; \hphantom{00}\cdots &amp; \hphantom{000000}u_{1p}\hphantom{000000} \\\\
+      \vdots\hphantom{0000} &amp; \  &amp; \hphantom{00000}\vdots\hphantom{000000} \\\\
+      u_{p1}\hphantom{0000} &amp; \hphantom{00}\cdots &amp; \hphantom{000000}u_{pp}\hphantom{000000} \\
+    &amp;\end{bmatrix}
+    \begin{matrix}
+      \sqrt{\sum u_{1k}^{2}} = 1 \\\\
+      \vdots \\\\
+      \sqrt{\sum u_{pk}^{2}} = 1 \\
+    \end{matrix} \\
+    &amp;\begin{matrix}
+      \sqrt{\sum u_{j1}^{2}} = 1 &amp; \cdots&amp;&amp; \sqrt{\sum u_{jp}^{2}} = 1 &amp; \\
+    &amp;\end{matrix} \\
+\end{align*}
+\]</span></p>
+<p>Otra forma de estudiar la relación entre los predictores consiste en escalar los
+autovectores de tal forma que los cosenos de los ángulos entre los ejes de las
+variables sean <strong>proporcionales</strong> a su <em>covarianza</em>. Se logra escalando cada
+autovector <span class="math inline">\(k\)</span> a una longitud igual a su desvío estándar
+<span class="math inline">\(\sqrt{\lambda_{k}}\)</span>. La <em>distancia euclídea</em> entre objetos <strong>no se conserva</strong>
+de esta manera.</p>
+<p>Usando la matriz diagonal de autovalores <span class="math inline">\(\mathbf{\Lambda}\)</span> se puede computar
+la nueva de autovectores <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\mathbf{=}\begin{bmatrix}
+0.8944 &amp; - 0.4472 \\
+0.4472 &amp; 0.8944 \\
+\end{bmatrix}\begin{bmatrix}
+\sqrt{9} &amp; 0 \\
+0 &amp; \sqrt{5} \\
+\end{bmatrix} = \begin{bmatrix}
+2.6633 &amp; - 1.000 \\
+1.3416 &amp; 2.000 \\
+\end{bmatrix}
+\]</span></p>
+<p>En este escalamiento, la relación entre las variables es la misma que en la
+matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+  {\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}} = 
+    &amp;\begin{bmatrix}
+      \hphantom{00}u_{11}\sqrt{\lambda_{1}}\hphantom{0000000} &amp; \hphantom{000}\cdots &amp; \hphantom{000000}u_{1p}\sqrt{\lambda_{p}}\hphantom{000000000} \\\\
+      \vdots\hphantom{0000} &amp; \  &amp; \hphantom{00000}\vdots\hphantom{00000000} \\\\
+      u_{p1}\sqrt{\lambda_{1}}\hphantom{0000} &amp; \hphantom{000}\cdots &amp; \hphantom{000000}u_{pp}\sqrt{\lambda_{p}}\hphantom{000000000} \\
+    &amp;\end{bmatrix}
+    \begin{matrix}
+      \sqrt{\sum\left( u_{1k}\sqrt{\lambda_{k}} \right)^{2}} = s_{1} \\
+      \\
+      \vdots \\
+      \\
+      \sqrt{\sum\left( u_{pk}\sqrt{\lambda_{k}} \right)^{2}} = s_{p} \\
+    \end{matrix} \\
+    &amp;\begin{matrix}
+      \sqrt{\sum\left( u_{j1}\sqrt{\lambda_{1}} \right)^{2}} = \sqrt{\lambda_{1}} &amp; \cdots &amp; \sqrt{\sum\left( u_{jp}\sqrt{\lambda_{p}} \right)^{2}} = \sqrt{\lambda_{p}} \\
+    &amp;\end{matrix} \\
+\end{align*}
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Proyección de las variables en un espacio reducido (matriz
+<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>): Lo interesante no es todo el
+espacio multidimensional, sino la proyección simplificada del mismo en un
+espacio reducido, en general dos dimensiones. Los elementos
+<span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> de los autovectores, escalados en
+<span class="math inline">\(\sqrt{\lambda_{k}}\)</span>, son coordenadas de la proyección de las <span class="math inline">\(j\)</span>
+variables en los diferentes ejes <span class="math inline">\(k\)</span>. Se grafican como <strong>flechas</strong> ya que
+son <strong>ejes</strong>. Sus proyecciones son más cortas o iguales que sus longitudes
+en el espacio multidimensional.</li>
+</ol>
+<p>Los ángulos entre las variables son proyecciones de sus verdaderos ángulos de
+covarianza. Por lo tanto, es importante solo considerar variables que estén bien
+representadas en el plano de proyección. Una forma de evaluarlo es verificando
+la longitud de la proyección. En un espacio reducido la longitud de la
+proyección del eje de la variable es <span class="math inline">\(s_{j}\sqrt{d/p\ }\)</span>. Esta expresión
+define la <em>contribución en equilibrio de la variable</em> en los varios ejes del
+espacio multidimensional.</p>
+<p>Esta medida nos sirve para comparar con la longitud de la variable y ver si su
+contribución en mayor o menor de lo esperado bajo la hipótesis de contribuciones
+iguales en todos los ejes principales. Para nuestro ejemplo, la longitud de las
+variables:</p>
+<p><span class="math display">\[
+\text{longitud de la primera variable} = \sqrt{{2.6833}^{2} + \left( - 1.000 \right)^{2}} = 2.8636
+\]</span></p>
+<p><span class="math display">\[
+\text{longitud de la segunda variable} = \sqrt{{1.3516}^{2} + {2.000}^{2}} = 2.4083
+\]</span></p>
+<p>Como el ejemplo tiene solo dos variables, las longitudes son iguales a las
+contribuciones en equilibrio:</p>
+<p><span class="math display">\[
+\text{proyeccion en equilibrio de la variable 1} = s_{1}\sqrt{2/2} = \sqrt{8.2}\sqrt{2/2} = 2.8636
+\]</span></p>
+<p><span class="math display">\[
+\text{proyeccion en equilibrio de la variable 2} = s_{2}\sqrt{2/2} = \sqrt{5.8}\sqrt{2/2} = 2.4083
+\]</span></p>
+<p>La matriz de correlación <span class="math inline">\(\mathbf{R}\)</span> está conectada a la matriz de dispersión
+<span class="math inline">\(\mathbf{S}\)</span> por la diagonal de matriz de desvíos estándar <span class="math inline">\(\mathbf{D}(s)\)</span>.
+El coseno del ángulo <span class="math inline">\(\alpha_{jl}\)</span> entre dos variables <span class="math inline">\(y_{j}\)</span> e
+<span class="math inline">\(y_{l}\)</span> en el espacio multidimensional, está por lo tanto relaciona a la
+correlación (<span class="math inline">\(r_{jl}\)</span>); puede demostrarse que <span class="math inline">\(\cos\left( \alpha_{jl} \right) = r_{jl}\)</span>. Este ángulo es igual a la
+covarianza, porque la estandarización cambió las longitudes de las variables a
+la unidad. En el ejemplo, la correlación entre las dos variables es igual a
+<span class="math inline">\(\frac{1.6}{\sqrt{8.2 \times 5.8}} = \ 0.232\)</span> . El ángulo correspondiente es
+<span class="math inline">\(\operatorname{}{0.232} = 7635&#39;\)</span>.</p>
+<p>Igualmente, el ángulo entre la variable <span class="math inline">\(j\)</span> y el eje principal <span class="math inline">\(k\)</span>, en el
+espacio multidimensional, es el arco coseno de la correlación entre la variable
+<span class="math inline">\(j\)</span> y el eje principal <span class="math inline">\(k\)</span>. Esta correlación es el elemento <span class="math inline">\(jk\)</span> de
+la nueva matriz de autovectores:</p>
+<p><span class="math display">\[
+u_{jk}\sqrt{\lambda_{k}}/s_{j}
+\]</span></p>
+<p>Es decir que la correlación es calculada pesando cada elemento de los
+autovectores por la relación del desvío estándar del eje principal al de la
+variable. Para el ejemplo, los desvíos estándar <span class="math inline">\(s_{1} = 2.8636\ s_{2} = 2.4083\)</span>:</p>
+<p><span class="math display">\[
+\left\lbrack \frac{u_{jk}\sqrt{\lambda_{k}}}{s_{j}} \right\rbrack = \begin{bmatrix}
+0.9370 &amp; - 0.3492 \\
+0.5571 &amp; 0.8305 \\
+\end{bmatrix}\begin{bmatrix}
+2026&#39; &amp; 11026&#39; \\
+5609&#39; &amp; 3351&#39; \\
+\end{bmatrix}
+\]</span></p>
+<p>Una consecuencia importante de esto es que las variables con <strong>correlación más
+alta</strong>, en valor absoluto, son las que <strong>más contribuyen</strong> a cada autovector.
+Sin embargo, no se puede hacer la prueba estadística de Pearson para los
+coeficientes de correlación porque los componentes principales son combinaciones
+lineales de las variables.</p>
+<p>Cuando los ejes de las variables de <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>
+están estandarizados a longitud unidad sus proyecciones en el espacio principal
+<strong>no es recomendada</strong> porque los autovectores re-escalados no son necesariamente
+ortogonales y pueden tener cualquier longitud.</p>
+<p>La matriz de las proyecciones de los ejes de las variables de la matriz puede
+ser examinada con respecto a los siguientes puntos:</p>
+<ul>
+<li><p>Las proyecciones de las coordenadas de los ejes de las variables especifican
+la posición de los ápices de ese eje de variable en el espacio reducido. Se
+recomienda usar flechas para representarlos.</p></li>
+<li><p>La proyección de los <span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> del eje de la
+variable <span class="math inline">\(j\)</span> en el eje principal <span class="math inline">\(k\)</span> muestra su covarianza con respecto
+al eje principal, y su signo.</p></li>
+<li><p>Verificar variables cuyas <strong>longitudes proyectadas alcancen o excedan</strong> los
+valores de sus respectivas contribuciones en equilibrio. Los ejes de
+variables que sean claramente más cortos que esto contribuyen poco a la
+formación del espacio reducido bajo estudio y, por lo tanto, contribuyen
+poco a la estructura que se puede ser encontrada para los objetos en ese
+espacio reducido.</p></li>
+<li><p>La <strong>correlación</strong> entre las variables está dada por el <strong>ángulo</strong> entre los
+ejes de las variables y <strong>no</strong> por la proximidad entre los ápices de los
+ejes. Hay que tener en cuenta que, la proyección de los ejes en el espacio
+reducido puede no ser la representación completa de la correlación espacio
+multidimensional. Puede ser mejor agrupar variables, en el espacio reducido
+del gráfico, con respecto al espacio multidimensional, realizando un método
+<em>de análisis de agrupamiento</em>.</p></li>
+<li><p>Los objetos pueden ser proyectados en ángulo recto sobre los ejes de las
+variables de acuerdo a sus valores en esas variables. Sin embargo, las
+distancias entre los objetos <strong>no son aproximaciones de sus distancias
+euclídeas</strong>.</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Proyección de las variables en un espacio reducido (matriz <span class="math inline">\(\mathbf{U}\)</span>):
+Difiere de lo anterior en los autovectores no han sido escalados a las
+longitudes de sus desvíos estándar. Los ángulos entre los ejes de las
+variables y los ejes principales son proyecciones de sus ángulos de
+rotación. Por ejemplo:</li>
+</ol>
+<p><span class="math display">\[
+U = \begin{bmatrix}
+0.8944 &amp; - 0.4472 \\
+0.4472 &amp; 0.8944 \\
+\end{bmatrix}\begin{bmatrix}
+2634&#39; &amp; 11634&#39; \\
+6326&#39; &amp; 2634&#39; \\
+\end{bmatrix}
+\]</span></p>
+<p>En esta proyección no es posible interpretar las correlaciones entre las
+variables ya que siempre son ortogonales en esta representación, donde los
+autovectores están escalados a 1.</p>
+<p>La proyección de <span class="math inline">\(u_{jk}\)</span> de una variable <span class="math inline">\(j\)</span> en el eje principal
+<span class="math inline">\(k\)</span> es <strong>proporcional</strong> a la <strong>covarianza</strong> de ese descriptor con el eje
+principal. Se puede comparar la proyección de diferentes ejes de variables en el
+mismo eje principal. Se puede probar que una proyección isogonal (con ángulos
+iguales) de <span class="math inline">\(p\)</span> ejes ortogonales de longitud uno da una longitud de
+<span class="math inline">\(\sqrt{\frac{d}{p}}\)</span> en cada eje de un espacio <span class="math inline">\(d\)</span>-dimensional.</p>
+<p>Se puede dibujar un <em>círculo de equilibrio de las variables</em> como referencia
+para evaluar la contribución de cada variable a la conformación del espacio
+reducido.</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable centrada <span class="math inline">\(j\)</span></th>
+<th>Escalado de los autovectores</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\sqrt{\lambda_{k}}\)</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Longitud total</td>
+<td>s_{j}</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Ángulos en el espacio reducido</td>
+<td>Proyección de las covarianzas (correlaciones)</td>
+<td>90°, rotaciones rígidas del sistema de ejes</td>
+</tr>
+<tr class="even">
+<td>Longitud de la contribución en equilibrio</td>
+<td><span class="math inline">\(s_{j}\sqrt{d/p}\)</span></td>
+<td>Círculo con radio <span class="math inline">\(\sqrt{\frac{d}{p}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proyección en el eje principal <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> (la covarianza con el componente k)</td>
+<td><span class="math inline">\(u_{jk}\)</span> (proporcional a la covarianza con <span class="math inline">\(k\)</span>)</td>
+</tr>
+<tr class="even">
+<td>Correlación con el eje principal <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}/s_{j\)</span>}</td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}/s_{j}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div id="biplots" class="section level2">
+<h2><span class="header-section-number">13.1</span> Biplots</h2>
+<p>Se le llama biplot al gráfico de componentes principales en donde se grafican al
+mismo tiempo los ejes de las variables y los objetos en el espacio reducido.
+Existen dos tipos de gráficos biplots según el escalamiento que se use:</p>
+<ul>
+<li><p>los de <em>distancia</em> se hacen con la yuxtaposición de la matriz <span class="math inline">\(\mathbf{U}\)</span>
+(los autovectores escalados a longitud unidad) y <span class="math inline">\(\mathbf{F}\)</span> (donde cada
+componente principal <span class="math inline">\(k\)</span> está escalado a la varianza = <span class="math inline">\(\lambda_{k}\)</span>),</p></li>
+<li><p>los de <em>correlación</em> usan la matriz
+<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span> para las variables (cada
+autovector escalado a longitud <span class="math inline">\(\sqrt{\lambda_{k}}\)</span>) y la matriz
+<span class="math inline">\(\mathbf{G} = \mathbf{F}\mathbf{\Lambda}^{\frac{1}{2}}\)</span> para los objetos,
+cuyas columnas tienen varianzas de unidad.</p></li>
+</ul>
+<p>Las principales propiedades de los biplot de distancias son:</p>
+<ol style="list-style-type: decimal">
+<li><p>La distancia entre los objetos del biplot <strong>son aproximaciones</strong> de sus
+distancias euclídeas en el espacio multidimensional.</p></li>
+<li><p>La proyección del objeto en ángulo recto sobre la variable da la posición
+aproximada del objeto en esa variable.</p></li>
+<li><p>Dado que las variables tienen longitud 1 en el espacio multidimensional, la
+longitud de su proyección sobre el espacio reducido indica <strong>cuanto
+contribuye</strong> a la formación de ese espacio.</p></li>
+<li><p>Los ángulos entre los vectores de las variables no tienen interpretación</p></li>
+</ol>
+<p>En los biplots de correlación:</p>
+<ol style="list-style-type: decimal">
+<li><p>Las distancias entre los objetos del biplot <strong>no son aproximaciones</strong> de sus
+distancias euclídeas en el espacio multidimensional.</p></li>
+<li><p>La proyección del objeto en ángulo recto sobre la variable da la posición
+aproximada del objeto en esa variable.</p></li>
+<li><p>Dado que la longitud de las variables es <span class="math inline">\(s_{j}\)</span> en un espacio
+multidimensional completo, la longitud de la proyección de la variable en el
+espacio reducido es una aproximación de su <strong>desvío estándar</strong>.</p></li>
+<li><p>Lo <strong>ángulos</strong> entre las variables reflejan su <strong>correlación</strong>.</p></li>
+</ol>
+<p>En cualquiera de los dos casos, los objetos o variables pueden ser multiplicados
+por una constante para producir un gráfico claro.</p>
+</div>
+<div id="componentes-principales-de-una-matriz-de-correlacion" class="section level2">
+<h2><span class="header-section-number">13.2</span> Componentes principales de una matriz de correlación</h2>
+<p>También puede realizar este análisis sobre una matriz <span class="math inline">\(\mathbf{R}\)</span> de
+correlación, ya que las correlaciones son las covarianzas estandarizadas de las
+variables. La suma de autovalores de <span class="math inline">\(S\)</span> es igual a la suma de varianzas,
+mientras que la suma de autovalores de <span class="math inline">\(\mathbf{R}\)</span> es igual <span class="math inline">\(p\)</span>, por lo que
+los autovalores y por lo tanto los autovectores son diferentes. Esto se debe a
+que las distancias entre los objetos no son las mismas en los dos casos.</p>
+<p>En el caso de las correlaciones, las variables están estandarizadas. Por lo
+tanto, las distancias entre los objetos son independientes de las unidades de
+medición, por otro lado, las que están en el espacio original de medida cambian
+de acuerdo a su cambio en unidad de medida. Cuando todas las variables son del
+mismo orden de magnitud y tienen las mismas unidades conviene usar la matriz
+<span class="math inline">\(\mathbf{S}\)</span>. En ese caso, los autovectores y los coeficientes de correlación
+entre las variables y los componen proporcionan información complementaria. El
+primero da la ponderación de las variables y el segundo cuantifica su
+importancia relativa. Cuando las variables son de naturaleza diferente, puede
+ser necesario usar la matriz <span class="math inline">\(\mathbf{R}\)</span> en vez de <span class="math inline">\(\mathbf{S}\)</span>.</p>
+<p>¿Cuándo usar una <span class="math inline">\(\mathbf{S}\)</span> o <span class="math inline">\(\mathbf{R}\)</span>?</p>
+<ul>
+<li>Si uno quiere agrupar los objetos en el espacio reducido ¿El agrupamiento
+debe hacerse con respecto a las variables originales, por lo tanto,
+preservando sus diferencias en magnitud? ¿O las variables deberían
+contribuir de igual forma al agrupamiento de los objetos, independientemente
+de su varianza? En el segundo caso uno debería proceder con la matriz de
+correlación</li>
+</ul>
+<p>Otra forma de ver esto es:</p>
+<ul>
+<li>Considere que la distancia euclídea es la que se conserva entre los objetos
+con el análisis de componente principales. ¿Qué es más interesante de
+interpretar en términos de la configuración espacial de las distancias
+euclídeas? La covarianza (los datos crudos) o las correlaciones (los datos
+estandarizados)</li>
+</ul>
+<p>Igual que con el caso anterior, el análisis de componentes principales es una
+rotación del sistema de ejes. Pero, como ahora las variables están
+<em>estandarizadas</em>, los objetos no están posicionados de la misma forma que si las
+variables fuesen solo <em>centradas</em>.</p>
+<p>Las conclusiones de lo visto anteriormente no cambian, solo hay que reemplazar
+matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> por matriz de correlación <span class="math inline">\(\mathbf{R}\)</span>,
+covarianza por correlación y <span class="math inline">\(s_{jl}\)</span> por <span class="math inline">\(r_{jl}\)</span>. Por lo
+tanto, las varianzas y desvíos estándar son iguales a 1. Lo que da lugar a
+ciertas propiedades especiales para la matriz
+<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>. Primero, <span class="math inline">\(\mathbf{D}\left( s \right) = \mathbf{I}\)</span>, por lo que <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}} = \mathbf{D}\left( s \right)^{- 1}\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>, esto
+significa que los coeficientes <span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> son los
+coeficientes de correlación entre las variables <span class="math inline">\(j\)</span> y los componentes <span class="math inline">\(k\)</span>.
+La contribución en equilibrio, en el espacio reducido de
+<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>, es <span class="math inline">\(s_{j}\sqrt{\frac{d}{p}} = \sqrt{\frac{d}{p}}\)</span> (<span class="math inline">\(s_{j} = 1\)</span>). Por lo tanto, es posible juzgar si la
+contribución de una variable es mayor o menor a lo esperado comparando la
+longitud de las proyecciones a un círculo de equilibrio con radio
+<span class="math inline">\(\sqrt{\frac{d}{p}}\)</span>.</p>
+<p>Las propiedades principales de un variable estandarizada se dan en la tabla de
+abajo.</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable estandarizada <span class="math inline">\(j\)</span></th>
+<th>Escalado de los autovectores</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\sqrt{\lambda_{k}}\)</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Longitud total</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Ángulos en el espacio reducido</td>
+<td>Proyección de las correlaciones</td>
+<td>90°, rotaciones rígidas del sistema de ejes</td>
+</tr>
+<tr class="even">
+<td>Longitud de la contribución en equilibrio</td>
+<td><span class="math inline">\(\sqrt{d/p}\)</span></td>
+<td>Círculo con radio <span class="math inline">\(\sqrt{\frac{d}{p}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proyección en el eje principal <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> (la covarianza con el componente k)</td>
+<td><span class="math inline">\(u_{jk}\)</span> (proporcional a la covarianza con <span class="math inline">\(k\)</span>)</td>
+</tr>
+<tr class="even">
+<td>Correlación con el eje principal <span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span></td>
+<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cuantos-componentes-son-significativos" class="section level2">
+<h2><span class="header-section-number">13.3</span> ¿Cuantos componentes son significativos?</h2>
+<p>Una propiedad de los componentes es que cada uno representa una cantidad cada
+vez menor de la varianza total. Por lo tanto, un problema es cuantos componentes
+son significativos en términos biológicos. La misma pregunta vista de otra
+manera es, cuantas dimensiones tendría que tener el espacio reducido. La mejor
+manera de ver esto es con diagrama de Shepard. Sin embargo, dado que el análisis
+de componentes principales es una forma de partición de la varianza uno podría
+realizar una prueba formal para la varianza asociada con los sucesivos ejes
+principales.</p>
+<p>Existen varias pruebas clásicas para contestar esta pregunta, pero el problema
+que tienen es que requieren normalidad en las variables, una condición que rara
+vez se cumple por datos ecológicos.</p>
+<p>Hay una regla empírica que sugiere que solo se deben interpretar los componentes
+principales si su autovalor <span class="math inline">\(\lambda\)</span> es mayor que la media de los
+<span class="math inline">\(\lambda\)</span>. Este es llamado el criterio Kaiser-Guttman.</p>
+<p>Otra forma, también empírica, es comparar los valores decrecientes de los
+autovalores con los valores de modelo de bastón roto. Considere que la varianza
+es un recurso embebida en un bastón de longitud 1. Si los componentes
+principales dividieran la varianza al azar entre los ejes principales, las
+fracciones de la varianza explicada por los ejes principales tendría la misma
+longitud relativa que las piezas obtenidas al romper el bastón en puntos al azar
+en tantas piezas como ejes. Si un bastón de unidad es roto en al azar en <span class="math inline">\(p = 2,\ 3,\ \ldots\)</span> piezas, los valores esperados (E) de las longitudes relativas
+de las piezas sucesivamente menores (j) están dados por la ecuación:</p>
+<p><span class="math display">\[
+E\left( \text{pieza}_{j} \right) = \frac{1}{p}\sum_{x = j}^{p}\frac{1}{x}
+\]</span></p>
+<p>Los valores esperados son iguales a la media de las longitudes que fuesen
+obtenidas al romper el bastón al azar muchas veces y calcular la media de la
+pieza más grande, la segunda más grande, etc. No tendría sentido interpretar los
+ejes principales que explican una fracción de la varianza menor o igual que la
+predicha por el modelo del bastón roto. Puede comprobarse que ejes deben
+interpretarse consultando una tabla y seleccionando los autovalores que son
+mayores que las predicciones del modelo. O comparar la suma de los autovalores
+de 1 hasta <span class="math inline">\(k\)</span> con la suma de los valores de 1 hasta <span class="math inline">\(k\)</span> en el modelo. Esta
+prueba generalmente selecciona los primeros dos o tres componentes principales.</p>
+</div>
+<div id="mal-uso-de-los-componentes-principales" class="section level2">
+<h2><span class="header-section-number">13.4</span> Mal uso de los componentes principales</h2>
+<p>Los errores más comunes son: uso de las variables para las cuales la covarianza
+no tiene sentido y la interpretación de la relación entre variables, en el
+espacio reducido, basa en las posiciones relativas de los ápices de los ejes en
+vez de los ángulos entre ellas.</p>
+<p>El análisis de componentes principales fue definido originalmente para el
+estudio de datos con distribución multinormal, por lo que para usarlo
+óptimamente es necesario normalizar los datos. Las desviaciones de la normalidad
+no afectan necesariamente el análisis. Hay que tener cuidado con las
+distribuciones sesgadas, los primeros ejes principales solo van a separar los
+pocos objetos con valores extremos del resto, en vez de mostrar los ejes
+principales de variación de todos los objetos en estudio.</p>
+<p>El método debe ser usado con una matriz de varianzas o correlaciones con las
+siguientes propiedades: a) la matriz S o R ha sido calculada entre variables b)
+que son cuantitativos y c) para las cuales estimadores validos de la covarianza
+pueden ser obtenidos. Esto se viola bajo las siguientes condiciones:</p>
+<ol style="list-style-type: decimal">
+<li><p>Una matriz de dispersión no puede ser estimada cuando el número de
+observaciones n es menor o igual al número de variables p. El número de
+objetos de ser mayor a p para obtener estimadores validos de la matriz de
+dispersión. Sin embargo, los primeros ejes principales son poco afectados
+por cuando la matriz no es rango completo. Por lo que no debería haber
+interpretaciones incorrectas de las ordenaciones en espacio reducido.</p></li>
+<li><p>Algunos autores han transpuesto las matriz original y computado
+correlaciones entre objetos en vez de entre variables. Esto no tiene sentido
+porque el análisis produce información tanto de los objetos como de las
+variables. Además, la covarianza entre objetos no tiene sentido. Y la
+correlación implica estandarización de los vectores, y solo tiene sentido
+para datos dimensionalmente homogéneos.</p></li>
+<li><p>Las covarianzas y correlaciones solo están definidas para variables
+cuantitativas. Sin embargo, el análisis de componentes principales es muy
+robusto a variaciones de precisión de los datos. Las variables pueden ser
+recodificadas en pocas clases sin cambiar notablemente los resultados. Los
+coeficientes de correlación usando datos semicuantitativos son equivalentes
+al coeficiente de correlación de rangos de Spearman.</p></li>
+<li><p>Cuando se calcula en conjuntos de datos con muchos doble ceros, los
+coeficientes de covarianza o correlación dan ordenaciones que producen
+estimadores inadecuados de las distancias entre objetos. Con este tipo de
+datos solo se debe usar componentes principales en gradientes pequeños.</p></li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ordenacion-en-espacios-reducidos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/ordenacion.Rmd",
+"text": "Edit"
+},
+"download": ["laboratorios.pdf", "laboratorios.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

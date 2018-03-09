@@ -1,0 +1,72 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+div.exercise {
+  background-color: #80B3F5;
+  border-width: medium 0 0 0;
+  border-color: #317EAC;
+  border-style: solid;
+  border-spacing: 0;
+}
+
+div.atencion {
+  background-color: #ffd400;
+  border-width: medium 0 0 0;
+  border-color: #897200;
+  border-style: solid;
+  border-spacing: 0;
+}
+
+span.exercise{
+    position:relative;
+    top:-2px;
+    left:-1em;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    width:7em;
+    /* Some space between the number and the content in browsers that support
+       generated content but not positioning it (Camino 2 is one example) */
+    margin-right:8px;
+    padding:4px;
+    border-top:2px solid #317EAC;
+    color:#fff;
+    background:#317EAC;
+    font-weight:bold;
+    font-family:"Helvetica Neue", Arial, sans-serif;
+    text-align:center;
+}
+
+span.exercise:after{
+  content: "\a"; /* Insert a line break after */
+}
+
+hr {
+    border: 1px solid #357FAA;
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #333333;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}

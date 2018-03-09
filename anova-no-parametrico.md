@@ -1,0 +1,557 @@
+
+
+
+# ANOVA No Paramétrico
+
+## Pruebas para varias muestras independientes
+
+Las pruebas no paramétricas para varias muestras independientes son,
+conceptualmente, una extensión de las pruebas para dos muestras. Este tipo de
+pruebas tienen como análogo paramétrico al ANOVA de una vía. Esencialmente, este
+tipo de pruebas comparan *k* muestras y pretenden determinar si las *k* muestras
+son similares entre sí.
+
+### Prueba de la mediana
+
+
+#### Datos
+
+
+Para utilizar esta prueba es necesario contar con $k$ muestras aleatorias de
+las *k* poblaciones a comparar. Cada muestra tiene un tamaño $n_{i}$ de tal
+forma que el tamaño muestral total ($N$) puede obtenerse como:
+
+$$
+N = n_{1} + n_{2} + \ldots  + n_{k}
+$$
+
+#### Supuestos
+
+
+-   Cada una de las *k* muestras es una muestra aleatoria de la población
+    respectiva.
+
+-   Las *k* muestras son independientes entre sí.
+
+-   Las mediciones están realizadas en, al menos, una escala ordinal.
+
+-   Si todas las poblaciones a comparar tienen idéntica mediana, la probabilidad
+    *p* de que una observación cualquiera exceda el valor de la mediana es la
+    misma para todas las poblaciones. Nótese que este supuesto no implica que
+    las funciones de distribución de cada una de las poblaciones deban ser las
+    mismas, ni que estas funciones sean simétricas con respecto a la mediana.
+
+####  Procedimiento
+
+
+Se toman los $N$ datos y se calcula la mediana general (Gran Mediana, $M$).
+
+Se clasifican los datos de cada muestra teniendo en cuenta si son mayores que la
+gran mediana o menores o iguales que este parámetro ($X_{\text{ij}} > M$ ó
+$X_{\text{ij}} \leq M$).
+
+Utilizando esta clasificación, se construye una tabla de contingencia de 2x*k*
+de la forma:
+
+|                     | Población |  |         |        |Marginal   |
+|---------------------|-----------|----------|---------|--------|---|
+|                     | 1         | 2        | $\ldots$ | K      |   |
+| $X\text{ij} > M$    | $O_{11}$    | $O_{12}$   | $\ldots$ | $O_{1k}$ | a |
+| $X\text{ij} \leq M$ | $O_{21}$    | $O_{22}$   | $\ldots$ | $O_{2k}$ | b |
+| Marginal ($n_i$)   | $n_{1}$     | $n_{2}$    | $\ldots$ | $n_{k}$  | N |
+
+Se evalúa la hipótesis utilizando los estadísticos adecuados para las tablas de
+contingencia ($\chi^{2}$ o $G$) y teniendo en cuenta las restricciones
+aplicables a este tipo de pruebas. Usualmente, cuando se realiza la prueba de la
+mediana se tiende a emplear el estadístico $\chi^{2}$.
+
+#### Hipótesis
+
+$$
+\begin{aligned}
+H_{0}&: \text{las }k\text{ poblaciones tienen idéntica mediana.}\\
+H_{a}&: \text{alguna de las } k\text{ poblaciones presenta una mediana diferente.}
+\end{aligned}
+$$
+
+Los criterios de decisión para esta prueba son los correspondientes a las tablas
+de contingencia. En este caso, dado que el número de filas es siempre igual a 2,
+los grados de libertad para el $\chi^{2}$ son $k - 1$. El estadístico
+obtenido debe ser comparado con un $\chi_{\alpha;k - 1}^{2}$. Los criterios de
+decisión son:
+
+Si $\chi^{2} > \chi_{\alpha;k - 1}^{2}$ entonces Rechazo $H_{0}$
+
+Si $\chi^{2} \leq \chi_{\alpha;k - 1}^{2}$ entonces No rechazo $H_{0}$
+
+En forma equivalente, se puede emplear el Valor $p$ para tomar la decisión. El
+Valor $p$ se calcula como:
+
+$$
+P\left( \chi_{k - 1}^{2} \geq \chi^{2} \right) = p
+$$
+
+Esta probabilidad puede obtenerse en R utilizando la función `pchisq()`.
+
+De esta forma, el criterio de decisión empleando el Valor p queda definido como:
+
+Si $p \leq \alpha$ entonces Rechazo $H_{0}$
+
+Si $p > \alpha$ entonces No rechazo $H_{0}$
+
+#### Contrastes
+
+
+Si la prueba resultó significativa, entonces es de utilidad determinar cuáles
+son las poblaciones que tienen medianas diferentes. Se utiliza la misma prueba
+de la mediana, pero considerando $k = 2$. Así, se puede construir una tabla de
+2x2 y comparar a las poblaciones de a pares. Cabe aclarar que para cada uno de
+estos contrastes de a pares debe calcularse la gran mediana.
+
+Aunque este método permite realizar contrastes, algunas consideraciones deben
+ser realizadas. En primer lugar, al definir una tabla de 2x2, deberán realizarse
+las correcciones de continuidad pertinentes ya que la tabla tiene un grado de
+libertad.
+
+#### Comentarios
+
+
+La prueba de la mediana para dos poblaciones independientes, cuando se la
+compara con la prueba de $t$ y se cumplen los supuestos de esta última prueba,
+tiene una eficiencia relativa del 95% para valores pequeños de $N$ (≈6-10) y
+disminuye a medida que $N$ se incrementa hasta alcanzar una eficiencia
+relativa asintótica del 63%.
+
+En el caso de la extensión de la prueba para $k$ poblaciones, cuando se
+cumplen los supuestos del ANOVA de un factor, la eficiencia relativa asintótica
+es del 64%. Sin embargo, cuando ambas pruebas se comparan utilizando poblaciones
+no-normales, por ejemplo, la distribución es exponencial, la eficiencia relativa
+asintótica de la prueba de la mediana con respecto al ANOVA es del 200%.
+
+**Ejemplo 1: Prueba de la mediana. **
+
+
+Se desea evaluar la eficiencia de 4 tratamientos de combinaciones de
+fertilizantes en la producción de maíz. Para ello se seleccionaron parcelas de
+similares características y se le asignó al azar a cada una de ellas un tipo de
+fertilizante. Luego de la cosecha se determinó la producción de cada parcela en
+kg de mazorcas. Los resultados fueron:
+
+Table: (\#tab:ejemplo-mediana) Producción de maíz (kg) en las parcelas tratadas 
+con 4 tratamientos de fertilizantes diferentes. 
+
+| Tratamiento 1 | Tratamiento 2 | Tratamiento 3 | Tratamiento 4 |
+|---------------|---------------|---------------|---------------|
+| 83            | 91            | 101           | 78            |
+| 91            | 90            | 100           | 82            |
+| 94            | 81            | 91            | 81            |
+| 89            | 83            | 93            | 77            |
+| 89            | 84            | 96            | 79            |
+| 96            | 83            | 95            | 81            |
+| 91            | 88            | 94            | 80            |
+| 92            | 91            |               | 81            |
+| 90            | 89            |               |               |
+|               | 84            |               |               |
+
+
+$H_{0}:$ La mediana de la producción es la misma con los 4 tratamientos.
+
+$H_{a}:$La mediana de la producción con alguno de los tratamientos es
+diferente
+
+Los tamaños muestrales ($n_{i}$) de cada tratamiento fueron:
+
+$$
+\text{Tratamiento}\ 1:\ 9\\
+\text{Tratamiento}\ 2:\ 10\\
+\text{Tratamiento}\ 3:\ 7\\
+\text{Tratamiento}\ 4:\ 8
+$$
+
+La gran mediana ($M$) para los 34 datos obtenidos fue:
+
+$$
+M = 89
+$$
+
+La tabla de datos observados y esperados construida a partir de los datos y
+considerando el valor de $M$ fue:
+
+| Observado  | Trat 1 | Trat 2 | Trat 3 | Trat 4 | Marginal |
+|------------|--------|--------|--------|--------|----------|
+| \> Mediana | 6      | 3      | 7      | 0      | 16       |
+| \<=Mediana | 3      | 7      | 0      | 8      | 18       |
+| Marginal   | 9      | 10     | 7      | 8      | 34       |
+|            |        |        |        |        |          |
+| Esperado   | Trat 1 | Trat 2 | Trat 3 | Trat 4 |          |
+| \> Mediana | 4,235  | 4,706  | 3,294  | 3,765  |          |
+| \<=Mediana | 4,765  | 5,294  | 3,706  | 4,235  |          |
+
+Utilizando un estadístico $\chi^{2}$ de la forma:
+
+$$
+\chi^{2} = \sum_{i = 1}^{k}{\sum_{j = 1}^{2}\frac{\left( O_{\text{ij}} - E_{\text{ij}} \right)^{2}}{E_{\text{ij}}}}
+$$
+
+Se obtiene:
+
+------------  ------------
+ $\chi^{2}$    17,543     
+ gl            3          
+ Valor p       0,00054637 
+------------  ------------
+
+Por lo tanto, rechazo la $H_{0}$. Existe algún tratamiento cuya mediana es
+diferente de las demás.
+
+Se puede utilizar la función `Median.test()` en R. La tabla de resultados obtenida
+es:
+
+
+```r
+trt <- c(rep(1, 9), rep(2, 10), rep(3, 7), rep(4, 8))
+y <- c(83, 91, 94, 89, 89, 96, 91, 92, 90, 91, 90, 81, 83, 84, 83, 88, 91, 89, 
+       84, 101, 100, 91, 93, 96, 95, 94, 78, 82, 81, 77, 79, 81, 80, 81)
+Median.test(y, trt, group = FALSE)
+```
+
+```
+## 
+## The Median Test for y ~ trt 
+## 
+## Chi Square = 17.54306   DF = 3   P.Value 0.00054637
+## Median = 89 
+## 
+##   Median  r Min Max   Q25   Q75
+## 1   91.0  9  83  96 89.00 92.00
+## 2   86.0 10  81  91 83.25 89.75
+## 3   95.0  7  91 101 93.50 98.00
+## 4   80.5  8  77  82 78.75 81.00
+## 
+## Post Hoc Analysis
+## 
+##         median     chisq pvalue signif.
+## 1 and 2   89.0  2.554444 0.1100        
+## 1 and 3   92.5  6.349206 0.0117       *
+## 1 and 4   83.0 13.432099 0.0002     ***
+## 2 and 3   91.0 13.246753 0.0003     ***
+## 2 and 4   82.5 14.400000 0.0001     ***
+## 3 and 4   82.0 15.000000 0.0001     ***
+```
+
+
+Debido a que se rechazó $H_{0}$, es necesario realizar contrastes para
+detectar la ubicación de las diferencias.
+
+Los contrastes se realizan automáticamente en R. Los resultados obtenidos
+se muestras arriba bajo el título "Post Hoc Analysis"
+
+En función de estos resultados, es posible concluir que todos los tratamientos
+difieren entre sí, exceptuando a los tratamientos 1 y 2, los cuáles no presentan
+diferencias significativas. Estas diferencias pueden apreciarse en la siguiente
+figura:
+
+(ref:cajas-medianas) Gráfico de cajas y bigotes para la producción de maíz en cuatro
+tratamientos.
+
+<div class="figure">
+<img src="anova-no-parametrico_files/figure-html/unnamed-chunk-1-1.png" alt="(ref:cajas-medianas)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-1)(ref:cajas-medianas)</p>
+</div>
+
+
+La conclusión final de este análisis sería recomendar al tratamiento 3 como el
+más adecuado para incrementar la producción de maíz.
+
+## Prueba de Kruskal-Wallis
+
+
+La prueba de Kruskal-Wallis es la extensión para *k* muestras de la prueba de
+Mann-Whitney. A diferencia de la prueba de la mediana, esta prueba evalúa las
+funciones de distribución de las poblaciones, aunque es sensible
+fundamentalmente a diferencias en la tendencia central.
+
+### Datos
+
+
+Los datos necesarios para utilizar esta prueba son $k$ muestras aleatorias de
+las poblaciones a comparar. Cada muestra tiene un tamaño $n_{i}$, obteniéndose
+el tamaño muestral total ($N$) como $N = \Sigma n_{i}$.
+
+### Supuestos
+
+
+-   Todas las muestras son muestras aleatorias de las respectivas poblaciones.
+
+-   Los datos dentro de cada muestra son independientes y las muestras son
+    independientes entre sí.
+
+-   La variable a estudiar está medida, al menos, en una escala ordinal.
+
+-   Las *k* poblaciones tiene idéntica función de distribución o, de lo
+    contrario, una de ellas tiende a presentar valores mayores que las demás.
+
+### Procedimiento
+
+
+Se ordenan y ranquean los N datos de menor a mayor, calculándose cuando es
+necesario los rangos por empate. De esta forma, cada observación tiene un rango
+asignado [$R(X_{\text{ij}})$], pudiéndose calcular las sumas de los rangos de
+cada población como:
+
+$$
+R_{i} = \sum_{j = i}^{n_{i}}{R(X_{ij})}
+$$
+
+Se calcula un término de varianza ($S^{2}$) como:
+
+$$
+S^{2} = \frac{1}{N - 1}\left( \sum_{i = 1}^{k}{\sum_{j = 1}^{n_{i}}{R\left( X_{\text{ij}} \right)^{2}}} - \frac{N\left( N + 1 \right)^{2}}{4} \right)
+$$
+
+Se calcula el estadístico de prueba ($H$) como:
+
+$$
+h = \frac{1}{S^{2}}\left( \sum_{i = 1}^{k}\frac{R_{i}^{2}}{n_{i}} - N\frac{\left( N + 1 \right)^{2}}{4} \right)
+$$
+
+Este estadístico ya incorpora la corrección por empates y se distribuye
+aproximadamente según una $\chi^{2}$ con $k - 1$ grados de libertad.
+
+### Hipótesis
+
+$H_{0}$: Las funciones de distribución de las $k$ poblaciones son idénticas.
+
+$H_{a}$: Al menos una de las poblaciones tiende a presentar valores mayores
+que (al menos) otra de las poblaciones.
+
+Esta hipótesis alternativa suele plantearse también como: Las $k$ poblaciones
+no tienen idéntica media.
+
+Esto se debe a que la prueba de Kruskal-Wallis ha sido desarrollada para ser más
+sensible a diferencias en los parámetros de tendencia central que a otros
+parámetros de la distribución.
+
+Los criterios de decisión para esta prueba son:
+
+Si $H > \chi_{\alpha,\ k - 1}^{2}$ entonces Rechazo $H_{0}$
+
+Si $H \leq \chi_{\alpha,\ k - 1}^{2}$ entonces No rechazo $H_{0}$
+
+En forma equivalente, se puede emplear el Valor $p$ para tomar la decisión. El
+Valor $p$ se calcula como:
+
+$$
+P\left( \chi_{k - 1}^{2} \geq H \right) = p
+$$
+
+De esta forma, el criterio de decisión empleando el Valor p queda definido como:
+
+Si $p \leq \alpha$ entonces Rechazo $H_{0}$
+
+Si $p > \alpha$ entonces No rechazo $H_{0}$
+
+### Contrastes
+
+
+Si la prueba resultó significativa, pueden utilizarse varios métodos de
+contrastes de a pares para poder detectar la ubicación de las diferencias.
+Nosotros utilizaremos dos. Los denominaremos como *Contraste t* y *Contraste z*
+en función de los valores críticos que utilizan.
+
+Ambos contrastes utilizan el mismo estadístico, difiriendo entre sí en el valor
+crítico que emplean. El estadístico se obtiene en ambos casos como:
+
+$$
+\varepsilon_{\text{ij}} = \left| \frac{R_{i}}{n_{i}} - \frac{R_{j}}{n_{j}} \right|
+$$
+
+Los valores críticos pueden obtenerse como:
+
+*Contraste t*
+
+$$
+VC_{\text{ij}} = t_{N - k;\alpha/2}\sqrt{S^{2}\frac{\left( N - 1 - H \right)}{N - k}}\sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}}
+$$
+
+*Contraste z*
+
+$$
+VC_{\text{ij}} = Z_{\frac{\alpha}{\lbrack k\left( k - 1 \right)\rbrack}}\sqrt{\frac{N\left( N + 1 \right)}{12}}\sqrt{\frac{1}{n_{i}} + \frac{1}{n_{j}}}
+$$
+
+Para ambos contrastes, la regla de decisión es:
+
+Si $\varepsilon_{\text{ij}} > VC_{\text{ij}}$ entonces Rechazo $H_{0}$
+
+Si $\varepsilon_{\text{ij}} \leq VC_{\text{ij}}$ entonces No rechazo $H_{0}$
+
+Entre ambos métodos, el *Contraste t* es más eficiente, siendo el *Contraste z*
+mucho más conservativo. La ventaja de este último contraste es su mayor
+simplicidad de cálculo, ya que no requiere de S2 para la obtención del valor
+crítico. Asimismo, el *Contraste z* puede ser útil cuando sólo se desean
+detectar diferencias altamente significativas.
+
+### Comentarios
+
+
+En comparación con el ANOVA de un factor, la eficiencia relativa asintótica
+(ARE) de la prueba de Kruskal-Wallis nunca es menor al 86.4%. Cuando las
+poblaciones a comparar son normales, de la prueba de Kruskal-Wallis con respecto
+al ANOVA es del 95%. Si las distribuciones son uniformes, asciende al 100%,
+mientras que, si la distribución es exponencial, es del 150%.
+
+Comparando la prueba de Kruskal-Wallis con la prueba de la mediana, es del 150%,
+300% y 75% si las distribuciones son normales, uniformes y exponenciales
+respectivamente.
+
+**Ejemplo 1: Prueba de Kruskal-Wallis. **
+
+
+Con el objetivo de comparar ambas pruebas, utilizaremos el ejemplo 1 sobre los
+tratamientos con fertilizantes en cultivos de maíz, para ejemplificar el uso de
+la prueba de Kruskal-Wallis.
+
+Luego de ordenar y ranquear, los cálculos parciales y finales obtenidos fueron:
+
+| Grupo                                                              | $n_{i}$ | $R_{i}$| $R_{i}/n_{i}$ | $R_{i}^{2}/n_{i}$ |
+|--------------------------------------------------------------------|---------|--------|---------------|-------------------|
+| Trat 1                                                             | 9       | 196,50 | 21,833        | 4290,250          |
+| Trat 2                                                             | 10      | 153,00 | 15,300        | 2340,900          |
+| Trat 3                                                             | 7       | 207,00 | 29,571        | 6121,286          |
+| Trat 4                                                             | 8       | 38,50  | 4,813         | 185,281           |
+| $N$                                                                | 34      |        | $H$           | 25,6288           |
+| $k$                                                                | 4       |        | $gl$          | 3                 |
+| $\sum\left\lbrack R\left( X_{\text{ij}} \right)^{2} \right\rbrack$ | 13664   |        | Valor $p$     | 1,14057E-05       |
+| $S^{2}$                                                            | 98,5303 |        |               |                   |
+
+Esta prueba puede realizarse utilizando la función `krukal.test()` del paquete
+stats de R o `kruskal()` del paquete `agricolae`. La tabla de resultados obtenida
+es:
+
+
+```
+## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  observation by method
+## Kruskal-Wallis chi-squared = 25.629, df = 3, p-value = 1.141e-05
+```
+
+En función de los resultados obtenidos se puede rechazar la $H_{0}$ y concluir
+que existen diferencias en la producción de maíz entre los tratamientos
+aplicados.
+
+Para detectar la ubicación de estas diferencias se emplearon ambos métodos de
+contrastes. Los resultados obtenidos fueron:
+
+*Contraste t*
+
+Se presentan los $R_{i}/n_{i}$; los$\ n_{i}$ y la identificación del
+tratamiento, tanto en los encabezamientos de filas como de columnas. En el
+vértice superior izquierdo de la tabla se indican el valor de $t$ y sus grados
+de libertad, así como el resultado obtenido de la primera raíz en la ecuación
+del $VC_{\text{ij}}$ del contraste (Factor). El $t_{\alpha/2\ }$ y la
+primera raíz son los únicos factores en la ecuación del
+$VC_{\text{ij}}$comunes a todas las comparaciones. En la tabla de resultados
+se presentan por debajo de la diagonal principal los valores de
+$\varepsilon_{\text{ij}}$ y por encima de ésta los $VC_{\text{ij}}$,
+indicándose con *itálicas* los $\varepsilon_{\text{ij}}$ que resultaron
+significativos.
+
+| $t_{\alpha/2\ }$ | 2,042 |        | 21,833   | 15,300   | 29,571   | 4,813  |
+|------------------|-------|--------|----------|----------|----------|--------|
+| $\text{gl}$       | 30    |        | 9        | 10       | 7        | 8      |
+| Factor           | 4,920 |        | Trat 1   | Trat 2   | Trat 3   | Trat 4 |
+| 21,833           | 9     | Trat 1 |          | 4,617    | 5,064    | 4,883  |
+| 15,300           | 10    | Trat 2 | *6,533*  |          | 4,952    | 4,766  |
+| 29,571           | 7     | Trat 3 | *7,738*  | *14,271* |          | 5,201  |
+| 4,813            | 8     | Trat 4 | *17,021* | *10,488* | *24,759* |        |
+
+*Contraste z*
+
+Se presentan los $R_{i}/n_{i}$; los$\ n_{i}$ y la identificación del
+tratamiento, tanto en los encabezamientos de filas como de columnas. En el
+vértice superior izquierdo de la tabla se indican el valor del $Z$ y de $1 -
+\ \alpha\ /\ \lbrack k(k - 1)\rbrack$, así como el resultado obtenido de la
+primera raíz en la ecuación del $VC_{\text{ij}}$ del contraste (Factor). El
+$Z_{\frac{\alpha}{\lbrack k\left( k - 1 \right)\rbrack}}$ y la primera raíz
+son los únicos factores en la ecuación del $VC_{ij}$ comunes a todas las
+comparaciones. En la tabla de resultados se presentan por debajo de la diagonal
+principal los valores de $\varepsilon_{\text{ij}}$ y por encima de ésta los
+$VC_{\text{ij}}$, indicándose con *itálicas* los $\varepsilon_{\text{ij}}$
+que resultaron significativos.
+
+| $Z_{\frac{\alpha}{\lbrack k\left( k - 1 \right)\rbrack}}$ | 2,6383 |        | 21,833   | 15,300   | 29,571   | 4,813  |
+|---------------------------------------------------------------|--------|--------|----------|----------|----------|--------|
+| $1-\alpha/[k(k-1)]$                                              | 0,9958 |        | 9        | 10       | 7        | 8      |
+| Factor                                                        | 9,9582 |        | Trat 1   | Trat 2   | Trat 3   | Trat 4 |
+| 21,833                                                        | 9      | Trat 1 |          | 11,749   | 12,947   | 12,462 |
+| 15,300                                                        | 10     | Trat 2 | 6,533    |          | 14,043   | 13,597 |
+| 29,571                                                        | 7      | Trat 3 | 7,738    | *14,271* |          | 13,136 |
+| 4,813                                                         | 8      | Trat 4 | *17,021* | *10,488* | *24,759* |        |
+
+Como puede observarse, el *Contraste t* indica que todos los tratamientos
+difieren entre sí. Por su parte, el *Contraste z* no detecta diferencias
+significativas en las comparaciones 1 vs 2, 1 vs 3 y 2 vs 4. El *Contraste z*
+sólo detecta las diferencias más evidentes.
+
+Si se comparan los resultados con la prueba de la mediana, vemos que ambas
+pruebas detectan claramente las diferencias. Sin embargo, en términos de
+comparaciones, el *Contraste t* detectó todas las diferencias como
+significativas, en un punto intermedio quedó la prueba de la mediana donde la
+comparación 1 vs 2 no se detectó como significativa y en el otro extremo aparece
+el *Contraste z* que detecta como significativas sólo tres de las seis
+comparaciones realizadas.
+
+*Con R:*
+
+Contraste $t$ (`posthoc.kruskal.conover.test()`)
+
+
+```
+## Warning in posthoc.kruskal.conover.test.default(x = observation, g =
+## method, : Ties are present. Quantiles were corrected for ties.
+```
+
+```
+## 
+## 	Pairwise comparisons using Conover's-test for multiple	
+##                          comparisons of independent samples 
+## 
+## data:  observation and method 
+## 
+##   1       2       3      
+## 2 0.0071  -       -      
+## 3 0.0040  1.9e-06 -      
+## 4 6.4e-08 9.7e-05 8.8e-11
+## 
+## P value adjustment method: none
+```
+
+Contraste z  (`posthoc.kruskal.dunn.test()`)
+
+
+```
+## Warning in posthoc.kruskal.dunn.test.default(x = observation, g = method, :
+## Ties are present. z-quantiles were corrected for ties.
+```
+
+```
+## 
+## 	Pairwise comparisons using Dunn's-test for multiple	
+##                          comparisons of independent samples 
+## 
+## data:  observation and method 
+## 
+##   1       2       3      
+## 2 0.15200 -       -      
+## 3 0.12189 0.00353 -      
+## 4 0.00042 0.02592 1.4e-06
+## 
+## P value adjustment method: none
+```
+
+
+
+

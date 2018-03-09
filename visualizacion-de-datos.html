@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Avanzada para Ciencias Naturales</title>
+  <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Avanzada para Ciencias Naturales" />
+  
+  <meta name="twitter:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+<meta name="author" content="Dr. Luciano Selzer">
+
+
+<meta name="date" content="2018-03-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="introduccion-a-r-y-rstudio.html">
+<link rel="next" href="manejo-de-datos.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Laboratorios de Estadística Avanzada</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> El libro</a></li>
+<li class="chapter" data-level="2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introducción a <em>R</em> y RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#analisis-reproducible"><i class="fa fa-check"></i><b>2.2</b> Análisis Reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.1</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#integrando-codigo"><i class="fa fa-check"></i><b>2.3</b> Integrando código</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Visualización de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#introduccion"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#el-conjunto-de-datos-mpg"><i class="fa fa-check"></i><b>3.2</b> El conjunto de datos <code>mpg</code></a></li>
+<li class="chapter" data-level="3.3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#graficos-con-ggplot"><i class="fa fa-check"></i><b>3.3</b> Gráficos con ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#mapeando"><i class="fa fa-check"></i><b>3.4</b> Mapeando</a></li>
+<li class="chapter" data-level="3.5" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#formas-geometricas"><i class="fa fa-check"></i><b>3.5</b> Formas geometricas</a></li>
+<li class="chapter" data-level="3.6" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#transformaciones-estadisticas"><i class="fa fa-check"></i><b>3.6</b> Transformaciones Estadísticas</a></li>
+<li class="chapter" data-level="3.7" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#ajuste-de-posiciones"><i class="fa fa-check"></i><b>3.7</b> Ajuste de Posiciones</a></li>
+<li class="chapter" data-level="3.8" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#sistemas-de-coordenadas"><i class="fa fa-check"></i><b>3.8</b> Sistemas de Coordenadas</a></li>
+<li class="chapter" data-level="3.9" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#personalizando-el-grafico"><i class="fa fa-check"></i><b>3.9</b> Personalizando el gráfico</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html"><i class="fa fa-check"></i><b>4</b> Manejo de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-datos"><i class="fa fa-check"></i><b>4.1</b> Seleccionando datos</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-columnas"><i class="fa fa-check"></i><b>4.2</b> Seleccionando columnas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#agregando-columnas"><i class="fa fa-check"></i><b>4.3</b> Agregando columnas</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#operaciones-por-grupos"><i class="fa fa-check"></i><b>4.4</b> Operaciones por grupos</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formato-ancho-y-formato-largo"><i class="fa fa-check"></i><b>4.5</b> Formato Ancho y Formato Largo</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#por-su-cuenta"><i class="fa fa-check"></i><b>4.6</b> Por su cuenta</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>5</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
+<li class="chapter" data-level="5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>5.1</b> Datos</a></li>
+<li class="chapter" data-level="5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>5.2</b> Supuestos</a></li>
+<li class="chapter" data-level="5.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>5.3</b> Procedimiento básico</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>5.4</b> Estadísticos</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>5.4.1</b> Variante Wilcoxon (W)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>5.4.2</b> Variante Mann-Whitney (U)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>5.5</b> Hipótesis</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>5.5.1</b> Prueba a dos colas</a></li>
+<li class="chapter" data-level="5.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>5.5.2</b> Prueba de una cola a la izquierda</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>5.6</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>5.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>5.7.1</b> Supuestos</a></li>
+<li class="chapter" data-level="5.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>5.7.2</b> Estadísticos</a></li>
+<li class="chapter" data-level="5.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>5.7.3</b> Hipótesis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>6</b> Ejercicios de dos muestras no paramétrico</a><ul>
+<li class="chapter" data-level="6.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>6.1</b> Reproduciendo el algoritmo manualmente</a></li>
+<li class="chapter" data-level="6.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>6.2</b> Funciones no paramétricas en <em>R</em></a></li>
+<li class="chapter" data-level="6.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>6.3</b> Fórmulas</a></li>
+<li class="chapter" data-level="6.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas"><i class="fa fa-check"></i><b>6.4</b> Problemas</a></li>
+<li class="chapter" data-level="6.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>6.5</b> Algunos conceptos importantes</a></li>
+<li class="chapter" data-level="6.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>6.6</b> Diseño de Estudios de ANOVA</a></li>
+<li class="chapter" data-level="6.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>6.7</b> Planificación De Experimentos</a></li>
+<li class="chapter" data-level="6.8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#usos-del-anova"><i class="fa fa-check"></i><b>6.8</b> Usos Del ANOVA</a></li>
+<li class="chapter" data-level="6.9" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>6.9</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>6.9.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ideas-basicas"><i class="fa fa-check"></i><b>6.9.2</b> Ideas Básicas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>6.10</b> Comprobación de los Supuestos</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>6.10.1</b> Prueba para igualdad de varianzas</a></li>
+<li class="chapter" data-level="6.10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>6.10.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
+<li class="chapter" data-level="6.10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#residuos"><i class="fa fa-check"></i><b>6.10.3</b> Residuos</a></li>
+<li class="chapter" data-level="6.10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-residuos"><i class="fa fa-check"></i><b>6.10.4</b> Gráficos de Residuos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones"><i class="fa fa-check"></i><b>6.11</b> Transformaciones</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>6.11.1</b> Transformaciones para estabilizar las Varianzas</a></li>
+<li class="chapter" data-level="6.11.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>6.11.2</b> Transformaciones para corregir la falta de normalidad</a></li>
+<li class="chapter" data-level="6.11.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>6.11.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>6.12</b> Formulación Del Modelo I De ANOVA.</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>6.12.1</b> Características importantes del modelo</a></li>
+<li class="chapter" data-level="6.12.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.12.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.12.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>6.12.3</b> Ajustando El Modelo</a></li>
+<li class="chapter" data-level="6.12.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>6.12.4</b> Estimadores De Mínimos Cuadrados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>6.13</b> Partición De La Suma De Cuadrados Total</a><ul>
+<li class="chapter" data-level="6.13.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas-computatorias"><i class="fa fa-check"></i><b>6.13.1</b> Fórmulas computatorias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuadrados-medios"><i class="fa fa-check"></i><b>6.14</b> Cuadrados Medios</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>6.14.1</b> Esperanza de los Cuadrados Medios</a></li>
+<li class="chapter" data-level="6.14.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentarios-1"><i class="fa fa-check"></i><b>6.14.2</b> Comentarios</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.15</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-estadistica"><i class="fa fa-check"></i><b>6.15.1</b> Prueba Estadística</a></li>
+<li class="chapter" data-level="6.15.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>6.15.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
+<li class="chapter" data-level="6.15.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#regla-de-decision"><i class="fa fa-check"></i><b>6.15.3</b> Regla De Decisión</a></li>
+<li class="chapter" data-level="6.15.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentario"><i class="fa fa-check"></i><b>6.15.4</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>6.16</b> Formulación Alternativa Del Modelo I</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.16.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.17</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.18" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>6.18</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
+<li class="chapter" data-level="6.18.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.2</b> Estimación de los efectos de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comparaciones-multiples"><i class="fa fa-check"></i><b>6.18.3</b> Comparaciones múltiples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.19" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>6.19</b> Planificación Del Tamaño Muestral</a><ul>
+<li class="chapter" data-level="6.19.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>6.19.1</b> Potencia De La Prueba F</a></li>
+</ul></li>
+<li class="chapter" data-level="6.20" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>6.20</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
+<li class="chapter" data-level="6.20.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>6.20.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
+<li class="chapter" data-level="6.20.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>6.20.2</b> Características importantes del Modelo</a></li>
+<li class="chapter" data-level="6.20.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>6.20.3</b> Cuestiones de Interés</a></li>
+<li class="chapter" data-level="6.20.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>6.20.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
+<li class="chapter" data-level="6.20.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.20.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+<li class="chapter" data-level="6.20.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>6.20.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
+<li class="chapter" data-level="6.20.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>6.20.7</b> Modelo De Efectos Aleatorios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>7</b> Problemas ANOVA Simple</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>7.0.1</b> Recordatorio</a></li>
+<li class="chapter" data-level="7.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas-1"><i class="fa fa-check"></i><b>7.1</b> Problemas</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>7.1.1</b> Contrastes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> ANOVA No Paramétrico</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>8.1</b> Pruebas para varias muestras independientes</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>8.1.1</b> Prueba de la mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>8.2</b> Prueba de Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>8.2.1</b> Datos</a></li>
+<li class="chapter" data-level="8.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>8.2.2</b> Supuestos</a></li>
+<li class="chapter" data-level="8.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>8.2.3</b> Procedimiento</a></li>
+<li class="chapter" data-level="8.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>8.2.4</b> Hipótesis</a></li>
+<li class="chapter" data-level="8.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-2"><i class="fa fa-check"></i><b>8.2.5</b> Contrastes</a></li>
+<li class="chapter" data-level="8.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>8.2.6</b> Comentarios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>9</b> ANOVA DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>9.1</b> Ventajas de los estudios multifactoriales</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>9.1.1</b> Eficiencia:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>9.2</b> Elementos del Modelo</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>9.2.1</b> Efectos principales</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>9.3</b> Representación gráfica</a></li>
+<li class="chapter" data-level="9.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>9.4</b> Interacción</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>9.4.1</b> Interacciones no importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>9.5.1</b> Modelo de las medias de celdas</a></li>
+<li class="chapter" data-level="9.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>9.5.2</b> Modelo de los efectos de los factores</a></li>
+<li class="chapter" data-level="9.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>9.5.3</b> ANOVA (MODELO I)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>9.6</b> Prueba de F</a></li>
+<li class="chapter" data-level="9.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-3"><i class="fa fa-check"></i><b>9.7</b> Contrastes</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>9.7.1</b> Entre Filas</a></li>
+<li class="chapter" data-level="9.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>9.7.2</b> Entre columnas</a></li>
+<li class="chapter" data-level="9.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>9.7.3</b> Interacción</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>9.8</b> Potencia de la prueba F</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>9.8.1</b> Interacción</a></li>
+<li class="chapter" data-level="9.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>9.8.2</b> Prueba para el factor principal A:</a></li>
+<li class="chapter" data-level="9.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>9.8.3</b> Prueba para el factor principal B:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>9.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>9.9.1</b> Modelo sin interacción</a></li>
+<li class="chapter" data-level="9.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>9.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>9.10.1</b> Modelo aleatorio (Modelo II)</a></li>
+<li class="chapter" data-level="9.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>9.10.2</b> Modelo Mixto (Modelo III)</a></li>
+<li class="chapter" data-level="9.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>9.10.3</b> Pruebas estadísticas</a></li>
+<li class="chapter" data-level="9.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>9.10.4</b> Estimación de los componentes de la varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html"><i class="fa fa-check"></i><b>10</b> DISEÑOS EXPERIMENTALES</a><ul>
+<li class="chapter" data-level="10.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#bloques-al-azar"><i class="fa fa-check"></i><b>10.1</b> Bloques al azar</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#diseno-de-experimentos"><i class="fa fa-check"></i><b>10.1.1</b> Diseño de experimentos</a></li>
+<li class="chapter" data-level="10.1.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#elementos-de-los-disenos-de-bloques-al-azar"><i class="fa fa-check"></i><b>10.1.2</b> Elementos de los Diseños de Bloques al Azar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#criterios-para-definir-los-bloques"><i class="fa fa-check"></i><b>10.1.3</b> Criterios para definir los bloques</a></li>
+<li class="chapter" data-level="10.1.4" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#ventajas-y-desventajas"><i class="fa fa-check"></i><b>10.1.4</b> Ventajas y desventajas</a></li>
+<li class="chapter" data-level="10.1.5" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#modelo"><i class="fa fa-check"></i><b>10.1.5</b> Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza-y-pruebas"><i class="fa fa-check"></i><b>10.2</b> Análisis de la varianza y pruebas</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza"><i class="fa fa-check"></i><b>10.2.1</b> Análisis de la varianza</a></li>
+<li class="chapter" data-level="10.2.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#prueba-de-tukey-de-aditividad"><i class="fa fa-check"></i><b>10.2.2</b> Prueba de Tukey de Aditividad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>11</b> Regresión</a><ul>
+<li class="chapter" data-level="11.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>11.1</b> Regresión Lineal Simple</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>12</b> Ordenación en Espacios Reducidos</a></li>
+<li class="chapter" data-level="13" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>13</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>13.1</b> Biplots</a></li>
+<li class="chapter" data-level="13.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Avanzada para Ciencias Naturales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualizacion-de-datos" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Visualización de Datos</h1>
+<div id="introduccion" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introducción</h2>
+<p>Una de las formas más útiles de visualizar la información es mediante gráficos
+(aunque si son pocos datos es preferible una tabla). De hecho, el primer
+paso antes de analizar los datos debe ser hacer un gráfico de los valores que
+tienen. Un gráfico de dispersión si es bidimensional o un histograma si solo
+tiene una dimensión.</p>
+<p>Aunque hay varios sistemas gráficos (<code>base</code>, <code>lattice</code>, <code>ggobi</code>, <code>plotly</code>)
+vamos a usar <code>ggplot2</code> por su facilidad de uso y potencia para hacer gráficos
+complejos a partir de componentes simples.</p>
+<p>Este paquete sigue una idea que se llama gramática de gráficos propuesta por
+Wilkinson en donde los gráficos pueden dividirse en cuatro partes:</p>
+<ul>
+<li>Los <strong>datos</strong> y como se <strong>mapea</strong> (<strong><code>aes</code></strong>) esos datos a las
+diferentes atributos estéticos. Es decir que columna corresponde al eje
+x, al eje y, forma, color, etc.</li>
+<li>Las formas geométricas (<strong><code>geom</code></strong>) que representan como se ven los datos.
+Como puntos, líneas, barras de error, etc.</li>
+<li>Transformaciones estadísticas de los datos (<strong><code>stats</code></strong>) resumen los datos
+de forma útil. Por ejemplo, para agregar la media por grupo o una línea
+de regresión sin haberlos calculado antes.</li>
+<li>Escalas a las que se mapean los datos (<strong><code>scale</code></strong>). Estas pueden ser
+escalas de color, forma, etc.</li>
+<li>Un sistema de coordenadas (<strong><code>coord</code></strong>), que describe como se proyectan
+estos datos. Por defecto se usa el sistema cartesiano. Pero hay otros
+disponibles como el polar.</li>
+<li>Un sistema paneles (<strong><code>facet</code></strong>) que describe como dividir los datos en
+distintos paneles.</li>
+</ul>
+<p>Adicionalmente a la gramática, se agrega un sistema de temas que permite
+modificar la totalidad de elementos que hacen al gráfico como fuentes,
+líneas de ejes, etc.</p>
+</div>
+<div id="el-conjunto-de-datos-mpg" class="section level2">
+<h2><span class="header-section-number">3.2</span> El conjunto de datos <code>mpg</code></h2>
+<p>En los datos que vienen con el paquete <code>ggplot2</code> está <code>mpg</code>. Contiene los
+datos de rendimiento, cilindrada y otros más de algunos modelos de autos.
+Los datos están una estructura rectangular llamada <em>data frame</em>, cada columna
+es una variable y cada fila una observación recolectadas por la Agencia de
+Protección ambiental de EE.UU.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">mpg</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 11
+##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
+##  1 audi         a4        1.80  1999     4 auto(l… f        18    29 p    
+##  2 audi         a4        1.80  1999     4 manual… f        21    29 p    
+##  3 audi         a4        2.00  2008     4 manual… f        20    31 p    
+##  4 audi         a4        2.00  2008     4 auto(a… f        21    30 p    
+##  5 audi         a4        2.80  1999     6 auto(l… f        16    26 p    
+##  6 audi         a4        2.80  1999     6 manual… f        18    26 p    
+##  7 audi         a4        3.10  2008     6 auto(a… f        18    27 p    
+##  8 audi         a4 quat…  1.80  1999     4 manual… 4        18    26 p    
+##  9 audi         a4 quat…  1.80  1999     4 auto(l… 4        16    25 p    
+## 10 audi         a4 quat…  2.00  2008     4 manual… 4        20    28 p    
+## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
+</div>
+<div id="graficos-con-ggplot" class="section level2">
+<h2><span class="header-section-number">3.3</span> Gráficos con ggplot</h2>
+<p>Podemos hacer un gráfico de la siguiente forma:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/grafico-inicial-1.png" width="672" /></p>
+<p>Prueben escribiendo el código en la consola.</p>
+<p>En el gráfico vemos que hay una tendencia a disminuir el rendimiento a medida
+que aumenta la cilindrada.</p>
+<p>En la llamada de Hay distintas partes. La llamada a <code>ggplot</code> donde especificamos
+el nombre de los datos que vamos a usar. Es la que inicializa el gráfico.
+Pero aquí no especifica nada de como graficarlo. Sin embargo, es necesario empezar siempre por esta función y luego ir agregando capas.
+Luego agregamos una capa de puntos. Ambos están unidos por un <code>+</code>. Cada vez
+que deseemos agregar una capa, lo haremos con ese símbolo <code>+</code>.
+Por otro lado, especificamos el mapeo de las columnas de los datos a las ordenadas
+y abscisas dentro del argumento <code>mapping</code>. Hemos graficado el tamaño del motor (en litros),
+<code>displ</code> en las ordenadas y el rendimiento en millas por galón en las abscisas.
+Siempre que quereamos mapear una columna a alguna parte del gráfico lo hemos de
+hacer dentro la función <code>aes()</code>, de <em>aestetics</em> que significa ésteticas en inglés.</p>
+</div>
+<div id="mapeando" class="section level2">
+<h2><span class="header-section-number">3.4</span> Mapeando</h2>
+<p>En el gráfico anterior vemos que hay unos puntos que no siguen la tendencia
+general. Aquí están resaltados con rojo.</p>
+<p><img src="Graficos_files/figure-html/puntos-resaltados-1.png" width="672" /></p>
+<p>Para saber más el porque de estos puntos podríamos agregar más información
+al gráfico como por ejemplo el tipo de auto. Una opción es agregar colores.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> class))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/color-1.png" width="672" /></p>
+<p>Ahora podemos ver, que en general los autos con cilindrada grande son camionetas
+(<em>pickup</em>) o suv. Y que los
+que tienen cilindrada grande pero rendimiento mayor son autos deportivos.</p>
+<p>Agregamos el color mapeando <code>class</code> a la éstetica de color. <code>ggplot</code> le asigna
+automáticamente un color a cada nivel de <code>class</code>. Y también genera la leyenda
+apropiada.</p>
+<p>También podemos mapear el tamaño del punto a <code>class</code>. En este caso recibiremos
+un <code>warning</code> porque no tiene mucho sentido mapear el tamaño con una variable
+discreta desordenada. Es decir, que no hay una correspondencia entre el tamaño
+del punto y la clase.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">size =</span> class))</a></code></pre></div>
+<pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="Graficos_files/figure-html/point-size-1.png" width="672" /></p>
+<p>También podriamos mapear la clase a la transparencia de los puntos (<code>alpha</code>) o
+a la forma (<code>shape</code>)</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Izquierda</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">alpha =</span> class))</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co"># Derecha</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">shape =</span> class))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/alpha-shape-1.png" width="672" /></p>
+<p>Si reproducen el código en sus computadoras verán que que ambos dan advertencias.
+Así como no tienen mucho sentido mapear el tamaño a algo sin orden intríseco,
+tampoco lo tiene mapear la transparencia. Por otro lado, noten que en el gráfico
+de la derecha ¡faltan los puntos de <em>suv</em>! Esto es porque ggplot solo asigna
+automaticamente hasta 6 símbolos diferentes para los puntos. Si queremos más
+hay que hacerlo de forma manual.</p>
+<p>En general, uno mapea una variable a alguna característica del gráfico
+asociandola dentro de <code>aes()</code>. <code>ggplot</code> se encarga de los detalles de pasar esa
+asociación a las distintas capas, de generar los niveles apropiados y de hacer
+la leyenda. De hecho, podemos ver que <em>x</em> e <em>y</em> también son características del
+gráfico pero en vez de mostrar una leyenda genera las marcas en los ejes.</p>
+<p>También es posible configurar alguna estética a un valor específico. Como por
+ejemplo hacer que todos los puntos sean rojos</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/manual-color-1.png" width="672" /></p>
+<p>Acá el color no muestra ninguna información extra. También es posible cambiar
+el:</p>
+<ul>
+<li>el color por el nombre que tenga sentido o en hexadecimal.</li>
+<li>el tamaño de los puntos en mm.</li>
+<li>la forma del punto según los valores que se muestran acá abajo</li>
+</ul>
+<div class="figure"><span id="fig:puntos"></span>
+<img src="Graficos_files/figure-html/puntos-1.png" alt="Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes. Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde, usan `color` para cambiar el color. Del 15 a 18 son formas rellenas que usan `fill` para cambiar el color del relleno. Y de la forma 21 a 23 son formas con relleno y borde que usan ambas `fill` y `color`." width="75%" />
+<p class="caption">
+Figura 3.1: Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes. Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde, usan <code>color</code> para cambiar el color. Del 15 a 18 son formas rellenas que usan <code>fill</code> para cambiar el color del relleno. Y de la forma 21 a 23 son formas con relleno y borde que usan ambas <code>fill</code> y <code>color</code>.
+</p>
+</div>
+<p>Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes.
+Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son
+todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde,
+usan <code>color</code> para cambiar el color. Del 15 a 18 son formas rellenas que usan
+<code>fill</code> para cambiar el color del relleno. Y de la forma 21 a 23 son formas con
+relleno y borde que usan ambas <code>fill</code> y <code>color</code>.</p>
+</div>
+<div id="formas-geometricas" class="section level2">
+<h2><span class="header-section-number">3.5</span> Formas geometricas</h2>
+<p>¿En que se parecen los gráficos de abajo?</p>
+<p><img src="Graficos_files/figure-html/unnamed-chunk-2-1.png" width="50%" /><img src="Graficos_files/figure-html/unnamed-chunk-2-2.png" width="50%" /></p>
+<p>Ambos tienen las mismas variables, pero están representados por distintas formas.
+En el idioma de ggplot cada forma es un <strong>geom</strong>. Y cada geom es una forma
+geométrica de representar los datos. Hay muchos <strong>geom</strong> (más de 30 en el
+paquete y muchos más en extensiones) y todos empiezan con <strong><code>geom_</code></strong>), por
+ejemplo:</p>
+<table>
+<caption><span id="tab:Graficos-Comunes">Tabla 3.1: </span>Gráficos comunes con ggplot</caption>
+<thead>
+<tr class="header">
+<th align="left">Gráfico</th>
+<th align="left">geom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Barras</td>
+<td align="left">geom_col geom_bar</td>
+</tr>
+<tr class="even">
+<td align="left">Puntos</td>
+<td align="left">geom_point</td>
+</tr>
+<tr class="odd">
+<td align="left">Cajas y Barras</td>
+<td align="left">geom_boxplot</td>
+</tr>
+<tr class="even">
+<td align="left">Histograma</td>
+<td align="left">geom_histogram</td>
+</tr>
+<tr class="odd">
+<td align="left">Lineas</td>
+<td align="left">geom_line</td>
+</tr>
+<tr class="even">
+<td align="left">Barras de Error</td>
+<td align="left">geom_errorbar</td>
+</tr>
+</tbody>
+</table>
+<p>Pueden ver más en la ayuda de ggplot en R (usando la pestaña de ayuda o
+usando <code>help(nombre_de_función)</code> en la consola) o en la documentación online
+que tiene la ventaja de tener graficados los ejemplos <a href="http://ggplot2.tidyverse.org/reference/" class="uri">http://ggplot2.tidyverse.org/reference/</a> .</p>
+<p>Para hacer los gráficos de arriba usamos:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># Izquierda</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co"># Derecha</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a></code></pre></div>
+<p>Todos los <em>geoms</em> van luego de <code>ggplot</code> y se unen con un <code>+</code>. En ggplot cada forma geométrica es una capa y pueden combinarse varias en un mismo gráfico.</p>
+<p><img src="Graficos_files/figure-html/dos-geoms-1.png" width="50%" /></p>
+<p>Además, todos los <code>geoms</code> tienen un argumento <code>mapping</code> para la estética. Claro
+que no todos aceptan los mismas argumentos. No tienen sentido ponerle relleno
+a una línea o cambiar el tipo de línea a un punto. Pero si se puede cambiar el
+tipo de línea de `geom_smooth:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/linetype-1.png" width="672" /></p>
+<p>Acá <code>geom_smooth</code> separa tres líneas según el valor de <code>drv</code>, que es la tracción.
+Una línea lisa para las que son 4x4 (4), rayas cortas para tracción delantera (f)
+y rayas largas para tracción trasera (r).</p>
+<p>Podemos ver más claramente porque tiene esta forma geom_smooth graficando los
+puntos de cada grupo:</p>
+<div class="figure"><span id="fig:dos-geoms-2"></span>
+<img src="Graficos_files/figure-html/dos-geoms-2-1.png" alt="Varios geoms pueden usarse en un mismo gráfico." width="672" />
+<p class="caption">
+Figura 3.2: Varios geoms pueden usarse en un mismo gráfico.
+</p>
+</div>
+<p>Muchos <code>geoms</code> que resumen la información de varios datos con una sola forma
+tienen un argumento de éstetica llamado <code>group</code> que agrupa la observaciones que
+son iguales en una variable.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">              </a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">group =</span> drv))</a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb22-7" data-line-number="7"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_smooth</span>(</a>
+<a class="sourceLine" id="cb22-9" data-line-number="9">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv),</a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">    <span class="dt">show.legend =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb22-11" data-line-number="11">  )</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/ejemplo-group-1.png" width="672" /></p>
+<p>Arriba vimos que podiamos usar dos geoms en un mismo
+gráfico (y podríamos agregar más si quisieramos). Pero al hacerlo hemos duplicado
+el <code>mapping</code> en los dos <code>geoms</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv))</a></code></pre></div>
+<p>Podemos evitarlo si ponemos el <code>mapping</code> dentro de la llamada de ggplot:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p>Esto funciona porque las capas heredan
+el <code>mapping</code> de <code>ggplot</code>. Por eso, va a funcionar en todas las capas que pongamos,
+de forma <em>global</em>.
+A veces, esto introduce ciertos errores cuando usamos varias fuentes de datos y
+las variables no están en presentes en todos los conjuntos. Es posible cambiar
+el <code>mapping</code> de una capa específica y va a ser utilizada <em>solo</em> en esa capa; es
+decir, de forma de forma <em>local</em>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/mapping-ggplot-resumido-1.png" width="672" /></p>
+<p>O también podemos definir otro conjunto de datos para el <code>geom</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> <span class="kw">filter</span>(mpg, class <span class="op">==</span><span class="st"> &quot;subcompact&quot;</span>), <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/other-data-1.png" width="672" /></p>
+<p>Todavía no vieron <code>filter</code>, pero ya lo verán más adelante.</p>
+</div>
+<div id="transformaciones-estadisticas" class="section level2">
+<h2><span class="header-section-number">3.6</span> Transformaciones Estadísticas</h2>
+<p>Pensemos en los gráficos de barras. En <code>ggplot2</code> se hacen con <code>geom_bar</code>. A
+primera vista los gráficos de barras parecen simples. En este caso estamos
+graficando datos de diamantes, del conjunto de datos <code>diamonds</code> que contiene
+cerca 54000 datos. En el gráfico vemos que hay muchos más diamantes de cortes
+buenos que regulares.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/geom-bar-1.png" width="672" /></p>
+<p>En el eje <em>x</em> está puesto el corte, y en el eje <em>y</em> está puesto la cuenta
+(frecuencia) de cada uno. Pero si vemos el conjunto de datos veremos que esta
+última ¡no está! Entonces ¿De dónde salió? Algunos <em>geoms</em> grafican los datos
+puros pero otros aplican transformaciones estadísticas a los datos y
+crean nuevas variables:</p>
+<ul>
+<li>Los gráficos de barras, histograms y polígonos de frecuencia cuentan y juntan
+los datos.</li>
+<li><code>geom_smooth</code> usa modelos para mostrar las tendencias de los datos.</li>
+<li><code>geom_boxplot</code> crea un sumario de estadísticos robustos para mostrar los
+datos.</li>
+</ul>
+<p>El algoritmo usado para calcular las nuevas variables se llama <code>stat</code>. Abajo
+vemos como funciona <code>stat_count</code></p>
+<p>Empieza con los datos</p>
+<pre><code>## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43
+## 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31
+## 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31
+## 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63
+## 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75
+## 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48</code></pre>
+<p><code>geom_bar</code> calcula las nuevas variables usando el <code>stat</code> <code>count</code> que devuelve
+un nuevo data.frame</p>
+<pre><code>## # A tibble: 5 x 3
+##   cut       count  prop
+##   &lt;ord&gt;     &lt;int&gt; &lt;dbl&gt;
+## 1 Fair       1610    1.
+## 2 Good       4906    1.
+## 3 Very Good 12082    1.
+## 4 Premium   13791    1.
+## 5 Ideal     21551    1.</code></pre>
+<p><code>geom_bar</code> luego usa esos datos para graficar:</p>
+<p><img src="Graficos_files/figure-html/geom-bar-diamonds-1.png" width="672" /></p>
+<p>Podés saber que <code>stat</code> usa cada <code>geom</code> usando la ayuda. Por ejemplo, <code>?geom_bar</code>
+usa por defecto <code>stat_count</code> y <code>stat_count</code> usa por defecto <code>geom_bar</code> para
+mostrar sus resultados y ambos están descriptos en la misma página de ayuda.
+Podemos ver que es calculado en la sección <em>Computed Variables</em>.</p>
+<p>Es posible intercambiar <code>geom</code> por su <code>stat</code>. Por ejemplo:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_count</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/stat-count-1.png" width="672" /></p>
+<p>Esto funciona porque cada <em>stat</em> tiene un <em>geom</em> por defecto y cada <em>geom</em>
+tiene un <em>stat</em>. Lo que significa que podes usar cada <em>geom</em> sin preocuparte
+por las transformaciones subyacentes.</p>
+<p>Hay veces que querrás cambiar los valores por defecto:</p>
+<ol style="list-style-type: decimal">
+<li>Cuando tengas las variables precomputadas y desees graficarlas. En el
+código de abajo cambio el <em>stat</em> de <code>geom_bar</code> por <code>stat_identity</code> (identidad). Esto
+me permite graficar la altura de la variable <em>y</em> a algún valor del conjunto de
+datos.</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">demo &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">  <span class="op">~</span>cut,         <span class="op">~</span>freq,</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="st">&quot;Fair&quot;</span>,       <span class="dv">1610</span>,</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  <span class="st">&quot;Good&quot;</span>,       <span class="dv">4906</span>,</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">  <span class="st">&quot;Very Good&quot;</span>,  <span class="dv">12082</span>,</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">  <span class="st">&quot;Premium&quot;</span>,    <span class="dv">13791</span>,</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">  <span class="st">&quot;Ideal&quot;</span>,      <span class="dv">21551</span></a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">)</a>
+<a class="sourceLine" id="cb31-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="kw">ggplot</span>(<span class="dt">data =</span> demo) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> freq), <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/summary-data-1.png" width="672" /></p>
+<p>No te preocupes si no entiendes que hace <code>tribble</code> o <code>&lt;-</code>. Todavía no lo hemos
+visto pero quizá puedas entender que hacen por su contexto</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Muchos <em>stats</em> computan varias variables y quizás quieras mostrar otra. Abajo,
+en lugar de graficar la frecuencia o cuenta, grafico la proporción o frecuencia
+relativa.</li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/prop-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Quizás quieras llamar la atención sobre ciertos medidas de resumen que has
+calculado. Puedes hacer esto con <code>stat_summary</code>.</li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_summary</span>(</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> depth),</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">    <span class="dt">fun.y =</span> median,</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">    <span class="dt">fun.ymax =</span> max,</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">    <span class="dt">fun.ymin =</span> min</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">    </a>
+<a class="sourceLine" id="cb33-8" data-line-number="8">  )</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="ajuste-de-posiciones" class="section level2">
+<h2><span class="header-section-number">3.7</span> Ajuste de Posiciones</h2>
+<p>El gráfico anterior revela algo interesante de los gráficos de barras. Tienen
+relleno (<em>fill</em>) y tienen color.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/fill-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/fill-2.png" width="672" /></p>
+<p>Es más claro trabajar con el relleno porque es más visible
+en el gráfico. Pero vemos que las distintas barras están apiladas, lo que
+dificulta la comparación. Se debe a que la posición de barras es apilada
+(<code>stack</code>) por defecto. Podemos cambiarla modificando el argumento <code>position</code>
+de <code>geom_bar()</code>. Entre las otras posiciones que podemos elegir están identidad
+(<code>identity</code>), esquivar (<code>dodge</code>) y relleno (<code>fill</code>) .</p>
+<ul>
+<li>Identidad hace que las barras (o otro <em>geoms</em>) caigan unas encimas de
+otras. No es muy útil porque las barras se superponen y hace muy difícil la
+interpretación. Se puede mejorar agregando transparencia y usando color y no
+relleno, pero es complicado de interpetar si la barras se superponen o están
+apiladas.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/pos-identity-1.png" width="672" /></p>
+<ul>
+<li>Esquivar es quizás la más útil junto con relleno. Hace que las barras estén
+una al lado de la otra. Lo que hace que sea sencillo comparar la altura de estas.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/pos-dodge-1.png" width="672" /></p>
+<ul>
+<li>Recién vimos que que con esquivar podemos poner las barras una al lado de otra.
+Pero, más allá de comparar la cantidad de diamantes en cada uno, ya que la
+cantidad es muy diferente en cada corte resulta más útil comparar las
+proporciones de cada una de las claridades. Relleno funciona de forma
+similar al apilado, pero estadariza cada columna a longitud uno. Entonces se
+ve las proporciones o frecuencias relativas de cada uno de los niveles de
+<code>clarity</code>.</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/pos-fill-1.png" width="672" /></p>
+<p>Hay otros ajustes de posiciones que no son útiles para los gráficos de barras
+pero son muy útiles para los gráficos de puntos. En el gráfico de dispersión
+entre <code>displ</code> y <code>hwy</code> hay menos puntos que el total
+31 vs 234. Muchos
+puntos se superponen, por eso vemos menos. Podemos evitarlo añadiendo un poco
+de movimiento aleatorio a cada punto.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/pos-jitter-1.png" width="672" /></p>
+<p>Si bien el gráfico no va a ser exacto, muestra más información que en el caso
+donde se superponen los puntos.</p>
+<p>Podes obtener más información el ayuda de cada uno: <code>?position_dodge</code>,
+<code>?position_identity</code>, <code>?position_fill</code>, <code>?position_stack</code>, <code>?position_jitter</code></p>
+</div>
+<div id="sistemas-de-coordenadas" class="section level2">
+<h2><span class="header-section-number">3.8</span> Sistemas de Coordenadas</h2>
+<p>Hasta ahora estuvimos graficando en un sistema de coordenadas cartesianas. Pero
+es posible cambiarlo, por ejemplo intercambiando el eje x e y.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/coord-flip-plot-1.png" width="672" /></p>
+<p>En el primer caso las etiquetas del eje x se superponen, pero en el segundo
+es fácil verlas. No es la única forma de solucionar este problema. También es
+posible cambiar el ángulo de las etiquetas para que no se superpongan.</p>
+<p>Otras veces es mejor reemplazar las coordenadas cartesianas por coordenadas
+geográficas.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">arg &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>, <span class="dt">region =</span> <span class="st">&quot;Argentina&quot;</span>)</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb41-8" data-line-number="8">  <span class="kw">coord_quickmap</span>()</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;maps&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     map</code></pre>
+<pre><code>## &lt;ggproto object: Class CoordQuickmap, CoordCartesian, Coord, gg&gt;
+##     aspect: function
+##     default: FALSE
+##     distance: function
+##     expand: TRUE
+##     is_linear: function
+##     labels: function
+##     limits: list
+##     modify_scales: function
+##     range: function
+##     render_axis_h: function
+##     render_axis_v: function
+##     render_bg: function
+##     render_fg: function
+##     setup_data: function
+##     setup_layout: function
+##     setup_panel_params: function
+##     setup_params: function
+##     transform: function
+##     super:  &lt;ggproto object: Class CoordQuickmap, CoordCartesian, Coord, gg&gt;</code></pre>
+<p><img src="Graficos_files/figure-html/coord-quickmap-plot-1.png" width="672" /></p>
+<p>Esto evita que el mapa se deforme, ya que los grados de longitud no miden lo
+mismo en todas las latitudes. Si van a hacer muchos mapas les recomiendo que
+vean la extesión <code>ggmap</code> que tiene muchas utilidades para hacer mejores mapas.</p>
+<p>También existen la coordenadas polares. Un gráfico de torta, que les recomiendo
+que no lo usen por los problemas de percepción que tiene, es un gráfico de
+barras apiladas en coordernadas polares.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">cxc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">cxc <span class="op">+</span><span class="st"> </span><span class="kw">coord_polar</span>()</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/coord-polar-1.png" width="672" /></p>
+</div>
+<div id="personalizando-el-grafico" class="section level2">
+<h2><span class="header-section-number">3.9</span> Personalizando el gráfico</h2>
+<p>Hay varias maneras de personalizar los gráficos. Por un lado, las estéticas
+pueden ser personalizadas cambiando las distintas <code>scales</code> (escalas). Para
+cambiar el eje x se usa <code>scale_x_*</code> donde * es el tipo de dato que tiene el
+eje: si es númerico se usa <code>continuous</code> y si es categórico se usa <code>discrete</code>.
+Se pueden cambiar muchas cosas: el título del eje (<code>name</code>), el lugar de las
+marcas (<code>breaks</code>), las etiquetas de las marcas (<code>labels</code>), y muchas más opciones.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, </a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;uno&quot;</span>, <span class="st">&quot;dos&quot;</span>, <span class="st">&quot;tres&quot;</span>, <span class="st">&quot;cuatro&quot;</span>, <span class="st">&quot;cinco&quot;</span>, </a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">                                <span class="st">&quot;seis&quot;</span>, <span class="st">&quot;siete&quot;</span>))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/scale-1.png" width="672" /></p>
+<p>Un atajo para modificar los nombres de los ejes es usar la función <code>labs()</code>,
+pero solo se pueden modificar los nombres de los ejes y nada más.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Millas por galón en Autopista&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/labs-1.png" width="672" /></p>
+<p>También se puede modificar los colores que se asignan.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>)</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>, <span class="dt">palette =</span> <span class="st">&quot;RdYlBu&quot;</span>)</a>
+<a class="sourceLine" id="cb48-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="st">&quot;Clase&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/colores-plot-1.png" width="672" /></p>
+<p>Hay muchas más opciones disponibles, ya que como dice el dicho: “Para gustos,
+los colores”. Si quieren conocerlas te recomiendo que lean la ayuda de cada
+una o visiten el sitio de ggplot2.</p>
+<p>Vemos que hay patrón común con las escalas, todas empiezan por <code>scale</code>, luego
+sigue por lo que se quiere modificar: el eje, <code>x</code> o <code>y</code>; el color, <code>color</code>;
+relleno, <code>fill</code>; la forma, <code>shape</code>; el tipo de línea <code>linetype</code>, etc. Cada uno
+de las estéticas tiene su escale. Luego, salvo alguna excepción, siguen por el
+tipo de dato o en el caso de los colores por el método de creación del color.
+Vale la pena agregar que cada escale tiene su versión manual para un control
+total de la apariencia.</p>
+<p>Por otro lado están los elementos del gráfico que modifican la apariencia
+general del gráfico. El tipo y tamaño de letra, el color del fondo, el grosor
+de la líneas de los ejes, la dirección de marcas, la dirección del texto, y
+¡todo lo demás!. Todo esto está unido a lo que es el tema (<code>theme</code>) del gráfico.
+Se pueden guardar las modificaciones para usarla facilmente y ya vienen algunas
+opciones en <code>ggplot</code> y hay más en el paquete <code>ggthemes</code> y otros.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/temas-1.png" width="672" /></p>
+<p>Para modificar algún elemento en particular usamos la función <code>theme()</code> al final
+del gráfico. Dentro de la llamada a <code>theme</code> modificamos el argumento que queremos
+cambiar usando la función <code>element_*()</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/personalizar-temas-1.png" width="672" /></p>
+<p>Sí, es bastante complicado. Pero por suerte se puede guardar y reutilizar.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">x_<span class="dv">45</span> &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="st">  </span>x_<span class="dv">45</span></a></code></pre></div>
+<p><img src="Graficos_files/figure-html/a-45-grados-1.png" width="672" /></p>
+<p>También es posible cambiar la posición de la leyenda o eliminarla completamente.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="Graficos_files/figure-html/cambiar-leyenda-plot-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduccion-a-r-y-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="manejo-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Graficos.Rmd",
+"text": "Edit"
+},
+"download": ["laboratorios.pdf", "laboratorios.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

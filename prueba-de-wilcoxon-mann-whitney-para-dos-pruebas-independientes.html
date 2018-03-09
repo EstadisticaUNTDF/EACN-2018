@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Avanzada para Ciencias Naturales</title>
+  <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Avanzada para Ciencias Naturales" />
+  
+  <meta name="twitter:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+<meta name="author" content="Dr. Luciano Selzer">
+
+
+<meta name="date" content="2018-03-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="manejo-de-datos.html">
+<link rel="next" href="ejercicios-de-dos-muestras-no-parametrico.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Laboratorios de Estadística Avanzada</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> El libro</a></li>
+<li class="chapter" data-level="2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introducción a <em>R</em> y RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#analisis-reproducible"><i class="fa fa-check"></i><b>2.2</b> Análisis Reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.1</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#integrando-codigo"><i class="fa fa-check"></i><b>2.3</b> Integrando código</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Visualización de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#introduccion"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#el-conjunto-de-datos-mpg"><i class="fa fa-check"></i><b>3.2</b> El conjunto de datos <code>mpg</code></a></li>
+<li class="chapter" data-level="3.3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#graficos-con-ggplot"><i class="fa fa-check"></i><b>3.3</b> Gráficos con ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#mapeando"><i class="fa fa-check"></i><b>3.4</b> Mapeando</a></li>
+<li class="chapter" data-level="3.5" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#formas-geometricas"><i class="fa fa-check"></i><b>3.5</b> Formas geometricas</a></li>
+<li class="chapter" data-level="3.6" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#transformaciones-estadisticas"><i class="fa fa-check"></i><b>3.6</b> Transformaciones Estadísticas</a></li>
+<li class="chapter" data-level="3.7" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#ajuste-de-posiciones"><i class="fa fa-check"></i><b>3.7</b> Ajuste de Posiciones</a></li>
+<li class="chapter" data-level="3.8" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#sistemas-de-coordenadas"><i class="fa fa-check"></i><b>3.8</b> Sistemas de Coordenadas</a></li>
+<li class="chapter" data-level="3.9" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#personalizando-el-grafico"><i class="fa fa-check"></i><b>3.9</b> Personalizando el gráfico</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html"><i class="fa fa-check"></i><b>4</b> Manejo de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-datos"><i class="fa fa-check"></i><b>4.1</b> Seleccionando datos</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-columnas"><i class="fa fa-check"></i><b>4.2</b> Seleccionando columnas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#agregando-columnas"><i class="fa fa-check"></i><b>4.3</b> Agregando columnas</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#operaciones-por-grupos"><i class="fa fa-check"></i><b>4.4</b> Operaciones por grupos</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formato-ancho-y-formato-largo"><i class="fa fa-check"></i><b>4.5</b> Formato Ancho y Formato Largo</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#por-su-cuenta"><i class="fa fa-check"></i><b>4.6</b> Por su cuenta</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>5</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
+<li class="chapter" data-level="5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>5.1</b> Datos</a></li>
+<li class="chapter" data-level="5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>5.2</b> Supuestos</a></li>
+<li class="chapter" data-level="5.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>5.3</b> Procedimiento básico</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>5.4</b> Estadísticos</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>5.4.1</b> Variante Wilcoxon (W)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>5.4.2</b> Variante Mann-Whitney (U)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>5.5</b> Hipótesis</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>5.5.1</b> Prueba a dos colas</a></li>
+<li class="chapter" data-level="5.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>5.5.2</b> Prueba de una cola a la izquierda</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>5.6</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>5.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>5.7.1</b> Supuestos</a></li>
+<li class="chapter" data-level="5.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>5.7.2</b> Estadísticos</a></li>
+<li class="chapter" data-level="5.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>5.7.3</b> Hipótesis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>6</b> Ejercicios de dos muestras no paramétrico</a><ul>
+<li class="chapter" data-level="6.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>6.1</b> Reproduciendo el algoritmo manualmente</a></li>
+<li class="chapter" data-level="6.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>6.2</b> Funciones no paramétricas en <em>R</em></a></li>
+<li class="chapter" data-level="6.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>6.3</b> Fórmulas</a></li>
+<li class="chapter" data-level="6.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas"><i class="fa fa-check"></i><b>6.4</b> Problemas</a></li>
+<li class="chapter" data-level="6.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>6.5</b> Algunos conceptos importantes</a></li>
+<li class="chapter" data-level="6.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>6.6</b> Diseño de Estudios de ANOVA</a></li>
+<li class="chapter" data-level="6.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>6.7</b> Planificación De Experimentos</a></li>
+<li class="chapter" data-level="6.8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#usos-del-anova"><i class="fa fa-check"></i><b>6.8</b> Usos Del ANOVA</a></li>
+<li class="chapter" data-level="6.9" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>6.9</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>6.9.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ideas-basicas"><i class="fa fa-check"></i><b>6.9.2</b> Ideas Básicas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>6.10</b> Comprobación de los Supuestos</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>6.10.1</b> Prueba para igualdad de varianzas</a></li>
+<li class="chapter" data-level="6.10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>6.10.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
+<li class="chapter" data-level="6.10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#residuos"><i class="fa fa-check"></i><b>6.10.3</b> Residuos</a></li>
+<li class="chapter" data-level="6.10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-residuos"><i class="fa fa-check"></i><b>6.10.4</b> Gráficos de Residuos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones"><i class="fa fa-check"></i><b>6.11</b> Transformaciones</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>6.11.1</b> Transformaciones para estabilizar las Varianzas</a></li>
+<li class="chapter" data-level="6.11.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>6.11.2</b> Transformaciones para corregir la falta de normalidad</a></li>
+<li class="chapter" data-level="6.11.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>6.11.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>6.12</b> Formulación Del Modelo I De ANOVA.</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>6.12.1</b> Características importantes del modelo</a></li>
+<li class="chapter" data-level="6.12.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.12.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.12.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>6.12.3</b> Ajustando El Modelo</a></li>
+<li class="chapter" data-level="6.12.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>6.12.4</b> Estimadores De Mínimos Cuadrados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>6.13</b> Partición De La Suma De Cuadrados Total</a><ul>
+<li class="chapter" data-level="6.13.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas-computatorias"><i class="fa fa-check"></i><b>6.13.1</b> Fórmulas computatorias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuadrados-medios"><i class="fa fa-check"></i><b>6.14</b> Cuadrados Medios</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>6.14.1</b> Esperanza de los Cuadrados Medios</a></li>
+<li class="chapter" data-level="6.14.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentarios-1"><i class="fa fa-check"></i><b>6.14.2</b> Comentarios</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.15</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-estadistica"><i class="fa fa-check"></i><b>6.15.1</b> Prueba Estadística</a></li>
+<li class="chapter" data-level="6.15.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>6.15.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
+<li class="chapter" data-level="6.15.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#regla-de-decision"><i class="fa fa-check"></i><b>6.15.3</b> Regla De Decisión</a></li>
+<li class="chapter" data-level="6.15.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentario"><i class="fa fa-check"></i><b>6.15.4</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>6.16</b> Formulación Alternativa Del Modelo I</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.16.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.17</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.18" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>6.18</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
+<li class="chapter" data-level="6.18.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.2</b> Estimación de los efectos de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comparaciones-multiples"><i class="fa fa-check"></i><b>6.18.3</b> Comparaciones múltiples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.19" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>6.19</b> Planificación Del Tamaño Muestral</a><ul>
+<li class="chapter" data-level="6.19.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>6.19.1</b> Potencia De La Prueba F</a></li>
+</ul></li>
+<li class="chapter" data-level="6.20" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>6.20</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
+<li class="chapter" data-level="6.20.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>6.20.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
+<li class="chapter" data-level="6.20.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>6.20.2</b> Características importantes del Modelo</a></li>
+<li class="chapter" data-level="6.20.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>6.20.3</b> Cuestiones de Interés</a></li>
+<li class="chapter" data-level="6.20.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>6.20.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
+<li class="chapter" data-level="6.20.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.20.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+<li class="chapter" data-level="6.20.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>6.20.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
+<li class="chapter" data-level="6.20.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>6.20.7</b> Modelo De Efectos Aleatorios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>7</b> Problemas ANOVA Simple</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>7.0.1</b> Recordatorio</a></li>
+<li class="chapter" data-level="7.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas-1"><i class="fa fa-check"></i><b>7.1</b> Problemas</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>7.1.1</b> Contrastes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> ANOVA No Paramétrico</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>8.1</b> Pruebas para varias muestras independientes</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>8.1.1</b> Prueba de la mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>8.2</b> Prueba de Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>8.2.1</b> Datos</a></li>
+<li class="chapter" data-level="8.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>8.2.2</b> Supuestos</a></li>
+<li class="chapter" data-level="8.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>8.2.3</b> Procedimiento</a></li>
+<li class="chapter" data-level="8.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>8.2.4</b> Hipótesis</a></li>
+<li class="chapter" data-level="8.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-2"><i class="fa fa-check"></i><b>8.2.5</b> Contrastes</a></li>
+<li class="chapter" data-level="8.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>8.2.6</b> Comentarios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>9</b> ANOVA DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>9.1</b> Ventajas de los estudios multifactoriales</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>9.1.1</b> Eficiencia:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>9.2</b> Elementos del Modelo</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>9.2.1</b> Efectos principales</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>9.3</b> Representación gráfica</a></li>
+<li class="chapter" data-level="9.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>9.4</b> Interacción</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>9.4.1</b> Interacciones no importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>9.5.1</b> Modelo de las medias de celdas</a></li>
+<li class="chapter" data-level="9.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>9.5.2</b> Modelo de los efectos de los factores</a></li>
+<li class="chapter" data-level="9.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>9.5.3</b> ANOVA (MODELO I)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>9.6</b> Prueba de F</a></li>
+<li class="chapter" data-level="9.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-3"><i class="fa fa-check"></i><b>9.7</b> Contrastes</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>9.7.1</b> Entre Filas</a></li>
+<li class="chapter" data-level="9.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>9.7.2</b> Entre columnas</a></li>
+<li class="chapter" data-level="9.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>9.7.3</b> Interacción</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>9.8</b> Potencia de la prueba F</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>9.8.1</b> Interacción</a></li>
+<li class="chapter" data-level="9.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>9.8.2</b> Prueba para el factor principal A:</a></li>
+<li class="chapter" data-level="9.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>9.8.3</b> Prueba para el factor principal B:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>9.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>9.9.1</b> Modelo sin interacción</a></li>
+<li class="chapter" data-level="9.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>9.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>9.10.1</b> Modelo aleatorio (Modelo II)</a></li>
+<li class="chapter" data-level="9.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>9.10.2</b> Modelo Mixto (Modelo III)</a></li>
+<li class="chapter" data-level="9.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>9.10.3</b> Pruebas estadísticas</a></li>
+<li class="chapter" data-level="9.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>9.10.4</b> Estimación de los componentes de la varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html"><i class="fa fa-check"></i><b>10</b> DISEÑOS EXPERIMENTALES</a><ul>
+<li class="chapter" data-level="10.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#bloques-al-azar"><i class="fa fa-check"></i><b>10.1</b> Bloques al azar</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#diseno-de-experimentos"><i class="fa fa-check"></i><b>10.1.1</b> Diseño de experimentos</a></li>
+<li class="chapter" data-level="10.1.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#elementos-de-los-disenos-de-bloques-al-azar"><i class="fa fa-check"></i><b>10.1.2</b> Elementos de los Diseños de Bloques al Azar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#criterios-para-definir-los-bloques"><i class="fa fa-check"></i><b>10.1.3</b> Criterios para definir los bloques</a></li>
+<li class="chapter" data-level="10.1.4" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#ventajas-y-desventajas"><i class="fa fa-check"></i><b>10.1.4</b> Ventajas y desventajas</a></li>
+<li class="chapter" data-level="10.1.5" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#modelo"><i class="fa fa-check"></i><b>10.1.5</b> Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza-y-pruebas"><i class="fa fa-check"></i><b>10.2</b> Análisis de la varianza y pruebas</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza"><i class="fa fa-check"></i><b>10.2.1</b> Análisis de la varianza</a></li>
+<li class="chapter" data-level="10.2.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#prueba-de-tukey-de-aditividad"><i class="fa fa-check"></i><b>10.2.2</b> Prueba de Tukey de Aditividad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>11</b> Regresión</a><ul>
+<li class="chapter" data-level="11.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>11.1</b> Regresión Lineal Simple</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>12</b> Ordenación en Espacios Reducidos</a></li>
+<li class="chapter" data-level="13" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>13</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>13.1</b> Biplots</a></li>
+<li class="chapter" data-level="13.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Avanzada para Ciencias Naturales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</h1>
+<p>Esta prueba es el análogo más directo de la prueba de t para dos muestras
+independientes. Existen dos variantes de esta prueba que utilizan distintos
+estadísticos (W y U), cada uno de los cuales posee su propia tabla de valores
+críticos. Sin embargo, ambas variantes dan idénticos resultados debido a que son
+formas diferentes de utilizar y evaluar de igual manera la misma información.
+Cuando se emplea el estadístico U esta prueba suele ser denominada también como
+Prueba U de Mann-Whitney.</p>
+<div id="datos" class="section level2">
+<h2><span class="header-section-number">5.1</span> Datos</h2>
+<p>Para utilizar esta prueba es necesario contar con dos muestras aleatorias de las
+dos poblaciones a comparar, tal que <span class="math inline">\(\left ({X_1,X_2,…,X_{N1}}\right )\)</span> es la
+muestra aleatoria de tamaño <span class="math inline">\(N_1\)</span> de la población 1 y <span class="math inline">\(\left ({Y_1,Y_2,…,Y_{N2}} \right )\)</span> es la muestra aleatoria de tamaño <span class="math inline">\(N_2\)</span> de la población 2. La función
+de distribución en probabilidades de la población 1 es <span class="math inline">\(F(x)\)</span> y la función de
+distribución en probabilidades de la población 2 es <span class="math inline">\(G(x)\)</span>.</p>
+</div>
+<div id="supuestos" class="section level2">
+<h2><span class="header-section-number">5.2</span> Supuestos</h2>
+<p>Los supuestos de esta prueba son:
+1. Ambas muestras son muestras aleatorias de las respectivas poblaciones.
+2. Los datos son independientes tanto dentro de cada muestra como entre muestras.
+3. Las mediciones han sido tomadas utilizando al menos una escala ordinal.
+4. Si existen diferencias en las funciones de distribución de ambas poblaciones,
+estas diferencias están asociadas a la localización de las distribuciones.
+Esto significa que <span class="math inline">\(F(x)=G(x+c)\)</span>, donde <span class="math inline">\(c\)</span> es una constante. Este supuesto sólo
+es necesario cuando la hipótesis a poner a prueba está asociada a las <span class="math inline">\(E(X)\)</span> y
+<span class="math inline">\(E(Y)\)</span>.</p>
+</div>
+<div id="np-algoritmo" class="section level2">
+<h2><span class="header-section-number">5.3</span> Procedimiento básico</h2>
+<p>Los datos combinados de ambas muestras deben ser ordenados de menor a mayor.
+A estos datos ordenados se les deben asignar rangos desde 1 a <span class="math inline">\(N1+N2\)</span>. En
+caso de existir empates, debe asignarse el rango promedio de los rangos
+correspondientes. Luego de la asignación de los rangos, deben obtenerse las
+sumas de los rangos de cada muestra como:</p>
+<p><span class="math display">\[
+\begin{matrix}
+R_1=\sum_{i=1}^{N_1}R(X_i)\\
+R_2=\sum_{i=1}^{N_2}R(Y_i)
+\end{matrix}
+\]</span></p>
+<p>donde <span class="math inline">\(R_1\)</span> es la suma de los rangos asignados a la muestra de la población
+1, <span class="math inline">\(R_2\)</span> es la suma de los rangos asignados a la muestra de la población 2,
+<span class="math inline">\(R(X_i)\)</span> es el rango asignado al i-ésimo dato de la muestra de la población 1 y
+<span class="math inline">\(R(Y_i)\)</span> es el rango asignado al i-ésimo dato de la muestra de la población 2.
+Igualmente, los valores <span class="math inline">\(R_1\)</span> y <span class="math inline">\(R_2\)</span> se encuentran relacionados, de tal manera que:
+<span class="math inline">\(R_1+R_2=(N_1+N_2)(N_1+N_2+1)/2\)</span> Esto implica que conocidos <span class="math inline">\(N_1\)</span>, <span class="math inline">\(N_2\)</span> y uno de los
+<span class="math inline">\(R_i\)</span> es posible hallar el otro.</p>
+<div id="ejemplo" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Ejemplo</h3>
+<p>Supongamos que obtenemos los siguientes valores para la población 1 y 2:</p>
+<table>
+<caption><span id="tab:ejemplo-ranking">Tabla 5.1: </span>Datos de dos poblaciones de ejemplo</caption>
+<thead>
+<tr class="header">
+<th align="right">Pob1</th>
+<th align="right">Pob2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>A continuación debemos reunir esos datos en una solo conjunto, agregando una
+identificación<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<table>
+<caption><span id="tab:ejemplo-ranking-gather">Tabla 5.2: </span>Datos de ambas poblaciones juntas</caption>
+<thead>
+<tr class="header">
+<th align="left">Pob</th>
+<th align="right">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>A continuación se ordenan y se la asigna un número de 1 hasta <span class="math inline">\(N_1+N_2\)</span> según
+el orden (columna <code>Rango</code>)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Los empates deben tratarse de forma especial ya que
+no hay forma de decidir que número va primero. Por lo tanto se promedian los
+valores de sus rangos (columna <code>Rango_Empates</code> )</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">datos_long &lt;-<span class="st"> </span>datos_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Rango =</span> <span class="kw">rank</span>(Valor, <span class="dt">ties.method =</span> <span class="st">&quot;r&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(Rango) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Rango_Empates =</span> <span class="kw">rank</span>(Valor))</a>
+<a class="sourceLine" id="cb122-5" data-line-number="5"><span class="kw">kable</span>(datos_long)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Pob</th>
+<th align="right">Valor</th>
+<th align="right">Rango</th>
+<th align="right">Rango_Empates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">6</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">4.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">9.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">2</td>
+<td align="right">10</td>
+<td align="right">9.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">3</td>
+<td align="right">11</td>
+<td align="right">12.0</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">3</td>
+<td align="right">12</td>
+<td align="right">12.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">3</td>
+<td align="right">13</td>
+<td align="right">12.0</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">4</td>
+<td align="right">14</td>
+<td align="right">14.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">5</td>
+<td align="right">15</td>
+<td align="right">15.0</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+<td align="right">16</td>
+<td align="right">17.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+<td align="right">17</td>
+<td align="right">17.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+<td align="right">18</td>
+<td align="right">17.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+<td align="right">19</td>
+<td align="right">17.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">8</td>
+<td align="right">20</td>
+<td align="right">20.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="estadisticos" class="section level2">
+<h2><span class="header-section-number">5.4</span> Estadísticos</h2>
+<div id="variante-wilcoxon-w" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Variante Wilcoxon (W)</h3>
+<div id="sin-empates" class="section level4">
+<h4><span class="header-section-number">5.4.1.1</span> Sin empates</h4>
+<p>Si no existen empates o si estos son pocos, el estadístico a calcular es:</p>
+<p><span class="math display">\[W=R_1\]</span></p>
+<p>Los valores críticos para este estadístico (<span class="math inline">\(w_p\)</span>) pueden obtenerse de la Tabla
+A7. En esta tabla se presentan los valores críticos (cuantiles) para <span class="math inline">\(1-\alpha\)</span>
+en el rango 0.001-0.5. Los valores para el rango 0.5-0.999 pueden obtenerse
+como: <span class="math display">\[w_{1-p}=N_1 (N_1+N_2+1)-w_p\]</span></p>
+<p>La Tabla A7 permite obtener los valores críticos para muestras donde <span class="math inline">\(N_1\le20\)</span>
+y <span class="math inline">\(N_2\le20\)</span>. En el caso de que <span class="math inline">\(N_1\)</span> y/o <span class="math inline">\(N_2\)</span> fueran mayores que 20, los
+valores críticos pueden obtenerse mediante una aproximación normal de la forma:
+<span class="math display">\[w_p\cong \frac{N_1 (N_1+N_2+1)}{2}+z_p \sqrt{\frac{N_1 N_2 (N_1+N_2+1)}{12}}\]</span></p>
+</div>
+<div id="w-con-empates" class="section level4">
+<h4><span class="header-section-number">5.4.1.2</span> Con empates</h4>
+<p>Si existen numerosos empates, el estadístico a calcular es:</p>
+<p><span class="math display">\[
+W_1=\frac{W-\frac{N_1(N_1+N_2+1)}{2}}{\sqrt{\frac{N_1 N_2}{(N_1+N_2)(N_1+N_2-1)}\sum_{i=1}^{N_1+N_2}{R_i^2}-\frac{N_1 N_2 (N_1+N_2+1)^2}{4(N_1+N_2-1)}}}
+\]</span></p>
+<p>donde <span class="math inline">\(R_i^2\)</span> son los <span class="math inline">\(R(X_i)\)</span> y <span class="math inline">\(R(Y_i)\)</span> elevados al cuadrado.
+Este estadístico se distribuye según una distribución normal estándar.</p>
+</div>
+</div>
+<div id="variante-mann-whitney-u" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Variante Mann-Whitney (U)</h3>
+<p>Se calculan dos estadísticos, el <span class="math inline">\(U\)</span> y el <span class="math inline">\(U’\)</span>. Ambos estadísticos se obtienen de
+igual forma como:</p>
+<p><span class="math display">\[
+\begin{matrix}
+U = N_1 N_2+\frac{N_1 (N_1+1)}{2}-R_1 \\
+U&#39;=N_2 N_1+\frac{N_2 (N_2+1)}{2}-R_2
+\end{matrix}
+\]</span></p>
+<p>Además, cualquiera de ellos puede obtenerse a partir del otro teniendo en cuenta
+que la relación entre ellos es:</p>
+<p><span class="math display">\[U=N_1 N_2-U&#39;\]</span></p>
+<p>Cómo puede verse a partir de las ecuaciones que definen a <span class="math inline">\(U\)</span> y <span class="math inline">\(U’\)</span>, puede
+considerarse que <span class="math inline">\(U\)</span> es el estadístico asociado a la población 1, mientras que <span class="math inline">\(U’\)</span>
+es el estadístico asociado a la población 2. Igualmente, dado que la asignación
+de población 1 y población 2 es puramente arbitraria, los estadísticos <span class="math inline">\(U\)</span> y <span class="math inline">\(U’\)</span>
+pueden corresponder indistintamente a cualquiera de las dos muestras a comparar.
+Por una razón exclusivamente operativa y relacionada con la tabla de valores
+críticos que se utilizará, se considera como población 1 a la que posea el
+mayor tamaño muestral y como población 2 a la que posea el menor tamaño muestral
+(<span class="math inline">\(N_1 &lt; N_2\)</span>). Los valores críticos para los estadísticos U o U’ pueden obtenerse
+utilizando la Tabla <span class="math inline">\(U\)</span> para muestras donde <span class="math inline">\(N_1\le 20\)</span> y <span class="math inline">\(N_2\le 20\)</span>. Para tamaños
+muestrales mayores, pueden utilizarse aproximaciones normales. Dependiendo de la
+existencia o no de empates los estadísticos a calcular son:</p>
+<div id="sin-empates-1" class="section level4">
+<h4><span class="header-section-number">5.4.2.1</span> Sin empates</h4>
+<p><span class="math display">\[Z=\frac{U-\frac{(N_1 N_2)}{2}}{\sqrt{\frac{N_1 N_2 (N_1+N_2+1)}{12}}}\]</span></p>
+</div>
+<div id="con-empates" class="section level4">
+<h4><span class="header-section-number">5.4.2.2</span> Con empates</h4>
+<p>Previamente al cálculo del estadístico y considerando la existencia de E grupos de datos empatados debe obtenerse el valor <span class="math inline">\(\sum e\)</span> tal que:</p>
+<p><span class="math display">\[\sum e=\sum_{i=1}^E(\varepsilon_i^3-\varepsilon_i ) \]</span></p>
+<p>donde <span class="math inline">\(\varepsilon_i\)</span> es el número de datos empatados en el grupo i-ésimo de
+datos empatados.</p>
+<p>Una vez obtenido el <span class="math inline">\(\sum e\)</span>, el estadístico corregido por empates (<span class="math inline">\(z_c\)</span>) puede
+obtenerse como:</p>
+<p><span class="math display">\[Z_c=\frac{U-\frac{(N_1 N_2)}{2}}
+{\sqrt{\left [\frac{N_1N_2}{(N_1+N_2)^2-(N_1+N_2)}\right ]\left [\frac{(N_1 + N_2)^3 -(N_1+N_2)-\sum e)}{12}\right ]}}\]</span></p>
+<p>Ambos estadísticos (<span class="math inline">\(z\)</span> y <span class="math inline">\(z_c\)</span>) se distribuyen de acuerdo a una distribución normal estándar.</p>
+</div>
+</div>
+</div>
+<div id="hipotesis" class="section level2">
+<h2><span class="header-section-number">5.5</span> Hipótesis</h2>
+<p>En términos generales, la prueba de Wilcoxon-Mann-Whitney se utiliza para poner
+a prueba hipótesis sobre las distribuciones <span class="math inline">\(F(x)\)</span> y <span class="math inline">\(G(x)\)</span>. Como la prueba es
+sensible a diferencias en las tendencias centrales puede emplearse para poner a
+prueba hipótesis sobre <span class="math inline">\(E(X)\)</span> y <span class="math inline">\(E(Y)\)</span>.</p>
+<div id="prueba-a-dos-colas" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Prueba a dos colas</h3>
+<p><span class="math inline">\(H_0: F(x)=G(x)\)</span> para todo <span class="math inline">\(x\)</span> ó <span class="math inline">\(E(X)=E(Y)\)</span><br />
+<span class="math inline">\(H_a: F(x)≠G(x)\)</span> para algún <span class="math inline">\(x\)</span> ó <span class="math inline">\(E(X)≠E(Y)\)</span></p>
+<div id="variante-wilcoxon" class="section level4">
+<h4><span class="header-section-number">5.5.1.1</span> Variante Wilcoxon*</h4>
+<p>Utilizando el estadístico <span class="math inline">\(W\)</span> los criterios de decisión son:<br />
+Si <span class="math inline">\(W\le w_{\alpha/2}\)</span> ó <span class="math inline">\(W\ge w_{1-\alpha/2}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(w_{\alpha/2}&lt;W&lt;w_{1-\alpha/2}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Para evitar calcular el <span class="math inline">\(w_{1-\alpha/2}\)</span>, puede calcularse un estadístico <span class="math inline">\(W’\)</span> como:</p>
+<p><span class="math display">\[W&#39;=N_1 (N_1+N_2+1)-W\]</span></p>
+<p>quedando definidos los criterios de decisión como:</p>
+<p>Si <span class="math inline">\(W\le w_{\alpha/2}\)</span> ó <span class="math inline">\(W’\le w_{\alpha/2}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(W&gt;w_{\alpha/2}\)</span> y <span class="math inline">\(W’&gt;w_{\alpha/2}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>Utilizando el estadístico <span class="math inline">\(W1\)</span> los criterios de decisión son:</p>
+<p>Si <span class="math inline">\(2*[1-P(Z≤ W_1 )]\le \alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span>
+Si <span class="math inline">\(2*[1-P(Z≤ W_1 )]&gt;\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+</div>
+<div id="variante-mann-whitney" class="section level4">
+<h4><span class="header-section-number">5.5.1.2</span> Variante Mann-Whitney</h4>
+<p>Definiendo como estadístico <span class="math inline">\(U\)</span> al mayor entre <span class="math inline">\(U\)</span> y <span class="math inline">\(U’\)</span>, los criterios de
+decisión son:<br />
+Si <span class="math inline">\(U≥U_{N1,N2,\alpha/2}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(U&lt;U_{N1,N2,\alpha/2}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Donde <span class="math inline">\(U_{N1,N2,\alpha/2}\)</span> es el valor crítico obtenido de la Tabla U.</p>
+<p>Utilizando la aproximación normal, ya sea sin empates (<span class="math inline">\(z\)</span>) o con corrección por
+empates (<span class="math inline">\(z_c\)</span>), los criterios de decisión son:<br />
+Si <span class="math inline">\(2*[1-P(Z≤ z )]≤\alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(2*[1-P(Z≤ z )]&gt;\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+</div>
+</div>
+<div id="prueba-de-una-cola-a-la-izquierda" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Prueba de una cola a la izquierda</h3>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(F(x)=G(x)\)</span> para todo <span class="math inline">\(x\)</span> ó <span class="math inline">\(E(X)=E(Y)\)</span>
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(F(x)&gt;G(x)\)</span> para algún <span class="math inline">\(x\)</span> ó <span class="math inline">\(E(X)&lt;E(Y)\)</span></p>
+<p>Para visualizar la relación entre las hipótesis planteadas en términos de
+las funciones de distribución y las hipótesis planteadas en términos de las
+esperanzas puede utilizarse la <a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#fig:figura-dens">5.1</a>. En esta figura muestra
+las funciones de densidad y de distribución para dos variables normales que
+difieren solamente en el valor de su media.</p>
+<div class="figure"><span id="fig:figura-dens"></span>
+<img src="No-Parametrico-Teoria_files/figure-html/figura-dens-1.png" alt="Funciones de densidad [$f(x)$ y $g(x)$] y funciones de distribución
+[$F(x)$ y $G(x)$] para dos variables aleatorias que se distribuyen normalmente
+con $\sigma^2=3$ y que sólo difieren en el valor de $\mu=10$ y $\mu=15$." width="768" />
+<p class="caption">
+Figura 5.1: Funciones de densidad [<span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(x)\)</span>] y funciones de distribución
+[<span class="math inline">\(F(x)\)</span> y <span class="math inline">\(G(x)\)</span>] para dos variables aleatorias que se distribuyen normalmente
+con <span class="math inline">\(\sigma^2=3\)</span> y que sólo difieren en el valor de <span class="math inline">\(\mu=10\)</span> y <span class="math inline">\(\mu=15\)</span>.
+</p>
+</div>
+<p>####Variante Wilcoxon</p>
+<p>Utilizando el estadístico <span class="math inline">\(W\)</span> los criterios de decisión son:<br />
+Si <span class="math inline">\(W≤w_\alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(W&gt;w_\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>Utilizando el estadístico <span class="math inline">\(W_1\)</span> los criterios de decisión son:<br />
+Si <span class="math inline">\(P(Z≤W_1 )≤ \alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(P(Z&gt;W_1 )&gt; \alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>####Variante Mann-Whitney</p>
+<p>Definiendo como estadístico <span class="math inline">\(U\)</span> al <span class="math inline">\(U\)</span>, los criterios de decisión son:<br />
+Si <span class="math inline">\(U≥U_{N1,N2,\alpha}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(U&lt;U_{N1,N2,\alpha}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Donde <span class="math inline">\(U_{N1,N2,\alpha}\)</span> es el valor crítico obtenido de la Tabla U.</p>
+<p>Utilizando la aproximación normal, ya sea sin empates (<span class="math inline">\(z\)</span>) o con corrección
+por empates (<span class="math inline">\(z_c\)</span>), los criterios de decisión son:<br />
+Si <span class="math inline">\(1-P(Z\le z)\le\alpha\)</span> ó <span class="math inline">\(1-P(Z≤z_c )\le\alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(1-P(Z≤z)&gt;\alpha\)</span> ó <span class="math inline">\(1-P(Z≤z_c )&gt;\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>###Prueba de una cola a la derecha</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(F(x)=G(x)\)</span> para todo x ó <span class="math inline">\(E(X)=E(Y)\)</span><br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(F(x)&lt;G(x)\)</span> para algún x ó <span class="math inline">\(E(X)&gt;E(Y)\)</span></p>
+<p>####Variante Wilcoxon</p>
+<p>Utilizando el estadístico <span class="math inline">\(W\)</span> los criterios de decisión son:<br />
+Si <span class="math inline">\(W≥w_{1-\alpha}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(W&lt;w_{1-\alpha}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>También puede utilizarse el estadístico <span class="math inline">\(W’\)</span>, quedando entonces los criterios de
+decisión como:<br />
+Si <span class="math inline">\(W&#39;≤w_\alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(W&#39;&gt;w_\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>Utilizando el estadístico <span class="math inline">\(W_1\)</span> los criterios de decisión son:<br />
+Si <span class="math inline">\(P(Z≤W_1 )≤ \alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(P(Z≤W_1 )&gt; \alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+<p>####Variante Mann-Whitney</p>
+<p>Definiendo como estadístico U al U, los criterios de decisión son:<br />
+Si <span class="math inline">\(U≥U_{N1,N2,\alpha}\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(U&lt;U_{N1,N2,\alpha}\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Donde <span class="math inline">\(U_{N1,N2,\alpha}\)</span> es el valor crítico obtenido de la Tabla U.</p>
+<p>Utilizando la aproximación normal, ya sea sin empates (<span class="math inline">\(z\)</span>) o con corrección por
+empates (<span class="math inline">\(z_c\)</span>), los criterios de decisión son:<br />
+Si <span class="math inline">\(1-P(Z≤z)≤\alpha\)</span> ó <span class="math inline">\(1-P(Z≤z_c )≤\alpha\)</span> Entonces <strong>Rechazo</strong> <span class="math inline">\(H_0\)</span><br />
+Si <span class="math inline">\(1-P(Z≤z)&gt;\alpha\)</span> ó <span class="math inline">\(1-P(Z≤z_c )&gt;\alpha\)</span> Entonces <strong>No rechazo</strong> <span class="math inline">\(H_0\)</span></p>
+</div>
+</div>
+<div id="ejemplo-2" class="section level2">
+<h2><span class="header-section-number">5.6</span> Ejemplo 2</h2>
+<p>Un ecólogo desea comparar las tallas de raneya (pez demersal bentónico)
+consumidas por machos y hembras del lobo marino. Los largos totales de las
+raneyas fueron estimados a partir de los otolitos hallados en los estómagos.
+Debido a que las hembras son predadores más costeros que los machos y las áreas
+costeras son áreas de cría para diversas especies de peces, el biólogo especula
+que las raneyas consumidas por las hembras deberían ser más pequeñas que las
+consumidas por los machos. Los datos obtenidos fueron:</p>
+<table>
+<caption><span id="tab:ejemplo-2-datos">Tabla 5.3: </span>Largo total (cm) de las
+raneyas consumidas por machos y hembras del lobo marino</caption>
+<thead>
+<tr class="header">
+<th align="right">Machos</th>
+<th align="right">Hembras</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>Teniendo en cuenta que el tamaño muestral de las hembras es mayor que el de los
+machos, se considera como población 1 (X) a las hembras y como población 2 (Y) a
+los machos. En función de esto, las hipótesis para este enunciado son:</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(F(x)=G(x)\)</span><br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(F(x)&gt;G(x)\)</span> ó <span class="math inline">\(E(X)&lt;E(Y)\)</span></p>
+<p>Los cálculos realizados son:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Sexo</th>
+<th align="right">LT</th>
+<th align="right">R_i</th>
+<th align="right">e</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">5</td>
+<td align="right">2.5</td>
+<td align="right">60</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">5</td>
+<td align="right">2.5</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">5</td>
+<td align="right">2.5</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">5</td>
+<td align="right">2.5</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">6</td>
+<td align="right">5.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">8</td>
+<td align="right">6.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">9</td>
+<td align="right">8.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">9</td>
+<td align="right">8.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">9</td>
+<td align="right">8.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Machos</td>
+<td align="right">10</td>
+<td align="right">10.5</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">10</td>
+<td align="right">10.5</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Machos</td>
+<td align="right">11</td>
+<td align="right">12.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">12</td>
+<td align="right">13.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Machos</td>
+<td align="right">13</td>
+<td align="right">15.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">Hembras</td>
+<td align="right">13</td>
+<td align="right">15.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">13</td>
+<td align="right">15.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Machos</td>
+<td align="right">14</td>
+<td align="right">17.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Machos</td>
+<td align="right">15</td>
+<td align="right">19.0</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">Machos</td>
+<td align="right">15</td>
+<td align="right">19.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Hembras</td>
+<td align="right">15</td>
+<td align="right">19.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Machos</td>
+<td align="right">16</td>
+<td align="right">21.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Machos</td>
+<td align="right">17</td>
+<td align="right">22.0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Machos</td>
+<td align="right">20</td>
+<td align="right">23.0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Variante Wilcoxon</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>W</td>
+<td>117,5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>W’</td>
+<td>218,5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>1 cola</td>
+<td>w14;9;0,05</td>
+<td>142</td>
+</tr>
+<tr class="even">
+<td>2 colas</td>
+<td>w14;9;0,025</td>
+<td>137</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>w14;9;0,975</td>
+<td>199</td>
+</tr>
+<tr class="even">
+<td>W1</td>
+<td>-3,19943151</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>1 cola</td>
+<td>Valor p</td>
+<td>0,00068856</td>
+</tr>
+<tr class="even">
+<td>2 colas</td>
+<td>Valor p</td>
+<td>0,00137712</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Variante Mann-Whitney</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2 colas</td>
+<td>U</td>
+<td>113,5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(U_{14;9;0,025}\)</span></td>
+<td>95</td>
+</tr>
+<tr class="odd">
+<td>1 cola</td>
+<td>U</td>
+<td>113,5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(U_{14;9;0,05}\)</span></td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(z\)</span></td>
+<td>3,18120098</td>
+</tr>
+<tr class="even">
+<td>1 cola</td>
+<td>Valor p</td>
+<td>0,00073339</td>
+</tr>
+<tr class="odd">
+<td>2 colas</td>
+<td>Valor p</td>
+<td>0,00146679</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(z_c\)</span></td>
+<td>3,19943151</td>
+</tr>
+<tr class="odd">
+<td>1 cola</td>
+<td>Valor p</td>
+<td>0,00068856</td>
+</tr>
+<tr class="even">
+<td>2 colas</td>
+<td>Valor p</td>
+<td>0,00137712</td>
+</tr>
+</tbody>
+</table>
+<p>De acuerdo a los resultados obtenidos, es posible rechazar la hipótesis nula.<br />
+Considerando la hipótesis a dos colas, es posible rechazar la hipótesis nula.</p>
+<p>Esta prueba puede realizarse con R. Se encuentra en la función wilcox.test() en
+el paquete stats.</p>
+<p>Hay que tener en cuenta que la definición del estadístico <span class="math inline">\(W\)</span> en R es diferente.
+En este caso es la suma de rangos de la primer población <em>menos</em> el mínimo.
+Por lo tanto, el estadístico es el mismo que el <span class="math inline">\(U\)</span> de Mann-Whitney.</p>
+<p>Los resultados para el ejemplo son:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">wilcox.test</span>(datos_ejemplo2<span class="op">$</span>Machos, datos_ejemplo2<span class="op">$</span>Hembras, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning in wilcox.test.default(datos_ejemplo2$Machos,
+## datos_ejemplo2$Hembras, : cannot compute exact p-value with ties</code></pre>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  datos_ejemplo2$Machos and datos_ejemplo2$Hembras
+## W = 113.5, p-value = 0.0007681
+## alternative hypothesis: true location shift is greater than 0</code></pre>
+<p>Nótese que la prueba da el valor de la variante Mann-Whitney. Las mismas consideraciones que se hicieron para la prueba de rangos de Wilcoxon en la sección anterior deben hacerse aquí. Es decir, especificar la cola a usar y rechazar cuando p≤α</p>
+</div>
+<div id="prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas" class="section level2">
+<h2><span class="header-section-number">5.7</span> Prueba de Wilcoxon de rangos con signo para muestras apareadas</h2>
+<p>Esta prueba implica comparar una serie de pares ordenados <span class="math inline">\((x_{i},\ y_{i})\)</span>
+obtenidos de una serie de variables aleatorias bivariadas <span class="math inline">\((X_{i},\ Y_{i})\)</span>.
+Básicamente la prueba se basa en la asignación de rangos a las diferencias
+obtenidas <span class="math inline">\(D_{i}\)</span> para cada uno de los pares ordenados de la muestra. Por lo
+tanto, dada una muestra aleatoria de <span class="math inline">\(N\)</span> pares ordenados, se calculan las
+diferencias como:</p>
+<p><span class="math display">\[
+D_{i} = x_{i} - y_{i}\text{ para }i = 1, 2, 3,\ldots, N
+\]</span></p>
+<p>Una vez obtenidas las <span class="math inline">\(D_{i}\)</span>, se descartan todas las diferencias donde
+<span class="math inline">\(D_{i} = 0\)</span>. De esta forma el tamaño muestral real para la prueba (<span class="math inline">\(n\)</span>) se
+reduce de tal forma que <span class="math inline">\(n \leq N\)</span>. Posteriormente se ordenan las <span class="math inline">\(D_{i}\)</span>
+remanentes de menor a mayor teniendo en cuenta el valor absoluto de las
+diferencias <span class="math inline">\((\left| D_{i} \right|)\)</span>. Luego, se asignan los rangos a las
+<span class="math inline">\(|D_{i}|\)</span> desde <span class="math inline">\(1\)</span> hasta <span class="math inline">\(n\)</span>. En aquellos casos donde las <span class="math inline">\(|D_{i}|\)</span> son
+iguales (empates), se les asigna a todas las diferencias empatadas el promedio
+de los rangos correspondientes. Finalmente, se les asigna a los rangos el signo
+correspondiente a las <span class="math inline">\(D_{i}\)</span> obteniéndose de esta forma los rangos con signo
+<span class="math inline">\(R_{i}\)</span>.</p>
+<div id="supuestos-1" class="section level3">
+<h3><span class="header-section-number">5.7.1</span> Supuestos</h3>
+<p>La prueba de Wilcoxon tiene los siguientes supuestos:</p>
+<p>La distribución de los <span class="math inline">\(D_{i}\)</span> es simétrica.</p>
+<p>Las <span class="math inline">\(D_{i}\)</span> son mutuamente independientes.</p>
+<p>Todas las <span class="math inline">\(D_{i}\)</span> tiene igual media.</p>
+<p>Las <span class="math inline">\(D_{i}\)</span> están medidas utilizando como mínimo una escala de intervalo.</p>
+</div>
+<div id="estadisticos-1" class="section level3">
+<h3><span class="header-section-number">5.7.2</span> Estadísticos</h3>
+<p>Para esta prueba se calculan dos estadísticos, el <span class="math inline">\(T^{+}\)</span> y el <span class="math inline">\(T^{-}\)</span>.
+Ambos estadísticos se calculan como:</p>
+<p><span class="math display">\[
+\begin{matrix}
+T^{+} = \left| \sum_{}^{}R_{i} \right| &amp; \text{si }R_{i} &gt; 0 \\
+T^{-} = \left| \sum_{}^{}R_{i} \right| &amp; \text{si }R_{i} &lt; 0 \\
+\end{matrix}
+\]</span></p>
+<p>Los valores críticos para estos estadísticos wp se obtienen de una tabla
+construida <em>ad hoc</em> para esta prueba (Tabla A12). En esta tabla se presentan los
+valores críticos (cuantiles) para <span class="math inline">\(1 - \alpha\)</span> en el rango 0.005-0.5. Los
+valores para el rango 0.5-0.995 pueden obtenerse como:</p>
+<p><span class="math display">\[
+w_{p} = \frac{n\left( n + 1 \right)}{2} - w_{1 - p}
+\]</span></p>
+<p>presentándose también en 12 el primer término de esta diferencia para facilitar
+el cálculo de los valores críticos. El n es el tamaño muestral efectivo de la
+prueba.</p>
+<p>Para <span class="math inline">\(n &gt; \ 50\)</span> o para aquellos casos con numerosos empates, puede obtenerse
+un estadístico que se distribuye en forma aproximadamente normal y que se
+calcula como:</p>
+<p><span class="math display">\[
+Z = \frac{\sum_{i = 1}^{n}R_{i}}{\sqrt{\sum_{i = 1}^{n}R_{i}^{2}}}
+\]</span></p>
+</div>
+<div id="hipotesis-1" class="section level3">
+<h3><span class="header-section-number">5.7.3</span> Hipótesis</h3>
+<div id="prueba-a-dos-colas-1" class="section level4">
+<h4><span class="header-section-number">5.7.3.1</span> Prueba a dos colas</h4>
+<p>La prueba a dos colas implica poner a prueba las siguientes hipótesis:</p>
+<p><span class="math inline">\(H_{0}:\ E(D) = 0\)</span> ó <span class="math inline">\(E(X) = E(Y)\)</span></p>
+<p><span class="math inline">\(H_{a}:\ E\left( D \right) \neq 0\)</span> ó <span class="math inline">\(E\left( X \right) \neq E(Y)\)</span></p>
+<p>Para poner a prueba esta hipótesis se utiliza el menor de los estadísticos T+ y
+T-, comparando el estadístico con los valores críticos <span class="math inline">\(w_{\alpha/2}\)</span> y <span class="math inline">\(w_{1 - \alpha/2}\)</span>.</p>
+<p>Si <span class="math inline">\(T^{\frac{+}{-}} &gt; \ w_{1 - \frac{\alpha}{2}}\)</span> ó $T^{} &lt;
+w_{} $ Entonces Rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(w_{\frac{\alpha}{2}}\  &lt; T^{\frac{+}{-}} &lt; \ w_{1 - \frac{\alpha}{2}}\)</span>
+Entonces No rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p><em>Empleando la aproximación normal, si</em></p>
+<p>Si <span class="math inline">\(2*\left\lbrack 1 - P\left( z \leq \left| Z \right| \right) \right\rbrack \leq \alpha\)</span> Entonces Rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(2*\left\lbrack 1 - P\left( z \leq \left| Z \right| \right) \right\rbrack &gt; \alpha\)</span> Entonces No rechazo <span class="math inline">\(H_{0}\)</span></p>
+</div>
+<div id="prueba-de-una-cola-a-la-izquierda-1" class="section level4">
+<h4><span class="header-section-number">5.7.3.2</span> Prueba de una cola a la izquierda</h4>
+<p>La prueba de una cola a la izquierda implica poner a prueba las siguientes
+hipótesis:</p>
+<p><span class="math inline">\(H_{0}:\ E\left( D \right) \geq 0\)</span> ó <span class="math inline">\(E\left( X \right) &gt; E(Y)\)</span></p>
+<p><span class="math inline">\(H_{a}:\ E(D) &lt; 0\)</span> ó <span class="math inline">\(E(X) &lt; E(Y)\)</span></p>
+<p>Para poner a prueba esta hipótesis se utiliza el estadístico T+, comparando el
+estadístico con el valor crítico <span class="math inline">\(w_{\alpha}\)</span></p>
+<p>Si $T^{+} &lt; w_{}$ Entonces Rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(T^{+} \geq \text{\ w}\alpha\)</span> Entonces No rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p><em>Empleando la aproximación normal, si</em></p>
+<p>Si <span class="math inline">\(1 - P\left( z \leq \left| Z \right| \right) \leq \alpha\)</span> Entonces Rechazo
+<span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(1 - P\left( z \leq \left| Z \right| \right) &gt; \alpha\)</span> Entonces No rechazo
+<span class="math inline">\(H_{0}\)</span></p>
+</div>
+<div id="prueba-de-una-cola-a-la-derecha" class="section level4">
+<h4><span class="header-section-number">5.7.3.3</span> Prueba de una cola a la derecha</h4>
+<p>La prueba de una cola a la derecha implica poner a prueba las siguientes
+hipótesis:</p>
+<p><span class="math inline">\(H_{0}:\ E\left( D \right) \leq 0\)</span> ó <span class="math inline">\(E\left( X \right) \leq E(Y)\)</span></p>
+<p><span class="math inline">\(H_{a}:\ E(D) &gt; 0\)</span> ó <span class="math inline">\(E(X) &gt; E(Y)\)</span></p>
+<p>Para poner a prueba esta hipótesis se utiliza el estadístico T+, comparando el
+estadístico con el valor crítico w1-α</p>
+<p>Si <span class="math inline">\(T^{+} &gt; \ w_{1 - \alpha}\)</span> Entonces Rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(T^{+}\  \leq w_{1 - \alpha}\)</span>Entonces No rechazo <span class="math inline">\(H_{0}\)</span></p>
+<p><em>Empleando la aproximación normal, si</em></p>
+<p>Si <span class="math inline">\(1 - P\left( z \leq \left| Z \right| \right) \leq \alpha\)</span> Entonces Rechazo
+<span class="math inline">\(H_{0}\)</span></p>
+<p>Si <span class="math inline">\(1 - P\left( z \leq \left| Z \right| \right) &gt; \alpha\)</span> Entonces No rechazo
+<span class="math inline">\(H_{0}\)</span></p>
+<p><strong>Ejemplo 1</strong>: Una especie de ave pone dos huevos por temporada reproductiva. Un
+etólogo desea evaluar si el primer pichón que eclosiona presenta un
+comportamiento menos agresivo que el segundo. Para ello, tomó 12 nidos al azar y
+marcó a los pichones para poder identificar cuál de ellos fue el primero en
+eclosionar. Asimismo, registró el número de “peleas entre hermanos” iniciadas
+por cada pichón. Este registro fue iniciado a partir del momento en que ambos
+pichones estaban en condiciones de iniciar una pelea y finalizó cuando alguno de
+los pichones abandonó el nido. Los datos obtenidos fueron:</p>
+<table>
+<caption><span id="tab:peleas">Tabla 5.4: </span> Número de peleas iniciadas</caption>
+<thead>
+<tr class="header">
+<th>Pichón 1 X</th>
+<th>Pichón 2 Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>96</td>
+<td>91</td>
+</tr>
+<tr class="even">
+<td>65</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>80</td>
+<td>71</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>87</td>
+</tr>
+<tr class="odd">
+<td>76</td>
+<td>77</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>72</td>
+</tr>
+<tr class="odd">
+<td>81</td>
+<td>88</td>
+</tr>
+<tr class="even">
+<td>88</td>
+<td>86</td>
+</tr>
+<tr class="odd">
+<td>90</td>
+<td>91</td>
+</tr>
+<tr class="even">
+<td>64</td>
+<td>68</td>
+</tr>
+<tr class="odd">
+<td>77</td>
+<td>71</td>
+</tr>
+<tr class="even">
+<td>65</td>
+<td>70</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(H_{0}:\ E\left( X \right) \geq E(Y)\)</span> ó <span class="math inline">\(E\left( D \right) &gt; 0\)</span></p>
+<p><span class="math inline">\(H_{a}:\ E\left( X \right) &lt; E(Y)\)</span> ó <span class="math inline">\(E\left( D \right) &lt; 0\)</span></p>
+<p>Cálculo de los estadísticos:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Orden</th>
+<th>X</th>
+<th>Y</th>
+<th><span class="math inline">\(D_{i}\)</span></th>
+<th><span class="math inline">\(\|D_{i}\|\)</span></th>
+<th>Rango</th>
+<th><span class="math inline">\(R_{i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>72</td>
+<td>72</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>76</td>
+<td>77</td>
+<td>-1</td>
+<td>1</td>
+<td>1.5</td>
+<td>-1.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>90</td>
+<td>91</td>
+<td>-1</td>
+<td>1</td>
+<td>1.5</td>
+<td>-1.5</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>88</td>
+<td>86</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>64</td>
+<td>68</td>
+<td>-4</td>
+<td>4</td>
+<td>4</td>
+<td>-4</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>96</td>
+<td>91</td>
+<td>5</td>
+<td>5</td>
+<td>5.5</td>
+<td>5.5</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>65</td>
+<td>70</td>
+<td>-5</td>
+<td>5</td>
+<td>5.5</td>
+<td>-5.5</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>77</td>
+<td>71</td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>81</td>
+<td>88</td>
+<td>-7</td>
+<td>7</td>
+<td>8</td>
+<td>-8</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>80</td>
+<td>71</td>
+<td>9</td>
+<td>9</td>
+<td>9</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>65</td>
+<td>77</td>
+<td>-12</td>
+<td>12</td>
+<td>10</td>
+<td>-10</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>72</td>
+<td>87</td>
+<td>-15</td>
+<td>15</td>
+<td>11</td>
+<td>-11</td>
+</tr>
+<tr class="odd">
+<td>T+</td>
+<td>24.5</td>
+<td></td>
+<td>Valores</td>
+<td>1 cola</td>
+<td>w_{0.05}</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>T-</td>
+<td>41.5</td>
+<td></td>
+<td>críticos</td>
+<td>2 colas</td>
+<td>w_{0.025}</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>11</td>
+<td></td>
+<td></td>
+<td></td>
+<td>w_{0.975}</td>
+<td>55</td>
+</tr>
+<tr class="even">
+<td>Z</td>
+<td>-0.756</td>
+<td></td>
+<td></td>
+<td>P(z &lt; = |Z|)</td>
+<td>0.775</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(1 - P(z \leq |Z|) = p\)</span> (1 cola)</td>
+<td>0.225</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(2*\lbrack 1 - P(z \leq |Z|)\rbrack = p\)</span> (2 colas)</td>
+<td>0.449</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>La conclusión de esta prueba es no rechazar la <span class="math inline">\(H_{0}\)</span>, ya que el <span class="math inline">\(T^{+} &gt; w_{0.05}\)</span>. Utilizando la aproximación normal, la conclusión es similar
+(p=0.225).</p>
+<p>La prueba de Wilcoxon a dos colas puede realizarse con R. Esta prueba se
+encuentra en la función <code>wilcox.test()</code> en el paquete stats. Los resultados para
+el ejemplo son:</p>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  X and Y
+## V = 24.5, p-value = 0.2382
+## alternative hypothesis: true location shift is less than 0</code></pre>
+<p>Nótese que en esta tabla de resultados se presenta como estadístico T al menor
+entre <span class="math inline">\(T^{+}\)</span> y <span class="math inline">\(T^{-}\)</span>, y se nombra como V. Por otro lado, debemos indicar
+que cola queremos usar en el parámetro alternative para que nos calcule la
+probabilidad. Si queremos usar dos colas, la opción por defecto “two.sided” es
+la que queremos. Entonces la probabilidad es calculada como <span class="math inline">\(2*\lbrack P(w \leq W)\rbrack\)</span>, donde w es el valor del estadístico y W es la distribución de
+Wilcoxon. En cambio, si queremos la cola derecha, la opción a usar es “less”; si
+queremos la cola izquierda la opción es “greater”. En el primer caso se calcula
+la <span class="math inline">\(P(w \leq W)\)</span>; mientras que en el segundo caso es calculada su complemento:
+<span class="math inline">\(\operatorname{1-P}\left( w \leq W \right)\)</span>. En todos los casos debemos
+comparar <span class="math inline">\(p\)</span> con nuestro <span class="math inline">\(\alpha\)</span> y la regla de decisión será: Si <span class="math inline">\(p \leq \alpha\)</span> Rechazo <span class="math inline">\(H_{0}\)</span>.</p>
+
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## ── Attaching packages ────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1.9000     ✔ purrr   0.2.4     
+## ✔ tibble  1.4.2          ✔ dplyr   0.7.4     
+## ✔ tidyr   0.8.0          ✔ stringr 1.3.0     
+## ✔ readr   1.1.1          ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     set_names</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">solucion &lt;-<span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Esto se puede hacer sin muchas vueltas con la función <code>gather()</code> del
+paquete <code>tidyr</code>.<a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Ver la función <code>rank()</code><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manejo-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejercicios-de-dos-muestras-no-parametrico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/No-Parametrico-Teoria.Rmd",
+"text": "Edit"
+},
+"download": ["laboratorios.pdf", "laboratorios.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

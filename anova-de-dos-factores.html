@@ -1,0 +1,3641 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Avanzada para Ciencias Naturales</title>
+  <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Avanzada para Ciencias Naturales" />
+  
+  <meta name="twitter:description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales." />
+  
+
+<meta name="author" content="Dr. Luciano Selzer">
+
+
+<meta name="date" content="2018-03-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="anova-no-parametrico.html">
+<link rel="next" href="disenos-experimentales.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Laboratorios de Estadística Avanzada</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> El libro</a></li>
+<li class="chapter" data-level="2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introducción a <em>R</em> y RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#analisis-reproducible"><i class="fa fa-check"></i><b>2.2</b> Análisis Reproducible</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rmarkdown"><i class="fa fa-check"></i><b>2.2.1</b> Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#integrando-codigo"><i class="fa fa-check"></i><b>2.3</b> Integrando código</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Visualización de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#introduccion"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#el-conjunto-de-datos-mpg"><i class="fa fa-check"></i><b>3.2</b> El conjunto de datos <code>mpg</code></a></li>
+<li class="chapter" data-level="3.3" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#graficos-con-ggplot"><i class="fa fa-check"></i><b>3.3</b> Gráficos con ggplot</a></li>
+<li class="chapter" data-level="3.4" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#mapeando"><i class="fa fa-check"></i><b>3.4</b> Mapeando</a></li>
+<li class="chapter" data-level="3.5" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#formas-geometricas"><i class="fa fa-check"></i><b>3.5</b> Formas geometricas</a></li>
+<li class="chapter" data-level="3.6" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#transformaciones-estadisticas"><i class="fa fa-check"></i><b>3.6</b> Transformaciones Estadísticas</a></li>
+<li class="chapter" data-level="3.7" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#ajuste-de-posiciones"><i class="fa fa-check"></i><b>3.7</b> Ajuste de Posiciones</a></li>
+<li class="chapter" data-level="3.8" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#sistemas-de-coordenadas"><i class="fa fa-check"></i><b>3.8</b> Sistemas de Coordenadas</a></li>
+<li class="chapter" data-level="3.9" data-path="visualizacion-de-datos.html"><a href="visualizacion-de-datos.html#personalizando-el-grafico"><i class="fa fa-check"></i><b>3.9</b> Personalizando el gráfico</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html"><i class="fa fa-check"></i><b>4</b> Manejo de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-datos"><i class="fa fa-check"></i><b>4.1</b> Seleccionando datos</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#seleccionando-columnas"><i class="fa fa-check"></i><b>4.2</b> Seleccionando columnas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#agregando-columnas"><i class="fa fa-check"></i><b>4.3</b> Agregando columnas</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#operaciones-por-grupos"><i class="fa fa-check"></i><b>4.4</b> Operaciones por grupos</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formato-ancho-y-formato-largo"><i class="fa fa-check"></i><b>4.5</b> Formato Ancho y Formato Largo</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#por-su-cuenta"><i class="fa fa-check"></i><b>4.6</b> Por su cuenta</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>5</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
+<li class="chapter" data-level="5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>5.1</b> Datos</a></li>
+<li class="chapter" data-level="5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>5.2</b> Supuestos</a></li>
+<li class="chapter" data-level="5.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>5.3</b> Procedimiento básico</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>5.4</b> Estadísticos</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>5.4.1</b> Variante Wilcoxon (W)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>5.4.2</b> Variante Mann-Whitney (U)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>5.5</b> Hipótesis</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>5.5.1</b> Prueba a dos colas</a></li>
+<li class="chapter" data-level="5.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>5.5.2</b> Prueba de una cola a la izquierda</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>5.6</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>5.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>5.7.1</b> Supuestos</a></li>
+<li class="chapter" data-level="5.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>5.7.2</b> Estadísticos</a></li>
+<li class="chapter" data-level="5.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>5.7.3</b> Hipótesis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>6</b> Ejercicios de dos muestras no paramétrico</a><ul>
+<li class="chapter" data-level="6.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>6.1</b> Reproduciendo el algoritmo manualmente</a></li>
+<li class="chapter" data-level="6.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>6.2</b> Funciones no paramétricas en <em>R</em></a></li>
+<li class="chapter" data-level="6.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>6.3</b> Fórmulas</a></li>
+<li class="chapter" data-level="6.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas"><i class="fa fa-check"></i><b>6.4</b> Problemas</a></li>
+<li class="chapter" data-level="6.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>6.5</b> Algunos conceptos importantes</a></li>
+<li class="chapter" data-level="6.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>6.6</b> Diseño de Estudios de ANOVA</a></li>
+<li class="chapter" data-level="6.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>6.7</b> Planificación De Experimentos</a></li>
+<li class="chapter" data-level="6.8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#usos-del-anova"><i class="fa fa-check"></i><b>6.8</b> Usos Del ANOVA</a></li>
+<li class="chapter" data-level="6.9" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>6.9</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>6.9.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ideas-basicas"><i class="fa fa-check"></i><b>6.9.2</b> Ideas Básicas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>6.10</b> Comprobación de los Supuestos</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>6.10.1</b> Prueba para igualdad de varianzas</a></li>
+<li class="chapter" data-level="6.10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>6.10.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
+<li class="chapter" data-level="6.10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#residuos"><i class="fa fa-check"></i><b>6.10.3</b> Residuos</a></li>
+<li class="chapter" data-level="6.10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-residuos"><i class="fa fa-check"></i><b>6.10.4</b> Gráficos de Residuos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones"><i class="fa fa-check"></i><b>6.11</b> Transformaciones</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>6.11.1</b> Transformaciones para estabilizar las Varianzas</a></li>
+<li class="chapter" data-level="6.11.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>6.11.2</b> Transformaciones para corregir la falta de normalidad</a></li>
+<li class="chapter" data-level="6.11.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>6.11.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>6.12</b> Formulación Del Modelo I De ANOVA.</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>6.12.1</b> Características importantes del modelo</a></li>
+<li class="chapter" data-level="6.12.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.12.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.12.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>6.12.3</b> Ajustando El Modelo</a></li>
+<li class="chapter" data-level="6.12.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>6.12.4</b> Estimadores De Mínimos Cuadrados</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>6.13</b> Partición De La Suma De Cuadrados Total</a><ul>
+<li class="chapter" data-level="6.13.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas-computatorias"><i class="fa fa-check"></i><b>6.13.1</b> Fórmulas computatorias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuadrados-medios"><i class="fa fa-check"></i><b>6.14</b> Cuadrados Medios</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>6.14.1</b> Esperanza de los Cuadrados Medios</a></li>
+<li class="chapter" data-level="6.14.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentarios-1"><i class="fa fa-check"></i><b>6.14.2</b> Comentarios</a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.15</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-estadistica"><i class="fa fa-check"></i><b>6.15.1</b> Prueba Estadística</a></li>
+<li class="chapter" data-level="6.15.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>6.15.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
+<li class="chapter" data-level="6.15.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#regla-de-decision"><i class="fa fa-check"></i><b>6.15.3</b> Regla De Decisión</a></li>
+<li class="chapter" data-level="6.15.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentario"><i class="fa fa-check"></i><b>6.15.4</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>6.16</b> Formulación Alternativa Del Modelo I</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.16.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.17</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="6.18" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>6.18</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
+<li class="chapter" data-level="6.18.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.2</b> Estimación de los efectos de los niveles del factor</a></li>
+<li class="chapter" data-level="6.18.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comparaciones-multiples"><i class="fa fa-check"></i><b>6.18.3</b> Comparaciones múltiples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.19" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>6.19</b> Planificación Del Tamaño Muestral</a><ul>
+<li class="chapter" data-level="6.19.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>6.19.1</b> Potencia De La Prueba F</a></li>
+</ul></li>
+<li class="chapter" data-level="6.20" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>6.20</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
+<li class="chapter" data-level="6.20.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>6.20.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
+<li class="chapter" data-level="6.20.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>6.20.2</b> Características importantes del Modelo</a></li>
+<li class="chapter" data-level="6.20.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>6.20.3</b> Cuestiones de Interés</a></li>
+<li class="chapter" data-level="6.20.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>6.20.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
+<li class="chapter" data-level="6.20.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.20.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+<li class="chapter" data-level="6.20.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>6.20.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
+<li class="chapter" data-level="6.20.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>6.20.7</b> Modelo De Efectos Aleatorios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>7</b> Problemas ANOVA Simple</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>7.0.1</b> Recordatorio</a></li>
+<li class="chapter" data-level="7.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas-1"><i class="fa fa-check"></i><b>7.1</b> Problemas</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>7.1.1</b> Contrastes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> ANOVA No Paramétrico</a><ul>
+<li class="chapter" data-level="8.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>8.1</b> Pruebas para varias muestras independientes</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>8.1.1</b> Prueba de la mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>8.2</b> Prueba de Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>8.2.1</b> Datos</a></li>
+<li class="chapter" data-level="8.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>8.2.2</b> Supuestos</a></li>
+<li class="chapter" data-level="8.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>8.2.3</b> Procedimiento</a></li>
+<li class="chapter" data-level="8.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>8.2.4</b> Hipótesis</a></li>
+<li class="chapter" data-level="8.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-2"><i class="fa fa-check"></i><b>8.2.5</b> Contrastes</a></li>
+<li class="chapter" data-level="8.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>8.2.6</b> Comentarios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>9</b> ANOVA DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>9.1</b> Ventajas de los estudios multifactoriales</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>9.1.1</b> Eficiencia:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>9.2</b> Elementos del Modelo</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>9.2.1</b> Efectos principales</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>9.3</b> Representación gráfica</a></li>
+<li class="chapter" data-level="9.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>9.4</b> Interacción</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>9.4.1</b> Interacciones no importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>9.5.1</b> Modelo de las medias de celdas</a></li>
+<li class="chapter" data-level="9.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>9.5.2</b> Modelo de los efectos de los factores</a></li>
+<li class="chapter" data-level="9.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>9.5.3</b> ANOVA (MODELO I)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>9.6</b> Prueba de F</a></li>
+<li class="chapter" data-level="9.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-3"><i class="fa fa-check"></i><b>9.7</b> Contrastes</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>9.7.1</b> Entre Filas</a></li>
+<li class="chapter" data-level="9.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>9.7.2</b> Entre columnas</a></li>
+<li class="chapter" data-level="9.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>9.7.3</b> Interacción</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>9.8</b> Potencia de la prueba F</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>9.8.1</b> Interacción</a></li>
+<li class="chapter" data-level="9.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>9.8.2</b> Prueba para el factor principal A:</a></li>
+<li class="chapter" data-level="9.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>9.8.3</b> Prueba para el factor principal B:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>9.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>9.9.1</b> Modelo sin interacción</a></li>
+<li class="chapter" data-level="9.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>9.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>9.10.1</b> Modelo aleatorio (Modelo II)</a></li>
+<li class="chapter" data-level="9.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>9.10.2</b> Modelo Mixto (Modelo III)</a></li>
+<li class="chapter" data-level="9.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>9.10.3</b> Pruebas estadísticas</a></li>
+<li class="chapter" data-level="9.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>9.10.4</b> Estimación de los componentes de la varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html"><i class="fa fa-check"></i><b>10</b> DISEÑOS EXPERIMENTALES</a><ul>
+<li class="chapter" data-level="10.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#bloques-al-azar"><i class="fa fa-check"></i><b>10.1</b> Bloques al azar</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#diseno-de-experimentos"><i class="fa fa-check"></i><b>10.1.1</b> Diseño de experimentos</a></li>
+<li class="chapter" data-level="10.1.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#elementos-de-los-disenos-de-bloques-al-azar"><i class="fa fa-check"></i><b>10.1.2</b> Elementos de los Diseños de Bloques al Azar</a></li>
+<li class="chapter" data-level="10.1.3" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#criterios-para-definir-los-bloques"><i class="fa fa-check"></i><b>10.1.3</b> Criterios para definir los bloques</a></li>
+<li class="chapter" data-level="10.1.4" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#ventajas-y-desventajas"><i class="fa fa-check"></i><b>10.1.4</b> Ventajas y desventajas</a></li>
+<li class="chapter" data-level="10.1.5" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#modelo"><i class="fa fa-check"></i><b>10.1.5</b> Modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza-y-pruebas"><i class="fa fa-check"></i><b>10.2</b> Análisis de la varianza y pruebas</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#analisis-de-la-varianza"><i class="fa fa-check"></i><b>10.2.1</b> Análisis de la varianza</a></li>
+<li class="chapter" data-level="10.2.2" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html#prueba-de-tukey-de-aditividad"><i class="fa fa-check"></i><b>10.2.2</b> Prueba de Tukey de Aditividad</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>11</b> Regresión</a><ul>
+<li class="chapter" data-level="11.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>11.1</b> Regresión Lineal Simple</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>12</b> Ordenación en Espacios Reducidos</a></li>
+<li class="chapter" data-level="13" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>13</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>13.1</b> Biplots</a></li>
+<li class="chapter" data-level="13.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Avanzada para Ciencias Naturales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova-de-dos-factores" class="section level1">
+<h1><span class="header-section-number">Capítulo 9</span> ANOVA DE DOS FACTORES</h1>
+<div id="ventajas-de-los-estudios-multifactoriales" class="section level2">
+<h2><span class="header-section-number">9.1</span> Ventajas de los estudios multifactoriales</h2>
+<div id="eficiencia" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Eficiencia:</h3>
+<div id="cantidad-de-informacion-permiten-estudiar-la-interaccion-de-los-factores." class="section level4">
+<h4><span class="header-section-number">9.1.1.1</span> Cantidad de Información: Permiten estudiar la <em>interacción</em> de los factores.</h4>
+<p><em>Validez de las decisiones</em>: los experimentos multifactoriales también pueden
+robustecer la validez de las decisiones.</p>
+<p><em>Comentarios</em>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Los análisis multifactoriales permiten una evaluación efectiva de los
+efectos de la interacción y economiza el número de casos requeridos para el
+análisis.</p></li>
+<li><p>Experimentos involucrando muchos factores, cada uno con numerosos niveles,
+se vuelven complejos, costosos e insumen tiempo.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="elementos-del-modelo" class="section level2">
+<h2><span class="header-section-number">9.2</span> Elementos del Modelo</h2>
+<p><em>Ejemplo</em>: Consideremos un estudio de dos factores, en el cual son de interés
+los efectos del sexo y la edad en el aprendizaje de una tarea. El factor edad lo
+definimos en términos de sólo tres niveles (adolescente, adulto joven, anciano).</p>
+<p>La respuesta para un dado tratamiento, en un estudio de dos factores, es
+indicada por µij, donde i hace referencia al nivel del factor <span class="math inline">\(A\)</span> (<span class="math inline">\(i = 1,2,\ldots,I\)</span>) y j se refiere al nivel del factor <span class="math inline">\(B\)</span> (<span class="math inline">\(j = 1,2,\ldots,J\)</span>).</p>
+<table>
+<caption><span id="tab:aprendizaje1">Tabla 9.1: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+hombres de tres edades. Caso sin interacción y sin efecto del factor <em>Sexo</em>.</caption>
+<colgroup>
+<col width="17%" />
+<col width="30%" />
+<col width="16%" />
+<col width="14%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>SEXO</th>
+<th>EDAD</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>Adolescente (j=1)</strong></td>
+<td><strong>Adulto joven (j=2)</strong></td>
+<td><strong>Anciano (j=3) </strong></td>
+<td><span class="math inline">\(\mathbf{\mu_{i\bullet}}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Masculino (<span class="math inline">\(i = 1\)</span>)</strong></td>
+<td>9 (<span class="math inline">\(\mu_{11}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{12}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{13}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{1\bullet}\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Femenino (<span class="math inline">\(i = 2\)</span>)</strong></td>
+<td>9 (<span class="math inline">\(\mu_{21}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{22}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{23}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{2\bullet}\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(\mu_{\bullet j}\)</span></strong></td>
+<td>9 (<span class="math inline">\(\mu_{\bullet1}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{\bullet2}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{\bullet3}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{\bullet\bullet}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>Indicamos</p>
+<p><span class="math display">\[
+\mu_{\bullet j} = \frac{\sum_{i = 1}^{I}\mu_{ij}}{I}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\mu_{i \bullet} = \frac{\sum_{j = 1}^{J}\mu_{ij}}{J}
+\]</span></p>
+<p>La media general se indica cómo <span class="math inline">\(\mu_{\bullet \bullet}\)</span>, y es definida en las
+siguientes formas equivalentes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mu_{\bullet \bullet} &amp;= \frac{\sum_{i = 1}^{I}{\sum_{j = 1}^{J}\mu_{ij}}}{ij}\\
+\mu_{\bullet \bullet} &amp;= \frac{\sum_{i = 1}^{I}\mu_{i \bullet}}{I}\\
+\mu_{\bullet \bullet} &amp;= \frac{\sum_{j = 1}^{J}\mu_{\bullet j}}{J}
+\end{aligned}
+\]</span></p>
+<div id="efectos-principales" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Efectos principales</h3>
+<p>Definimos el efecto principal del factor <span class="math inline">\(A\)</span> al i-ésimo nivel, como:</p>
+<p><span class="math display">\[
+\alpha_{i} = \mu_{i \bullet} - \mu_{\bullet \bullet}
+\]</span></p>
+<p>En el ejemplo:</p>
+<p><span class="math display">\[
+\alpha_{1} = \mu_{1 \bullet} - \mu_{\bullet \bullet} = 912 = - 3
+\]</span></p>
+<p>De forma similar, el efecto principal del j-ésimo nivel del facto B se define:</p>
+<p><span class="math display">\[
+\beta_{j} = \mu_{\bullet j} - \mu_{\bullet \bullet}
+\]</span></p>
+<p>En el ejemplo:</p>
+<p><span class="math display">\[
+\beta_{1} = \mu_{\bullet 1} - \mu_{\bullet \bullet}\bullet \bullet = 1212 = 0
+\]</span></p>
+<p>Se sigue que:</p>
+<p><span class="math display">\[
+\begin{matrix}
+\sum_{i}^{}\alpha_{i} = 0 &amp; \sum_{j}^{}\beta_{j} = 0 \\
+\end{matrix}
+\]</span></p>
+<p>Así, la suma de los efectos principales para cada factor es cero.</p>
+<div id="aditividad-de-los-efectos-de-los-factores" class="section level4">
+<h4><span class="header-section-number">9.2.1.1</span> Aditividad de los efectos de los factores</h4>
+<p>En general, si los efectos son aditivos se tiene:</p>
+<p><span class="math display">\[
+\mu_{ij} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j}
+\]</span></p>
+<p>lo que se puede expresar de forma equivalente, usando la definición de
+<span class="math inline">\(\alpha_{i}\)</span> y de <span class="math inline">\(\beta_{j}\)</span>, como:</p>
+<p><span class="math display">\[
+\mu_{ij} = \mu_{\bullet \bullet} + \mu_{i \bullet} + \mu_{\bullet j}
+\]</span></p>
+<p>En el ejemplo</p>
+<p><span class="math display">\[
+\mu_{11} = \mu_{\bullet \bullet} + \alpha_{I} + \beta_{j} = 12 + 0 + ( - 3) = 9
+\]</span></p>
+<p>Cuando todos los tratamientos pueden ser expresados en esta forma, se dice que
+los factores principales <em>no interactúan</em>, o que los efectos de los factores son
+<em>aditivos</em>.</p>
+</div>
+</div>
+</div>
+<div id="representacion-grafica" class="section level2">
+<h2><span class="header-section-number">9.3</span> Representación gráfica</h2>
+<p>Una de las mejores formas para representar este tipo de datos es un gráfico de
+líneas y puntos. En el eje de las abscisas va una de las variables y en el eje
+de las ordenadas la variable de respuesta. Se grafica cada observación o media
+como punto y se unen los puntos de los niveles que son iguales para la otra
+variable. Este tipo de gráfico permite ver si las lineas son paralelas. Si lo
+son indica que los efectos de los factores son aditivos. La falta de paralelismo
+puede estar indicando que hay interacción.</p>
+<p>(ref:interaccion1) Gráfico de interacción para las medias del tiempo de
+aprendizaje. Los datos graficados corresponden a y d Tabla
+<a href="anova-de-dos-factores.html#tab:aprendizaje1">9.1</a>, b y e Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje2">9.2</a>, c y f Tabla
+<a href="anova-de-dos-factores.html#tab:aprendizaje3">9.3</a>,</p>
+<div class="figure"><span id="fig:interaccion1"></span>
+<img src="anova-dos-factores_files/figure-html/interaccion1-1.png" alt="(ref:interaccion1)" width="672" /><img src="anova-dos-factores_files/figure-html/interaccion1-2.png" alt="(ref:interaccion1)" width="672" />
+<p class="caption">
+Figura 9.1: (ref:interaccion1)
+</p>
+</div>
+<table>
+<caption><span id="tab:aprendizaje2">Tabla 9.2: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+hombres de tres edades. Caso sin interacción y efecto del factor <em>Sexo</em>.</caption>
+<colgroup>
+<col width="17%" />
+<col width="19%" />
+<col width="20%" />
+<col width="18%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>SEXO</th>
+<th>EDAD</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>Adolescente (<span class="math inline">\(j = 1\)</span>)</strong></td>
+<td><strong>Adulto joven (<span class="math inline">\(j = 2\)</span>)</strong></td>
+<td><strong>Anciano (<span class="math inline">\(j = 3\)</span>) </strong></td>
+<td><strong><span class="math inline">\(\mu_{i\bullet}\)</span></strong></td>
+</tr>
+<tr class="even">
+<td><strong>Masculino (<span class="math inline">\(i = 1\)</span>)</strong></td>
+<td>11 (<span class="math inline">\(\mu_{11}\)</span>)</td>
+<td>13 (<span class="math inline">\(\mu_{12}\)</span>)</td>
+<td>18 (<span class="math inline">\(\mu_{13}\)</span>)</td>
+<td>14 (<span class="math inline">\(\mu_{1 \bullet}\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Femenino (<span class="math inline">\(i = 2\)</span>)</strong></td>
+<td>7 (<span class="math inline">\(\mu_{21}\)</span>)</td>
+<td>9 (<span class="math inline">\(\mu_{22}\)</span>)</td>
+<td>14 (<span class="math inline">\(\mu_{23}\)</span>)</td>
+<td>10 (<span class="math inline">\(\mu_{2 \bullet}\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(\mu_{\bullet j}\)</span></strong></td>
+<td>9 (<span class="math inline">\(\mu_{\bullet 1}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{\bullet 2}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{\bullet 3}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{\bullet \bullet}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="interaccion" class="section level2">
+<h2><span class="header-section-number">9.4</span> Interacción</h2>
+<p><span class="math display">\[
+\mu_{ij} = \mu_{\bullet\bullet} + \alpha_i + \beta_j
+\]</span>
+Si esto se cumple, los efectos serán aditivos; de lo contrario los factores
+interactúan.</p>
+<table>
+<caption><span id="tab:aprendizaje3">Tabla 9.3: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+hombres de tres edades. Caso con interacción.</caption>
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="16%" />
+<col width="14%" />
+<col width="18%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>SEXO</th>
+<th>EDAD</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>Adolescente (<span class="math inline">\(j = 1\)</span>)</strong></td>
+<td><strong>Adulto joven (<span class="math inline">\(j = 2\)</span>)</strong></td>
+<td><strong>Anciano (<span class="math inline">\(j = 3\)</span>)</strong></td>
+<td><strong><span class="math inline">\(\mu_{i\bullet}\)</span></strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Masculino (<span class="math inline">\(i = 1\)</span>)</strong></td>
+<td>9 (<span class="math inline">\(\mu_{11}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{12}\)</span>)</td>
+<td>18 (<span class="math inline">\(\mu_{13}\)</span>)</td>
+<td>13 (<span class="math inline">\(\mu_{1 \bullet}\)</span>)</td>
+<td>1( <span class="math inline">\(\alpha_{1}\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Femenino (<span class="math inline">\(i = 2\)</span>)</strong></td>
+<td>9 (<span class="math inline">\(\mu_{21}\)</span>)</td>
+<td>10 (<span class="math inline">\(\mu_{22}\)</span>)</td>
+<td>14 (<span class="math inline">\(\mu_{23}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{2 \bullet}\)</span>)</td>
+<td>-1 (<span class="math inline">\(\alpha_{2}\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(\mu_{\bullet j}\)</span></strong></td>
+<td>9 (<span class="math inline">\(\mu_{\bullet 1}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{\bullet 2}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{\bullet 3}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{\bullet \bullet}\)</span>)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>-3 (<span class="math inline">\(\beta_{1}\)</span>)</td>
+<td>-1 (<span class="math inline">\(\beta_{2}\)</span>)</td>
+<td>4 (<span class="math inline">\(\beta_{3}\)</span>)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para el ejemplo de la tabla, es claro que los efectos de los factores
+interactúan, por ejemplo:</p>
+<p><span class="math display">\[
+\mu_{\bullet \bullet} + \alpha_{1} + \beta_{1} = 12 + 1 + ( - 3) = 10
+\]</span></p>
+<p>mientras que <span class="math inline">\(\mu_{11} = 9\)</span>.</p>
+<p>La diferencia entre la media del tratamiento <span class="math inline">\(\mu_{ij}\)</span> y el valor
+(<span class="math inline">\(\mu_{\bullet \bullet} + \alpha_{i} + \beta_{j}\)</span>) es llamada la <em>interacción</em>
+del i-ésimo nivel del factor <span class="math inline">\(A\)</span> con el j-ésimo nivel del factor <span class="math inline">\(B\)</span>, se simboliza
+<span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> y la definimos como:</p>
+<p><span class="math display">\[
+\left( \alpha\beta \right)_{ij} = \mu_{ij} - (\mu_{\bullet \bullet} + \alpha_{i} + \beta_{j})
+\]</span></p>
+<p>Reemplazando <span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\beta_{j}\)</span> por su definición, se obtiene la
+siguiente expresión alternativa:</p>
+<p><span class="math display">\[
+\left( \alpha\beta \right)_{ij} = \mu_{ij} - \mu_{I \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet}
+\]</span></p>
+<p>Por ejemplo, la interacción para:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left( \alpha\beta \right)_{13}&amp; = \mu_{13}\left( \mu_{\bullet \bullet} + \alpha_{1} + \beta_{3} \right) \\
+&amp; = 18\left( 12 + 1 + 4 \right) \\
+&amp; = 1 \\
+\end{aligned}
+\]</span></p>
+<table>
+<caption><span id="tab:efectos">Tabla 9.4: </span> Efectos de <span class="math inline">\(\alpha \beta_{ij}\)</span>.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(j = 1\)</span></th>
+<th><span class="math inline">\(j = 2\)</span></th>
+<th><span class="math inline">\(j = 3\)</span></th>
+<th>Promedio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(i = 1\)</span></td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(i = 2\)</span></td>
+<td>1</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Promedio</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<div id="interacciones-no-importantes" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Interacciones no importantes</h3>
+<p>Muchas veces se detectan interacciones pero estas son pequeñas y no cambian
+las conclusiones que se pueden sacar sobre el efecto de los factores
+principales.</p>
+<table>
+<caption><span id="tab:aprendizaje4">Tabla 9.5: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+hombres de tres edades. Caso con interacción no importante.</caption>
+<colgroup>
+<col width="17%" />
+<col width="19%" />
+<col width="20%" />
+<col width="18%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>SEXO</th>
+<th>EDAD</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>Adolescente (<span class="math inline">\(j = 1\)</span>)</strong></td>
+<td><strong>Adulto joven (<span class="math inline">\(j = 2\)</span>)</strong></td>
+<td><strong>Anciano (<span class="math inline">\(j = 3\)</span>) </strong></td>
+<td><strong><span class="math inline">\(\mu_{i\bullet}\)</span></strong></td>
+</tr>
+<tr class="even">
+<td><strong>Masculino (<span class="math inline">\(i = 1\)</span>)</strong></td>
+<td>9.75 (<span class="math inline">\(\mu_{11}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{12}\)</span>)</td>
+<td>17.25 (<span class="math inline">\(\mu_{13}\)</span>)</td>
+<td>14 (<span class="math inline">\(\mu_{1 \bullet}\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Femenino (<span class="math inline">\(i = 2\)</span>)</strong></td>
+<td>8.25 (<span class="math inline">\(\mu_{21}\)</span>)</td>
+<td>10 (<span class="math inline">\(\mu_{22}\)</span>)</td>
+<td>14.75 (<span class="math inline">\(\mu_{23}\)</span>)</td>
+<td>10 (<span class="math inline">\(\mu_{2 \bullet}\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(\mu_{\bullet j}\)</span></strong></td>
+<td>9 (<span class="math inline">\(\mu_{\bullet 1}\)</span>)</td>
+<td>11 (<span class="math inline">\(\mu_{\bullet 2}\)</span>)</td>
+<td>16 (<span class="math inline">\(\mu_{\bullet 3}\)</span>)</td>
+<td>12 (<span class="math inline">\(\mu_{\bullet \bullet}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>(ref:interaccion-no-importante) Gráfico de interacción para las medias del tiempo de
+aprendizaje. Los datos graficados corresponden a la Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje4">9.5</a></p>
+<div class="figure"><span id="fig:interaccion-no-importante"></span>
+<img src="anova-dos-factores_files/figure-html/interaccion-no-importante-1.png" alt="(ref:interaccion-no-importante)" width="50%" /><img src="anova-dos-factores_files/figure-html/interaccion-no-importante-2.png" alt="(ref:interaccion-no-importante)" width="50%" />
+<p class="caption">
+Figura 9.2: (ref:interaccion-no-importante)
+</p>
+</div>
+<div id="interacciones-transformables-y-no-transformables" class="section level4">
+<h4><span class="header-section-number">9.4.1.1</span> Interacciones transformables y no transformables</h4>
+<p><em>Efectos de los factores multiplicativos</em></p>
+<p>Consideremos el caso donde los efectos de los factores son multiplicativos, en
+lugar de aditivos:</p>
+<p><span class="math inline">\(\mu_{ij} = \mu_{\bullet \bullet}\alpha_{i}\beta_{j}\)</span></p>
+<p>Estas interacciones pueden ser eliminadas aplicando la transformación
+logarítmica:</p>
+<p><span class="math display">\[
+\log(\mu_{ij}) = \log(\mu_{\bullet \bullet}) + \log(\alpha_{i}) + \log(\beta_{j})
+\]</span></p>
+<p>o sea</p>
+<p><span class="math display">\[
+{u&#39;}_{ij} = {u&#39;}_{\bullet \bullet} + \alpha_{i}^{&#39;} + \beta_{j}^{&#39;}
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+\mu_{ij}^{&#39;} = log \mu_{ij} &amp; \mu_{\bullet \bullet}^{&#39;} = log \mu_{\bullet \bullet} &amp; \alpha_{i}^{&#39;} = \log\alpha_{i} &amp; \beta_{j}^{&#39;} = \log\beta_{j}
+\end{matrix}
+\]</span></p>
+<p>Entonces se usa la variable <span class="math inline">\(Y&#39; = \log Y\)</span></p>
+<p>Cuando una simple transformación de Y remueve los efectos de la interacción o
+los hace poco importantes, decimos que la interacción es <em>transformable</em>.</p>
+<p><em>Interacciones multiplicativas</em></p>
+<p>Otro ejemplo de interacciones transformables aparece cuando cada efecto de
+interacción es igual al producto de funciones de los efectos principales.</p>
+<p><span class="math display">\[
+\mu_{ij} = \alpha_{i} + \beta_{j} + 2\sqrt{\alpha_{i}}\sqrt{\beta_{j}}
+\]</span></p>
+<p>o lo que es lo mismo</p>
+<p><span class="math display">\[
+\mu_{ij} = \left( \sqrt{\alpha_{i}}\sqrt{\beta_{j}} \right)^{2}
+\]</span></p>
+<p>Si se aplica la transformación raíz cuadrada, se obtiene:</p>
+<p><span class="math display">\[
+\mu_{ij}^{&#39;} = \alpha_{i}^{&#39;} + \beta_{j}^{&#39;}
+\]</span></p>
+<p>donde:</p>
+<p><span class="math display">\[
+\begin{matrix}
+{u^{&#39;}}_{ij} = \sqrt{\mu_{ij}} &amp; \alpha_{i}^{&#39;} = \sqrt{\alpha_{i}} &amp; \beta_{j}^{&#39;} = \sqrt{\beta_{i}} \\
+\end{matrix}
+\]</span></p>
+<p>Las transformaciones que convierten las interacciones importantes en no
+importantes son: cuadrado, raíz cuadrada, logaritmo y recíproca.</p>
+<table>
+<caption><span id="tab:ejemplo-transformaciones">Tabla 9.6: </span> Ejemplo de transformacion de medias
+de tratamientos: a) Medias de tratamientos escala original b) Medias de tratamientos después de la transformación <span class="math inline">\(\sqrt{}\)</span></caption>
+<thead>
+<tr class="header">
+<th>factor <span class="math inline">\(A\)</span></th>
+<th>factor <span class="math inline">\(B\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(j = 1\)</span></td>
+<td><span class="math inline">\(j = 2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(i = 1\)</span></td>
+<td>16</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(i = 2\)</span></td>
+<td>49</td>
+<td>121</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(i = 3\)</span></td>
+<td>64</td>
+<td>144</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>factor <span class="math inline">\(A\)</span></th>
+<th>factor <span class="math inline">\(B\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(j = 1\)</span></td>
+<td><span class="math inline">\(j = 2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(i = 1\)</span></td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(i = 2\)</span></td>
+<td>7</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(i = 3\)</span></td>
+<td>8</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="modelo-i-para-estudios-de-dos-factores" class="section level2">
+<h2><span class="header-section-number">9.5</span> MODELO I PARA ESTUDIOS DE DOS FACTORES</h2>
+<p>El factor <span class="math inline">\(A\)</span> es estudiado en <span class="math inline">\(I\)</span> niveles, y estos no representan una muestra
+aleatoria de todos los niveles posibles de <span class="math inline">\(A\)</span>. De manera equivalente el factor
+<span class="math inline">\(B\)</span> se estudia sobre <span class="math inline">\(J\)</span> niveles. Todas las <span class="math inline">\(IJ\)</span> combinaciones de los niveles de
+los factores son incluidas en el análisis. El número de casos para cada uno de
+los <span class="math inline">\(IJ\)</span> tratamientos es el mismo, lo indicamos con <span class="math inline">\(n\)</span>, y es necesario que <span class="math inline">\(n &gt; 1\)</span>. Entonces el número total de casos es:</p>
+<p><span class="math display">\[
+N  =  IJn
+\]</span></p>
+<div id="modelo-de-las-medias-de-celdas" class="section level3">
+<h3><span class="header-section-number">9.5.1</span> Modelo de las medias de celdas</h3>
+<p>Se puede expresar el modelo de niveles del factor fijos en términos de las
+medias de los tratamientos.</p>
+<p><span class="math display">\[
+Y_{\text{ijk}} = \mu_{ij} + \varepsilon_{\text{ijk}}
+\]</span></p>
+<p><span class="math display">\[
+i = 1,2,\ldots,I;j = 1,2,\ldots,J;k = 1,2,\ldots,n
+\]</span></p>
+<div id="caracteristicas-importantes-del-modelo-2" class="section level4">
+<h4><span class="header-section-number">9.5.1.1</span> Características importantes del Modelo</h4>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(E(Y_{\text{ijk}}) = \mu_{ij}\)</span></p></li>
+<li><p><span class="math inline">\(Var(Y_{\text{ijk}}) = Var(\varepsilon_{\text{ijk}}) = \sigma^{2}\)</span></p></li>
+<li><p><span class="math inline">\(Y_ijk\)</span> son independientes y se distribuyen <span class="math inline">\(N\left( 0,\sigma^{2} \right)\)</span></p></li>
+<li><p>El modelo de ANOVA es un modelo lineal.</p></li>
+<li><p>El modelo de ANOVA de dos factores es similar al de un factor. Normalidad,
+independencia de los términos del error y constancia de la varianza para los
+términos del error son propiedades de ambos modelos.</p></li>
+</ol>
+</div>
+</div>
+<div id="modelo-de-los-efectos-de-los-factores" class="section level3">
+<h3><span class="header-section-number">9.5.2</span> Modelo de los efectos de los factores</h3>
+<p>Una forma equivalente de enunciar el modelo se obtiene de la definición de
+interacción:</p>
+<p><span class="math display">\[
+\left( \alpha\beta \right)_{ij} = \mu_{ij}(\mu_{\bullet \bullet} + \alpha_{i} + \beta_{j})
+\]</span></p>
+<p>Reordenando términos se obtiene:</p>
+<p><span class="math display">\[
+\mu_{ij} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij}
+\]</span></p>
+<p>donde:</p>
+<p><span class="math display">\[
+\mu_{\bullet \bullet} = \frac{\sum_{i = 1}^{I}{\sum_{j = 1}^{J}\mu_{ij}}}{IJ}
+\]</span></p>
+<p><span class="math display">\[
+\alpha_{i} = \mu_{i \bullet} - \mu_{\bullet \bullet}
+\]</span></p>
+<p><span class="math display">\[
+\beta_{j} = \mu_{\bullet j} - \mu_{\bullet \bullet}
+\]</span></p>
+<p><span class="math display">\[
+\left( \alpha\beta \right)_{ij} = \mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} - \mu_{\bullet \bullet}
+\]</span></p>
+<p>La media de la celda µij para cualquier tratamiento puede ser vista como la suma
+de cuatro componentes de los efectos de los factores. Específicamente:</p>
+<ol style="list-style-type: decimal">
+<li><p>Una constante general <span class="math inline">\(\mu_{\bullet \bullet}\)</span>.</p></li>
+<li><p>El efecto principal <span class="math inline">\(\alpha_{i}\)</span> del factor <span class="math inline">\(A\)</span> en el i-ésimo nivel.</p></li>
+<li><p>El efecto principal <span class="math inline">\(\beta_{j}\)</span> del factor <span class="math inline">\(B\)</span> en el j-ésimo nivel.</p></li>
+<li><p>El efecto de la interacción <span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span></p></li>
+</ol>
+<p>Reemplazando <span class="math inline">\(\mu_{ij}\)</span> en el modelo de las medias de las celdas, se
+obtiene:</p>
+<p><span class="math display">\[
+Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+\]</span></p>
+<p>donde:</p>
+<p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante<br />
+<span class="math inline">\(\alpha_{i}\)</span> son constantes sujetas a la restricción <span class="math inline">\(\sum\alpha_{i} = 0\)</span><br />
+<span class="math inline">\(\beta_{j}\)</span> son constantes sujetas a la restricción <span class="math inline">\(\sum\beta_{j} = 0\)</span><br />
+<span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> son constantes sujetas a las
+restricciones</p>
+<p><span class="math display">\[
+\begin{matrix}
+\sum_{i}^{I}\left( \alpha\beta \right)_{ij} = 0 &amp; \sum_{j}^{J}\left( \alpha\beta \right)_{ij} = 0 \\
+\end{matrix}
+\]</span></p>
+<p><span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes y se distribuyen <span class="math inline">\(N(0,\
+\sigma^{2})\)</span></p>
+</div>
+<div id="anova-modelo-i" class="section level3">
+<h3><span class="header-section-number">9.5.3</span> ANOVA (MODELO I)</h3>
+<div id="notacion" class="section level4">
+<h4><span class="header-section-number">9.5.3.1</span> Notación</h4>
+<p><span class="math display">\[
+{\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{\text{ijk}}}{n}
+\]</span></p>
+<p><span class="math display">\[
+{\overline{Y}_{i \bullet \bullet} = \frac{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{Jn}}
+\]</span></p>
+<p><span class="math display">\[
+{\overline{Y}_{\bullet j \bullet} = \frac{\sum_{i}^{I}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{In}}
+\]</span></p>
+<p><span class="math display">\[
+{\overline{Y}_{\bullet \bullet \bullet} = \frac{\sum_{i}^{I}{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}}{\text{IJn}}
+\]</span></p>
+</div>
+<div id="ajuste-del-modelo" class="section level4">
+<h4><span class="header-section-number">9.5.3.2</span> Ajuste del modelo</h4>
+<div id="modelo-de-las-medias-de-celda" class="section level5">
+<h5><span class="header-section-number">9.5.3.2.1</span> Modelo de las medias de celda</h5>
+<p>El cuadrado a minimizar es el siguiente:</p>
+<p><span class="math display">\[
+\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{ij} \right)^{2}
+\]</span></p>
+<p>Minimizando se obtiene:</p>
+<p><span class="math display">\[
+{\hat{\mu}}_{ij} = {\overline{Y}_{ij \bullet}
+\]</span></p>
+<p>Los residuos se definen como la diferencia entre los valores observados y los
+estimados:</p>
+<p><span class="math display">\[
+\varepsilon_{\text{ijk}} = Y_{\text{ijk}} - {\overline{Y}_{ij \bullet}
+\]</span></p>
+</div>
+<div id="modelo-de-los-efectos-del-factor" class="section level5">
+<h5><span class="header-section-number">9.5.3.2.2</span> Modelo de los efectos del factor</h5>
+<p>El cuadrado a minimizar es el siguiente:</p>
+<p><span class="math display">\[
+\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
+\]</span></p>
+<p>sujeto a las restricciones:</p>
+<p><span class="math display">\[
+\begin{matrix}
+\sum_{i}^{I}\alpha_{i} = 0 &amp; \sum_{j}^{J}\beta_{j} = 0 &amp; \sum_{i}^{I}\left( \alpha\beta \right)_{ij} = 0 &amp; \sum_{j}^{J}\left( \alpha\beta \right)_{ij} = 0 \\
+\end{matrix}
+\]</span></p>
+<p>Cuando se minimiza se obtienen los siguientes estimadores de mínimos cuadrados:</p>
+<table>
+<colgroup>
+<col width="37%" />
+<col width="62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Estimador</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu_{\bullet \bullet}\)</span></td>
+<td><span class="math inline">\({\overline{Y}_{\bullet \bullet \bullet}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\alpha_{i} = \mu_{i \bullet} - \mu_{\bullet \bullet}\)</span></td>
+<td><span class="math inline">\(\overline{Y}_{i \bullet \bullet} - \overline{Y}_{\bullet \bullet \bullet}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_{j} = \mu_{\bullet j} - \mu_{\bullet \bullet}\)</span></td>
+<td><span class="math inline">\(\overline{Y}_{\bullet j \bullet} - \overline{Y}_{\bullet \bullet \bullet}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\left( \alpha\beta \right)_{ij} = \mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet}\)</span></td>
+<td><span class="math inline">\(\overline{Y}_{ij \bullet} - \overline{Y}_{i \bullet \bullet} - \overline{Y}_{\bullet j \bullet} + \overline{Y}_{\bullet \bullet \bullet}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="descomposicion-de-la-suma-de-cuadrados-total" class="section level5">
+<h5><span class="header-section-number">9.5.3.2.3</span> Descomposición de la suma de cuadrados total</h5>
+<p>Para una observación, se puede descomponer la desviación con respecto a la media
+total, en dos partes:</p>
+<p><span class="math display">\[
+\begin{matrix}
+\underbrace{\left ( Y_{ijk}-\overline{Y}_{\bullet\bullet\bullet} \right )} &amp; = &amp; \underbrace{\left ( \overline{Y}_{ij\bullet}-\overline{Y}_{\bullet\bullet\bullet} \right )}&amp; + &amp; \underbrace{\left ( Y_{ijk}-\overline{Y}_{ij\bullet} \right )}\\
+\text{Desviacion Total} &amp; &amp; \text{Desviacion de los tratamientos} &amp; &amp; \text{Desviacion de las observaciones}  \\
+\end{matrix}
+\]</span></p>
+<p>También se puede descomponer la desviación estimada de la media de los
+tratamientos en:</p>
+<p><span class="math display">\[
+\begin{matrix}
+  \underbrace{\overline{Y}_{ij\bullet} - \overline{Y}_{\bullet \bullet \bullet}}&amp; = &amp; \underbrace{\overline{Y}_{i\bullet\bullet} - \overline{Y}_{\bullet \bullet \bullet}} &amp; + &amp; \underbrace{\overline{Y}_{\bullet j \bullet} - \overline{Y}_{\bullet \bullet \bullet}} &amp; + &amp; \underbrace{\overline{Y}_{ij \bullet} - \overline{Y}_{i \bullet \bullet} - \overline{Y}_{\bullet j \bullet} + \overline{Y}_{\bullet \bullet \bullet}} \\
+\text{Desviacion de} &amp; &amp; \text{Efecto principal} &amp; &amp; \text{Efecto principal} &amp; &amp; \text{Efecto de}  \\
+\text{ los tratamientos} &amp; &amp; \text{A} &amp; &amp; \text{B} &amp; &amp; \text{ la interaccion}
+\end{matrix}
+\]</span></p>
+<p>###TABLA DE ANOVA PARA DOS FACTORES. MODELO I</p>
+<p><em>Más de una observación por celda</em></p>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="33%" />
+<col width="2%" />
+<col width="15%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fuente de variación</th>
+<th>SC</th>
+<th>GL</th>
+<th>CM</th>
+<th>E(CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre tratamientos</td>
+<td><span class="math inline">\(SC_{E} = n\sum_{ij}^{}\overline{Y}_{ij \bullet}^{2} - N\overline{Y}_{\bullet \bullet \bullet}^{2}\)</span></td>
+<td><span class="math inline">\(IJ-1\)</span></td>
+<td><span class="math inline">\(\frac{SC_{E}}{IJ-1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{n}{IJ - 1}\sum\sum\left( \mu_{ij} - \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td><span class="math inline">\(SC_{A} = Jn\sum_{i}^{}\overline{Y}_{i \bullet \bullet}^{2} - N\overline{Y}_{\bullet \bullet \bullet}^{2}\)</span></td>
+<td><span class="math inline">\(I-1\)</span></td>
+<td><span class="math inline">\(\frac{SC_{A}}{I-1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{\text{Jn}}{I - 1}\sum\left( \mu_{i \bullet} - \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td><span class="math inline">\(SC_{B} = In\sum_{j}^{}\overline{Y}_{\bullet j \bullet}^{2} - N\overline{Y}_{\bullet \bullet \bullet}^{2}\)</span></td>
+<td><span class="math inline">\(J-1\)</span></td>
+<td><span class="math inline">\(\frac{SC_{B}}{J-1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{\text{In}}{J - 1}\sum\left( \mu_{\bullet j} - \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td>AB (Interacción)</td>
+<td><span class="math inline">\(SC_{E}-SC_{A} - SC_{B}\)</span></td>
+<td><span class="math inline">\((I-1)(J-1)\)</span></td>
+<td><span class="math inline">\(\frac{SC_{AB}}{\left( I1 \right)\left( J - 1 \right)}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{n}{\left( I - 1 \right)\left( J - 1 \right)}\sum\sum\left( \mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td><span class="math inline">\(SC_{T} - SC_{E}\)</span></td>
+<td><span class="math inline">\(N-IJ\)</span></td>
+<td><span class="math inline">\(\frac{SC_{D}}{N - IJ}\)</span></td>
+<td><span class="math inline">\(\sigma^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}{\sum_{k}^{}Y_{ijk}^{2}}} - N\overline{Y}_{\bullet \bullet \bullet}^{2}\)</span></td>
+<td><span class="math inline">\(N-1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="prueba-de-f" class="section level2">
+<h2><span class="header-section-number">9.6</span> Prueba de F</h2>
+<div id="prueba-para-la-interaccion" class="section level4">
+<h4><span class="header-section-number">9.6.0.1</span> Prueba para la interacción</h4>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}&amp;:\mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} = 0\ \forall\ i,j\\
+H_{a}&amp;:\mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} \neq 0\ para\ algun\ i,j
+\end{aligned}
+\]</span></p>
+<p>o</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}&amp;: \text{todos los } \left( \alpha\beta \right)_{ij}  =  0\\
+H_{a}&amp;:\text{no todos los } \left( \alpha\beta \right)_{ij}  =  0
+\end{aligned}
+\]</span></p>
+<p>La prueba estadística apropiada es:</p>
+<p><span class="math display">\[
+F^{*} = \frac{CM_{AB}}{CM_{D}}
+\]</span></p>
+<p>Recordamos que bajo <span class="math inline">\(H_{0}\)</span> <span class="math inline">\(F^{*}\)</span> se distribuye según una <span class="math inline">\(F_{1 - \alpha;\left( I-1 \right)\left( J-1 \right),\left( N-IJ \right)}.\)</span></p>
+<p>Entonces:</p>
+<ul>
+<li><p>Sí <span class="math inline">\(F^{*} \leq F_{1 - \alpha;\left( I-1 \right)\left( J-1 \right),\left( N-IJ \right)}\)</span>, no se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+<li><p>Sí <span class="math inline">\(F^{*} &gt; F_{1 - \alpha;\left( I-1 \right)\left( J-1 \right),\left( N-IJ \right)}\)</span>, se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+</ul>
+</div>
+<div id="prueba-para-los-efectos-principales" class="section level4">
+<h4><span class="header-section-number">9.6.0.2</span> Prueba para los efectos principales</h4>
+<p>Estas pruebas se realizan cuando no existe interacción.</p>
+<p>Para el factor <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}&amp;:\mu_{1 \bullet} = \mu_{2 \bullet} = \ldots = \mu_{I \bullet}\\
+H_{a}&amp;:No\ todos\ los\ \mu_{i \bullet}\ \text{son iguales}
+\end{aligned}
+\]</span></p>
+<p>o</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}:\alpha_{1} = \alpha_{2} = \ldots = \alpha_{I} = 0\\
+H_{a}: \text{No todos los } \alpha_{i}\ \text{iguales a cero}
+\end{aligned}
+\]</span></p>
+<p>Se usa el estadístico</p>
+<p><span class="math display">\[
+F^{*} = \frac{CM_{A}}{CM_{D}}
+\]</span></p>
+<p>Dado que <span class="math inline">\(F^{*}\)</span>, bajo <span class="math inline">\(H_{0}\)</span>, se distribuye según una <span class="math inline">\(F_{1 - \alpha;\left( I-1 \right)\left( J-1 \right),\left( N-IJ \right)}.\)</span></p>
+<p>Entonces:</p>
+<ul>
+<li><p>Sí <span class="math inline">\(F^{*} \leq F_{1 - \alpha;\left( I-1 \right),\left( N-IJ \right)}\)</span>, no se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+<li><p>Sí <span class="math inline">\(F^{*} &gt; F_{1 - \alpha;\left( I-1 \right),\left( N-IJ \right)}\)</span>, se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+</ul>
+<p>Para el factor <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}&amp;:\mu_{\bullet 1} = \mu_{\bullet 2} = \ldots = \mu_{\bullet J}\\
+H_{a}&amp;: \text{No todos los } \mu_{\bullet j}\ \text{son iguales}
+\end{aligned}
+\]</span></p>
+<p>o</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_{0}&amp;:\beta_{1} = \beta_{2} = \ldots = \beta_{J} = 0\\
+H_{a}&amp;:\text{No todos los } \beta_{j}\ \text{iguales a cero}
+\end{aligned}
+\]</span></p>
+<p>El estadístico es</p>
+<p><span class="math display">\[
+F^{*} = \frac{CM_{B}}{CM_{D}}
+\]</span></p>
+<p>y la regla de decisión es:</p>
+<ul>
+<li><p>Sí <span class="math inline">\(F^{*} \leq F_{1 - \alpha;\left( J-1 \right),\left( N- IJ\right)}\)</span>,
+no se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+<li><p>Sí <span class="math inline">\(F^{*} &gt; F_{1 - \alpha;\left( J-1 \right),\left( N- IJ\right)}\)</span>,
+se rechaza <span class="math inline">\(H_{0}\)</span></p></li>
+</ul>
+<p><em>Ejemplo</em>: El asma bronquial es una enfermedad alérgica cuya virulencia depende
+de la estación. Se desea comparar tres fármacos antihistamínicos A, B y C, en
+las cuatro estaciones del año. Se toma una muestra de 48 personas con asma
+crónico de intensidad análoga, que se divide en 12 grupos, uno para cada fármaco
+y estación, a razón de 4 enfermos por grupo. Los resultados se evaluaron en una
+escala objetiva que iba de 100, y fueron los siguientes:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Estación</th>
+<th>Fármaco A</th>
+<th>Fármaco B</th>
+<th>Fármaco C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Primavera</td>
+<td>23, 28, 32, 18</td>
+<td>56, 58, 53, 55</td>
+<td>42, 41, 36, 37</td>
+</tr>
+<tr class="even">
+<td>Verano</td>
+<td>32, 41, 43, 48</td>
+<td>64, 58, 67, 72</td>
+<td>51, 53, 55, 60</td>
+</tr>
+<tr class="odd">
+<td>Otoño</td>
+<td>18, 16, 21, 10</td>
+<td>48, 50, 47, 47</td>
+<td>28, 31, 23, 33</td>
+</tr>
+<tr class="even">
+<td>Invierno</td>
+<td>30, 40, 33, 47</td>
+<td>60, 61, 63, 59</td>
+<td>56, 60, 61, 55</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Determinar si existen diferencias entre los fármacos A, B y C y entre las
+estaciones.</p></li>
+<li><p>¿Es significativa la interacción?</p></li>
+</ol>
+<table>
+<caption><span id="tab:resumen-asma">Tabla 9.7: </span> Resumen de los datos de tres fármacos contra el
+asma en las cuatro estaciones del año.</caption>
+<thead>
+<tr class="header">
+<th>Estación</th>
+<th>Fármaco</th>
+<th>n</th>
+<th>Suma</th>
+<th>Media</th>
+<th>Varianza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Invierno</td>
+<td>A</td>
+<td>4</td>
+<td>150</td>
+<td>37.500</td>
+<td>57.666667</td>
+</tr>
+<tr class="even">
+<td>Invierno</td>
+<td>B</td>
+<td>4</td>
+<td>243</td>
+<td>60.750</td>
+<td>2.916667</td>
+</tr>
+<tr class="odd">
+<td>Invierno</td>
+<td>C</td>
+<td>4</td>
+<td>232</td>
+<td>58.000</td>
+<td>8.666667</td>
+</tr>
+<tr class="even">
+<td>Otoño</td>
+<td>A</td>
+<td>4</td>
+<td>65</td>
+<td>16.250</td>
+<td>21.583333</td>
+</tr>
+<tr class="odd">
+<td>Otoño</td>
+<td>B</td>
+<td>4</td>
+<td>192</td>
+<td>48.000</td>
+<td>2.000000</td>
+</tr>
+<tr class="even">
+<td>Otoño</td>
+<td>C</td>
+<td>4</td>
+<td>115</td>
+<td>28.750</td>
+<td>18.916667</td>
+</tr>
+<tr class="odd">
+<td>Primavera</td>
+<td>A</td>
+<td>4</td>
+<td>101</td>
+<td>25.250</td>
+<td>36.916667</td>
+</tr>
+<tr class="even">
+<td>Primavera</td>
+<td>B</td>
+<td>4</td>
+<td>222</td>
+<td>55.500</td>
+<td>4.333333</td>
+</tr>
+<tr class="odd">
+<td>Primavera</td>
+<td>C</td>
+<td>4</td>
+<td>156</td>
+<td>39.000</td>
+<td>8.666667</td>
+</tr>
+<tr class="even">
+<td>Verano</td>
+<td>A</td>
+<td>4</td>
+<td>164</td>
+<td>41.000</td>
+<td>44.666667</td>
+</tr>
+<tr class="odd">
+<td>Verano</td>
+<td>B</td>
+<td>4</td>
+<td>261</td>
+<td>65.250</td>
+<td>34.250000</td>
+</tr>
+<tr class="even">
+<td>Verano</td>
+<td>C</td>
+<td>4</td>
+<td>219</td>
+<td>54.750</td>
+<td>14.916667</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>A</td>
+<td>16</td>
+<td>480</td>
+<td>30.000</td>
+<td>135.866667</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>B</td>
+<td>16</td>
+<td>918</td>
+<td>57.375</td>
+<td>52.650000</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>C</td>
+<td>16</td>
+<td>722</td>
+<td>45.125</td>
+<td>160.650000</td>
+</tr>
+</tbody>
+</table>
+<p>(ref:grafico-asma) Efecto de tres fármacos contra el asma en las cuatro
+estaciones del año. a – gráfico de cajas y barras para las 4 estaciones, n =
+12. b – gráfico de cajas y barras para los 3 fármacos, n = 16. c – gráfico de
+interacción fármaco x estación, n = 4.</p>
+<div class="figure"><span id="fig:graficos-asma"></span>
+<img src="anova-dos-factores_files/figure-html/graficos-asma-1.png" alt="(ref:grafico-asma)" width="672" />
+<p class="caption">
+Figura 9.3: (ref:grafico-asma)
+</p>
+</div>
+<p>(#tab:anova-asma) Tabla de ANOVA.</p>
+</div>
+</div>
+<div id="contrastes-3" class="section level2">
+<h2><span class="header-section-number">9.7</span> Contrastes</h2>
+<div id="entre-filas" class="section level3">
+<h3><span class="header-section-number">9.7.1</span> Entre Filas</h3>
+<p><span class="math display">\[
+\hat{f} = \sum c_{i}{\overline{Y}_{i \bullet \bullet}}
+\]</span></p>
+<p><strong>Bonferroni y Scheffé</strong></p>
+<p><span class="math display">\[
+\varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{i}^{2}}{\text{Jn}} \right.\ }\ }
+\]</span></p>
+<div id="planeados-1" class="section level4">
+<h4><span class="header-section-number">9.7.1.1</span> Planeados:</h4>
+<div id="bonferroni" class="section level5">
+<h5><span class="header-section-number">9.7.1.1.1</span> Bonferroni</h5>
+<p><span class="math display">\[
+VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
+\]</span></p>
+</div>
+</div>
+<div id="no-planeados-1" class="section level4">
+<h4><span class="header-section-number">9.7.1.2</span> No Planeados:</h4>
+<div id="scheffe" class="section level5">
+<h5><span class="header-section-number">9.7.1.2.1</span> Scheffé</h5>
+<p><span class="math display">\[
+VC = S = \sqrt{\left( I - 1 \right)F_{\left( I - 1 \right);GL_{D};1 - \alpha}}
+\]</span></p>
+</div>
+<div id="tukey" class="section level5">
+<h5><span class="header-section-number">9.7.1.2.2</span> Tukey</h5>
+<p><span class="math display">\[
+\frac{\overline{Y}_{i \bullet \max } - \overline{Y}_{i \bullet \min }}{S_{\overline{Y}}}\sim q_{I;N - IJ}
+\]</span></p>
+<p><span class="math display">\[
+S_{\overline{y}} = \sqrt{\frac{CM_{D}}{\text{Jn}}}
+\]</span></p>
+</div>
+<div id="ortogonales" class="section level5">
+<h5><span class="header-section-number">9.7.1.2.3</span> Ortogonales</h5>
+<p><span class="math display">\[
+SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{i}^{2}}{\text{Jn}}}\ 
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="entre-columnas" class="section level3">
+<h3><span class="header-section-number">9.7.2</span> Entre columnas</h3>
+<p><span class="math display">\[
+\hat{f} = \sum c_{j}{\overline{Y}_{\bullet j \bullet}}
+\]</span></p>
+<p><strong>Bonferroni y Scheffé</strong></p>
+<p><span class="math display">\[
+\varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{j}^{2}}{\text{In}} \right.\ }\ }
+\]</span></p>
+<div id="planeados-2" class="section level4">
+<h4><span class="header-section-number">9.7.2.1</span> Planeados:</h4>
+<div id="bonferroni-1" class="section level5">
+<h5><span class="header-section-number">9.7.2.1.1</span> Bonferroni</h5>
+<p><span class="math display">\[
+VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
+\]</span></p>
+</div>
+</div>
+<div id="no-planeados-2" class="section level4">
+<h4><span class="header-section-number">9.7.2.2</span> No Planeados:</h4>
+<div id="scheffe-1" class="section level5">
+<h5><span class="header-section-number">9.7.2.2.1</span> Scheffé</h5>
+<p><span class="math display">\[
+VC = S = \sqrt{\left( J - 1 \right)F_{\left( J - 1 \right);GL_{D};1 - \alpha}}
+\]</span></p>
+</div>
+<div id="tukey-1" class="section level5">
+<h5><span class="header-section-number">9.7.2.2.2</span> Tukey</h5>
+<p><span class="math display">\[
+\frac{\overline{Y}_{\bullet j\ \max } - \overline{Y}_{\bullet j\ \min }}{S_{\overline{Y}}}\sim q_{j;N - IJ}
+\]</span></p>
+<p><span class="math display">\[
+S_{\overline{Y} = \sqrt{\frac{CM_{D}}{In}}}
+\]</span></p>
+</div>
+<div id="ortogonales-1" class="section level5">
+<h5><span class="header-section-number">9.7.2.2.3</span> Ortogonales</h5>
+<p><span class="math display">\[
+SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{j}^{2}}{\text{In}}}\ 
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="interaccion-1" class="section level3">
+<h3><span class="header-section-number">9.7.3</span> Interacción</h3>
+<p><span class="math display">\[
+\hat{f} = \sum c_{ij}{\overline{Y}_{ij \bullet}}
+\]</span></p>
+<p>Bonferroni y Scheffé</p>
+<p><span class="math display">\[
+\varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{ij}^{2}}{n} \right.\ }\ }
+\]</span></p>
+<div id="planeados-3" class="section level4">
+<h4><span class="header-section-number">9.7.3.1</span> Planeados:</h4>
+<div id="bonferroni-2" class="section level5">
+<h5><span class="header-section-number">9.7.3.1.1</span> Bonferroni</h5>
+<p><span class="math display">\[
+VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
+\]</span></p>
+</div>
+</div>
+<div id="no-planeados-3" class="section level4">
+<h4><span class="header-section-number">9.7.3.2</span> No Planeados:</h4>
+<div id="scheffe-2" class="section level5">
+<h5><span class="header-section-number">9.7.3.2.1</span> Scheffé</h5>
+<p><span class="math display">\[
+VC = S = \sqrt{\left( IJ - 1 \right)F_{\left( IJ - 1 \right);N - IJ;1 - \alpha}}
+\]</span></p>
+</div>
+<div id="tukey-2" class="section level5">
+<h5><span class="header-section-number">9.7.3.2.2</span> Tukey</h5>
+<p><span class="math display">\[
+\frac{\overline{Y}_{ij \max} - \overline{Y}_{ij\min}}{S_{\overline{Y}}}
+\sim q_{ij;N - IJ}
+\]</span></p>
+<p><span class="math display">\[
+S_{\overline{Y}} = \sqrt{\frac{CM_{D}}{n}}
+\]</span></p>
+</div>
+<div id="ortogonales-2" class="section level5">
+<h5><span class="header-section-number">9.7.3.2.3</span> Ortogonales</h5>
+<p><span class="math display">\[
+SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{ij}^{2}}{n}}\ 
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+f = \sum c_{ij}\mu_{ij} &amp; \hat{f} = \sum c_{ij}\overline{Y}_{ij} \\
+\end{matrix}
+\]</span></p>
+<p><em>Ejemplo</em> (continuación del anterior)</p>
+<p>Expansión de los contrastes ortogonales</p>
+<p>Analysis of Variance Model</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estación</strong></td>
+<td>3</td>
+<td>4132</td>
+<td>1377</td>
+<td>64.69</td>
+<td>1.425e-14</td>
+</tr>
+<tr class="even">
+<td><strong>Estación: Invierno vs Verano</strong></td>
+<td>1</td>
+<td>15.04</td>
+<td>15.04</td>
+<td>0.7065</td>
+<td>0.4062</td>
+</tr>
+<tr class="odd">
+<td><strong>Estación: Otoño vs Verano</strong></td>
+<td>1</td>
+<td>3828</td>
+<td>3828</td>
+<td>179.8</td>
+<td>1.442e-15</td>
+</tr>
+<tr class="even">
+<td><strong>Estación: Primavera vs Verano</strong></td>
+<td>1</td>
+<td>289</td>
+<td>289</td>
+<td>13.57</td>
+<td>0.0007492</td>
+</tr>
+<tr class="odd">
+<td><strong>Farmaco</strong></td>
+<td>2</td>
+<td>6017</td>
+<td>3009</td>
+<td>141.3</td>
+<td>9.013e-18</td>
+</tr>
+<tr class="even">
+<td><strong>Farmaco: A vs B</strong></td>
+<td>1</td>
+<td>1830</td>
+<td>1830</td>
+<td>85.95</td>
+<td>4.507e-11</td>
+</tr>
+<tr class="odd">
+<td><strong>Farmaco: B vs C</strong></td>
+<td>1</td>
+<td>4187</td>
+<td>4187</td>
+<td>196.7</td>
+<td>3.698e-16</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco</strong></td>
+<td>6</td>
+<td>338.8</td>
+<td>56.47</td>
+<td>2.652</td>
+<td>0.03106</td>
+</tr>
+<tr class="odd">
+<td><strong>Estación:Farmaco: Invierno vs Verano.A vs B</strong></td>
+<td>1</td>
+<td>45.56</td>
+<td>45.56</td>
+<td>2.14</td>
+<td>0.1522</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco: Otoño vs Verano.A vs B</strong></td>
+<td>1</td>
+<td>28.52</td>
+<td>28.52</td>
+<td>1.34</td>
+<td>0.2547</td>
+</tr>
+<tr class="odd">
+<td><strong>Estación:Farmaco: Primavera vs Verano.A vs B</strong></td>
+<td>1</td>
+<td>5.042</td>
+<td>5.042</td>
+<td>0.2368</td>
+<td>0.6295</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco: Invierno vs Verano.B vs C</strong></td>
+<td>1</td>
+<td>25.52</td>
+<td>25.52</td>
+<td>1.199</td>
+<td>0.2809</td>
+</tr>
+<tr class="odd">
+<td><strong>Estación:Farmaco: Otoño vs Verano.B vs C</strong></td>
+<td>1</td>
+<td>189.1</td>
+<td>189.1</td>
+<td>8.88</td>
+<td>0.005141</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco: Primavera vs Verano.B vs C</strong></td>
+<td>1</td>
+<td>45.12</td>
+<td>45.12</td>
+<td>2.119</td>
+<td>0.1541</td>
+</tr>
+<tr class="odd">
+<td><strong>Residuals</strong></td>
+<td>36</td>
+<td>766.5</td>
+<td>21.29</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>Contrastes planeados:</p>
+<p>Invierno vs Verano</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estación</strong></td>
+<td>3</td>
+<td>4132</td>
+<td>1377</td>
+<td>64.69</td>
+<td>1.425e-14</td>
+</tr>
+<tr class="even">
+<td><strong>Estación: Invierno vs Verano</strong></td>
+<td>1</td>
+<td>15.04</td>
+<td>15.04</td>
+<td>0.7065</td>
+<td>0.4062</td>
+</tr>
+<tr class="odd">
+<td><strong>Farmaco</strong></td>
+<td>2</td>
+<td>6017</td>
+<td>3009</td>
+<td>141.3</td>
+<td>9.013e-18</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco</strong></td>
+<td>6</td>
+<td>338.8</td>
+<td>56.47</td>
+<td>2.652</td>
+<td>0.03106</td>
+</tr>
+<tr class="odd">
+<td><strong>Residuals</strong></td>
+<td>36</td>
+<td>766.5</td>
+<td>21.29</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>B vs A-C</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estación</strong></td>
+<td>3</td>
+<td>4132</td>
+<td>1377</td>
+<td>64.69</td>
+<td>1.425e-14</td>
+</tr>
+<tr class="even">
+<td><strong>Farmaco</strong></td>
+<td>2</td>
+<td>6017</td>
+<td>3009</td>
+<td>141.3</td>
+<td>9.013e-18</td>
+</tr>
+<tr class="odd">
+<td><strong>Farmaco: B vs A-C</strong></td>
+<td>1</td>
+<td>4187</td>
+<td>4187</td>
+<td>196.7</td>
+<td>3.698e-16</td>
+</tr>
+<tr class="even">
+<td><strong>Estación:Farmaco</strong></td>
+<td>6</td>
+<td>338.8</td>
+<td>56.47</td>
+<td>2.652</td>
+<td>0.03106</td>
+</tr>
+<tr class="odd">
+<td><strong>Residuals</strong></td>
+<td>36</td>
+<td>766.5</td>
+<td>21.29</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>C Otoño vs C Otros</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>FxE</strong></td>
+<td>11</td>
+<td>10488</td>
+<td>953.5</td>
+<td>44.78</td>
+<td>1.178e-17</td>
+</tr>
+<tr class="even">
+<td><strong>FxE: C Otoño vs C Otros</strong></td>
+<td>1</td>
+<td>1430</td>
+<td>1430</td>
+<td>67.17</td>
+<td>9.502e-10</td>
+</tr>
+<tr class="odd">
+<td><strong>Residuals</strong></td>
+<td>36</td>
+<td>766.5</td>
+<td>21.29</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>Contrastes no planeados: LSD vs Tukey</p>
+<table>
+<thead>
+<tr class="header">
+<th>contrast</th>
+<th>estimate</th>
+<th>SE</th>
+<th>df</th>
+<th>t.ratio</th>
+<th>p.value.lsd</th>
+<th>p.value.tukey</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Invierno,A - Otoño,A</td>
+<td>21.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>6.513</td>
+<td>1.442e-07</td>
+<td>8.598e-06</td>
+</tr>
+<tr class="even">
+<td>Invierno,A - Primavera,A</td>
+<td>12.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>3.754</td>
+<td>0.0006132</td>
+<td>0.02591</td>
+</tr>
+<tr class="odd">
+<td>Invierno,A - Verano,A</td>
+<td>-3.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-1.073</td>
+<td>0.2905</td>
+<td>0.9941</td>
+</tr>
+<tr class="even">
+<td>Invierno,A - Invierno,B</td>
+<td>-23.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-7.126</td>
+<td>2.247e-08</td>
+<td>1.368e-06</td>
+</tr>
+<tr class="odd">
+<td>Invierno,A - Otoño,B</td>
+<td>-10.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-3.218</td>
+<td>0.002731</td>
+<td>0.09413</td>
+</tr>
+<tr class="even">
+<td>Invierno,A - Primavera,B</td>
+<td>-18</td>
+<td>3.263</td>
+<td>36</td>
+<td>-5.517</td>
+<td>3.076e-06</td>
+<td>0.0001732</td>
+</tr>
+<tr class="odd">
+<td>Invierno,A - Verano,B</td>
+<td>-27.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-8.505</td>
+<td>3.896e-10</td>
+<td>2.439e-08</td>
+</tr>
+<tr class="even">
+<td>Invierno,A - Invierno,C</td>
+<td>-20.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-6.283</td>
+<td>2.914e-07</td>
+<td>1.72e-05</td>
+</tr>
+<tr class="odd">
+<td>Invierno,A - Otoño,C</td>
+<td>8.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>2.682</td>
+<td>0.01099</td>
+<td>0.2755</td>
+</tr>
+<tr class="even">
+<td>Invierno,A - Primavera,C</td>
+<td>-1.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-0.4597</td>
+<td>0.6485</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Invierno,A - Verano,C</td>
+<td>-17.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-5.287</td>
+<td>6.237e-06</td>
+<td>0.0003443</td>
+</tr>
+<tr class="even">
+<td>Otoño,A - Primavera,A</td>
+<td>-9</td>
+<td>3.263</td>
+<td>36</td>
+<td>-2.758</td>
+<td>0.009071</td>
+<td>0.2402</td>
+</tr>
+<tr class="odd">
+<td>Otoño,A - Verano,A</td>
+<td>-24.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-7.586</td>
+<td>5.687e-09</td>
+<td>3.503e-07</td>
+</tr>
+<tr class="even">
+<td>Otoño,A - Invierno,B</td>
+<td>-44.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-13.64</td>
+<td>8.623e-16</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Otoño,A - Otoño,B</td>
+<td>-31.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-9.731</td>
+<td>1.281e-11</td>
+<td>8.121e-10</td>
+</tr>
+<tr class="even">
+<td>Otoño,A - Primavera,B</td>
+<td>-39.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-12.03</td>
+<td>3.581e-14</td>
+<td>2.068e-12</td>
+</tr>
+<tr class="odd">
+<td>Otoño,A - Verano,B</td>
+<td>-49</td>
+<td>3.263</td>
+<td>36</td>
+<td>-15.02</td>
+<td>4.457e-17</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Otoño,A - Invierno,C</td>
+<td>-41.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-12.8</td>
+<td>5.846e-15</td>
+<td>1.286e-13</td>
+</tr>
+<tr class="odd">
+<td>Otoño,A - Otoño,C</td>
+<td>-12.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-3.831</td>
+<td>0.0004921</td>
+<td>0.02126</td>
+</tr>
+<tr class="even">
+<td>Otoño,A - Primavera,C</td>
+<td>-22.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-6.973</td>
+<td>3.567e-08</td>
+<td>2.162e-06</td>
+</tr>
+<tr class="odd">
+<td>Otoño,A - Verano,C</td>
+<td>-38.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-11.8</td>
+<td>6.254e-14</td>
+<td>3.79e-12</td>
+</tr>
+<tr class="even">
+<td>Primavera,A - Verano,A</td>
+<td>-15.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-4.827</td>
+<td>2.545e-05</td>
+<td>0.001336</td>
+</tr>
+<tr class="odd">
+<td>Primavera,A - Invierno,B</td>
+<td>-35.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-10.88</td>
+<td>6.221e-13</td>
+<td>3.958e-11</td>
+</tr>
+<tr class="even">
+<td>Primavera,A - Otoño,B</td>
+<td>-22.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-6.973</td>
+<td>3.567e-08</td>
+<td>2.162e-06</td>
+</tr>
+<tr class="odd">
+<td>Primavera,A - Primavera,B</td>
+<td>-30.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-9.271</td>
+<td>4.507e-11</td>
+<td>2.846e-09</td>
+</tr>
+<tr class="even">
+<td>Primavera,A - Verano,B</td>
+<td>-40</td>
+<td>3.263</td>
+<td>36</td>
+<td>-12.26</td>
+<td>2.063e-14</td>
+<td>1.089e-12</td>
+</tr>
+<tr class="odd">
+<td>Primavera,A - Invierno,C</td>
+<td>-32.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-10.04</td>
+<td>5.622e-12</td>
+<td>3.572e-10</td>
+</tr>
+<tr class="even">
+<td>Primavera,A - Otoño,C</td>
+<td>-3.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-1.073</td>
+<td>0.2905</td>
+<td>0.9941</td>
+</tr>
+<tr class="odd">
+<td>Primavera,A - Primavera,C</td>
+<td>-13.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-4.214</td>
+<td>0.0001606</td>
+<td>0.007619</td>
+</tr>
+<tr class="even">
+<td>Primavera,A - Verano,C</td>
+<td>-29.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-9.041</td>
+<td>8.542e-11</td>
+<td>5.382e-09</td>
+</tr>
+<tr class="odd">
+<td>Verano,A - Invierno,B</td>
+<td>-19.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-6.053</td>
+<td>5.903e-07</td>
+<td>3.443e-05</td>
+</tr>
+<tr class="even">
+<td>Verano,A - Otoño,B</td>
+<td>-7</td>
+<td>3.263</td>
+<td>36</td>
+<td>-2.145</td>
+<td>0.03874</td>
+<td>0.596</td>
+</tr>
+<tr class="odd">
+<td>Verano,A - Primavera,B</td>
+<td>-14.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-4.444</td>
+<td>8.097e-05</td>
+<td>0.004013</td>
+</tr>
+<tr class="even">
+<td>Verano,A - Verano,B</td>
+<td>-24.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-7.432</td>
+<td>8.97e-09</td>
+<td>5.505e-07</td>
+</tr>
+<tr class="odd">
+<td>Verano,A - Invierno,C</td>
+<td>-17</td>
+<td>3.263</td>
+<td>36</td>
+<td>-5.21</td>
+<td>7.891e-06</td>
+<td>0.0004325</td>
+</tr>
+<tr class="even">
+<td>Verano,A - Otoño,C</td>
+<td>12.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>3.754</td>
+<td>0.0006132</td>
+<td>0.02591</td>
+</tr>
+<tr class="odd">
+<td>Verano,A - Primavera,C</td>
+<td>2</td>
+<td>3.263</td>
+<td>36</td>
+<td>0.613</td>
+<td>0.5437</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Verano,A - Verano,C</td>
+<td>-13.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-4.214</td>
+<td>0.0001606</td>
+<td>0.007619</td>
+</tr>
+<tr class="odd">
+<td>Invierno,B - Otoño,B</td>
+<td>12.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>3.908</td>
+<td>0.0003943</td>
+<td>0.0174</td>
+</tr>
+<tr class="even">
+<td>Invierno,B - Primavera,B</td>
+<td>5.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>1.609</td>
+<td>0.1163</td>
+<td>0.8945</td>
+</tr>
+<tr class="odd">
+<td>Invierno,B - Verano,B</td>
+<td>-4.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-1.379</td>
+<td>0.1763</td>
+<td>0.9603</td>
+</tr>
+<tr class="even">
+<td>Invierno,B - Invierno,C</td>
+<td>2.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>0.8428</td>
+<td>0.4049</td>
+<td>0.9993</td>
+</tr>
+<tr class="odd">
+<td>Invierno,B - Otoño,C</td>
+<td>32</td>
+<td>3.263</td>
+<td>36</td>
+<td>9.808</td>
+<td>1.041e-11</td>
+<td>6.606e-10</td>
+</tr>
+<tr class="even">
+<td>Invierno,B - Primavera,C</td>
+<td>21.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>6.666</td>
+<td>9.038e-08</td>
+<td>5.421e-06</td>
+</tr>
+<tr class="odd">
+<td>Invierno,B - Verano,C</td>
+<td>6</td>
+<td>3.263</td>
+<td>36</td>
+<td>1.839</td>
+<td>0.07419</td>
+<td>0.7864</td>
+</tr>
+<tr class="even">
+<td>Otoño,B - Primavera,B</td>
+<td>-7.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-2.299</td>
+<td>0.02744</td>
+<td>0.4955</td>
+</tr>
+<tr class="odd">
+<td>Otoño,B - Verano,B</td>
+<td>-17.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-5.287</td>
+<td>6.237e-06</td>
+<td>0.0003443</td>
+</tr>
+<tr class="even">
+<td>Otoño,B - Invierno,C</td>
+<td>-10</td>
+<td>3.263</td>
+<td>36</td>
+<td>-3.065</td>
+<td>0.004112</td>
+<td>0.1312</td>
+</tr>
+<tr class="odd">
+<td>Otoño,B - Otoño,C</td>
+<td>19.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>5.9</td>
+<td>9.457e-07</td>
+<td>5.468e-05</td>
+</tr>
+<tr class="even">
+<td>Otoño,B - Primavera,C</td>
+<td>9</td>
+<td>3.263</td>
+<td>36</td>
+<td>2.758</td>
+<td>0.009071</td>
+<td>0.2402</td>
+</tr>
+<tr class="odd">
+<td>Otoño,B - Verano,C</td>
+<td>-6.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-2.069</td>
+<td>0.04581</td>
+<td>0.6463</td>
+</tr>
+<tr class="even">
+<td>Primavera,B - Verano,B</td>
+<td>-9.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-2.988</td>
+<td>0.00503</td>
+<td>0.1539</td>
+</tr>
+<tr class="odd">
+<td>Primavera,B - Invierno,C</td>
+<td>-2.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>-0.7662</td>
+<td>0.4485</td>
+<td>0.9997</td>
+</tr>
+<tr class="even">
+<td>Primavera,B - Otoño,C</td>
+<td>26.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>8.198</td>
+<td>9.42e-10</td>
+<td>5.869e-08</td>
+</tr>
+<tr class="odd">
+<td>Primavera,B - Primavera,C</td>
+<td>16.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>5.057</td>
+<td>1.262e-05</td>
+<td>0.0006808</td>
+</tr>
+<tr class="even">
+<td>Primavera,B - Verano,C</td>
+<td>0.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>0.2299</td>
+<td>0.8195</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Verano,B - Invierno,C</td>
+<td>7.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>2.222</td>
+<td>0.03266</td>
+<td>0.5455</td>
+</tr>
+<tr class="even">
+<td>Verano,B - Otoño,C</td>
+<td>36.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>11.19</td>
+<td>2.858e-13</td>
+<td>1.81e-11</td>
+</tr>
+<tr class="odd">
+<td>Verano,B - Primavera,C</td>
+<td>26.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>8.045</td>
+<td>1.471e-09</td>
+<td>9.141e-08</td>
+</tr>
+<tr class="even">
+<td>Verano,B - Verano,C</td>
+<td>10.5</td>
+<td>3.263</td>
+<td>36</td>
+<td>3.218</td>
+<td>0.002731</td>
+<td>0.09413</td>
+</tr>
+<tr class="odd">
+<td>Invierno,C - Otoño,C</td>
+<td>29.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>8.965</td>
+<td>1.059e-10</td>
+<td>6.664e-09</td>
+</tr>
+<tr class="even">
+<td>Invierno,C - Primavera,C</td>
+<td>19</td>
+<td>3.263</td>
+<td>36</td>
+<td>5.823</td>
+<td>1.197e-06</td>
+<td>6.889e-05</td>
+</tr>
+<tr class="odd">
+<td>Invierno,C - Verano,C</td>
+<td>3.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>0.9961</td>
+<td>0.3259</td>
+<td>0.9968</td>
+</tr>
+<tr class="even">
+<td>Otoño,C - Primavera,C</td>
+<td>-10.25</td>
+<td>3.263</td>
+<td>36</td>
+<td>-3.141</td>
+<td>0.003355</td>
+<td>0.1114</td>
+</tr>
+<tr class="odd">
+<td>Otoño,C - Verano,C</td>
+<td>-26</td>
+<td>3.263</td>
+<td>36</td>
+<td>-7.969</td>
+<td>1.84e-09</td>
+<td>1.142e-07</td>
+</tr>
+<tr class="even">
+<td>Primavera,C - Verano,C</td>
+<td>-15.75</td>
+<td>3.263</td>
+<td>36</td>
+<td>-4.827</td>
+<td>2.545e-05</td>
+<td>0.001336</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabla comparaciones múltiples LSD (triángulo superior), Tukey (triángulo
+inferior) y medias (diagonal)</em></p>
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Invierno.A</strong></th>
+<th><strong>Otoño.A</strong></th>
+<th><strong>Primavera.A</strong></th>
+<th><strong>Verano.A</strong></th>
+<th><strong>Invierno.B</strong></th>
+<th><strong>Otoño.B</strong></th>
+<th><strong>Primavera.B</strong></th>
+<th><strong>Verano.B</strong></th>
+<th><strong>Invierno.C</strong></th>
+<th><strong>Otoño.C</strong></th>
+<th><strong>Primavera.C</strong></th>
+<th><strong>Verano.C</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Invierno.A</strong></td>
+<td><em>37.5</em></td>
+<td><strong>1.442e-07</strong></td>
+<td><strong>0.0006132</strong></td>
+<td>0.2905</td>
+<td><strong>2.247e-08</strong></td>
+<td><strong>0.002731</strong></td>
+<td><strong>3.076e-06</strong></td>
+<td><strong>3.896e-10</strong></td>
+<td><strong>2.914e-07</strong></td>
+<td><strong>0.01099</strong></td>
+<td>0.6485</td>
+<td><strong>6.237e-06</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Otoño.A</strong></td>
+<td><strong>8.598e-06</strong></td>
+<td><em>16.25</em></td>
+<td><strong>0.009071</strong></td>
+<td><strong>5.687e-09</strong></td>
+<td><strong>8.623e-16</strong></td>
+<td><strong>1.281e-11</strong></td>
+<td><strong>3.581e-14</strong></td>
+<td><strong>4.457e-17</strong></td>
+<td><strong>5.846e-15</strong></td>
+<td><strong>0.0004921</strong></td>
+<td><strong>3.567e-08</strong></td>
+<td><strong>6.254e-14</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Primavera.A</strong></td>
+<td><strong>0.02591</strong></td>
+<td><strong>8.121e-10</strong></td>
+<td><em>25.25</em></td>
+<td><strong>2.545e-05</strong></td>
+<td><strong>6.221e-13</strong></td>
+<td><strong>3.567e-08</strong></td>
+<td><strong>4.507e-11</strong></td>
+<td><strong>2.063e-14</strong></td>
+<td><strong>5.622e-12</strong></td>
+<td>0.2905</td>
+<td><strong>0.0001606</strong></td>
+<td><strong>8.542e-11</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Verano.A</strong></td>
+<td>0.2402</td>
+<td><strong>2.162e-06</strong></td>
+<td><strong>2.439e-08</strong></td>
+<td><em>41</em></td>
+<td><strong>5.903e-07</strong></td>
+<td><strong>0.03874</strong></td>
+<td><strong>8.097e-05</strong></td>
+<td><strong>8.97e-09</strong></td>
+<td><strong>7.891e-06</strong></td>
+<td><strong>0.0006132</strong></td>
+<td>0.5437</td>
+<td><strong>0.0001606</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Invierno.B</strong></td>
+<td>0.9941</td>
+<td>0.596</td>
+<td><strong>0</strong></td>
+<td><strong>3.572e-10</strong></td>
+<td><em>60.75</em></td>
+<td><strong>0.0003943</strong></td>
+<td>0.1163</td>
+<td>0.1763</td>
+<td>0.4049</td>
+<td><strong>1.041e-11</strong></td>
+<td><strong>9.038e-08</strong></td>
+<td>0.07419</td>
+</tr>
+<tr class="even">
+<td><strong>Otoño.B</strong></td>
+<td><strong>3.503e-07</strong></td>
+<td><strong>0.0174</strong></td>
+<td><strong>1.089e-12</strong></td>
+<td><strong>0.0004325</strong></td>
+<td>0.9941</td>
+<td><em>48</em></td>
+<td><strong>0.02744</strong></td>
+<td><strong>6.237e-06</strong></td>
+<td><strong>0.004112</strong></td>
+<td><strong>9.457e-07</strong></td>
+<td><strong>0.009071</strong></td>
+<td><strong>0.04581</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Primavera.B</strong></td>
+<td><strong>0.001336</strong></td>
+<td><strong>0.0001732</strong></td>
+<td><strong>5.505e-07</strong></td>
+<td>0.9993</td>
+<td><strong>0.02591</strong></td>
+<td>1</td>
+<td><em>55.5</em></td>
+<td><strong>0.00503</strong></td>
+<td>0.4485</td>
+<td><strong>9.42e-10</strong></td>
+<td><strong>1.262e-05</strong></td>
+<td>0.8195</td>
+</tr>
+<tr class="even">
+<td><strong>Verano.B</strong></td>
+<td><strong>1.368e-06</strong></td>
+<td><strong>2.068e-12</strong></td>
+<td>0.9603</td>
+<td>0.1312</td>
+<td><strong>6.606e-10</strong></td>
+<td><strong>2.162e-06</strong></td>
+<td><strong>0.0006808</strong></td>
+<td><em>65.25</em></td>
+<td><strong>0.03266</strong></td>
+<td><strong>2.858e-13</strong></td>
+<td><strong>1.471e-09</strong></td>
+<td><strong>0.002731</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Invierno.C</strong></td>
+<td><strong>0</strong></td>
+<td><strong>2.846e-09</strong></td>
+<td><strong>0.0003443</strong></td>
+<td>0.9997</td>
+<td><strong>5.468e-05</strong></td>
+<td><strong>0.007619</strong></td>
+<td><strong>9.141e-08</strong></td>
+<td><strong>3.79e-12</strong></td>
+<td><em>58</em></td>
+<td><strong>1.059e-10</strong></td>
+<td><strong>1.197e-06</strong></td>
+<td>0.3259</td>
+</tr>
+<tr class="even">
+<td><strong>Otoño.C</strong></td>
+<td><strong>3.958e-11</strong></td>
+<td><strong>0.004013</strong></td>
+<td>0.1539</td>
+<td>0.5455</td>
+<td><strong>5.869e-08</strong></td>
+<td>1</td>
+<td><strong>6.889e-05</strong></td>
+<td><strong>5.382e-09</strong></td>
+<td>0.6463</td>
+<td><em>28.75</em></td>
+<td><strong>0.003355</strong></td>
+<td><strong>1.84e-09</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Primavera.C</strong></td>
+<td><strong>3.443e-05</strong></td>
+<td>0.8945</td>
+<td><strong>1.72e-05</strong></td>
+<td>0.2755</td>
+<td><strong>1.81e-11</strong></td>
+<td><strong>5.421e-06</strong></td>
+<td>0.1114</td>
+<td><strong>0.007619</strong></td>
+<td>1</td>
+<td>0.9968</td>
+<td><em>39</em></td>
+<td><strong>2.545e-05</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Verano.C</strong></td>
+<td>0.09413</td>
+<td>0.4955</td>
+<td><strong>1.286e-13</strong></td>
+<td><strong>0.02126</strong></td>
+<td><strong>6.664e-09</strong></td>
+<td>0.2402</td>
+<td><strong>0.0003443</strong></td>
+<td>0.7864</td>
+<td>0.09413</td>
+<td><strong>1.142e-07</strong></td>
+<td><strong>0.001336</strong></td>
+<td><em>54.75</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="potencia-de-la-prueba-f-1" class="section level2">
+<h2><span class="header-section-number">9.8</span> Potencia de la prueba F</h2>
+<p>La potencia de la prueba F para la interacción, los efectos del factor principal
+A y los efectos del factor principal B puede ser evaluada de manera similar al
+caso del análisis de un solo factor <span class="math inline">\(A\)</span> través de los gráficos de Pearson-Hartley.
+El parámetro de no centralidad Φ y los grados de libertad, para cada uno de
+estos casos son los siguientes:</p>
+<div id="interaccion-2" class="section level3">
+<h3><span class="header-section-number">9.8.1</span> Interacción</h3>
+<p><span class="math display">\[
+\Phi = \frac{1}{\sigma}\sqrt{\frac{n\sum\sum\left(\alpha \beta \right)_{ij}^{2}}{\left( I - 1 \right)\left( J - 1 \right) + 1}} = \frac{1}{\sigma}\sqrt{\frac{n\sum\sum\left( \mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} \right)^{2}}{\left( I - 1 \right)\left( J - 1 \right) + 1}}
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+\nu_{1} = \left( I - 1 \right)\left( J - 1 \right) &amp; \nu_{2} = N - IJ \\
+\end{matrix}
+\]</span></p>
+</div>
+<div id="prueba-para-el-factor-principal-a" class="section level3">
+<h3><span class="header-section-number">9.8.2</span> Prueba para el factor principal A:</h3>
+<p><span class="math display">\[
+\Phi = \frac{1}{\sigma}\sqrt{\frac{nJ\sum\left( \alpha \right)_{i}^{2}}{I}} = \frac{1}{\sigma}\sqrt{\frac{nJ\sum\left( \mu_{i \bullet} - \mu_{\bullet \bullet} \right)^{2}}{I}}
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+\nu_{1} = I - 1 &amp; \nu_{2} = N - IJ \\
+\end{matrix}
+\]</span></p>
+</div>
+<div id="prueba-para-el-factor-principal-b" class="section level3">
+<h3><span class="header-section-number">9.8.3</span> Prueba para el factor principal B:</h3>
+<p><span class="math display">\[
+\Phi = \frac{1}{\sigma}\sqrt{\frac{nI\sum\left( \beta \right)_{j}^{2}}{J}} = \frac{1}{\sigma}\sqrt{\frac{nI\sum\left( \mu_{\bullet j} - \mu_{\bullet \bullet} \right)^{2}}{J}}
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+\nu_{1} = J - 1 &amp; \nu_{2} = N - IJ \\
+\end{matrix}
+\]</span></p>
+<p>Ejemplo: Cálculo de para la interacción:</p>
+<p><span class="math display">\[
+\Phi = 1.50778432
+\]</span></p>
+<p><span class="math display">\[
+\nu_{1} = 6
+\]</span></p>
+<p><span class="math display">\[
+\nu_{2} = 36
+\]</span></p>
+<p><span class="math display">\[
+P = 0.8
+\]</span></p>
+</div>
+</div>
+<div id="caso-de-una-observacion-por-tratamiento" class="section level2">
+<h2><span class="header-section-number">9.9</span> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</h2>
+<div id="modelo-sin-interaccion" class="section level3">
+<h3><span class="header-section-number">9.9.1</span> Modelo sin interacción</h3>
+<p>El modelo de ANOVA con niveles del factor fijos y sin interacción, para el caso
+en que n=1, es:</p>
+<p><span class="math display">\[
+Y_{ij} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \varepsilon_{ij}
+\]</span></p>
+<p>Dado que el valor esperado del <span class="math inline">\(CM_{AB}\)</span> es σ2, en la prueba
+estadística <span class="math inline">\(F^{*}\)</span> para ver la significación de los efectos principales se
+utiliza ahora el <span class="math inline">\(CM_{AB}\)</span> en el denominador, en lugar del <span class="math inline">\(CM_{D}\)</span>:</p>
+<p>Efectos del factor principal A: <span class="math inline">\(F^{*} = \frac{CM_{A}}{CM_{AB}}\)</span></p>
+<p>Efectos del factor principal B: <span class="math inline">\(F^{*} = \frac{CM_{B}}{CM_{AB}}\)</span></p>
+<p>De manera similar para realizar contrastes, se reemplaza el <span class="math inline">\(CM_{D}\)</span> por el
+<span class="math inline">\(CM_{AB}\)</span> y se modifican los grados de libertad.</p>
+<p><em>Tabla de ANOVA para el Modelo con Niveles Fijos del Factor sin Interacción, n =
+1</em></p>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="47%" />
+<col width="4%" />
+<col width="17%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fte. de Variación</th>
+<th>SC</th>
+<th>GL</th>
+<th>CM</th>
+<th>E(CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>factor <span class="math inline">\(A\)</span></td>
+<td><span class="math inline">\(J\sum\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2}\)</span></td>
+<td><span class="math inline">\(I - 1\)</span></td>
+<td><span class="math inline">\(\frac{SC_{A}}{I - 1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{J}{I - 1}\sum\left( \mu_{i \bullet} - \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td>factor <span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(I\sum\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2}\)</span></td>
+<td><span class="math inline">\(J - 1\)</span></td>
+<td><span class="math inline">\(\frac{SC_{B}}{J - 1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + \frac{I}{J - 1}\sum\left( \mu_{\bullet j} - \mu_{\bullet \bullet} \right)^{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td><span class="math inline">\(\sum\sum{\left( Y_{ij} - \overline{Y}_{i\bullet} - \overline{Y}_{\bullet j} + \overline{Y}_{\bullet\bullet} \right)}^{2}\)</span></td>
+<td><span class="math inline">\((I - 1)(J - 1)\)</span></td>
+<td><span class="math inline">\(\frac{SC_{{AB}}}{\left( I - 1 \right)\left( J - 1 \right)}\)</span></td>
+<td><span class="math inline">\(\sigma^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td><span class="math inline">\(\sum\sum\left( Y_{ij} - \overline{Y}_{\bullet \bullet} \right)^{2}\)</span></td>
+<td><span class="math inline">\(N - 1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="prueba-de-tukey-aditividad" class="section level3">
+<h3><span class="header-section-number">9.9.2</span> Prueba de Tukey (Aditividad)</h3>
+<p>Supongamos que se asume que:</p>
+<p><span class="math display">\[
+\left( \alpha\beta \right)_{ij} = D\alpha_{i}\beta_{j}
+\]</span></p>
+<p>donde <span class="math inline">\(D\)</span> es alguna constante.</p>
+<p>Usando la expresión del modelo de ANOVA con interacciones para el caso de n = 1,
+se tiene:</p>
+<p><span class="math display">\[
+Y_{ij} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + D\alpha_{i}\beta_{j} + \varepsilon_{ij}
+\]</span></p>
+<p>Asumiendo que los otros parámetros son conocidos, el estimador de mínimos
+cuadrados de D es:</p>
+<p><span class="math display">\[
+\hat{D} = \frac{\sum_{i}^{}{\sum_{j}^{}{\alpha_{i}\beta_{j}Y_{ij}}}}{\sum_{i}^{}\alpha_{i}^{2}\ \sum_{j}^{}\beta_{j}^{2}}
+\]</span></p>
+<p>El estimador de <span class="math inline">\(\alpha_{i}\)</span> es <span class="math inline">\(\overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet}\)</span>, y de <span class="math inline">\(\beta_{j}\)</span> es <span class="math inline">\(\overline{Y}_{\bullet j} - \overline{Y}_{\bullet\bullet}\)</span> . Reemplazando los parámetros en <span class="math inline">\(\hat{D}\)</span> por
+sus estimadores, se obtiene:</p>
+<p><span class="math display">\[
+\hat{D} = \frac{\sum_{i}^{}{\sum_{j}^{}{\left( {\overline{Y}_{i \bullet}} - {\overline{Y}_{\bullet \bullet}} \right)\left( {\overline{Y}_{\bullet j}} - {\overline{Y}_{\bullet \bullet}} \right)Y_{ij}}}}{\sum_{i}{\left ({\overline{Y}_{i \bullet}} - \overline{Y}_{\bullet \bullet} \right )}^2\sum_{j}{\left ({\overline{Y}_{j \bullet}} - \overline{Y}_{\bullet \bullet} \right )}^2}
+\]</span></p>
+<p>Sustituyendo las estimaciones en <span class="math inline">\(\sum\sum D^{2}\alpha_{i}^{2}\beta_{j}^{2}\)</span>,
+se obtiene la suma de cuadrados de la interacción:</p>
+<p><span class="math display">\[
+\begin{aligned}
+SC_{AB}^{*} &amp; = \sum_{i}^{}{\sum_{j}^{}{{{\hat{D}}^{2}\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)}^{2}\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2}}} \\
+&amp; =  \frac{{\left\lbrack\sum_i\sum_j\left(\overline{Y}_{i\bullet} -\overline{Y}_{\bullet\bullet} \right ) \left ( \overline{Y}_{\bullet j} -\overline{Y}_{\bullet\bullet} \right )Y_{ij}\right\rbrack }^{2}}{\sum_i\left ( \overline{Y}_{i\bullet} -\overline{Y}_{\bullet\bullet}\right )^2\sum_j\left ( \overline{Y}_{\bullet j} -\overline{Y}_{\bullet\bullet}\right )^2}
+\end{aligned}
+\]</span></p>
+<p>La descomposición de la SCT para este caso especial de interacción es:</p>
+<p><span class="math display">\[
+SC_{T} = SC_{A} + SC_{B} + SC_{AB}^{*} + SC_{R}^{*}
+\]</span></p>
+<p>donde <span class="math inline">\(SC_{R}^{*}\)</span> es la suma de cuadrados residual:</p>
+<p><span class="math display">\[
+SC_{R}^{*} = SC_{T} - SC_{A} - SC_{B} - SC_{AB}^{*}
+\]</span></p>
+<p>si <span class="math inline">\(D = 0\)</span>, la prueba estadística:</p>
+<p><span class="math display">\[
+F^{*} = \frac{\text{SC}_{AB}^{*}}{1} \div \frac{\text{SC}_{R}^{*}}{IJ - I - J}\sim F_{1;IJ - I - J}
+\]</span></p>
+<p>Las hipótesis a poner a prueba son, entonces:</p>
+<p><span class="math inline">\(H_{0}:D = 0\)</span> (no hay interacción)</p>
+<p><span class="math inline">\(H_{a}:D \neq 0\)</span> (hay interacción)</p>
+<p>La regla de decisión es:</p>
+<ul>
+<li><p>Si <span class="math inline">\(F^{*} \leq F_{1 - \alpha;1;IJ - I - J}\)</span>, no se rechaza <span class="math inline">\(H_{0}\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(F^{*} &gt; F_{1 - \alpha;1;IJ - I - J}\)</span>, se rechaza <span class="math inline">\(H_{0}\)</span>.</p></li>
+</ul>
+<p><em>Ejemplo:</em> Se estudió la razón de la superficie a peso seco, para tres
+condiciones de sombra y tres especies de cítricos. Los resultados se presentan
+en la tabla:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Naranja</th>
+<th>Toronja</th>
+<th>Mandarina</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sol</td>
+<td>112</td>
+<td>90</td>
+<td>123</td>
+</tr>
+<tr class="even">
+<td>Media sombra</td>
+<td>86</td>
+<td>73</td>
+<td>89</td>
+</tr>
+<tr class="odd">
+<td>Sombra</td>
+<td>80</td>
+<td>62</td>
+<td>81</td>
+</tr>
+</tbody>
+</table>
+<p>Se desea saber si hay diferencias entre las especies y entre las condiciones de
+iluminación.</p>
+<p><em>Prueba de Tukey</em></p>
+<p>Se calculan las medias de los niveles de cada factor</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="12%" />
+<col width="9%" />
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Naranja</th>
+<th>Toronja</th>
+<th>Mandarina</th>
+<th align="left"><span class="math inline">\(\overline{Y}_{i \bullet}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sol</td>
+<td>112</td>
+<td>90</td>
+<td>123</td>
+<td align="left">108.333333</td>
+</tr>
+<tr class="even">
+<td>Media sombra</td>
+<td>86</td>
+<td>73</td>
+<td>89</td>
+<td align="left">82.6666667</td>
+</tr>
+<tr class="odd">
+<td>Sombra</td>
+<td>80</td>
+<td>62</td>
+<td>81</td>
+<td align="left">74.3333333</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\overline{Y}_{\bullet j}\)</span></td>
+<td>92.6666667</td>
+<td>75</td>
+<td>97.6666667</td>
+<td align="left"><span class="math inline">\(\overline{Y}_{\bullet \bullet} = 88.4444444\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Se calcula la <span class="math inline">\(SC_{AB}^{*}\)</span></p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Naranja</th>
+<th>Toronja</th>
+<th>Mandarina</th>
+<th align="left"><span class="math inline">\(\overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sol</td>
+<td>112</td>
+<td>90</td>
+<td>123</td>
+<td align="left">19.8888889</td>
+</tr>
+<tr class="even">
+<td>Media sombra</td>
+<td>86</td>
+<td>73</td>
+<td>89</td>
+<td align="left">-5.77777778</td>
+</tr>
+<tr class="odd">
+<td>Sombra</td>
+<td>80</td>
+<td>62</td>
+<td>81</td>
+<td align="left">-14.1111111</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet}\)</span></td>
+<td>4.22222222</td>
+<td>-13.4444444</td>
+<td>9.22222222</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="89%" />
+<col width="5%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)Y_{ij}\)</span></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9405.23457</td>
+<td>-24065.5556</td>
+<td>22560.6296</td>
+</tr>
+<tr class="even">
+<td>-2097.97531</td>
+<td>5670.5679</td>
+<td>-4742.2716</td>
+</tr>
+<tr class="odd">
+<td>-4766.41975</td>
+<td>11762.3951</td>
+<td>-10541</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i}^{}\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2} &amp;= 628.074074\\
+\sum_{j}^{}{\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2} &amp;=283.62963\\
+SC_{AB}^{*}  &amp;=  56.96674
+\end{aligned}
+\]</span></p>
+<p><em>Cálculo de <span class="math inline">\(SC_R^{*}\)</span></em></p>
+<p><span class="math display">\[
+\begin{aligned}
+SC_{R}^{*}&amp; = SC_{T}-SC_{A}-SC_{B}-SC_{AB}^{*} \\
+&amp; = 2822.2222-1884.22217-850.888916-56.96674 \\
+&amp; = 30.1443745 \\
+\end{aligned}
+\]</span></p>
+<p>Cálculo de <span class="math inline">\(F^{*}\)</span>, para poner a prueba la hipótesis de no interacción</p>
+<p><span class="math display">\[
+F^{*} = \frac{SC_{AB}^{*}}{1} \div \frac{SC_{R}^{*}}{IJ - I - J} = 56.96674 \div \frac{30.1443745}{3 \times 3 - 3 - 3} = 5.66939016
+\]</span></p>
+<p>El valor obtenido se compara con <span class="math inline">\(F_{0.05;1,3} = 10.1279625\)</span>; con lo cual no
+se rechaza la hipótesis nula. El valor de <span class="math inline">\(p\)</span> es <span class="math inline">\(0.09752552\)</span>.</p>
+<p>En un gráfico de perfiles se observa:</p>
+<p>(ref:citricos) Graficos de perfiles de la razón de área foliar a peso de hoja
+para tres especies de citrícos bajo tres condiciones de luz.</p>
+<div class="figure"><span id="fig:citricos"></span>
+<img src="anova-dos-factores_files/figure-html/citricos-1.png" alt="(ref:citricos)" width="50%" /><img src="anova-dos-factores_files/figure-html/citricos-2.png" alt="(ref:citricos)" width="50%" />
+<p class="caption">
+Figura 9.4: (ref:citricos)
+</p>
+</div>
+<p>Analysis of Variance Model</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Especie</strong></td>
+<td>2</td>
+<td>850.9</td>
+<td>425.4</td>
+<td>19.54</td>
+<td>0.008625</td>
+</tr>
+<tr class="even">
+<td><strong>Sombra</strong></td>
+<td>2</td>
+<td>1884</td>
+<td>942.1</td>
+<td>43.26</td>
+<td>0.001953</td>
+</tr>
+<tr class="odd">
+<td><strong>Residuals</strong></td>
+<td>4</td>
+<td>87.11</td>
+<td>21.78</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>Análisis de varianza de dos factores con una sola muestra por grupo</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>RESUMEN</em></th>
+<th><em>Cuenta</em></th>
+<th><em>Suma</em></th>
+<th><em>Promedio</em></th>
+<th><em>Varianza</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sol</td>
+<td>3</td>
+<td>325</td>
+<td>108.333333</td>
+<td>282.333333</td>
+</tr>
+<tr class="even">
+<td>media sombra</td>
+<td>3</td>
+<td>248</td>
+<td>82.6666667</td>
+<td>72.3333333</td>
+</tr>
+<tr class="odd">
+<td>sombra</td>
+<td>3</td>
+<td>223</td>
+<td>74.3333333</td>
+<td>114.333333</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Naranja</td>
+<td>3</td>
+<td>278</td>
+<td>92.6666667</td>
+<td>289.333333</td>
+</tr>
+<tr class="even">
+<td>Toronja</td>
+<td>3</td>
+<td>225</td>
+<td>75</td>
+<td>199</td>
+</tr>
+<tr class="odd">
+<td>Mandarina</td>
+<td>3</td>
+<td>293</td>
+<td>97.6666667</td>
+<td>497.333333</td>
+</tr>
+</tbody>
+</table>
+<p>ANÁLISIS DE VARIANZA</p>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="13%" />
+<col width="14%" />
+<col width="18%" />
+<col width="7%" />
+<col width="10%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Origen de las variaciones</em></th>
+<th><em>Suma de cuadrados</em></th>
+<th><em>Grados de libertad</em></th>
+<th><em>Promedio de los cuadrados</em></th>
+<th><em>F</em></th>
+<th><em>Probabilidad</em></th>
+<th><em>Valor crítico para F</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Filas</td>
+<td>1884.222222</td>
+<td>2</td>
+<td>942.111111</td>
+<td>43.2602041</td>
+<td>0.00195266</td>
+<td>6.944276265</td>
+</tr>
+<tr class="even">
+<td>Columnas</td>
+<td>850.8888889</td>
+<td>2</td>
+<td>425.444444</td>
+<td>19.5357143</td>
+<td>0.00862465</td>
+<td>6.944276265</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>87.11111111</td>
+<td>4</td>
+<td>21.7777778</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>2822.222222</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="modelo-ii-y-modelo-iii-para-estudios-de-dos-factores" class="section level2">
+<h2><span class="header-section-number">9.10</span> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</h2>
+<div id="modelo-aleatorio-modelo-ii" class="section level3">
+<h3><span class="header-section-number">9.10.1</span> Modelo aleatorio (Modelo II)</h3>
+<p>El modelo aleatorio para estudios de dos factores con igual tamaño muestral, n,
+es:</p>
+<p><span class="math display">\[
+Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+\]</span></p>
+<p>donde:</p>
+<p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante</p>
+<p><span class="math inline">\(\alpha_{i}\)</span>, <span class="math inline">\(\beta_{j}\)</span> , <span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> son
+variables aleatorias independientes con distribución normal con media cero y
+varianzas <span class="math inline">\(\sigma_{\alpha}^{2},\ \sigma_{\beta}^{2},\ \sigma_{\alpha\beta}^{2}\)</span>
+respectivamente.</p>
+<p><span class="math inline">\(\varepsilon_{ijk}\)</span> son independientes <span class="math inline">\(N(0,\sigma^{2})\)</span></p>
+<p><span class="math inline">\(\alpha_{i}\)</span>, <span class="math inline">\(\beta_{j}\)</span> , <span class="math inline">\(\left( \alpha\beta \right)_{ij},\
+\varepsilon_{ijk}\)</span> son independientes de a pares</p>
+<p><span class="math display">\[
+i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
+\]</span></p>
+<p>Para este modelo de ANOVA el valor esperado de los <span class="math inline">\(Y_{\text{ijk}}\)</span> es:</p>
+<p><span class="math display">\[
+E\left( Y_{ijk} \right) = \mu_{\bullet \bullet}
+\]</span></p>
+<p>y la varianza de los <span class="math inline">\(Y_{\text{ijk}}\)</span>, indicada como <span class="math inline">\(\sigma_{Y}^{2}\)</span>,
+es:</p>
+<p><span class="math display">\[
+\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\alpha}^{2} + \sigma_{\beta}^{2} + \sigma_{\alpha\beta}^{2} + \sigma^{2}
+\]</span></p>
+</div>
+<div id="modelo-mixto-modelo-iii" class="section level3">
+<h3><span class="header-section-number">9.10.2</span> Modelo Mixto (Modelo III)</h3>
+<p>Para este caso, con igual tamaño muestral, el modelo de ANOVA es:</p>
+<p><span class="math display">\[
+Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+\]</span></p>
+<p>donde:</p>
+<p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante</p>
+<p><span class="math inline">\(\alpha_{i}\)</span> son constantes sujetas a la restricción <span class="math inline">\(\sum\alpha_{i} = 0\)</span></p>
+<p><span class="math inline">\(\beta_{j}\)</span> son independientes <span class="math inline">\(N(0,\sigma_{\beta}^{2})\)</span></p>
+<p><span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> son <span class="math inline">\(N\left( 0,\frac{I - 1}{I}\sigma_{\alpha\beta}^{2} \right)\)</span>, sujetas a las restricciones:<br />
+a) <span class="math inline">\(\sum\left( \alpha\beta \right)_{ij} = 0\ \forall\ j\)</span>; b)
+<span class="math inline">\(\text{Cov}\left\lbrack \left( \alpha\beta \right)_{ij};\left( \alpha\beta \right)_{i^{&#39;}j} \right\rbrack = - \frac{1}{I}\sigma_{\alpha\beta}^{2}\ \forall\ \
+i \neq i^{&#39;}\)</span></p>
+<p><span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes y se distribuyen <span class="math inline">\(N\left( 0,\sigma^{2} \right)\)</span></p>
+<p><span class="math inline">\(\beta_{j}\)</span>, <span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> y
+<span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes de a pares</p>
+<p><span class="math display">\[
+i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
+\]</span></p>
+<p>Para el modelo mixto, el valor esperado de <span class="math inline">\(Y_{ijk}\)</span> es:</p>
+<p><span class="math display">\[
+E(Y_{\text{ijk}}) = \mu_{\bullet \bullet} + \alpha_{i}
+\]</span></p>
+<p>y la varianza de <span class="math inline">\(Y_{\text{ijk}}\)</span> es:</p>
+<p><span class="math display">\[
+\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\beta}^{2} + \frac{I - 1}{I}\sigma_{\alpha\beta}^{2} + \sigma^{2}
+\]</span></p>
+</div>
+<div id="pruebas-estadisticas" class="section level3">
+<h3><span class="header-section-number">9.10.3</span> Pruebas estadísticas</h3>
+<table>
+<caption><span id="tab:mixto-aleatorio">Tabla 9.9: </span> Pruebas estadísticas para los Modelos Aleatorios y Mixto</caption>
+<colgroup>
+<col width="29%" />
+<col width="19%" />
+<col width="25%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prueba para presencia de efectos de …</th>
+<th>Modelo Fijo (A y B fijos)</th>
+<th>Modelo Aleatorio (A y B aleatorio)</th>
+<th>Modelo Mixto (A fijo y B aleatorio)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>factor <span class="math inline">\(A\)</span></td>
+<td><span class="math inline">\(CM_{A}/CM_{D}\)</span></td>
+<td><span class="math inline">\(CM_{A}/CM_{AB}\)</span></td>
+<td><span class="math inline">\(CM_{A}/CM_{AB}\)</span></td>
+</tr>
+<tr class="even">
+<td>factor <span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(CM_{B}/CM_{D}\)</span></td>
+<td><span class="math inline">\(CM_{B}/CM_{AB}\)</span></td>
+<td><span class="math inline">\(CM_{B}/CM_{D}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Interacción <span class="math inline">\(AB\)</span></td>
+<td><span class="math inline">\(CM_{AB}/CM_{D}\)</span></td>
+<td><span class="math inline">\(CM_{AB}/CM_{D}\)</span></td>
+<td><span class="math inline">\(CM_{AB}/CM_{D}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estimacion-de-los-componentes-de-la-varianza" class="section level3">
+<h3><span class="header-section-number">9.10.4</span> Estimación de los componentes de la varianza</h3>
+<p>Con un modelo aleatorio, por ejemplo <span class="math inline">\(\sigma_{\alpha}^{2}\)</span> puede ser estimado
+por:</p>
+<p><span class="math display">\[
+E\left( CM_{A} \right) - E\left( CM_{AB} \right) = \sigma^{2} + nJ\sigma_{\alpha}^{2} + n\sigma_{\alpha\beta}^{2} - \left( \sigma^{2} + n\sigma_{\alpha\beta}^{2} \right) = nJ\sigma_{\alpha}^{2}
+\]</span></p>
+<p>De esta forma un estimador insesgado de <span class="math inline">\(\sigma_{\alpha}^{2}\)</span> es:</p>
+<p><span class="math display">\[
+S_{\alpha}^{2} = \frac{CM_{A} - CM_{AB}}{\text{nJ}}
+\]</span></p>
+<p>En un modelo mixto con el factor <span class="math inline">\(A\)</span> fijo y el factor <span class="math inline">\(B\)</span> aleatorio, se obtendrá:</p>
+<p><span class="math display">\[
+S_{I}^{2} = \frac{CM_{B} - CM_{D}}{\text{nI}}
+\]</span></p>
+<table>
+<caption><span id="tab:esperanza-CM">Tabla 9.10: </span> Esperanza de los cuadrados medios en estudios de dos factores</caption>
+<colgroup>
+<col width="17%" />
+<col width="4%" />
+<col width="34%" />
+<col width="18%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CM</th>
+<th>GL</th>
+<th>Niveles del Factor Fijos (A y B fijos)</th>
+<th>Niveles del factor Aleatorios (A y B aleatorios)</th>
+<th>Niveles del Factor Mixtos (A fijo, B aleatorio)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(CM_{A}\)</span></td>
+<td><span class="math inline">\(I - 1\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nJ\frac{\sum_{}^{}\alpha_{i}^{2}}{I - 1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nJ\sigma_{\alpha}^{2} + n\sigma_{\alpha\beta}^{2}\)</span></td>
+<td><span class="math inline">\({\sigma^{2} + nJ\frac{\sum_{}^{}\alpha_{i}^{2}}{I - 1} + n\sigma}_{\alpha\beta}^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(CM_{B}\)</span></td>
+<td><span class="math inline">\(J - 1\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nI\frac{\sum_{}^{}\beta_{j}^{2}}{J - 1}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nI\sigma_{\beta}^{2} + n\sigma_{\alpha\beta}^{2}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nI\sigma_{\beta}^{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(CM_{AB}\)</span></td>
+<td><span class="math inline">\((I - 1)(J - 1)\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + nJ\frac{\sum_{}^{}\left( \alpha\beta \right)_{ij}^{2}}{\left( I - 1 \right)\left( J - 1 \right)}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + n\sigma_{\alpha\beta}^{2}\)</span></td>
+<td><span class="math inline">\(\sigma^{2} + n\sigma_{\alpha\beta}^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(CM_{D}\)</span></td>
+<td><span class="math inline">\(N - IJ\)</span></td>
+<td><span class="math inline">\(\sigma^{2}\)</span></td>
+<td><span class="math inline">\(\sigma^{2}\)</span></td>
+<td><span class="math inline">\(\sigma^{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><em>Ejemplos</em>: 1) Se quiere estudiar el efecto de diferentes longitudes de onda
+(tratamiento) sobre la fertilidad en <em>D. Melanogaster</em>. Para ello se eligieron
+al azar 25 cepas y se sometieron a cuatro longitudes de onda diferentes elegidas
+también al azar. Para combinación longitud de onda-cepa se seleccionaron 12
+hembras al azar y se registró la cantidad total de huevos puestos al cabo del
+cuarto día de postura, con los siguientes resultados:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>GL</th>
+<th>CM</th>
+<th>E(CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre cepas A</td>
+<td>24</td>
+<td>3243.00</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Entre tratamientos B</td>
+<td>3</td>
+<td>466.59</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Interacción AB</td>
+<td>72</td>
+<td>459.00</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Dentro (Error)</td>
+<td>1100</td>
+<td>231.00</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>Completar el cuadro con la columna de las E(CM)</p></li>
+<li><p>Hacer las pruebas de hipótesis correspondientes.</p></li>
+<li><p>Calcular los estimadores de los componentes de la varianza.</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>y c)</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>CM</th>
+<th><strong>Varianzas</strong></th>
+<th>E(CM)</th>
+<th>% de la Varianza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3243.00</td>
+<td>58.0000</td>
+<td>3243 = 231 + 12 * 4 * 58 + 12 * 19</td>
+<td>18.82962211</td>
+</tr>
+<tr class="even">
+<td>466.59</td>
+<td>0.0253</td>
+<td>466.59 = 231 + 12 * 25 * 0.0253 * 12 * 19</td>
+<td>0.00821361</td>
+</tr>
+<tr class="odd">
+<td>459.00</td>
+<td>19.0000</td>
+<td>459 = 231 + 12 * 19</td>
+<td>6.16832448</td>
+</tr>
+<tr class="even">
+<td>231.00</td>
+<td>231.0000</td>
+<td>231</td>
+<td>74. 99383979</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Fte. de Variación</th>
+<th><strong>GL</strong></th>
+<th><strong>CM</strong></th>
+<th>F*</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre cepas A</td>
+<td>24</td>
+<td>3243.00</td>
+<td>7.06535948</td>
+<td>4.8134E -11</td>
+</tr>
+<tr class="even">
+<td>Entre tratamientos B</td>
+<td>3</td>
+<td>466.59</td>
+<td>1.01653595</td>
+<td>0.39049455</td>
+</tr>
+<tr class="odd">
+<td>Interacción AB</td>
+<td>72</td>
+<td>459.00</td>
+<td>1.98701299</td>
+<td>3.9506E-06</td>
+</tr>
+<tr class="even">
+<td>Dentro (Error)</td>
+<td>1100</td>
+<td>231.00</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li>Para comparar la calidad periodística de tres periódicos A, B y C de ámbito
+nacional, se eligieron al azar 15 ciudades grandes del país. De cada ciudad se
+tomó una muestra de 10 lectores de A, 10 lectores de B y 10 lectores de C. A
+cada lector se le formularon una serie de preguntas cuyo resultado era una
+puntuación que indicaba la calidad del periódico. Tratados los datos mediante un
+análisis de la varianza, se obtuvo la siguiente tabla:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Fuente de Variación</th>
+<th>GL</th>
+<th>SC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre periódicos</td>
+<td>2</td>
+<td>14682</td>
+</tr>
+<tr class="even">
+<td>Entre ciudades</td>
+<td>14</td>
+<td>32712</td>
+</tr>
+<tr class="odd">
+<td>Interacción</td>
+<td>28</td>
+<td>52570</td>
+</tr>
+<tr class="even">
+<td>Error (Dentro)</td>
+<td>405</td>
+<td>480308</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>Indicar que tipo de diseño se utilizó para realizar el análisis.</p></li>
+<li><p>Estudiar si existe diferencia entre periódicos, entre ciudades y la
+significación de la interacción.</p></li>
+</ol>
+<p>Es un diseño mixto de dos factores con interacción. El factor periódico es fijo,
+mientras que el factor ciudad es de efectos aleatorios (las ciudades han sido
+elegidas al azar).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Fuente de Variación</th>
+<th><strong>GL</strong></th>
+<th><strong>SC</strong></th>
+<th><strong>CM</strong></th>
+<th><strong>F*</strong></th>
+<th><strong>p</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre periódicos</td>
+<td>2</td>
+<td>14682</td>
+<td>7341.000000</td>
+<td>3.909987</td>
+<td>0.03180</td>
+</tr>
+<tr class="even">
+<td>Entre ciudades</td>
+<td>14</td>
+<td>32712</td>
+<td>2336.571429</td>
+<td>0.068106</td>
+<td>0.99999</td>
+</tr>
+<tr class="odd">
+<td>Interacción</td>
+<td>28</td>
+<td>52570</td>
+<td>1877.500000</td>
+<td>1.583125</td>
+<td>0.03119</td>
+</tr>
+<tr class="even">
+<td>Error (Dentro)</td>
+<td>405</td>
+<td>480308</td>
+<td>1185.945679</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Un estimador de la varianza del factor ciudades es:</p>
+<p><span class="math display">\[
+S_{\beta}^{2} = \frac{\left. \ CM_{B} - CM_{D} \right.\ }{nI} = \frac{2336.571429 - 1185.945679}{10 \times 3} = 38.35419165
+\]</span></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova-no-parametrico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="disenos-experimentales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/anova-dos-factores.Rmd",
+"text": "Edit"
+},
+"download": ["laboratorios.pdf", "laboratorios.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
