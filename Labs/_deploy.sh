@@ -10,7 +10,6 @@ git config --global user.name "Luciano Selzer"
 
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
 cd book-output
-ls|cat
 cp -r ../Labs/_book/* ./
 git add --all *
 git commit -m"Update the book" || true
