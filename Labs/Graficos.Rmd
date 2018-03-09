@@ -1,7 +1,6 @@
 # Visualización de Datos
 
 ```{r setup, include=FALSE}
-library(learnr)
 library(tidyverse)
 library(patchwork)
 library(magrittr)
