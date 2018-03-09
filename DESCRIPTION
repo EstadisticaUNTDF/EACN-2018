@@ -2,5 +2,5 @@ Package: placeholder
 Type: Book
 Title: Does not matter.
 Version: 0.0.1
-Imports: bookdown, tidyverse, scifigure, emmeans, car, additivityTests, cowplot, magrittr, multcompView, maps, pander, agricolae, additivityTests, broom, compute.es, pwr
+Imports: bookdown, tidyverse, scifigure, emmeans, car, additivityTests, cowplot, magrittr, multcompView, maps, pander, agricolae, additivityTests, broom, compute.es, pwr, forcats, nortest
 Remotes: rstudio/bookdown, thomasp85/patchwork
