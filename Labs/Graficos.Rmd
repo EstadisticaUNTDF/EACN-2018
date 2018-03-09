@@ -1,6 +1,7 @@
 # Visualización de Datos
 
 ```{r setup, include=FALSE}
+if(!require(patchwork)) devtools::install_github("thomasp85/patchwork")
 library(tidyverse)
 library(patchwork)
 library(magrittr)
