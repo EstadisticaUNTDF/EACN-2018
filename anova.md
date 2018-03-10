@@ -1,7 +1,7 @@
 
 
 
-#ANOVA
+# ANOVA
 
 ## Algunos conceptos importantes
 
@@ -763,7 +763,7 @@ SC_D = \sum_{i}^{}{\sum_{j}^{}{y_{\text{ij}}^{2} - n_{i}{\overline{y}}_{\text{i}
 \end{matrix}
 $$
 
-##Grados De Libertad
+## Grados De Libertad
 
 
 Correspondiendo a la descomposición de la suma de cuadrados total, se puede

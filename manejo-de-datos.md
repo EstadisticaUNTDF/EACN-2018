@@ -1,7 +1,7 @@
 # Manejo de datos
 
 
-<div class="atencion">
+<div class="rmdimportant">
 <p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
 <p><code>download.file(url = &quot;git.io/informe-manejo&quot;, destfile = &quot;informe-manejo-de-datos.Rmd&quot;)</code></p>
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>

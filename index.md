@@ -27,7 +27,7 @@ siguientes items.
 | Parcial 2                                                | 30%         |
 | Total                                                    | 100%        |
 
-#### Asistencia a clases, participación y evaluación de pares
+## Asistencia a clases, participación y evaluación de pares
 
 Se espera que los alumnos vayan a clases y participen activamente de la misma,
 con preguntas y respuestas. La asistencia y participación es una parte pequeña
@@ -40,7 +40,7 @@ evaluaciones de pares. Estas serán usadas para asegurar que todos los miembros
 del equipo contribuyan al éxito del grupo y poder resolver los posibles
 problemas de manera temprana.
 
-### Entrega de Ejercicios
+## Entrega de Ejercicios
 
 Al principio de cada unidad se harán un pequeño número de ejercicios de forma
 manual.
@@ -56,7 +56,7 @@ problemas.
 
 La nota menor no se tomará en cuenta.
 
-### Laboratorios
+## Laboratorios
 
 En cada laboratorio se completará de forma individual. Se puede realizar
 consultas entre alumnos y se alienta la colaboración. Pero la entrega de
@@ -66,7 +66,7 @@ Deben entregar el archivo *.Rmd* y el *.html*.
 
 La nota menor no se tomará en cuenta.
 
-### Cuestionario de Comprensión
+## Cuestionario de Comprensión
 
 Al final de la unidad se harán cuestionarios para evaluar la comprensión que
 tiene el alumno sobre el tema. El mismo se hará en la plataforma de Moodle, y
@@ -75,7 +75,7 @@ harán 10 preguntas de elección múltiple.
 
 La menor puntuación no será tenida en cuenta.
 
-### Parciales
+## Parciales
 
 La asignatura contará con 2 parciales prácticos (se considera parcial aprobado
 con el 60% bien desarrollado y si no se cometen errores conceptuales básicos en
