@@ -188,7 +188,8 @@ Lista Ordenada
 
 #### Saltos de línea manuales
 
-Termina una línea con dos o más espacios: 
+Termina una línea con dos o más espacios:  
+
 Las rosas son rojas,   
 las violetas son azules.
 
@@ -236,7 +237,7 @@ considerado como un *único* párrafo a menos que este separado por
 
 Por ejemplo, prueben escribir esto en el documento (pueden copiarlo):
 
->##Del origen de las especies
+>## Del origen de las especies
 
 >### Por Darwin
 
