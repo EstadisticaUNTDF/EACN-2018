@@ -6,6 +6,12 @@ cache:
   directories:
     - $HOME/bin
     - $TRAVIS_BUILD_DIR/_bookdown_files
+
+addons:
+    apt:
+        packages:
+        - ghostscript
+
 env:
   global:
   - secure: Qc6HnWxA8FczlTbmmzGBGYmJCu7Sep3GznvgLhN5bG84Z97Y8o0UY4HXXLBNK+Vr0kPpDJPgztnD4zfjJ7SvZGvNEQHYuAcxCMp2fRRmM5KmaNpmUbLNO5qsQw+Wun3wBs2GHNy2KSfD1ORjKY1jE+N2Pxh7WHHSWzy7ECsJMKq+/wO+QcjpPuT3ngbbWIQTrl8BW5aY4JkIecqKxUi0ZSxKp2rEKB2vWDBNs5BVGJuPRc36r3QHxpFsdg9vX0SepUCdkUhtL244WMMb85Z5IOnE+kHXgSme19CR5Ge/RAo6YxfSKBgS47BINd2vWCf0mxIRKSZrr8O6u6SUIasBM6KImLzOjJhz0fajezpvyr3jL7KsgrcZowKGO2DEMkaPAuJ1GBI7S6a8qdSax73LGFMm9Mc/b5ublKcS1u+0qvU2JEwODPRkS3pAaOUy8mVL9XsOAxz4g4M5deoWG75qIshP7ZjWP8jBtLN0I4rIixChHOzsaFi9bEXVEBGBeIEo03/dfEVr57BpDxCquuKFhzG0MOjzbwOZhueBtLu55KcFWvVZHFYrI9AiyC6YLeJGSsIuDF7FB2e5To7uDxTBYw6/QozVFAqhFVR6gHCw6qg5dFMww74z5AzVnU+IeNzwfgldETa7LPocEJ0GWyB487StDzpgPfkx67vH6eNshe0=
