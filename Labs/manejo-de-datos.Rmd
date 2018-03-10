@@ -1,7 +1,7 @@
 # Manejo de datos
 
 
-```{block, type = "atencion"}
+```{block, type = "rmdimportant"}
 
 Antes de comenzar bajen el archivo donde realizarán su informe reproducible.
 En la consola copien este código:
