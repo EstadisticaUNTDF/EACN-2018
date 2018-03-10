@@ -147,7 +147,7 @@ aprendizaje. Los datos graficados corresponden a y d Tabla
 \@ref(tab:aprendizaje3), 
 
 <div class="figure">
-<img src="anova-dos-factores_files/figure-html/interaccion1-1.png" alt="(ref:interaccion1)" width="672" /><img src="anova-dos-factores_files/figure-html/interaccion1-2.png" alt="(ref:interaccion1)" width="672" />
+<img src="anova-dos-factores_files/figure-epub3/interaccion1-1.png" alt="(ref:interaccion1)"  /><img src="anova-dos-factores_files/figure-epub3/interaccion1-2.png" alt="(ref:interaccion1)"  />
 <p class="caption">(\#fig:interaccion1)(ref:interaccion1)</p>
 </div>
 
@@ -247,7 +247,7 @@ hombres de tres edades. Caso con interacción no importante.
 aprendizaje. Los datos graficados corresponden a la Tabla \@ref(tab:aprendizaje4)
 
 <div class="figure">
-<img src="anova-dos-factores_files/figure-html/interaccion-no-importante-1.png" alt="(ref:interaccion-no-importante)" width="50%" /><img src="anova-dos-factores_files/figure-html/interaccion-no-importante-2.png" alt="(ref:interaccion-no-importante)" width="50%" />
+<img src="anova-dos-factores_files/figure-epub3/interaccion-no-importante-1.png" alt="(ref:interaccion-no-importante)" width="50%" /><img src="anova-dos-factores_files/figure-epub3/interaccion-no-importante-2.png" alt="(ref:interaccion-no-importante)" width="50%" />
 <p class="caption">(\#fig:interaccion-no-importante)(ref:interaccion-no-importante)</p>
 </div>
 
@@ -714,7 +714,7 @@ estaciones del año. a -- gráfico de cajas y barras para las 4 estaciones, n =
 interacción fármaco x estación, n = 4.
 
 <div class="figure">
-<img src="anova-dos-factores_files/figure-html/graficos-asma-1.png" alt="(ref:grafico-asma)" width="672" />
+<img src="anova-dos-factores_files/figure-epub3/graficos-asma-1.png" alt="(ref:grafico-asma)"  />
 <p class="caption">(\#fig:graficos-asma)(ref:grafico-asma)</p>
 </div>
 
@@ -1281,7 +1281,7 @@ En un gráfico de perfiles se observa:
 para tres especies de citrícos bajo tres condiciones de luz.
 
 <div class="figure">
-<img src="anova-dos-factores_files/figure-html/citricos-1.png" alt="(ref:citricos)" width="50%" /><img src="anova-dos-factores_files/figure-html/citricos-2.png" alt="(ref:citricos)" width="50%" />
+<img src="anova-dos-factores_files/figure-epub3/citricos-1.png" alt="(ref:citricos)" width="50%" /><img src="anova-dos-factores_files/figure-epub3/citricos-2.png" alt="(ref:citricos)" width="50%" />
 <p class="caption">(\#fig:citricos)(ref:citricos)</p>
 </div>
 

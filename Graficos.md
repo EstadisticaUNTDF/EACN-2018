@@ -79,7 +79,7 @@ ggplot(data = mpg) +
  geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="Graficos_files/figure-html/grafico-inicial-1.png" width="672" />
+![](Graficos_files/figure-epub3/grafico-inicial-1.png)<!-- -->
 
 Prueben escribiendo el código en la consola.
 
@@ -108,7 +108,7 @@ hacer dentro la función `aes()`, de *aestetics* que significa ésteticas en ing
 En el gráfico anterior vemos que hay unos puntos que no siguen la tendencia 
 general. Aquí están resaltados con rojo.
 
-<img src="Graficos_files/figure-html/puntos-resaltados-1.png" width="672" />
+![](Graficos_files/figure-epub3/puntos-resaltados-1.png)<!-- -->
 
 
 Para saber más el porque de estos puntos podríamos agregar más información
@@ -120,7 +120,7 @@ ggplot(data = mpg) +
  geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-<img src="Graficos_files/figure-html/color-1.png" width="672" />
+![](Graficos_files/figure-epub3/color-1.png)<!-- -->
 
 Ahora podemos ver, que en general los autos con cilindrada grande son camionetas
 (*pickup*) o suv. Y que los
@@ -145,7 +145,7 @@ ggplot(data = mpg) +
 ## Warning: Using size for a discrete variable is not advised.
 ```
 
-<img src="Graficos_files/figure-html/point-size-1.png" width="672" />
+![](Graficos_files/figure-epub3/point-size-1.png)<!-- -->
 
 También podriamos mapear la clase a la transparencia de los puntos (`alpha`) o
 a la forma (`shape`)
@@ -163,7 +163,7 @@ ggplot(data = mpg) +
 ```
 
 
-<img src="Graficos_files/figure-html/alpha-shape-1.png" width="672" />
+![](Graficos_files/figure-epub3/alpha-shape-1.png)<!-- -->
 
 Si reproducen el código en sus computadoras verán que que ambos dan advertencias.
 Así como no tienen mucho sentido mapear el tamaño a algo sin orden intríseco,
@@ -187,7 +187,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "red")
 ```
 
-<img src="Graficos_files/figure-html/manual-color-1.png" width="672" />
+![](Graficos_files/figure-epub3/manual-color-1.png)<!-- -->
 
 Acá el color no muestra ninguna información extra. También es posible cambiar
 el:
@@ -198,7 +198,7 @@ el:
 
 
 <div class="figure">
-<img src="Graficos_files/figure-html/puntos-1.png" alt="Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes. Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde, usan `color` para cambiar el color. Del 15 a 18 son formas rellenas que usan `fill` para cambiar el color del relleno. Y de la forma 21 a 23 son formas con relleno y borde que usan ambas `fill` y `color`." width="75%" />
+<img src="Graficos_files/figure-epub3/puntos-1.png" alt="Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes. Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde, usan `color` para cambiar el color. Del 15 a 18 son formas rellenas que usan `fill` para cambiar el color del relleno. Y de la forma 21 a 23 son formas con relleno y borde que usan ambas `fill` y `color`." width="75%" />
 <p class="caption">(\#fig:puntos)Valores númericos y la forma asociada a cada uno. En R hay 25 formas diferentes. Algunas parecen repetirse pero no es así. Por ejemplo, las formas 0, 15 y 22 son todos cuadrados. Pero las formas del 0-15 tienen el color definido por el borde, usan `color` para cambiar el color. Del 15 a 18 son formas rellenas que usan `fill` para cambiar el color del relleno. Y de la forma 21 a 23 son formas con relleno y borde que usan ambas `fill` y `color`.</p>
 </div>
 
@@ -214,7 +214,7 @@ relleno y borde que usan ambas `fill` y `color`.
 
 ¿En que se parecen los gráficos de abajo?
 
-<img src="Graficos_files/figure-html/unnamed-chunk-2-1.png" width="50%" /><img src="Graficos_files/figure-html/unnamed-chunk-2-2.png" width="50%" />
+<img src="Graficos_files/figure-epub3/unnamed-chunk-2-1.png" width="50%" /><img src="Graficos_files/figure-epub3/unnamed-chunk-2-2.png" width="50%" />
 
 
 Ambos tienen las mismas variables, pero están representados por distintas formas.
@@ -254,7 +254,7 @@ ggplot(data = mpg) +
 
 Todos los *geoms* van luego de `ggplot` y se unen con un `+`. En ggplot cada forma geométrica es una capa y pueden combinarse varias en un mismo gráfico.
 
-<img src="Graficos_files/figure-html/dos-geoms-1.png" width="50%" />
+<img src="Graficos_files/figure-epub3/dos-geoms-1.png" width="50%" />
 
 Además, todos los `geoms` tienen un argumento `mapping` para la estética. Claro
 que no todos aceptan los mismas argumentos. No tienen sentido ponerle relleno
@@ -267,7 +267,7 @@ ggplot(data = mpg) +
   geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
 ```
 
-<img src="Graficos_files/figure-html/linetype-1.png" width="672" />
+![](Graficos_files/figure-epub3/linetype-1.png)<!-- -->
 
 Acá `geom_smooth` separa tres líneas según el valor de `drv`, que es la tracción.
 Una línea lisa para las que son 4x4 (4), rayas cortas para tracción delantera  (f)
@@ -277,7 +277,7 @@ Podemos ver más claramente porque tiene esta forma geom_smooth graficando los
 puntos de cada grupo:
 
 <div class="figure">
-<img src="Graficos_files/figure-html/dos-geoms-2-1.png" alt="Varios geoms pueden usarse en un mismo gráfico." width="672" />
+<img src="Graficos_files/figure-epub3/dos-geoms-2-1.png" alt="Varios geoms pueden usarse en un mismo gráfico."  />
 <p class="caption">(\#fig:dos-geoms-2)Varios geoms pueden usarse en un mismo gráfico.</p>
 </div>
 
@@ -300,7 +300,7 @@ ggplot(data = mpg) +
   )
 ```
 
-<img src="Graficos_files/figure-html/ejemplo-group-1.png" width="672" />
+![](Graficos_files/figure-epub3/ejemplo-group-1.png)<!-- -->
 
 
 Arriba vimos que podiamos usar dos geoms en un mismo
@@ -340,7 +340,7 @@ ggplot(data = mpg, mapping=  aes(x = displ, y = hwy)) +
   geom_point(mapping = aes(color = class))
 ```
 
-<img src="Graficos_files/figure-html/mapping-ggplot-resumido-1.png" width="672" />
+![](Graficos_files/figure-epub3/mapping-ggplot-resumido-1.png)<!-- -->
 
 
 O también podemos definir otro conjunto de datos para el `geom`:
@@ -352,7 +352,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
 ```
 
-<img src="Graficos_files/figure-html/other-data-1.png" width="672" />
+![](Graficos_files/figure-epub3/other-data-1.png)<!-- -->
 
 Todavía no vieron `filter`, pero ya lo verán más adelante.
 
@@ -371,7 +371,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="Graficos_files/figure-html/geom-bar-1.png" width="672" />
+![](Graficos_files/figure-epub3/geom-bar-1.png)<!-- -->
 
 En el eje *x* está puesto el corte, y en el eje *y* está puesto la cuenta 
 (frecuencia) de cada uno. Pero si vemos el conjunto de datos veremos que esta
@@ -418,7 +418,7 @@ un nuevo data.frame
 
 `geom_bar` luego usa esos datos para graficar:
 
-<img src="Graficos_files/figure-html/geom-bar-diamonds-1.png" width="672" />
+![](Graficos_files/figure-epub3/geom-bar-diamonds-1.png)<!-- -->
 
 Podés saber que `stat` usa cada `geom` usando la ayuda. Por ejemplo, `?geom_bar`
 usa por defecto `stat_count` y `stat_count` usa por defecto `geom_bar` para 
@@ -433,7 +433,7 @@ ggplot(data = diamonds) +
   stat_count(mapping = aes(x = cut))
 ```
 
-<img src="Graficos_files/figure-html/stat-count-1.png" width="672" />
+![](Graficos_files/figure-epub3/stat-count-1.png)<!-- -->
 
 Esto funciona porque cada *stat* tiene un *geom* por defecto y cada *geom* 
 tiene un *stat*. Lo que significa que podes usar cada *geom* sin preocuparte
@@ -461,7 +461,7 @@ ggplot(data = demo) +
   geom_bar(mapping = aes(x = cut, y = freq), stat = "identity")
 ```
 
-<img src="Graficos_files/figure-html/summary-data-1.png" width="672" />
+![](Graficos_files/figure-epub3/summary-data-1.png)<!-- -->
 
 No te preocupes si no entiendes que hace `tribble` o `<-`. Todavía no lo hemos
 visto pero quizá puedas entender que hacen por su contexto
@@ -476,7 +476,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
 ```
 
-<img src="Graficos_files/figure-html/prop-1.png" width="672" />
+![](Graficos_files/figure-epub3/prop-1.png)<!-- -->
 
 3. Quizás quieras llamar la atención sobre ciertos medidas de resumen que has
 calculado. Puedes hacer esto con `stat_summary`.
@@ -493,7 +493,7 @@ ggplot(data = diamonds) +
   )
 ```
 
-<img src="Graficos_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](Graficos_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 
 
@@ -509,14 +509,14 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity))
 ```
 
-<img src="Graficos_files/figure-html/fill-1.png" width="672" />
+![](Graficos_files/figure-epub3/fill-1.png)<!-- -->
 
 ```r
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, color = clarity))
 ```
 
-<img src="Graficos_files/figure-html/fill-2.png" width="672" />
+![](Graficos_files/figure-epub3/fill-2.png)<!-- -->
 
 Es más claro trabajar con el relleno porque es más visible
 en el gráfico. Pero vemos que las distintas barras están apiladas, lo que
@@ -537,7 +537,7 @@ ggplot(data = diamonds) +
    geom_bar(mapping = aes(x = cut, color = clarity), position = "identity")
 ```
 
-<img src="Graficos_files/figure-html/pos-identity-1.png" width="672" />
+![](Graficos_files/figure-epub3/pos-identity-1.png)<!-- -->
 
 + Esquivar es quizás la más útil junto con relleno. Hace que las barras estén
 una al lado de la otra. Lo que hace que sea sencillo comparar la altura de estas.
@@ -549,7 +549,7 @@ ggplot(data = diamonds) +
    geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
 ```
 
-<img src="Graficos_files/figure-html/pos-dodge-1.png" width="672" />
+![](Graficos_files/figure-epub3/pos-dodge-1.png)<!-- -->
 
 + Recién vimos que que con esquivar podemos poner las barras una al lado de otra.
  Pero, más allá de comparar la cantidad de diamantes en cada uno, ya que la 
@@ -565,7 +565,7 @@ ggplot(data = diamonds) +
    geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
 ```
 
-<img src="Graficos_files/figure-html/pos-fill-1.png" width="672" />
+![](Graficos_files/figure-epub3/pos-fill-1.png)<!-- -->
  
 Hay otros ajustes de posiciones que no son útiles para los gráficos de barras
 pero son muy útiles para los gráficos de puntos. En el gráfico de dispersión
@@ -580,7 +580,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
 
-<img src="Graficos_files/figure-html/pos-jitter-1.png" width="672" />
+![](Graficos_files/figure-epub3/pos-jitter-1.png)<!-- -->
 
 Si bien el gráfico no va a ser exacto, muestra más información que en el caso
 donde se superponen los puntos.
@@ -603,7 +603,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   coord_flip()
 ```
 
-<img src="Graficos_files/figure-html/coord-flip-plot-1.png" width="672" />
+![](Graficos_files/figure-epub3/coord-flip-plot-1.png)<!-- -->
 
 En el primer caso las etiquetas del eje x se superponen, pero en el segundo 
 es fácil verlas. No es la única forma de solucionar este problema. También es
@@ -661,7 +661,7 @@ ggplot(data = arg, mapping = aes(x = long, y = lat, group = group)) +
 ##     super:  <ggproto object: Class CoordQuickmap, CoordCartesian, Coord, gg>
 ```
 
-<img src="Graficos_files/figure-html/coord-quickmap-plot-1.png" width="672" />
+![](Graficos_files/figure-epub3/coord-quickmap-plot-1.png)<!-- -->
   
 Esto evita que el mapa se deforme, ya que los grados de longitud no miden lo 
 mismo en todas las latitudes. Si van a hacer muchos mapas les recomiendo que
@@ -678,7 +678,7 @@ cxc <- ggplot(mtcars, aes(x = factor(cyl))) +
 cxc + coord_polar()
 ```
 
-<img src="Graficos_files/figure-html/coord-polar-1.png" width="672" />
+![](Graficos_files/figure-epub3/coord-polar-1.png)<!-- -->
 
 
 ## Personalizando el gráfico
@@ -701,7 +701,7 @@ ggplot(data = mpg) +
                                 "seis", "siete"))
 ```
 
-<img src="Graficos_files/figure-html/scale-1.png" width="672" />
+![](Graficos_files/figure-epub3/scale-1.png)<!-- -->
 
 Un atajo para modificar los nombres de los ejes es usar la función `labs()`,
 pero solo se pueden modificar los nombres de los ejes y nada más.
@@ -713,7 +713,7 @@ ggplot(data = mpg) +
   labs(x = "Cilindrada (l)", y = "Millas por galón en Autopista")
 ```
 
-<img src="Graficos_files/figure-html/labs-1.png" width="672" />
+![](Graficos_files/figure-epub3/labs-1.png)<!-- -->
 
 También se puede modificar los colores que se asignan. 
 
@@ -732,7 +732,7 @@ ggplot(data = mpg) +
   scale_color_viridis_d("Clase")
 ```
 
-<img src="Graficos_files/figure-html/colores-plot-1.png" width="672" />
+![](Graficos_files/figure-epub3/colores-plot-1.png)<!-- -->
 
 Hay muchas más opciones disponibles, ya que como dice el dicho: "Para gustos,
 los colores". Si quieren conocerlas te recomiendo que lean la ayuda de cada
@@ -760,7 +760,7 @@ ggplot(data = mpg) +
   theme_classic()
 ```
 
-<img src="Graficos_files/figure-html/temas-1.png" width="672" />
+![](Graficos_files/figure-epub3/temas-1.png)<!-- -->
 
 Para modificar algún elemento en particular usamos la función `theme()` al final
 del gráfico. Dentro de la llamada a `theme` modificamos el argumento que queremos
@@ -773,7 +773,7 @@ ggplot(data = mpg) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ```
 
-<img src="Graficos_files/figure-html/personalizar-temas-1.png" width="672" />
+![](Graficos_files/figure-epub3/personalizar-temas-1.png)<!-- -->
 
 Sí, es bastante complicado. Pero por suerte se puede guardar y reutilizar.
 
@@ -786,7 +786,7 @@ ggplot(data = mpg) +
   x_45
 ```
 
-<img src="Graficos_files/figure-html/a-45-grados-1.png" width="672" />
+![](Graficos_files/figure-epub3/a-45-grados-1.png)<!-- -->
 
 También es posible cambiar la posición de la leyenda o eliminarla completamente.
 
@@ -802,7 +802,7 @@ ggplot(data = mpg) +
 ```
 
 
-<img src="Graficos_files/figure-html/cambiar-leyenda-plot-1.png" width="672" />
+![](Graficos_files/figure-epub3/cambiar-leyenda-plot-1.png)<!-- -->
 
 
 

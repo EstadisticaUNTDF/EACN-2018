@@ -362,7 +362,7 @@ ggplot(perm, aes(muestra, permeabilidad)) +
   geom_point()
 ```
 
-<img src="No-Parametrico_files/figure-html/grafico-permeabilidad-puntos-1.png" width="672" />
+![](No-Parametrico_files/figure-epub3/grafico-permeabilidad-puntos-1.png)<!-- -->
 
 Aunque también podemos combinar este gráfico con un boxplot y obtener un poco
 más de información.
@@ -374,7 +374,7 @@ ggplot(perm, aes(muestra, permeabilidad)) +
   geom_point()
 ```
 
-<img src="No-Parametrico_files/figure-html/grafico-permeabilidad-puntos-boxplot-1.png" width="672" />
+![](No-Parametrico_files/figure-epub3/grafico-permeabilidad-puntos-boxplot-1.png)<!-- -->
 
 Graficamente, parece ser que la permeabilidad es mayor a término que en menores
 semanas de gestación. Pero, ¿es significativa estadísticamente?. Para responder 

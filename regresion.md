@@ -119,7 +119,7 @@ Table: (#tab:gorriones) Edad en días y longitud
                     y los valores observados.
 
 <div class="figure">
-<img src="regresion_files/figure-html/gorriones-grafico-1.png" alt="(ref:gorriones-grafico)" width="672" />
+<img src="regresion_files/figure-epub3/gorriones-grafico-1.png" alt="(ref:gorriones-grafico)"  />
 <p class="caption">(\#fig:gorriones-grafico)(ref:gorriones-grafico)</p>
 </div>
 

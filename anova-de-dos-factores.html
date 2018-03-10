@@ -25,15 +25,15 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-09">
+<meta name="date" content="2018-03-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="anova-no-parametrico.html">
-<link rel="next" href="disenos-experimentales.html">
+<link rel="prev" href="problemas-anova-simple.html">
+<link rel="next" href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -131,7 +131,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Laboratorios de Estadística Avanzada</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> El libro</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Reglamento</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#entrega-de-ejercicios"><i class="fa fa-check"></i><b>1.0.1</b> Entrega de Ejercicios</a></li>
+<li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#laboratorios"><i class="fa fa-check"></i><b>1.0.2</b> Laboratorios</a></li>
+<li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#cuestionario-de-comprension"><i class="fa fa-check"></i><b>1.0.3</b> Cuestionario de Comprensión</a></li>
+<li class="chapter" data-level="1.0.4" data-path="index.html"><a href="index.html#parciales"><i class="fa fa-check"></i><b>1.0.4</b> Parciales</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introducción a <em>R</em> y RStudio</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="introduccion-a-r-y-rstudio.html"><a href="introduccion-a-r-y-rstudio.html#analisis-reproducible"><i class="fa fa-check"></i><b>2.2</b> Análisis Reproducible</a><ul>
@@ -157,148 +162,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#operaciones-por-grupos"><i class="fa fa-check"></i><b>4.4</b> Operaciones por grupos</a></li>
 <li class="chapter" data-level="4.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formato-ancho-y-formato-largo"><i class="fa fa-check"></i><b>4.5</b> Formato Ancho y Formato Largo</a></li>
 <li class="chapter" data-level="4.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#por-su-cuenta"><i class="fa fa-check"></i><b>4.6</b> Por su cuenta</a></li>
+<li class="chapter" data-level="4.7" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>4.7</b> Algunos conceptos importantes</a></li>
+<li class="chapter" data-level="4.8" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>4.8</b> Diseño de Estudios de ANOVA</a></li>
+<li class="chapter" data-level="4.9" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>4.9</b> Planificación De Experimentos</a></li>
+<li class="chapter" data-level="4.10" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#usos-del-anova"><i class="fa fa-check"></i><b>4.10</b> Usos Del ANOVA</a></li>
+<li class="chapter" data-level="4.11" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>4.11</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>4.11.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
+<li class="chapter" data-level="4.11.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#ideas-basicas"><i class="fa fa-check"></i><b>4.11.2</b> Ideas Básicas</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>5</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
-<li class="chapter" data-level="5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>5.1</b> Datos</a></li>
-<li class="chapter" data-level="5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>5.2</b> Supuestos</a></li>
-<li class="chapter" data-level="5.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>5.3</b> Procedimiento básico</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>5.3.1</b> Ejemplo</a></li>
+<li class="chapter" data-level="4.12" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>4.12</b> Comprobación de los Supuestos</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>4.12.1</b> Prueba para igualdad de varianzas</a></li>
+<li class="chapter" data-level="4.12.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>4.12.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
+<li class="chapter" data-level="4.12.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#residuos"><i class="fa fa-check"></i><b>4.12.3</b> Residuos</a></li>
+<li class="chapter" data-level="4.12.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#graficos-de-residuos"><i class="fa fa-check"></i><b>4.12.4</b> Gráficos de Residuos</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>5.4</b> Estadísticos</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>5.4.1</b> Variante Wilcoxon (W)</a></li>
-<li class="chapter" data-level="5.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>5.4.2</b> Variante Mann-Whitney (U)</a></li>
+<li class="chapter" data-level="4.13" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#transformaciones"><i class="fa fa-check"></i><b>4.13</b> Transformaciones</a><ul>
+<li class="chapter" data-level="4.13.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>4.13.1</b> Transformaciones para estabilizar las Varianzas</a></li>
+<li class="chapter" data-level="4.13.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>4.13.2</b> Transformaciones para corregir la falta de normalidad</a></li>
+<li class="chapter" data-level="4.13.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>4.13.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>5.5</b> Hipótesis</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>5.5.1</b> Prueba a dos colas</a></li>
-<li class="chapter" data-level="5.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>5.5.2</b> Prueba de una cola a la izquierda</a></li>
+<li class="chapter" data-level="4.14" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>4.14</b> Formulación Del Modelo I De ANOVA.</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>4.14.1</b> Características importantes del modelo</a></li>
+<li class="chapter" data-level="4.14.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>4.14.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="4.14.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>4.14.3</b> Ajustando El Modelo</a></li>
+<li class="chapter" data-level="4.14.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>4.14.4</b> Estimadores De Mínimos Cuadrados</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>5.6</b> Ejemplo 2</a></li>
-<li class="chapter" data-level="5.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>5.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>5.7.1</b> Supuestos</a></li>
-<li class="chapter" data-level="5.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>5.7.2</b> Estadísticos</a></li>
-<li class="chapter" data-level="5.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>5.7.3</b> Hipótesis</a></li>
+<li class="chapter" data-level="4.15" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>4.15</b> Partición De La Suma De Cuadrados Total</a><ul>
+<li class="chapter" data-level="4.15.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formulas-computatorias"><i class="fa fa-check"></i><b>4.15.1</b> Fórmulas computatorias</a></li>
 </ul></li>
+<li class="chapter" data-level="4.16" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#cuadrados-medios"><i class="fa fa-check"></i><b>4.16</b> Cuadrados Medios</a><ul>
+<li class="chapter" data-level="4.16.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>4.16.1</b> Esperanza de los Cuadrados Medios</a></li>
+<li class="chapter" data-level="4.16.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#comentarios-1"><i class="fa fa-check"></i><b>4.16.2</b> Comentarios</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>6</b> Ejercicios de dos muestras no paramétrico</a><ul>
-<li class="chapter" data-level="6.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>6.1</b> Reproduciendo el algoritmo manualmente</a></li>
-<li class="chapter" data-level="6.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>6.2</b> Funciones no paramétricas en <em>R</em></a></li>
-<li class="chapter" data-level="6.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>6.3</b> Fórmulas</a></li>
-<li class="chapter" data-level="6.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas"><i class="fa fa-check"></i><b>6.4</b> Problemas</a></li>
-<li class="chapter" data-level="6.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#algunos-conceptos-importantes"><i class="fa fa-check"></i><b>6.5</b> Algunos conceptos importantes</a></li>
-<li class="chapter" data-level="6.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#diseno-de-estudios-de-anova"><i class="fa fa-check"></i><b>6.6</b> Diseño de Estudios de ANOVA</a></li>
-<li class="chapter" data-level="6.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-de-experimentos"><i class="fa fa-check"></i><b>6.7</b> Planificación De Experimentos</a></li>
-<li class="chapter" data-level="6.8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#usos-del-anova"><i class="fa fa-check"></i><b>6.8</b> Usos Del ANOVA</a></li>
-<li class="chapter" data-level="6.9" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-i-de-anova.-niveles-del-factor-fijos"><i class="fa fa-check"></i><b>6.9</b> MODELO I DE ANOVA. NIVELES DEL FACTOR FIJOS</a><ul>
-<li class="chapter" data-level="6.9.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distincion-entre-modelos-i-y-ii-de-anova"><i class="fa fa-check"></i><b>6.9.1</b> Distinción Entre Modelos I Y II de ANOVA</a></li>
-<li class="chapter" data-level="6.9.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ideas-basicas"><i class="fa fa-check"></i><b>6.9.2</b> Ideas Básicas</a></li>
+<li class="chapter" data-level="4.17" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>4.17</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
+<li class="chapter" data-level="4.17.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-estadistica"><i class="fa fa-check"></i><b>4.17.1</b> Prueba Estadística</a></li>
+<li class="chapter" data-level="4.17.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>4.17.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
+<li class="chapter" data-level="4.17.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#regla-de-decision"><i class="fa fa-check"></i><b>4.17.3</b> Regla De Decisión</a></li>
+<li class="chapter" data-level="4.17.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#comentario"><i class="fa fa-check"></i><b>4.17.4</b> Comentario</a></li>
 </ul></li>
-<li class="chapter" data-level="6.10" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comprobacion-de-los-supuestos"><i class="fa fa-check"></i><b>6.10</b> Comprobación de los Supuestos</a><ul>
-<li class="chapter" data-level="6.10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-igualdad-de-varianzas"><i class="fa fa-check"></i><b>6.10.1</b> Prueba para igualdad de varianzas</a></li>
-<li class="chapter" data-level="6.10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-de-kolmogorov---smirnov-modificacion-de-lilliefors-para-estudiar-normalidad"><i class="fa fa-check"></i><b>6.10.2</b> Prueba de Kolmogorov - Smirnov (modificación de Lilliefors) para estudiar Normalidad</a></li>
-<li class="chapter" data-level="6.10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#residuos"><i class="fa fa-check"></i><b>6.10.3</b> Residuos</a></li>
-<li class="chapter" data-level="6.10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-residuos"><i class="fa fa-check"></i><b>6.10.4</b> Gráficos de Residuos</a></li>
+<li class="chapter" data-level="4.18" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>4.18</b> Formulación Alternativa Del Modelo I</a><ul>
+<li class="chapter" data-level="4.18.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>4.18.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.11" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones"><i class="fa fa-check"></i><b>6.11</b> Transformaciones</a><ul>
-<li class="chapter" data-level="6.11.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-estabilizar-las-varianzas"><i class="fa fa-check"></i><b>6.11.1</b> Transformaciones para estabilizar las Varianzas</a></li>
-<li class="chapter" data-level="6.11.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#transformaciones-para-corregir-la-falta-de-normalidad"><i class="fa fa-check"></i><b>6.11.2</b> Transformaciones para corregir la falta de normalidad</a></li>
-<li class="chapter" data-level="6.11.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#efectos-del-alejamiento-de-los-supuestos-del-modelo"><i class="fa fa-check"></i><b>6.11.3</b> Efectos Del Alejamiento De Los Supuestos Del Modelo</a></li>
+<li class="chapter" data-level="4.19" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>4.19</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
+<li class="chapter" data-level="4.20" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>4.20</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
+<li class="chapter" data-level="4.20.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>4.20.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
+<li class="chapter" data-level="4.20.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>4.20.2</b> Estimación de los efectos de los niveles del factor</a></li>
+<li class="chapter" data-level="4.20.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#comparaciones-multiples"><i class="fa fa-check"></i><b>4.20.3</b> Comparaciones múltiples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.12" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-del-modelo-i-de-anova."><i class="fa fa-check"></i><b>6.12</b> Formulación Del Modelo I De ANOVA.</a><ul>
-<li class="chapter" data-level="6.12.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo"><i class="fa fa-check"></i><b>6.12.1</b> Características importantes del modelo</a></li>
-<li class="chapter" data-level="6.12.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#interpretacion-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.12.2</b> Interpretación De Las Medias De Los Niveles Del Factor</a></li>
-<li class="chapter" data-level="6.12.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#ajustando-el-modelo"><i class="fa fa-check"></i><b>6.12.3</b> Ajustando El Modelo</a></li>
-<li class="chapter" data-level="6.12.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimadores-de-minimos-cuadrados"><i class="fa fa-check"></i><b>6.12.4</b> Estimadores De Mínimos Cuadrados</a></li>
+<li class="chapter" data-level="4.21" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>4.21</b> Planificación Del Tamaño Muestral</a><ul>
+<li class="chapter" data-level="4.21.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>4.21.1</b> Potencia De La Prueba F</a></li>
 </ul></li>
-<li class="chapter" data-level="6.13" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#particion-de-la-suma-de-cuadrados-total"><i class="fa fa-check"></i><b>6.13</b> Partición De La Suma De Cuadrados Total</a><ul>
-<li class="chapter" data-level="6.13.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas-computatorias"><i class="fa fa-check"></i><b>6.13.1</b> Fórmulas computatorias</a></li>
-</ul></li>
-<li class="chapter" data-level="6.14" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuadrados-medios"><i class="fa fa-check"></i><b>6.14</b> Cuadrados Medios</a><ul>
-<li class="chapter" data-level="6.14.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#esperanza-de-los-cuadrados-medios"><i class="fa fa-check"></i><b>6.14.1</b> Esperanza de los Cuadrados Medios</a></li>
-<li class="chapter" data-level="6.14.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentarios-1"><i class="fa fa-check"></i><b>6.14.2</b> Comentarios</a></li>
-</ul></li>
-<li class="chapter" data-level="6.15" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-f-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.15</b> Prueba F para la Igualdad de las Medias de los Niveles del Factor</a><ul>
-<li class="chapter" data-level="6.15.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-estadistica"><i class="fa fa-check"></i><b>6.15.1</b> Prueba Estadística</a></li>
-<li class="chapter" data-level="6.15.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#distribucion-de-mathbffmathbf"><i class="fa fa-check"></i><b>6.15.2</b> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></a></li>
-<li class="chapter" data-level="6.15.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#regla-de-decision"><i class="fa fa-check"></i><b>6.15.3</b> Regla De Decisión</a></li>
-<li class="chapter" data-level="6.15.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comentario"><i class="fa fa-check"></i><b>6.15.4</b> Comentario</a></li>
-</ul></li>
-<li class="chapter" data-level="6.16" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulacion-alternativa-del-modelo-i"><i class="fa fa-check"></i><b>6.16</b> Formulación Alternativa Del Modelo I</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#definicion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.16.1</b> Definición de <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="6.17" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-la-igualdad-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.17</b> Prueba Para La Igualdad De Las Medias De Los Niveles Del Factor</a></li>
-<li class="chapter" data-level="6.18" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#analisis-de-los-efectos-del-nivel-del-factor"><i class="fa fa-check"></i><b>6.18</b> Análisis De Los Efectos Del Nivel Del Factor</a><ul>
-<li class="chapter" data-level="6.18.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#graficos-de-las-estimaciones-de-las-medias-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.1</b> Gráficos de las estimaciones de las medias de los niveles del factor</a></li>
-<li class="chapter" data-level="6.18.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-los-efectos-de-los-niveles-del-factor"><i class="fa fa-check"></i><b>6.18.2</b> Estimación de los efectos de los niveles del factor</a></li>
-<li class="chapter" data-level="6.18.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#comparaciones-multiples"><i class="fa fa-check"></i><b>6.18.3</b> Comparaciones múltiples</a></li>
-</ul></li>
-<li class="chapter" data-level="6.19" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#planificacion-del-tamano-muestral"><i class="fa fa-check"></i><b>6.19</b> Planificación Del Tamaño Muestral</a><ul>
-<li class="chapter" data-level="6.19.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#potencia-de-la-prueba-f"><i class="fa fa-check"></i><b>6.19.1</b> Potencia De La Prueba F</a></li>
-</ul></li>
-<li class="chapter" data-level="6.20" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>6.20</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
-<li class="chapter" data-level="6.20.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>6.20.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
-<li class="chapter" data-level="6.20.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>6.20.2</b> Características importantes del Modelo</a></li>
-<li class="chapter" data-level="6.20.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>6.20.3</b> Cuestiones de Interés</a></li>
-<li class="chapter" data-level="6.20.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>6.20.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
-<li class="chapter" data-level="6.20.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>6.20.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
-<li class="chapter" data-level="6.20.6" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>6.20.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
-<li class="chapter" data-level="6.20.7" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>6.20.7</b> Modelo De Efectos Aleatorios</a></li>
+<li class="chapter" data-level="4.22" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#modelo-ii-de-anova-niveles-del-factor-aleatorios"><i class="fa fa-check"></i><b>4.22</b> Modelo II De ANOVA: Niveles Del Factor Aleatorios</a><ul>
+<li class="chapter" data-level="4.22.1" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#modelo-aleatorio-de-medias-de-celdas."><i class="fa fa-check"></i><b>4.22.1</b> Modelo Aleatorio de Medias de Celdas.</a></li>
+<li class="chapter" data-level="4.22.2" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#caracteristicas-importantes-del-modelo-1"><i class="fa fa-check"></i><b>4.22.2</b> Características importantes del Modelo</a></li>
+<li class="chapter" data-level="4.22.3" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#cuestiones-de-interes"><i class="fa fa-check"></i><b>4.22.3</b> Cuestiones de Interés</a></li>
+<li class="chapter" data-level="4.22.4" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#prueba-para-mathbfsigma_mathbfmumathbf2-0"><i class="fa fa-check"></i><b>4.22.4</b> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</a></li>
+<li class="chapter" data-level="4.22.5" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#estimacion-de-mathbfmu_mathbfbullet"><i class="fa fa-check"></i><b>4.22.5</b> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></a></li>
+<li class="chapter" data-level="4.22.6" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#estimacion-de-sigma_mu2left-sigma_mu2sigma2-right"><i class="fa fa-check"></i><b>4.22.6</b> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></a></li>
+<li class="chapter" data-level="4.22.7" data-path="manejo-de-datos.html"><a href="manejo-de-datos.html#modelo-de-efectos-aleatorios"><i class="fa fa-check"></i><b>4.22.7</b> Modelo De Efectos Aleatorios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>7</b> Problemas ANOVA Simple</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>7.0.1</b> Recordatorio</a></li>
-<li class="chapter" data-level="7.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas-1"><i class="fa fa-check"></i><b>7.1</b> Problemas</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>7.1.1</b> Contrastes</a></li>
+<li class="chapter" data-level="5" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html"><i class="fa fa-check"></i><b>5</b> Problemas ANOVA Simple</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#recordatorio"><i class="fa fa-check"></i><b>5.0.1</b> Recordatorio</a></li>
+<li class="chapter" data-level="5.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#problemas"><i class="fa fa-check"></i><b>5.1</b> Problemas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="problemas-anova-simple.html"><a href="problemas-anova-simple.html#contrastes"><i class="fa fa-check"></i><b>5.1.1</b> Contrastes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> ANOVA No Paramétrico</a><ul>
-<li class="chapter" data-level="8.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>8.1</b> Pruebas para varias muestras independientes</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>8.1.1</b> Prueba de la mediana</a></li>
+<li class="chapter" data-level="6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>6</b> ANOVA DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="6.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>6.1</b> Ventajas de los estudios multifactoriales</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>6.1.1</b> Eficiencia:</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>8.2</b> Prueba de Kruskal-Wallis</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>8.2.1</b> Datos</a></li>
-<li class="chapter" data-level="8.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>8.2.2</b> Supuestos</a></li>
-<li class="chapter" data-level="8.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>8.2.3</b> Procedimiento</a></li>
-<li class="chapter" data-level="8.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>8.2.4</b> Hipótesis</a></li>
-<li class="chapter" data-level="8.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-2"><i class="fa fa-check"></i><b>8.2.5</b> Contrastes</a></li>
-<li class="chapter" data-level="8.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>8.2.6</b> Comentarios</a></li>
+<li class="chapter" data-level="6.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Elementos del Modelo</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>6.2.1</b> Efectos principales</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>6.3</b> Representación gráfica</a></li>
+<li class="chapter" data-level="6.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>6.4</b> Interacción</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>6.4.1</b> Interacciones no importantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>6.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>6.5.1</b> Modelo de las medias de celdas</a></li>
+<li class="chapter" data-level="6.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>6.5.2</b> Modelo de los efectos de los factores</a></li>
+<li class="chapter" data-level="6.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA (MODELO I)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>6.6</b> Prueba de F</a></li>
+<li class="chapter" data-level="6.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-1"><i class="fa fa-check"></i><b>6.7</b> Contrastes</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>6.7.1</b> Entre Filas</a></li>
+<li class="chapter" data-level="6.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>6.7.2</b> Entre columnas</a></li>
+<li class="chapter" data-level="6.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>6.7.3</b> Interacción</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>6.8</b> Potencia de la prueba F</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>6.8.1</b> Interacción</a></li>
+<li class="chapter" data-level="6.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>6.8.2</b> Prueba para el factor principal A:</a></li>
+<li class="chapter" data-level="6.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>6.8.3</b> Prueba para el factor principal B:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>6.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>6.9.1</b> Modelo sin interacción</a></li>
+<li class="chapter" data-level="6.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>6.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>6.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>6.10.1</b> Modelo aleatorio (Modelo II)</a></li>
+<li class="chapter" data-level="6.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>6.10.2</b> Modelo Mixto (Modelo III)</a></li>
+<li class="chapter" data-level="6.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>6.10.3</b> Pruebas estadísticas</a></li>
+<li class="chapter" data-level="6.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>6.10.4</b> Estimación de los componentes de la varianza</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html"><i class="fa fa-check"></i><b>9</b> ANOVA DE DOS FACTORES</a><ul>
-<li class="chapter" data-level="9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#ventajas-de-los-estudios-multifactoriales"><i class="fa fa-check"></i><b>9.1</b> Ventajas de los estudios multifactoriales</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#eficiencia"><i class="fa fa-check"></i><b>9.1.1</b> Eficiencia:</a></li>
+<li class="chapter" data-level="7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><i class="fa fa-check"></i><b>7</b> Prueba de Wilcoxon-Mann-Whitney para dos pruebas independientes</a><ul>
+<li class="chapter" data-level="7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#datos"><i class="fa fa-check"></i><b>7.1</b> Datos</a></li>
+<li class="chapter" data-level="7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos"><i class="fa fa-check"></i><b>7.2</b> Supuestos</a></li>
+<li class="chapter" data-level="7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#np-algoritmo"><i class="fa fa-check"></i><b>7.3</b> Procedimiento básico</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo"><i class="fa fa-check"></i><b>7.3.1</b> Ejemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#elementos-del-modelo"><i class="fa fa-check"></i><b>9.2</b> Elementos del Modelo</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#efectos-principales"><i class="fa fa-check"></i><b>9.2.1</b> Efectos principales</a></li>
+<li class="chapter" data-level="7.4" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos"><i class="fa fa-check"></i><b>7.4</b> Estadísticos</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-wilcoxon-w"><i class="fa fa-check"></i><b>7.4.1</b> Variante Wilcoxon (W)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#variante-mann-whitney-u"><i class="fa fa-check"></i><b>7.4.2</b> Variante Mann-Whitney (U)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#representacion-grafica"><i class="fa fa-check"></i><b>9.3</b> Representación gráfica</a></li>
-<li class="chapter" data-level="9.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion"><i class="fa fa-check"></i><b>9.4</b> Interacción</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interacciones-no-importantes"><i class="fa fa-check"></i><b>9.4.1</b> Interacciones no importantes</a></li>
+<li class="chapter" data-level="7.5" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis"><i class="fa fa-check"></i><b>7.5</b> Hipótesis</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-a-dos-colas"><i class="fa fa-check"></i><b>7.5.1</b> Prueba a dos colas</a></li>
+<li class="chapter" data-level="7.5.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-una-cola-a-la-izquierda"><i class="fa fa-check"></i><b>7.5.2</b> Prueba de una cola a la izquierda</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-i-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.5</b> MODELO I PARA ESTUDIOS DE DOS FACTORES</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-las-medias-de-celdas"><i class="fa fa-check"></i><b>9.5.1</b> Modelo de las medias de celdas</a></li>
-<li class="chapter" data-level="9.5.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-de-los-efectos-de-los-factores"><i class="fa fa-check"></i><b>9.5.2</b> Modelo de los efectos de los factores</a></li>
-<li class="chapter" data-level="9.5.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#anova-modelo-i"><i class="fa fa-check"></i><b>9.5.3</b> ANOVA (MODELO I)</a></li>
+<li class="chapter" data-level="7.6" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#ejemplo-2"><i class="fa fa-check"></i><b>7.6</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="7.7" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#prueba-de-wilcoxon-de-rangos-con-signo-para-muestras-apareadas"><i class="fa fa-check"></i><b>7.7</b> Prueba de Wilcoxon de rangos con signo para muestras apareadas</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#supuestos-1"><i class="fa fa-check"></i><b>7.7.1</b> Supuestos</a></li>
+<li class="chapter" data-level="7.7.2" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#estadisticos-1"><i class="fa fa-check"></i><b>7.7.2</b> Estadísticos</a></li>
+<li class="chapter" data-level="7.7.3" data-path="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html"><a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html#hipotesis-1"><i class="fa fa-check"></i><b>7.7.3</b> Hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-f"><i class="fa fa-check"></i><b>9.6</b> Prueba de F</a></li>
-<li class="chapter" data-level="9.7" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#contrastes-3"><i class="fa fa-check"></i><b>9.7</b> Contrastes</a><ul>
-<li class="chapter" data-level="9.7.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-filas"><i class="fa fa-check"></i><b>9.7.1</b> Entre Filas</a></li>
-<li class="chapter" data-level="9.7.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#entre-columnas"><i class="fa fa-check"></i><b>9.7.2</b> Entre columnas</a></li>
-<li class="chapter" data-level="9.7.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-1"><i class="fa fa-check"></i><b>9.7.3</b> Interacción</a></li>
 </ul></li>
-<li class="chapter" data-level="9.8" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#potencia-de-la-prueba-f-1"><i class="fa fa-check"></i><b>9.8</b> Potencia de la prueba F</a><ul>
-<li class="chapter" data-level="9.8.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#interaccion-2"><i class="fa fa-check"></i><b>9.8.1</b> Interacción</a></li>
-<li class="chapter" data-level="9.8.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-a"><i class="fa fa-check"></i><b>9.8.2</b> Prueba para el factor principal A:</a></li>
-<li class="chapter" data-level="9.8.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-para-el-factor-principal-b"><i class="fa fa-check"></i><b>9.8.3</b> Prueba para el factor principal B:</a></li>
+<li class="chapter" data-level="8" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html"><i class="fa fa-check"></i><b>8</b> Ejercicios de dos muestras no paramétrico</a><ul>
+<li class="chapter" data-level="8.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>8.1</b> Reproduciendo el algoritmo manualmente</a></li>
+<li class="chapter" data-level="8.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>8.2</b> Funciones no paramétricas en <em>R</em></a></li>
+<li class="chapter" data-level="8.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>8.3</b> Fórmulas</a></li>
+<li class="chapter" data-level="8.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas-1"><i class="fa fa-check"></i><b>8.4</b> Problemas</a></li>
 </ul></li>
-<li class="chapter" data-level="9.9" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#caso-de-una-observacion-por-tratamiento"><i class="fa fa-check"></i><b>9.9</b> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</a><ul>
-<li class="chapter" data-level="9.9.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-sin-interaccion"><i class="fa fa-check"></i><b>9.9.1</b> Modelo sin interacción</a></li>
-<li class="chapter" data-level="9.9.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad"><i class="fa fa-check"></i><b>9.9.2</b> Prueba de Tukey (Aditividad)</a></li>
+<li class="chapter" data-level="9" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>9</b> ANOVA No Paramétrico</a><ul>
+<li class="chapter" data-level="9.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>9.1</b> Pruebas para varias muestras independientes</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-la-mediana"><i class="fa fa-check"></i><b>9.1.1</b> Prueba de la mediana</a></li>
 </ul></li>
-<li class="chapter" data-level="9.10" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-ii-y-modelo-iii-para-estudios-de-dos-factores"><i class="fa fa-check"></i><b>9.10</b> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</a><ul>
-<li class="chapter" data-level="9.10.1" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-aleatorio-modelo-ii"><i class="fa fa-check"></i><b>9.10.1</b> Modelo aleatorio (Modelo II)</a></li>
-<li class="chapter" data-level="9.10.2" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#modelo-mixto-modelo-iii"><i class="fa fa-check"></i><b>9.10.2</b> Modelo Mixto (Modelo III)</a></li>
-<li class="chapter" data-level="9.10.3" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#pruebas-estadisticas"><i class="fa fa-check"></i><b>9.10.3</b> Pruebas estadísticas</a></li>
-<li class="chapter" data-level="9.10.4" data-path="anova-de-dos-factores.html"><a href="anova-de-dos-factores.html#estimacion-de-los-componentes-de-la-varianza"><i class="fa fa-check"></i><b>9.10.4</b> Estimación de los componentes de la varianza</a></li>
+<li class="chapter" data-level="9.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#prueba-de-kruskal-wallis"><i class="fa fa-check"></i><b>9.2</b> Prueba de Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#datos-2"><i class="fa fa-check"></i><b>9.2.1</b> Datos</a></li>
+<li class="chapter" data-level="9.2.2" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#supuestos-3"><i class="fa fa-check"></i><b>9.2.2</b> Supuestos</a></li>
+<li class="chapter" data-level="9.2.3" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#procedimiento-1"><i class="fa fa-check"></i><b>9.2.3</b> Procedimiento</a></li>
+<li class="chapter" data-level="9.2.4" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#hipotesis-3"><i class="fa fa-check"></i><b>9.2.4</b> Hipótesis</a></li>
+<li class="chapter" data-level="9.2.5" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#contrastes-3"><i class="fa fa-check"></i><b>9.2.5</b> Contrastes</a></li>
+<li class="chapter" data-level="9.2.6" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#comentarios-3"><i class="fa fa-check"></i><b>9.2.6</b> Comentarios</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="disenos-experimentales.html"><a href="disenos-experimentales.html"><i class="fa fa-check"></i><b>10</b> DISEÑOS EXPERIMENTALES</a><ul>
@@ -345,13 +350,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="anova-de-dos-factores" class="section level1">
-<h1><span class="header-section-number">Capítulo 9</span> ANOVA DE DOS FACTORES</h1>
+<h1><span class="header-section-number">Capítulo 6</span> ANOVA DE DOS FACTORES</h1>
 <div id="ventajas-de-los-estudios-multifactoriales" class="section level2">
-<h2><span class="header-section-number">9.1</span> Ventajas de los estudios multifactoriales</h2>
+<h2><span class="header-section-number">6.1</span> Ventajas de los estudios multifactoriales</h2>
 <div id="eficiencia" class="section level3">
-<h3><span class="header-section-number">9.1.1</span> Eficiencia:</h3>
+<h3><span class="header-section-number">6.1.1</span> Eficiencia:</h3>
 <div id="cantidad-de-informacion-permiten-estudiar-la-interaccion-de-los-factores." class="section level4">
-<h4><span class="header-section-number">9.1.1.1</span> Cantidad de Información: Permiten estudiar la <em>interacción</em> de los factores.</h4>
+<h4><span class="header-section-number">6.1.1.1</span> Cantidad de Información: Permiten estudiar la <em>interacción</em> de los factores.</h4>
 <p><em>Validez de las decisiones</em>: los experimentos multifactoriales también pueden
 robustecer la validez de las decisiones.</p>
 <p><em>Comentarios</em>:</p>
@@ -366,14 +371,14 @@ se vuelven complejos, costosos e insumen tiempo.</p></li>
 </div>
 </div>
 <div id="elementos-del-modelo" class="section level2">
-<h2><span class="header-section-number">9.2</span> Elementos del Modelo</h2>
+<h2><span class="header-section-number">6.2</span> Elementos del Modelo</h2>
 <p><em>Ejemplo</em>: Consideremos un estudio de dos factores, en el cual son de interés
 los efectos del sexo y la edad en el aprendizaje de una tarea. El factor edad lo
 definimos en términos de sólo tres niveles (adolescente, adulto joven, anciano).</p>
 <p>La respuesta para un dado tratamiento, en un estudio de dos factores, es
 indicada por µij, donde i hace referencia al nivel del factor <span class="math inline">\(A\)</span> (<span class="math inline">\(i = 1,2,\ldots,I\)</span>) y j se refiere al nivel del factor <span class="math inline">\(B\)</span> (<span class="math inline">\(j = 1,2,\ldots,J\)</span>).</p>
 <table>
-<caption><span id="tab:aprendizaje1">Tabla 9.1: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+<caption><span id="tab:aprendizaje1">Tabla 6.1: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
 hombres de tres edades. Caso sin interacción y sin efecto del factor <em>Sexo</em>.</caption>
 <colgroup>
 <col width="17%" />
@@ -440,7 +445,7 @@ siguientes formas equivalentes:</p>
 \end{aligned}
 \]</span></p>
 <div id="efectos-principales" class="section level3">
-<h3><span class="header-section-number">9.2.1</span> Efectos principales</h3>
+<h3><span class="header-section-number">6.2.1</span> Efectos principales</h3>
 <p>Definimos el efecto principal del factor <span class="math inline">\(A\)</span> al i-ésimo nivel, como:</p>
 <p><span class="math display">\[
 \alpha_{i} = \mu_{i \bullet} - \mu_{\bullet \bullet}
@@ -465,7 +470,7 @@ siguientes formas equivalentes:</p>
 \]</span></p>
 <p>Así, la suma de los efectos principales para cada factor es cero.</p>
 <div id="aditividad-de-los-efectos-de-los-factores" class="section level4">
-<h4><span class="header-section-number">9.2.1.1</span> Aditividad de los efectos de los factores</h4>
+<h4><span class="header-section-number">6.2.1.1</span> Aditividad de los efectos de los factores</h4>
 <p>En general, si los efectos son aditivos se tiene:</p>
 <p><span class="math display">\[
 \mu_{ij} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j}
@@ -486,7 +491,7 @@ los factores principales <em>no interactúan</em>, o que los efectos de los fact
 </div>
 </div>
 <div id="representacion-grafica" class="section level2">
-<h2><span class="header-section-number">9.3</span> Representación gráfica</h2>
+<h2><span class="header-section-number">6.3</span> Representación gráfica</h2>
 <p>Una de las mejores formas para representar este tipo de datos es un gráfico de
 líneas y puntos. En el eje de las abscisas va una de las variables y en el eje
 de las ordenadas la variable de respuesta. Se grafica cada observación o media
@@ -496,16 +501,16 @@ son indica que los efectos de los factores son aditivos. La falta de paralelismo
 puede estar indicando que hay interacción.</p>
 <p>(ref:interaccion1) Gráfico de interacción para las medias del tiempo de
 aprendizaje. Los datos graficados corresponden a y d Tabla
-<a href="anova-de-dos-factores.html#tab:aprendizaje1">9.1</a>, b y e Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje2">9.2</a>, c y f Tabla
-<a href="anova-de-dos-factores.html#tab:aprendizaje3">9.3</a>,</p>
+<a href="anova-de-dos-factores.html#tab:aprendizaje1">6.1</a>, b y e Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje2">6.2</a>, c y f Tabla
+<a href="anova-de-dos-factores.html#tab:aprendizaje3">6.3</a>,</p>
 <div class="figure"><span id="fig:interaccion1"></span>
 <img src="anova-dos-factores_files/figure-html/interaccion1-1.png" alt="(ref:interaccion1)" width="672" /><img src="anova-dos-factores_files/figure-html/interaccion1-2.png" alt="(ref:interaccion1)" width="672" />
 <p class="caption">
-Figura 9.1: (ref:interaccion1)
+Figura 6.1: (ref:interaccion1)
 </p>
 </div>
 <table>
-<caption><span id="tab:aprendizaje2">Tabla 9.2: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+<caption><span id="tab:aprendizaje2">Tabla 6.2: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
 hombres de tres edades. Caso sin interacción y efecto del factor <em>Sexo</em>.</caption>
 <colgroup>
 <col width="17%" />
@@ -556,14 +561,14 @@ hombres de tres edades. Caso sin interacción y efecto del factor <em>Sexo</em>.
 </table>
 </div>
 <div id="interaccion" class="section level2">
-<h2><span class="header-section-number">9.4</span> Interacción</h2>
+<h2><span class="header-section-number">6.4</span> Interacción</h2>
 <p><span class="math display">\[
 \mu_{ij} = \mu_{\bullet\bullet} + \alpha_i + \beta_j
 \]</span>
 Si esto se cumple, los efectos serán aditivos; de lo contrario los factores
 interactúan.</p>
 <table>
-<caption><span id="tab:aprendizaje3">Tabla 9.3: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+<caption><span id="tab:aprendizaje3">Tabla 6.3: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
 hombres de tres edades. Caso con interacción.</caption>
 <colgroup>
 <col width="14%" />
@@ -653,7 +658,7 @@ siguiente expresión alternativa:</p>
 \end{aligned}
 \]</span></p>
 <table>
-<caption><span id="tab:efectos">Tabla 9.4: </span> Efectos de <span class="math inline">\(\alpha \beta_{ij}\)</span>.</caption>
+<caption><span id="tab:efectos">Tabla 6.4: </span> Efectos de <span class="math inline">\(\alpha \beta_{ij}\)</span>.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -688,12 +693,12 @@ siguiente expresión alternativa:</p>
 </tbody>
 </table>
 <div id="interacciones-no-importantes" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> Interacciones no importantes</h3>
+<h3><span class="header-section-number">6.4.1</span> Interacciones no importantes</h3>
 <p>Muchas veces se detectan interacciones pero estas son pequeñas y no cambian
 las conclusiones que se pueden sacar sobre el efecto de los factores
 principales.</p>
 <table>
-<caption><span id="tab:aprendizaje4">Tabla 9.5: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
+<caption><span id="tab:aprendizaje4">Tabla 6.5: </span> Tiempo de aprendizaje (en minutos) en mujeres de y
 hombres de tres edades. Caso con interacción no importante.</caption>
 <colgroup>
 <col width="17%" />
@@ -743,15 +748,15 @@ hombres de tres edades. Caso con interacción no importante.</caption>
 </tbody>
 </table>
 <p>(ref:interaccion-no-importante) Gráfico de interacción para las medias del tiempo de
-aprendizaje. Los datos graficados corresponden a la Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje4">9.5</a></p>
+aprendizaje. Los datos graficados corresponden a la Tabla <a href="anova-de-dos-factores.html#tab:aprendizaje4">6.5</a></p>
 <div class="figure"><span id="fig:interaccion-no-importante"></span>
 <img src="anova-dos-factores_files/figure-html/interaccion-no-importante-1.png" alt="(ref:interaccion-no-importante)" width="50%" /><img src="anova-dos-factores_files/figure-html/interaccion-no-importante-2.png" alt="(ref:interaccion-no-importante)" width="50%" />
 <p class="caption">
-Figura 9.2: (ref:interaccion-no-importante)
+Figura 6.2: (ref:interaccion-no-importante)
 </p>
 </div>
 <div id="interacciones-transformables-y-no-transformables" class="section level4">
-<h4><span class="header-section-number">9.4.1.1</span> Interacciones transformables y no transformables</h4>
+<h4><span class="header-section-number">6.4.1.1</span> Interacciones transformables y no transformables</h4>
 <p><em>Efectos de los factores multiplicativos</em></p>
 <p>Consideremos el caso donde los efectos de los factores son multiplicativos, en
 lugar de aditivos:</p>
@@ -796,7 +801,7 @@ interacción es igual al producto de funciones de los efectos principales.</p>
 <p>Las transformaciones que convierten las interacciones importantes en no
 importantes son: cuadrado, raíz cuadrada, logaritmo y recíproca.</p>
 <table>
-<caption><span id="tab:ejemplo-transformaciones">Tabla 9.6: </span> Ejemplo de transformacion de medias
+<caption><span id="tab:ejemplo-transformaciones">Tabla 6.6: </span> Ejemplo de transformacion de medias
 de tratamientos: a) Medias de tratamientos escala original b) Medias de tratamientos después de la transformación <span class="math inline">\(\sqrt{}\)</span></caption>
 <thead>
 <tr class="header">
@@ -863,7 +868,7 @@ de tratamientos: a) Medias de tratamientos escala original b) Medias de tratamie
 </div>
 </div>
 <div id="modelo-i-para-estudios-de-dos-factores" class="section level2">
-<h2><span class="header-section-number">9.5</span> MODELO I PARA ESTUDIOS DE DOS FACTORES</h2>
+<h2><span class="header-section-number">6.5</span> MODELO I PARA ESTUDIOS DE DOS FACTORES</h2>
 <p>El factor <span class="math inline">\(A\)</span> es estudiado en <span class="math inline">\(I\)</span> niveles, y estos no representan una muestra
 aleatoria de todos los niveles posibles de <span class="math inline">\(A\)</span>. De manera equivalente el factor
 <span class="math inline">\(B\)</span> se estudia sobre <span class="math inline">\(J\)</span> niveles. Todas las <span class="math inline">\(IJ\)</span> combinaciones de los niveles de
@@ -873,7 +878,7 @@ los <span class="math inline">\(IJ\)</span> tratamientos es el mismo, lo indicam
 N  =  IJn
 \]</span></p>
 <div id="modelo-de-las-medias-de-celdas" class="section level3">
-<h3><span class="header-section-number">9.5.1</span> Modelo de las medias de celdas</h3>
+<h3><span class="header-section-number">6.5.1</span> Modelo de las medias de celdas</h3>
 <p>Se puede expresar el modelo de niveles del factor fijos en términos de las
 medias de los tratamientos.</p>
 <p><span class="math display">\[
@@ -883,7 +888,7 @@ Y_{\text{ijk}} = \mu_{ij} + \varepsilon_{\text{ijk}}
 i = 1,2,\ldots,I;j = 1,2,\ldots,J;k = 1,2,\ldots,n
 \]</span></p>
 <div id="caracteristicas-importantes-del-modelo-2" class="section level4">
-<h4><span class="header-section-number">9.5.1.1</span> Características importantes del Modelo</h4>
+<h4><span class="header-section-number">6.5.1.1</span> Características importantes del Modelo</h4>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(E(Y_{\text{ijk}}) = \mu_{ij}\)</span></p></li>
 <li><p><span class="math inline">\(Var(Y_{\text{ijk}}) = Var(\varepsilon_{\text{ijk}}) = \sigma^{2}\)</span></p></li>
@@ -896,7 +901,7 @@ términos del error son propiedades de ambos modelos.</p></li>
 </div>
 </div>
 <div id="modelo-de-los-efectos-de-los-factores" class="section level3">
-<h3><span class="header-section-number">9.5.2</span> Modelo de los efectos de los factores</h3>
+<h3><span class="header-section-number">6.5.2</span> Modelo de los efectos de los factores</h3>
 <p>Una forma equivalente de enunciar el modelo se obtiene de la definición de
 interacción:</p>
 <p><span class="math display">\[
@@ -947,9 +952,9 @@ restricciones</p>
 \sigma^{2})\)</span></p>
 </div>
 <div id="anova-modelo-i" class="section level3">
-<h3><span class="header-section-number">9.5.3</span> ANOVA (MODELO I)</h3>
+<h3><span class="header-section-number">6.5.3</span> ANOVA (MODELO I)</h3>
 <div id="notacion" class="section level4">
-<h4><span class="header-section-number">9.5.3.1</span> Notación</h4>
+<h4><span class="header-section-number">6.5.3.1</span> Notación</h4>
 <p><span class="math display">\[
 {\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{\text{ijk}}}{n}
 \]</span></p>
@@ -964,9 +969,9 @@ restricciones</p>
 \]</span></p>
 </div>
 <div id="ajuste-del-modelo" class="section level4">
-<h4><span class="header-section-number">9.5.3.2</span> Ajuste del modelo</h4>
+<h4><span class="header-section-number">6.5.3.2</span> Ajuste del modelo</h4>
 <div id="modelo-de-las-medias-de-celda" class="section level5">
-<h5><span class="header-section-number">9.5.3.2.1</span> Modelo de las medias de celda</h5>
+<h5><span class="header-section-number">6.5.3.2.1</span> Modelo de las medias de celda</h5>
 <p>El cuadrado a minimizar es el siguiente:</p>
 <p><span class="math display">\[
 \sum\sum\sum\left( Y_{\text{ijk}} - \mu_{ij} \right)^{2}
@@ -982,7 +987,7 @@ estimados:</p>
 \]</span></p>
 </div>
 <div id="modelo-de-los-efectos-del-factor" class="section level5">
-<h5><span class="header-section-number">9.5.3.2.2</span> Modelo de los efectos del factor</h5>
+<h5><span class="header-section-number">6.5.3.2.2</span> Modelo de los efectos del factor</h5>
 <p>El cuadrado a minimizar es el siguiente:</p>
 <p><span class="math display">\[
 \sum\sum\sum\left( Y_{\text{ijk}} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
@@ -1026,7 +1031,7 @@ estimados:</p>
 </table>
 </div>
 <div id="descomposicion-de-la-suma-de-cuadrados-total" class="section level5">
-<h5><span class="header-section-number">9.5.3.2.3</span> Descomposición de la suma de cuadrados total</h5>
+<h5><span class="header-section-number">6.5.3.2.3</span> Descomposición de la suma de cuadrados total</h5>
 <p>Para una observación, se puede descomponer la desviación con respecto a la media
 total, en dos partes:</p>
 <p><span class="math display">\[
@@ -1113,9 +1118,9 @@ tratamientos en:</p>
 </div>
 </div>
 <div id="prueba-de-f" class="section level2">
-<h2><span class="header-section-number">9.6</span> Prueba de F</h2>
+<h2><span class="header-section-number">6.6</span> Prueba de F</h2>
 <div id="prueba-para-la-interaccion" class="section level4">
-<h4><span class="header-section-number">9.6.0.1</span> Prueba para la interacción</h4>
+<h4><span class="header-section-number">6.6.0.1</span> Prueba para la interacción</h4>
 <p><span class="math display">\[
 \begin{aligned}
 H_{0}&amp;:\mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} = 0\ \forall\ i,j\\
@@ -1141,7 +1146,7 @@ F^{*} = \frac{CM_{AB}}{CM_{D}}
 </ul>
 </div>
 <div id="prueba-para-los-efectos-principales" class="section level4">
-<h4><span class="header-section-number">9.6.0.2</span> Prueba para los efectos principales</h4>
+<h4><span class="header-section-number">6.6.0.2</span> Prueba para los efectos principales</h4>
 <p>Estas pruebas se realizan cuando no existe interacción.</p>
 <p>Para el factor <span class="math inline">\(A\)</span>:</p>
 <p><span class="math display">\[
@@ -1240,7 +1245,7 @@ estaciones.</p></li>
 <li><p>¿Es significativa la interacción?</p></li>
 </ol>
 <table>
-<caption><span id="tab:resumen-asma">Tabla 9.7: </span> Resumen de los datos de tres fármacos contra el
+<caption><span id="tab:resumen-asma">Tabla 6.7: </span> Resumen de los datos de tres fármacos contra el
 asma en las cuatro estaciones del año.</caption>
 <thead>
 <tr class="header">
@@ -1382,16 +1387,16 @@ interacción fármaco x estación, n = 4.</p>
 <div class="figure"><span id="fig:graficos-asma"></span>
 <img src="anova-dos-factores_files/figure-html/graficos-asma-1.png" alt="(ref:grafico-asma)" width="672" />
 <p class="caption">
-Figura 9.3: (ref:grafico-asma)
+Figura 6.3: (ref:grafico-asma)
 </p>
 </div>
 <p>(#tab:anova-asma) Tabla de ANOVA.</p>
 </div>
 </div>
-<div id="contrastes-3" class="section level2">
-<h2><span class="header-section-number">9.7</span> Contrastes</h2>
+<div id="contrastes-1" class="section level2">
+<h2><span class="header-section-number">6.7</span> Contrastes</h2>
 <div id="entre-filas" class="section level3">
-<h3><span class="header-section-number">9.7.1</span> Entre Filas</h3>
+<h3><span class="header-section-number">6.7.1</span> Entre Filas</h3>
 <p><span class="math display">\[
 \hat{f} = \sum c_{i}{\overline{Y}_{i \bullet \bullet}}
 \]</span></p>
@@ -1400,24 +1405,24 @@ Figura 9.3: (ref:grafico-asma)
 \varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{i}^{2}}{\text{Jn}} \right.\ }\ }
 \]</span></p>
 <div id="planeados-1" class="section level4">
-<h4><span class="header-section-number">9.7.1.1</span> Planeados:</h4>
+<h4><span class="header-section-number">6.7.1.1</span> Planeados:</h4>
 <div id="bonferroni" class="section level5">
-<h5><span class="header-section-number">9.7.1.1.1</span> Bonferroni</h5>
+<h5><span class="header-section-number">6.7.1.1.1</span> Bonferroni</h5>
 <p><span class="math display">\[
 VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
 \]</span></p>
 </div>
 </div>
 <div id="no-planeados-1" class="section level4">
-<h4><span class="header-section-number">9.7.1.2</span> No Planeados:</h4>
+<h4><span class="header-section-number">6.7.1.2</span> No Planeados:</h4>
 <div id="scheffe" class="section level5">
-<h5><span class="header-section-number">9.7.1.2.1</span> Scheffé</h5>
+<h5><span class="header-section-number">6.7.1.2.1</span> Scheffé</h5>
 <p><span class="math display">\[
 VC = S = \sqrt{\left( I - 1 \right)F_{\left( I - 1 \right);GL_{D};1 - \alpha}}
 \]</span></p>
 </div>
 <div id="tukey" class="section level5">
-<h5><span class="header-section-number">9.7.1.2.2</span> Tukey</h5>
+<h5><span class="header-section-number">6.7.1.2.2</span> Tukey</h5>
 <p><span class="math display">\[
 \frac{\overline{Y}_{i \bullet \max } - \overline{Y}_{i \bullet \min }}{S_{\overline{Y}}}\sim q_{I;N - IJ}
 \]</span></p>
@@ -1426,7 +1431,7 @@ S_{\overline{y}} = \sqrt{\frac{CM_{D}}{\text{Jn}}}
 \]</span></p>
 </div>
 <div id="ortogonales" class="section level5">
-<h5><span class="header-section-number">9.7.1.2.3</span> Ortogonales</h5>
+<h5><span class="header-section-number">6.7.1.2.3</span> Ortogonales</h5>
 <p><span class="math display">\[
 SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{i}^{2}}{\text{Jn}}}\ 
 \]</span></p>
@@ -1434,7 +1439,7 @@ SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{i}^{2}}{\text{Jn}}}\
 </div>
 </div>
 <div id="entre-columnas" class="section level3">
-<h3><span class="header-section-number">9.7.2</span> Entre columnas</h3>
+<h3><span class="header-section-number">6.7.2</span> Entre columnas</h3>
 <p><span class="math display">\[
 \hat{f} = \sum c_{j}{\overline{Y}_{\bullet j \bullet}}
 \]</span></p>
@@ -1443,24 +1448,24 @@ SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{i}^{2}}{\text{Jn}}}\
 \varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{j}^{2}}{\text{In}} \right.\ }\ }
 \]</span></p>
 <div id="planeados-2" class="section level4">
-<h4><span class="header-section-number">9.7.2.1</span> Planeados:</h4>
+<h4><span class="header-section-number">6.7.2.1</span> Planeados:</h4>
 <div id="bonferroni-1" class="section level5">
-<h5><span class="header-section-number">9.7.2.1.1</span> Bonferroni</h5>
+<h5><span class="header-section-number">6.7.2.1.1</span> Bonferroni</h5>
 <p><span class="math display">\[
 VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
 \]</span></p>
 </div>
 </div>
 <div id="no-planeados-2" class="section level4">
-<h4><span class="header-section-number">9.7.2.2</span> No Planeados:</h4>
+<h4><span class="header-section-number">6.7.2.2</span> No Planeados:</h4>
 <div id="scheffe-1" class="section level5">
-<h5><span class="header-section-number">9.7.2.2.1</span> Scheffé</h5>
+<h5><span class="header-section-number">6.7.2.2.1</span> Scheffé</h5>
 <p><span class="math display">\[
 VC = S = \sqrt{\left( J - 1 \right)F_{\left( J - 1 \right);GL_{D};1 - \alpha}}
 \]</span></p>
 </div>
 <div id="tukey-1" class="section level5">
-<h5><span class="header-section-number">9.7.2.2.2</span> Tukey</h5>
+<h5><span class="header-section-number">6.7.2.2.2</span> Tukey</h5>
 <p><span class="math display">\[
 \frac{\overline{Y}_{\bullet j\ \max } - \overline{Y}_{\bullet j\ \min }}{S_{\overline{Y}}}\sim q_{j;N - IJ}
 \]</span></p>
@@ -1469,7 +1474,7 @@ S_{\overline{Y} = \sqrt{\frac{CM_{D}}{In}}}
 \]</span></p>
 </div>
 <div id="ortogonales-1" class="section level5">
-<h5><span class="header-section-number">9.7.2.2.3</span> Ortogonales</h5>
+<h5><span class="header-section-number">6.7.2.2.3</span> Ortogonales</h5>
 <p><span class="math display">\[
 SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{j}^{2}}{\text{In}}}\ 
 \]</span></p>
@@ -1477,7 +1482,7 @@ SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{j}^{2}}{\text{In}}}\
 </div>
 </div>
 <div id="interaccion-1" class="section level3">
-<h3><span class="header-section-number">9.7.3</span> Interacción</h3>
+<h3><span class="header-section-number">6.7.3</span> Interacción</h3>
 <p><span class="math display">\[
 \hat{f} = \sum c_{ij}{\overline{Y}_{ij \bullet}}
 \]</span></p>
@@ -1486,24 +1491,24 @@ SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{j}^{2}}{\text{In}}}\
 \varepsilon = \frac{\left| \hat{f} \right|}{\sqrt{CM_{D}\left. \ \frac{\sum c_{ij}^{2}}{n} \right.\ }\ }
 \]</span></p>
 <div id="planeados-3" class="section level4">
-<h4><span class="header-section-number">9.7.3.1</span> Planeados:</h4>
+<h4><span class="header-section-number">6.7.3.1</span> Planeados:</h4>
 <div id="bonferroni-2" class="section level5">
-<h5><span class="header-section-number">9.7.3.1.1</span> Bonferroni</h5>
+<h5><span class="header-section-number">6.7.3.1.1</span> Bonferroni</h5>
 <p><span class="math display">\[
 VC = t_{1 - \frac{\alpha}{2m};GL_{D}}
 \]</span></p>
 </div>
 </div>
 <div id="no-planeados-3" class="section level4">
-<h4><span class="header-section-number">9.7.3.2</span> No Planeados:</h4>
+<h4><span class="header-section-number">6.7.3.2</span> No Planeados:</h4>
 <div id="scheffe-2" class="section level5">
-<h5><span class="header-section-number">9.7.3.2.1</span> Scheffé</h5>
+<h5><span class="header-section-number">6.7.3.2.1</span> Scheffé</h5>
 <p><span class="math display">\[
 VC = S = \sqrt{\left( IJ - 1 \right)F_{\left( IJ - 1 \right);N - IJ;1 - \alpha}}
 \]</span></p>
 </div>
 <div id="tukey-2" class="section level5">
-<h5><span class="header-section-number">9.7.3.2.2</span> Tukey</h5>
+<h5><span class="header-section-number">6.7.3.2.2</span> Tukey</h5>
 <p><span class="math display">\[
 \frac{\overline{Y}_{ij \max} - \overline{Y}_{ij\min}}{S_{\overline{Y}}}
 \sim q_{ij;N - IJ}
@@ -1513,7 +1518,7 @@ S_{\overline{Y}} = \sqrt{\frac{CM_{D}}{n}}
 \]</span></p>
 </div>
 <div id="ortogonales-2" class="section level5">
-<h5><span class="header-section-number">9.7.3.2.3</span> Ortogonales</h5>
+<h5><span class="header-section-number">6.7.3.2.3</span> Ortogonales</h5>
 <p><span class="math display">\[
 SC = \frac{{\hat{f}}^{2}}{\frac{\sum c_{ij}^{2}}{n}}\ 
 \]</span></p>
@@ -2642,14 +2647,14 @@ inferior) y medias (diagonal)</em></p>
 </div>
 </div>
 <div id="potencia-de-la-prueba-f-1" class="section level2">
-<h2><span class="header-section-number">9.8</span> Potencia de la prueba F</h2>
+<h2><span class="header-section-number">6.8</span> Potencia de la prueba F</h2>
 <p>La potencia de la prueba F para la interacción, los efectos del factor principal
 A y los efectos del factor principal B puede ser evaluada de manera similar al
 caso del análisis de un solo factor <span class="math inline">\(A\)</span> través de los gráficos de Pearson-Hartley.
 El parámetro de no centralidad Φ y los grados de libertad, para cada uno de
 estos casos son los siguientes:</p>
 <div id="interaccion-2" class="section level3">
-<h3><span class="header-section-number">9.8.1</span> Interacción</h3>
+<h3><span class="header-section-number">6.8.1</span> Interacción</h3>
 <p><span class="math display">\[
 \Phi = \frac{1}{\sigma}\sqrt{\frac{n\sum\sum\left(\alpha \beta \right)_{ij}^{2}}{\left( I - 1 \right)\left( J - 1 \right) + 1}} = \frac{1}{\sigma}\sqrt{\frac{n\sum\sum\left( \mu_{ij} - \mu_{i \bullet} - \mu_{\bullet j} + \mu_{\bullet \bullet} \right)^{2}}{\left( I - 1 \right)\left( J - 1 \right) + 1}}
 \]</span></p>
@@ -2660,7 +2665,7 @@ estos casos son los siguientes:</p>
 \]</span></p>
 </div>
 <div id="prueba-para-el-factor-principal-a" class="section level3">
-<h3><span class="header-section-number">9.8.2</span> Prueba para el factor principal A:</h3>
+<h3><span class="header-section-number">6.8.2</span> Prueba para el factor principal A:</h3>
 <p><span class="math display">\[
 \Phi = \frac{1}{\sigma}\sqrt{\frac{nJ\sum\left( \alpha \right)_{i}^{2}}{I}} = \frac{1}{\sigma}\sqrt{\frac{nJ\sum\left( \mu_{i \bullet} - \mu_{\bullet \bullet} \right)^{2}}{I}}
 \]</span></p>
@@ -2671,7 +2676,7 @@ estos casos son los siguientes:</p>
 \]</span></p>
 </div>
 <div id="prueba-para-el-factor-principal-b" class="section level3">
-<h3><span class="header-section-number">9.8.3</span> Prueba para el factor principal B:</h3>
+<h3><span class="header-section-number">6.8.3</span> Prueba para el factor principal B:</h3>
 <p><span class="math display">\[
 \Phi = \frac{1}{\sigma}\sqrt{\frac{nI\sum\left( \beta \right)_{j}^{2}}{J}} = \frac{1}{\sigma}\sqrt{\frac{nI\sum\left( \mu_{\bullet j} - \mu_{\bullet \bullet} \right)^{2}}{J}}
 \]</span></p>
@@ -2696,9 +2701,9 @@ P = 0.8
 </div>
 </div>
 <div id="caso-de-una-observacion-por-tratamiento" class="section level2">
-<h2><span class="header-section-number">9.9</span> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</h2>
+<h2><span class="header-section-number">6.9</span> CASO DE UNA OBSERVACIÓN POR TRATAMIENTO</h2>
 <div id="modelo-sin-interaccion" class="section level3">
-<h3><span class="header-section-number">9.9.1</span> Modelo sin interacción</h3>
+<h3><span class="header-section-number">6.9.1</span> Modelo sin interacción</h3>
 <p>El modelo de ANOVA con niveles del factor fijos y sin interacción, para el caso
 en que n=1, es:</p>
 <p><span class="math display">\[
@@ -2763,7 +2768,7 @@ utiliza ahora el <span class="math inline">\(CM_{AB}\)</span> en el denominador,
 </table>
 </div>
 <div id="prueba-de-tukey-aditividad" class="section level3">
-<h3><span class="header-section-number">9.9.2</span> Prueba de Tukey (Aditividad)</h3>
+<h3><span class="header-section-number">6.9.2</span> Prueba de Tukey (Aditividad)</h3>
 <p>Supongamos que se asume que:</p>
 <p><span class="math display">\[
 \left( \alpha\beta \right)_{ij} = D\alpha_{i}\beta_{j}
@@ -3004,7 +3009,7 @@ para tres especies de citrícos bajo tres condiciones de luz.</p>
 <div class="figure"><span id="fig:citricos"></span>
 <img src="anova-dos-factores_files/figure-html/citricos-1.png" alt="(ref:citricos)" width="50%" /><img src="anova-dos-factores_files/figure-html/citricos-2.png" alt="(ref:citricos)" width="50%" />
 <p class="caption">
-Figura 9.4: (ref:citricos)
+Figura 6.4: (ref:citricos)
 </p>
 </div>
 <p>Analysis of Variance Model</p>
@@ -3182,9 +3187,9 @@ Figura 9.4: (ref:citricos)
 </div>
 </div>
 <div id="modelo-ii-y-modelo-iii-para-estudios-de-dos-factores" class="section level2">
-<h2><span class="header-section-number">9.10</span> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</h2>
+<h2><span class="header-section-number">6.10</span> MODELO II Y MODELO III PARA ESTUDIOS DE DOS FACTORES</h2>
 <div id="modelo-aleatorio-modelo-ii" class="section level3">
-<h3><span class="header-section-number">9.10.1</span> Modelo aleatorio (Modelo II)</h3>
+<h3><span class="header-section-number">6.10.1</span> Modelo aleatorio (Modelo II)</h3>
 <p>El modelo aleatorio para estudios de dos factores con igual tamaño muestral, n,
 es:</p>
 <p><span class="math display">\[
@@ -3213,7 +3218,7 @@ es:</p>
 \]</span></p>
 </div>
 <div id="modelo-mixto-modelo-iii" class="section level3">
-<h3><span class="header-section-number">9.10.2</span> Modelo Mixto (Modelo III)</h3>
+<h3><span class="header-section-number">6.10.2</span> Modelo Mixto (Modelo III)</h3>
 <p>Para este caso, con igual tamaño muestral, el modelo de ANOVA es:</p>
 <p><span class="math display">\[
 Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
@@ -3242,9 +3247,9 @@ E(Y_{\text{ijk}}) = \mu_{\bullet \bullet} + \alpha_{i}
 \]</span></p>
 </div>
 <div id="pruebas-estadisticas" class="section level3">
-<h3><span class="header-section-number">9.10.3</span> Pruebas estadísticas</h3>
+<h3><span class="header-section-number">6.10.3</span> Pruebas estadísticas</h3>
 <table>
-<caption><span id="tab:mixto-aleatorio">Tabla 9.9: </span> Pruebas estadísticas para los Modelos Aleatorios y Mixto</caption>
+<caption><span id="tab:mixto-aleatorio">Tabla 6.9: </span> Pruebas estadísticas para los Modelos Aleatorios y Mixto</caption>
 <colgroup>
 <col width="29%" />
 <col width="19%" />
@@ -3282,7 +3287,7 @@ E(Y_{\text{ijk}}) = \mu_{\bullet \bullet} + \alpha_{i}
 </table>
 </div>
 <div id="estimacion-de-los-componentes-de-la-varianza" class="section level3">
-<h3><span class="header-section-number">9.10.4</span> Estimación de los componentes de la varianza</h3>
+<h3><span class="header-section-number">6.10.4</span> Estimación de los componentes de la varianza</h3>
 <p>Con un modelo aleatorio, por ejemplo <span class="math inline">\(\sigma_{\alpha}^{2}\)</span> puede ser estimado
 por:</p>
 <p><span class="math display">\[
@@ -3297,7 +3302,7 @@ S_{\alpha}^{2} = \frac{CM_{A} - CM_{AB}}{\text{nJ}}
 S_{I}^{2} = \frac{CM_{B} - CM_{D}}{\text{nI}}
 \]</span></p>
 <table>
-<caption><span id="tab:esperanza-CM">Tabla 9.10: </span> Esperanza de los cuadrados medios en estudios de dos factores</caption>
+<caption><span id="tab:esperanza-CM">Tabla 6.10: </span> Esperanza de los cuadrados medios en estudios de dos factores</caption>
 <colgroup>
 <col width="17%" />
 <col width="4%" />
@@ -3581,8 +3586,8 @@ S_{\beta}^{2} = \frac{\left. \ CM_{B} - CM_{D} \right.\ }{nI} = \frac{2336.57142
           </div>
         </div>
       </div>
-<a href="anova-no-parametrico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="disenos-experimentales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="problemas-anova-simple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -3615,7 +3620,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/anova-dos-factores.Rmd",
 "text": "Edit"
 },
-"download": ["laboratorios.pdf", "laboratorios.epub"],
+"download": ["EACN.pdf", "EACN.epub"],
 "toc": {
 "collapse": "subsection"
 }

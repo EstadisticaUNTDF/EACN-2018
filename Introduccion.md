@@ -105,7 +105,7 @@ replicable es que otro experimentador al repetir el experimento va a llegar a
 resultados diferentes, que pueden ser o no similares (Figura \@ref(fig:reproducible-figura))
 
 <div class="figure" style="text-align: center">
-<img src="Introduccion_files/figure-html/reproducible-figura-1.png" alt="Diferencias entre reproducible y replicable." width="576" />
+<img src="Introduccion_files/figure-epub3/reproducible-figura-1.png" alt="Diferencias entre reproducible y replicable."  />
 <p class="caption">(\#fig:reproducible-figura)Diferencias entre reproducible y replicable.</p>
 </div>
 

@@ -125,7 +125,7 @@ library(ggfortify)
 autoplot(nitro_aov)
 ```
 
-<img src="anova-problemas_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+![](anova-problemas_files/figure-epub3/unnamed-chunk-2-1.png)<!-- -->
 
 Por lo que vemos en el los gráficos no hay motivo para preocuparse por la falta
 de cumplimiento de los supuestos. Pero para estar seguros podemos usar las 
@@ -461,7 +461,7 @@ y de las comparaciones de entre ellas.
 plot(alga.em, comparisons = TRUE)
 ```
 
-<img src="anova-problemas_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](anova-problemas_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 Las barras azules son los intervalos de confianza para las medias y las flechas
 rojas son los intervalos de confianza de las comparaciones entre ellos. Si las

@@ -136,7 +136,7 @@ probabilidades de respuestas. El modelo I de ANOVA supone:
     de las observaciones de cualquier otro nivel del factor.
 
 <div class="figure">
-<img src="anova_files/figure-html/distr-normales-1.png" alt="Densidad de distribuciones de cuatro distribuciones normales con igual varianza y distinta media" width="672" />
+<img src="anova_files/figure-epub3/distr-normales-1.png" alt="Densidad de distribuciones de cuatro distribuciones normales con igual varianza y distinta media"  />
 <p class="caption">(\#fig:distr-normales)Densidad de distribuciones de cuatro distribuciones normales con igual varianza y distinta media</p>
 </div>
 
@@ -353,7 +353,7 @@ Idealmente, deberían seguir una línea recta de pendiente 1 y ordenada 0.
 (ref:graficos-residuales) Gráficos de residuales para modelos de ANOVA. a - residuales vs valores predichos. b - residuales vs orden de toma de datos. c - residuales vs niveles del factor. d - gráfico de probabilidad normal.
 
 <div class="figure">
-<img src="anova_files/figure-html/graficos-residuales-1.png" alt="(ref:graficos-residuales)" width="100%" />
+<img src="anova_files/figure-epub3/graficos-residuales-1.png" alt="(ref:graficos-residuales)" width="100%" />
 <p class="caption">(\#fig:graficos-residuales)(ref:graficos-residuales)</p>
 </div>
 
@@ -377,7 +377,7 @@ tienen una varianza mayor que los otros dos niveles del factor.
 (ref:hetero) Residuales vs Valores Ajustados o predichos. Este gráfico muestra que los residuales uno de los niveles muestra mayor dispersión que el resto de los datos.
 
 <div class="figure">
-<img src="anova_files/figure-html/hetero-1.png" alt="(ref:hetero)" width="50%" /><img src="anova_files/figure-html/hetero-2.png" alt="(ref:hetero)" width="50%" />
+<img src="anova_files/figure-epub3/hetero-1.png" alt="(ref:hetero)" width="50%" /><img src="anova_files/figure-epub3/hetero-2.png" alt="(ref:hetero)" width="50%" />
 <p class="caption">(\#fig:hetero)(ref:hetero)</p>
 </div>
 
@@ -397,7 +397,7 @@ se descalibran.
 (ref:indpen) Residuales vs Orden. Los residuales muestran falta de independencia al haber una correlación entre ellos.
 
 <div class="figure">
-<img src="anova_files/figure-html/indpen-1.png" alt="(ref:indpen)" width="75%" />
+<img src="anova_files/figure-epub3/indpen-1.png" alt="(ref:indpen)" width="75%" />
 <p class="caption">(\#fig:indpen)(ref:indpen)</p>
 </div>
 
@@ -407,7 +407,7 @@ La siguiente Figura \@ref(fig:varianza-decrece) muestra un caso donde la varianz
 (ref:varianza-decrece) Residuales vs Orden. Los residuales muestran que la varianza decrece, ya que al principio son mayores y al final son menores
 
 <div class="figure">
-<img src="anova_files/figure-html/varianza-decrece-1.png" alt="(ref:varianza-decrece)" width="75%" />
+<img src="anova_files/figure-epub3/varianza-decrece-1.png" alt="(ref:varianza-decrece)" width="75%" />
 <p class="caption">(\#fig:varianza-decrece)(ref:varianza-decrece)</p>
 </div>
 
@@ -481,7 +481,7 @@ ANOVA, la falta de normalidad tiene serias implicaciones.
 
 
 <div class="figure">
-<img src="anova_files/figure-html/kurtosis-1.png" alt="Funciones de densidad para curvas asimétrica, mesocúrtica, leptocúrtica, platicúrtica" width="672" />
+<img src="anova_files/figure-epub3/kurtosis-1.png" alt="Funciones de densidad para curvas asimétrica, mesocúrtica, leptocúrtica, platicúrtica"  />
 <p class="caption">(\#fig:kurtosis)Funciones de densidad para curvas asimétrica, mesocúrtica, leptocúrtica, platicúrtica</p>
 </div>
 
@@ -1702,7 +1702,7 @@ se refiere.
 *Ejemplo 2.- Comparaciones a posteriori*
 
 <div class="figure">
-<img src="anova_files/figure-html/ratas-posteriori-1.png" alt="Presion de cuatro especies de ratas. media +- error estándar, n = 10." width="75%" />
+<img src="anova_files/figure-epub3/ratas-posteriori-1.png" alt="Presion de cuatro especies de ratas. media +- error estándar, n = 10." width="75%" />
 <p class="caption">(\#fig:ratas-posteriori)Presion de cuatro especies de ratas. media +- error estándar, n = 10.</p>
 </div>
 **Test de Sheffé**

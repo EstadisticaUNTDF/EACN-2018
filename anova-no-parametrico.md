@@ -255,7 +255,7 @@ figura:
 tratamientos.
 
 <div class="figure">
-<img src="anova-no-parametrico_files/figure-html/unnamed-chunk-1-1.png" alt="(ref:cajas-medianas)" width="672" />
+<img src="anova-no-parametrico_files/figure-epub3/unnamed-chunk-1-1.png" alt="(ref:cajas-medianas)"  />
 <p class="caption">(\#fig:unnamed-chunk-1)(ref:cajas-medianas)</p>
 </div>
 

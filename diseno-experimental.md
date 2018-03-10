@@ -62,7 +62,7 @@ entre bloques.
 cuatro y cada uno de los tratamientos dentro de los bloques se asignó al azar.
 
 <div class="figure">
-<img src="diseno-experimental_files/figure-html/bloques-1.png" alt="(ref:bloque)" width="672" />
+<img src="diseno-experimental_files/figure-epub3/bloques-1.png" alt="(ref:bloque)"  />
 <p class="caption">(\#fig:bloques)(ref:bloque)</p>
 </div>
 
@@ -387,7 +387,7 @@ Table: (\#tab:anova-fert) Medias marginales, error
 5 fincas.
 
 <div class="figure">
-<img src="diseno-experimental_files/figure-html/unnamed-chunk-2-1.png" alt="(ref:produccion)" width="75%" />
+<img src="diseno-experimental_files/figure-epub3/unnamed-chunk-2-1.png" alt="(ref:produccion)" width="75%" />
 <p class="caption">(\#fig:unnamed-chunk-2)(ref:produccion)</p>
 </div>
 
