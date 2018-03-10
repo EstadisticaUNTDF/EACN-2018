@@ -1,4 +1,4 @@
-book_filename: "laboratorios"
+book_filename: "EACN"
 new_session: yes
 language:
   ui:
@@ -25,14 +25,14 @@ rmd_files:
     "Graficos.Rmd",
     "manejo-de-datos.Rmd",
     
-    "No-Parametrico-Teoria.Rmd",
-    "No-Parametrico.Rmd",
-    
     "anova.Rmd",
     "anova-problemas.Rmd",
     
-    "anova-no-parametrico.Rmd",
     "anova-dos-factores.Rmd",
+    
+    "No-Parametrico-Teoria.Rmd",
+    "No-Parametrico.Rmd",
+    "anova-no-parametrico.Rmd",
     
     "diseno-experimental.Rmd",
     
