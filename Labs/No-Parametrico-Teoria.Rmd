@@ -269,7 +269,7 @@ p1 + p2
  
 
 
-####Variante Wilcoxon
+#### Variante Wilcoxon
 
 Utilizando el estadístico $W$ los criterios de decisión son:  
 Si  $W≤w_\alpha$     Entonces **Rechazo** $H_0$  
@@ -279,7 +279,7 @@ Utilizando el estadístico $W_1$ los criterios de decisión son:
 Si $P(Z≤W_1 )≤ \alpha$  Entonces **Rechazo** $H_0$  
 Si $P(Z>W_1 )> \alpha$  Entonces **No rechazo** $H_0$
 
-####Variante Mann-Whitney
+#### Variante Mann-Whitney
 
 Definiendo como estadístico $U$ al $U$, los criterios de decisión son:  
 Si  $U≥U_{N1,N2,\alpha}$ Entonces **Rechazo** $H_0$  
@@ -291,12 +291,12 @@ por empates ($z_c$), los criterios de decisión son:
 Si $1-P(Z\le z)\le\alpha$ ó $1-P(Z≤z_c )\le\alpha$ Entonces **Rechazo** $H_0$  
 Si $1-P(Z≤z)>\alpha$ ó $1-P(Z≤z_c )>\alpha$ Entonces **No rechazo** $H_0$
 
-###Prueba de una cola a la derecha
+### Prueba de una cola a la derecha
 
 $H_0$: $F(x)=G(x)$ para todo x   ó  $E(X)=E(Y)$  
 $H_a$: $F(x)<G(x)$ para algún x   ó  $E(X)>E(Y)$
 
-####Variante Wilcoxon
+#### Variante Wilcoxon
 
 Utilizando el estadístico $W$ los criterios de decisión son:  
 Si  $W≥w_{1-\alpha}$     Entonces **Rechazo** $H_0$  
@@ -311,7 +311,7 @@ Utilizando el estadístico $W_1$ los criterios de decisión son:
 Si $P(Z≤W_1 )≤ \alpha$  Entonces **Rechazo** $H_0$  
 Si $P(Z≤W_1 )> \alpha$  Entonces **No rechazo** $H_0$
 
-####Variante Mann-Whitney
+#### Variante Mann-Whitney
 
 Definiendo como estadístico U al U, los criterios de decisión son:  
 Si  $U≥U_{N1,N2,\alpha}$ Entonces **Rechazo** $H_0$  
