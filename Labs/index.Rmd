@@ -15,7 +15,7 @@ description: "Un libro con la teoría, ejemplos y práctica de Estadística Avan
 
 
 Para aprobar la asignatura el alumno deberá tener obtener una nota de cursada
-minina de 60%, aprobar los parciales. La nota se calcula ponderando los
+mínina de 60%, aprobar los parciales. La nota se calcula ponderando los
 siguientes items.
 
 | Actividad                                                | Ponderación |
