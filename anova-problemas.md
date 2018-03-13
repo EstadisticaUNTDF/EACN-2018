@@ -654,14 +654,14 @@ d)	Realice un breve comentario sobre el diseño del experimento.
 
 5. Se realiza una experiencia a fin de comparar tres métodos diferentes para determinar el contenido de oxígeno disuelto en el agua de lagos. Se extrae una muestra aleatoria de 18 muestras de agua de un lago, las cuales se dividen al azar en tres grupos de igual tamaño y cada uno de los grupos es asignado al azar a uno de los métodos que se quiere comparar. Se obtienen los siguientes resultados, expresados en mg/litro:
 
-  M\xe9todo.1 M\xe9todo.2 M\xe9todo.3
-1         832        1023        8710
-2         324         832        1660
-3         550        1318        5495
-4         617        1995        3981
-5         525         832        2138
-6        1349         912        3548
-7         501         646        5130
+  Método.1 Método.2 Método.3
+1      832     1023     8710
+2      324      832     1660
+3      550     1318     5495
+4      617     1995     3981
+5      525      832     2138
+6     1349      912     3548
+7      501      646     5130
 
 
 a)	Comprobar las suposiciones del ANOVA

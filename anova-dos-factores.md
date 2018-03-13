@@ -359,7 +359,7 @@ Se puede expresar el modelo de niveles del factor fijos en términos de las
 medias de los tratamientos.
 
 $$
-Y_{\text{ijk}} = \mu_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{ij} + \varepsilon_{ijk}
 $$
 
 $$
@@ -368,9 +368,9 @@ $$
 
 #### Características importantes del Modelo
 
-1.  $E(Y_{\text{ijk}}) = \mu_{ij}$
+1.  $E(Y_{ijk}) = \mu_{ij}$
 
-2.  $Var(Y_{\text{ijk}}) = Var(\varepsilon_{\text{ijk}}) = \sigma^{2}$
+2.  $Var(Y_{ijk}) = Var(\varepsilon_{ijk}) = \sigma^{2}$
 
 3.  $Y_ijk$ son independientes y se distribuyen $N\left( 0,\sigma^{2} \right)$
 
@@ -429,7 +429,7 @@ Reemplazando $\mu_{ij}$ en el modelo de las medias de las celdas, se
 obtiene:
 
 $$
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 $$
 
 donde:
@@ -446,7 +446,7 @@ $$
 \end{matrix}
 $$
 
-$\varepsilon_{\text{ijk}}$ son independientes y se distribuyen $N(0,\
+$\varepsilon_{ijk}$ son independientes y se distribuyen $N(0,\
 \sigma^{2})$
 
 ### ANOVA (MODELO I)
@@ -455,19 +455,19 @@ $\varepsilon_{\text{ijk}}$ son independientes y se distribuyen $N(0,\
 #### Notación
 
 $$
-{\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{\text{ijk}}}{n}
+\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{ijk}}{n}
 $$
 
 $$
-{\overline{Y}_{i \bullet \bullet} = \frac{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{Jn}}
+\overline{Y}_{i \bullet \bullet} = \frac{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{ijk}}}{\text{Jn}}
 $$
 
 $$
-{\overline{Y}_{\bullet j \bullet} = \frac{\sum_{i}^{I}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{In}}
+\overline{Y}_{\bullet j \bullet} = \frac{\sum_{i}^{I}{\sum_{k = 1}^{n}Y_{ijk}}}{\text{In}}
 $$
 
 $$
-{\overline{Y}_{\bullet \bullet \bullet} = \frac{\sum_{i}^{I}{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}}{\text{IJn}}
+\overline{Y}_{\bullet \bullet \bullet} = \frac{\sum_{i}^{I}{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{ijk}}}}{\text{IJn}}
 $$
 
 #### Ajuste del modelo
@@ -477,20 +477,20 @@ $$
 El cuadrado a minimizar es el siguiente:
 
 $$
-\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{ij} \right)^{2}
+\sum\sum\sum\left( Y_{ijk} - \mu_{ij} \right)^{2}
 $$
 
 Minimizando se obtiene:
 
 $$
-{\hat{\mu}}_{ij} = {\overline{Y}_{ij \bullet}
+\hat{\mu}_{ij} = \overline{Y}_{ij \bullet}
 $$
 
 Los residuos se definen como la diferencia entre los valores observados y los
 estimados:
 
 $$
-\varepsilon_{\text{ijk}} = Y_{\text{ijk}} - {\overline{Y}_{ij \bullet}
+\varepsilon_{ijk} = Y_{ijk} - \overline{Y}_{ij \bullet}
 $$
 
 ##### Modelo de los efectos del factor
@@ -498,7 +498,7 @@ $$
 El cuadrado a minimizar es el siguiente:
 
 $$
-\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
+\sum\sum\sum\left( Y_{ijk} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
 $$
 
 sujeto a las restricciones:
@@ -1250,8 +1250,8 @@ $\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)\left( 
 
 $$
 \begin{aligned}
-\sum_{i}^{}\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2} &= 628.074074\\
-\sum_{j}^{}{\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2} &=283.62963\\
+\sum_{i}^{}{\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2}} &= 628.074074\\
+\sum_{j}^{}{\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2}} &=283.62963\\
 SC_{AB}^{*}  &=  56.96674
 \end{aligned}
 $$
@@ -1332,7 +1332,7 @@ El modelo aleatorio para estudios de dos factores con igual tamaño muestral, n,
 es:
 
 $$
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 $$
 
 donde:
@@ -1353,17 +1353,17 @@ $$
 i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
 $$
 
-Para este modelo de ANOVA el valor esperado de los $Y_{\text{ijk}}$ es:
+Para este modelo de ANOVA el valor esperado de los $Y_{ijk}$ es:
 
 $$
 E\left( Y_{ijk} \right) = \mu_{\bullet \bullet}
 $$
 
-y la varianza de los $Y_{\text{ijk}}$, indicada como $\sigma_{Y}^{2}$,
+y la varianza de los $Y_{ijk}$, indicada como $\sigma_{Y}^{2}$,
 es:
 
 $$
-\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\alpha}^{2} + \sigma_{\beta}^{2} + \sigma_{\alpha\beta}^{2} + \sigma^{2}
+\text{Var}\left( Y_{ijk} \right) = \sigma_{Y}^{2} = \sigma_{\alpha}^{2} + \sigma_{\beta}^{2} + \sigma_{\alpha\beta}^{2} + \sigma^{2}
 $$
 
 ### Modelo Mixto (Modelo III)
@@ -1372,7 +1372,7 @@ $$
 Para este caso, con igual tamaño muestral, el modelo de ANOVA es:
 
 $$
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 $$
 
 donde:
@@ -1390,11 +1390,11 @@ $\text{Cov}\left\lbrack \left( \alpha\beta \right)_{ij};\left( \alpha\beta
 \right)_{i^{'}j} \right\rbrack = - \frac{1}{I}\sigma_{\alpha\beta}^{2}\ \forall\ \
 i \neq i^{'}$
 
-$\varepsilon_{\text{ijk}}$ son independientes y se distribuyen $N\left(
+$\varepsilon_{ijk}$ son independientes y se distribuyen $N\left(
 0,\sigma^{2} \right)$
 
 $\beta_{j}$, $\left( \alpha\beta \right)_{ij}$ y
-$\varepsilon_{\text{ijk}}$ son independientes de a pares
+$\varepsilon_{ijk}$ son independientes de a pares
 
 $$
 i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
@@ -1403,13 +1403,13 @@ $$
 Para el modelo mixto, el valor esperado de $Y_{ijk}$ es:
 
 $$
-E(Y_{\text{ijk}}) = \mu_{\bullet \bullet} + \alpha_{i}
+E(Y_{ijk}) = \mu_{\bullet \bullet} + \alpha_{i}
 $$
 
-y la varianza de $Y_{\text{ijk}}$ es:
+y la varianza de $Y_{ijk}$ es:
 
 $$
-\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\beta}^{2} + \frac{I - 1}{I}\sigma_{\alpha\beta}^{2} + \sigma^{2}
+\text{Var}\left( Y_{ijk} \right) = \sigma_{Y}^{2} = \sigma_{\beta}^{2} + \frac{I - 1}{I}\sigma_{\alpha\beta}^{2} + \sigma^{2}
 $$
 
 ### Pruebas estadísticas

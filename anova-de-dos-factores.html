@@ -888,7 +888,7 @@ N  =  IJn
 <p>Se puede expresar el modelo de niveles del factor fijos en términos de las
 medias de los tratamientos.</p>
 <p><span class="math display">\[
-Y_{\text{ijk}} = \mu_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{ij} + \varepsilon_{ijk}
 \]</span></p>
 <p><span class="math display">\[
 i = 1,2,\ldots,I;j = 1,2,\ldots,J;k = 1,2,\ldots,n
@@ -896,8 +896,8 @@ i = 1,2,\ldots,I;j = 1,2,\ldots,J;k = 1,2,\ldots,n
 <div id="caracteristicas-importantes-del-modelo-2" class="section level4">
 <h4><span class="header-section-number">7.5.1.1</span> Características importantes del Modelo</h4>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(E(Y_{\text{ijk}}) = \mu_{ij}\)</span></p></li>
-<li><p><span class="math inline">\(Var(Y_{\text{ijk}}) = Var(\varepsilon_{\text{ijk}}) = \sigma^{2}\)</span></p></li>
+<li><p><span class="math inline">\(E(Y_{ijk}) = \mu_{ij}\)</span></p></li>
+<li><p><span class="math inline">\(Var(Y_{ijk}) = Var(\varepsilon_{ijk}) = \sigma^{2}\)</span></p></li>
 <li><p><span class="math inline">\(Y_ijk\)</span> son independientes y se distribuyen <span class="math inline">\(N\left( 0,\sigma^{2} \right)\)</span></p></li>
 <li><p>El modelo de ANOVA es un modelo lineal.</p></li>
 <li><p>El modelo de ANOVA de dos factores es similar al de un factor. Normalidad,
@@ -941,7 +941,7 @@ de cuatro componentes de los efectos de los factores. Específicamente:</p>
 <p>Reemplazando <span class="math inline">\(\mu_{ij}\)</span> en el modelo de las medias de las celdas, se
 obtiene:</p>
 <p><span class="math display">\[
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 \]</span></p>
 <p>donde:</p>
 <p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante<br />
@@ -954,7 +954,7 @@ restricciones</p>
 \sum_{i}^{I}\left( \alpha\beta \right)_{ij} = 0 &amp; \sum_{j}^{J}\left( \alpha\beta \right)_{ij} = 0 \\
 \end{matrix}
 \]</span></p>
-<p><span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes y se distribuyen <span class="math inline">\(N(0,\
+<p><span class="math inline">\(\varepsilon_{ijk}\)</span> son independientes y se distribuyen <span class="math inline">\(N(0,\
 \sigma^{2})\)</span></p>
 </div>
 <div id="anova-modelo-i" class="section level3">
@@ -962,16 +962,16 @@ restricciones</p>
 <div id="notacion" class="section level4">
 <h4><span class="header-section-number">7.5.3.1</span> Notación</h4>
 <p><span class="math display">\[
-{\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{\text{ijk}}}{n}
+\overline{Y}_{ij \bullet} = \frac{\sum_{k = 1}^{n}Y_{ijk}}{n}
 \]</span></p>
 <p><span class="math display">\[
-{\overline{Y}_{i \bullet \bullet} = \frac{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{Jn}}
+\overline{Y}_{i \bullet \bullet} = \frac{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{ijk}}}{\text{Jn}}
 \]</span></p>
 <p><span class="math display">\[
-{\overline{Y}_{\bullet j \bullet} = \frac{\sum_{i}^{I}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}{\text{In}}
+\overline{Y}_{\bullet j \bullet} = \frac{\sum_{i}^{I}{\sum_{k = 1}^{n}Y_{ijk}}}{\text{In}}
 \]</span></p>
 <p><span class="math display">\[
-{\overline{Y}_{\bullet \bullet \bullet} = \frac{\sum_{i}^{I}{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{\text{ijk}}}}}{\text{IJn}}
+\overline{Y}_{\bullet \bullet \bullet} = \frac{\sum_{i}^{I}{\sum_{j}^{J}{\sum_{k = 1}^{n}Y_{ijk}}}}{\text{IJn}}
 \]</span></p>
 </div>
 <div id="ajuste-del-modelo" class="section level4">
@@ -980,23 +980,23 @@ restricciones</p>
 <h5><span class="header-section-number">7.5.3.2.1</span> Modelo de las medias de celda</h5>
 <p>El cuadrado a minimizar es el siguiente:</p>
 <p><span class="math display">\[
-\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{ij} \right)^{2}
+\sum\sum\sum\left( Y_{ijk} - \mu_{ij} \right)^{2}
 \]</span></p>
 <p>Minimizando se obtiene:</p>
 <p><span class="math display">\[
-{\hat{\mu}}_{ij} = {\overline{Y}_{ij \bullet}
+\hat{\mu}_{ij} = \overline{Y}_{ij \bullet}
 \]</span></p>
 <p>Los residuos se definen como la diferencia entre los valores observados y los
 estimados:</p>
 <p><span class="math display">\[
-\varepsilon_{\text{ijk}} = Y_{\text{ijk}} - {\overline{Y}_{ij \bullet}
+\varepsilon_{ijk} = Y_{ijk} - \overline{Y}_{ij \bullet}
 \]</span></p>
 </div>
 <div id="modelo-de-los-efectos-del-factor" class="section level5">
 <h5><span class="header-section-number">7.5.3.2.2</span> Modelo de los efectos del factor</h5>
 <p>El cuadrado a minimizar es el siguiente:</p>
 <p><span class="math display">\[
-\sum\sum\sum\left( Y_{\text{ijk}} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
+\sum\sum\sum\left( Y_{ijk} - \mu_{\bullet \bullet} - \alpha_{i} - \beta_{j} - \left( \alpha\beta \right)_{ij} \right)^{2}
 \]</span></p>
 <p>sujeto a las restricciones:</p>
 <p><span class="math display">\[
@@ -2990,8 +2990,8 @@ iluminación.</p>
 </table>
 <p><span class="math display">\[
 \begin{aligned}
-\sum_{i}^{}\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2} &amp;= 628.074074\\
-\sum_{j}^{}{\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2} &amp;=283.62963\\
+\sum_{i}^{}{\left( \overline{Y}_{i \bullet} - \overline{Y}_{\bullet \bullet} \right)^{2}} &amp;= 628.074074\\
+\sum_{j}^{}{\left( \overline{Y}_{\bullet j} - \overline{Y}_{\bullet \bullet} \right)^{2}} &amp;=283.62963\\
 SC_{AB}^{*}  &amp;=  56.96674
 \end{aligned}
 \]</span></p>
@@ -3199,7 +3199,7 @@ Figura 7.4: (ref:citricos)
 <p>El modelo aleatorio para estudios de dos factores con igual tamaño muestral, n,
 es:</p>
 <p><span class="math display">\[
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 \]</span></p>
 <p>donde:</p>
 <p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante</p>
@@ -3213,21 +3213,21 @@ respectivamente.</p>
 <p><span class="math display">\[
 i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
 \]</span></p>
-<p>Para este modelo de ANOVA el valor esperado de los <span class="math inline">\(Y_{\text{ijk}}\)</span> es:</p>
+<p>Para este modelo de ANOVA el valor esperado de los <span class="math inline">\(Y_{ijk}\)</span> es:</p>
 <p><span class="math display">\[
 E\left( Y_{ijk} \right) = \mu_{\bullet \bullet}
 \]</span></p>
-<p>y la varianza de los <span class="math inline">\(Y_{\text{ijk}}\)</span>, indicada como <span class="math inline">\(\sigma_{Y}^{2}\)</span>,
+<p>y la varianza de los <span class="math inline">\(Y_{ijk}\)</span>, indicada como <span class="math inline">\(\sigma_{Y}^{2}\)</span>,
 es:</p>
 <p><span class="math display">\[
-\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\alpha}^{2} + \sigma_{\beta}^{2} + \sigma_{\alpha\beta}^{2} + \sigma^{2}
+\text{Var}\left( Y_{ijk} \right) = \sigma_{Y}^{2} = \sigma_{\alpha}^{2} + \sigma_{\beta}^{2} + \sigma_{\alpha\beta}^{2} + \sigma^{2}
 \]</span></p>
 </div>
 <div id="modelo-mixto-modelo-iii" class="section level3">
 <h3><span class="header-section-number">7.10.2</span> Modelo Mixto (Modelo III)</h3>
 <p>Para este caso, con igual tamaño muestral, el modelo de ANOVA es:</p>
 <p><span class="math display">\[
-Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{\text{ijk}}
+Y_{ijk} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\beta \right)_{ij} + \varepsilon_{ijk}
 \]</span></p>
 <p>donde:</p>
 <p><span class="math inline">\(\mu_{\bullet \bullet}\)</span> es una constante</p>
@@ -3237,19 +3237,19 @@ Y_{\text{ijk}} = \mu_{\bullet \bullet} + \alpha_{i} + \beta_{j} + \left( \alpha\
 a) <span class="math inline">\(\sum\left( \alpha\beta \right)_{ij} = 0\ \forall\ j\)</span>; b)
 <span class="math inline">\(\text{Cov}\left\lbrack \left( \alpha\beta \right)_{ij};\left( \alpha\beta \right)_{i^{&#39;}j} \right\rbrack = - \frac{1}{I}\sigma_{\alpha\beta}^{2}\ \forall\ \
 i \neq i^{&#39;}\)</span></p>
-<p><span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes y se distribuyen <span class="math inline">\(N\left( 0,\sigma^{2} \right)\)</span></p>
+<p><span class="math inline">\(\varepsilon_{ijk}\)</span> son independientes y se distribuyen <span class="math inline">\(N\left( 0,\sigma^{2} \right)\)</span></p>
 <p><span class="math inline">\(\beta_{j}\)</span>, <span class="math inline">\(\left( \alpha\beta \right)_{ij}\)</span> y
-<span class="math inline">\(\varepsilon_{\text{ijk}}\)</span> son independientes de a pares</p>
+<span class="math inline">\(\varepsilon_{ijk}\)</span> son independientes de a pares</p>
 <p><span class="math display">\[
 i = 1,\ \ldots,\ I;\ j = 1,\ \ldots,\ J;\ k = 1,\ \ldots,\ n
 \]</span></p>
 <p>Para el modelo mixto, el valor esperado de <span class="math inline">\(Y_{ijk}\)</span> es:</p>
 <p><span class="math display">\[
-E(Y_{\text{ijk}}) = \mu_{\bullet \bullet} + \alpha_{i}
+E(Y_{ijk}) = \mu_{\bullet \bullet} + \alpha_{i}
 \]</span></p>
-<p>y la varianza de <span class="math inline">\(Y_{\text{ijk}}\)</span> es:</p>
+<p>y la varianza de <span class="math inline">\(Y_{ijk}\)</span> es:</p>
 <p><span class="math display">\[
-\text{Var}\left( Y_{\text{ijk}} \right) = \sigma_{Y}^{2} = \sigma_{\beta}^{2} + \frac{I - 1}{I}\sigma_{\alpha\beta}^{2} + \sigma^{2}
+\text{Var}\left( Y_{ijk} \right) = \sigma_{Y}^{2} = \sigma_{\beta}^{2} + \frac{I - 1}{I}\sigma_{\alpha\beta}^{2} + \sigma^{2}
 \]</span></p>
 </div>
 <div id="pruebas-estadisticas" class="section level3">
