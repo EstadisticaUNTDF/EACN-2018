@@ -62,7 +62,7 @@ La nota menor no se tomará en cuenta.
 ## Laboratorios
 
 
-En cada laboratorio se completará de forma individual. Se puede realizar
+Cada laboratorio se completará de forma individual. Se puede realizar
 consultas entre alumnos y se alienta la colaboración. Pero la entrega de
 informes se debe realizar de forma individual. Es importante que el informe sea
 completamente reproducible. Se puede asegurar de ello usando el botón *knit*.
@@ -90,12 +90,17 @@ recuperatorios; como requerimiento para aprobar la cursada. Además de asistir a
 80% de las clases prácticas de acuerdo con lo que estipula la Resolución N°
 350/14. La asignatura tiene *promoción*. Para promocionar es necesario aprobar con
 más del 80% los parciales sin ir a recuperatorio, y tener una nota de cursada
-mayor al 80%
+mayor al 80%. Y realizar un trabajo final que consiste en poner en práctica los
+conocimientos adquiridos.
 
 *Examen Final*: El énfasis estará en los conocimientos teóricos y su
 interpretación con la aplicación. Se tendrá en cuenta la síntesis que alumno
-realice con los nuevos conceptos adquiridos. Los exámenes se rendirán en las
-fechas previstas en el Calendario Académico de la Facultad
+realice con los nuevos conceptos adquiridos. Para ello, el examen final
+consistirá un trabajo final donde los alumnos deberán analizar e interpretar
+datos provistos por la asignatura y un examen escrito donde deberán saber qué
+técnicas usar para resolver diferentes problemas. Los exámenes se rendirán en
+las fechas previstas en el Calendario Académico de la Facultad
+
 
 ## Cronograma
 
