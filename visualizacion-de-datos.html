@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-10">
+<meta name="date" content="2018-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -327,12 +327,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>12</b> Regresión</a><ul>
 <li class="chapter" data-level="12.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>12.1</b> Regresión Lineal Simple</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a></li>
-<li class="chapter" data-level="14" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>14</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="14.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>14.1</b> Biplots</a></li>
-<li class="chapter" data-level="14.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>14.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="14.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>14.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="14.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>14.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="13.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>13.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>13.1.1</b> Biplots</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -356,6 +357,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="visualizacion-de-datos" class="section level1">
 <h1><span class="header-section-number">Capítulo 3</span> Visualización de Datos</h1>
+<div class="atencion">
+<p>
+Para hacer el tutorial ingresen este código en la consola:
+</p>
+<p>
+<code>download.file(“git.io/visualizacion.Rmd”, file = “visualizacion.Rmd”)</code>
+</p>
+<p>
+A continuación abran el archivo <code>visualizacion.Rmd</code> y hagan clic en el botón <code>Run document</code> arriba.
+</p>
+</div>
 <div id="introduccion" class="section level2">
 <h2><span class="header-section-number">3.1</span> Introducción</h2>
 <p>Una de las formas más útiles de visualizar la información es mediante gráficos
@@ -507,7 +519,7 @@ relleno y borde que usan ambas <code>fill</code> y <code>color</code>.</p>
 <div id="formas-geometricas" class="section level2">
 <h2><span class="header-section-number">3.5</span> Formas geometricas</h2>
 <p>¿En que se parecen los gráficos de abajo?</p>
-<p><img src="Graficos_files/figure-html/unnamed-chunk-2-1.png" width="50%" /><img src="Graficos_files/figure-html/unnamed-chunk-2-2.png" width="50%" /></p>
+<p><img src="Graficos_files/figure-html/unnamed-chunk-3-1.png" width="50%" /><img src="Graficos_files/figure-html/unnamed-chunk-3-2.png" width="50%" /></p>
 <p>Ambos tienen las mismas variables, pero están representados por distintas formas.
 En el idioma de ggplot cada forma es un <strong>geom</strong>. Y cada geom es una forma
 geométrica de representar los datos. Hay muchos <strong>geom</strong> (más de 30 en el
@@ -720,7 +732,7 @@ calculado. Puedes hacer esto con <code>stat_summary</code>.</li>
 <a class="sourceLine" id="cb33-6" data-line-number="6">    <span class="dt">fun.ymin =</span> min</a>
 <a class="sourceLine" id="cb33-7" data-line-number="7">    </a>
 <a class="sourceLine" id="cb33-8" data-line-number="8">  )</a></code></pre></div>
-<p><img src="Graficos_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Graficos_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="ajuste-de-posiciones" class="section level2">
 <h2><span class="header-section-number">3.7</span> Ajuste de Posiciones</h2>

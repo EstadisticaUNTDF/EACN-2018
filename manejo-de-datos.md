@@ -1,7 +1,7 @@
 # Manejo de datos
 
 
-<div class="rmdimportant">
+<div class="atencion">
 <p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
 <p><code>download.file(url = &quot;git.io/informe-manejo&quot;, destfile = &quot;informe-manejo-de-datos.Rmd&quot;)</code></p>
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
@@ -38,7 +38,10 @@ glimpse(nombres)
 dentro el objeto `nombres`.
 
 1. ¿Cuantas columnas tiene y como se llaman?
-2. ¿Que tipo de dato tiene cada columna?</div>\EndKnitrBlock{exercise}
+2. ¿Que tipo de dato tiene cada columna?
+  
+  
+  </div>\EndKnitrBlock{exercise}
 
 En *R* existen diversos tipos de dato, en estos datos solo hay 2: entero 
 (`integer`) y carácter (`character`). El primero son números enteros y el 
@@ -240,6 +243,8 @@ que dar y luego comprueben lo que piensan con lo que les devuelve R.
   3. TRUE | (FALSE & TRUE)
   4. TRUE != FALSE & TRUE
   5. !(TRUE | FALSE) & TRUE
+  
+  
   </div>\EndKnitrBlock{exercise}
 
 Estos dos últimos operadores son muy importantes porque nos permiten comprobar
@@ -360,7 +365,11 @@ nombres_comunes %>%
 
 \BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ejercicio-9"><strong>(\#exr:ejercicio-9) </strong></span>
 1. ¿Qué sucede si olvidan los paréntesis en el código de arriba?
-2. Seleccionen las últimas 10 filas.</div>\EndKnitrBlock{exercise}
+2. Seleccionen las últimas 10 filas.
+  
+  
+
+</div>\EndKnitrBlock{exercise}
 
 ## Seleccionando columnas
 

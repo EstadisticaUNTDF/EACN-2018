@@ -2,6 +2,14 @@
 
 
 
+<div class="atencion">
+<p>Para hacer el tutorial ingresen este código en la consola:</p>
+<p><code>download.file(&quot;git.io/visualizacion.Rmd&quot;, file = &quot;visualizacion.Rmd&quot;)</code></p>
+<p>A continuación abran el archivo <code>visualizacion.Rmd</code> y hagan clic en el botón <code>Run document</code> arriba.</p>
+</div>
+
+
+
 ## Introducción
 
 Una de las formas más útiles de visualizar la información es mediante gráficos
@@ -214,7 +222,7 @@ relleno y borde que usan ambas `fill` y `color`.
 
 ¿En que se parecen los gráficos de abajo?
 
-<img src="Graficos_files/figure-epub3/unnamed-chunk-2-1.png" width="50%" /><img src="Graficos_files/figure-epub3/unnamed-chunk-2-2.png" width="50%" />
+<img src="Graficos_files/figure-epub3/unnamed-chunk-3-1.png" width="50%" /><img src="Graficos_files/figure-epub3/unnamed-chunk-3-2.png" width="50%" />
 
 
 Ambos tienen las mismas variables, pero están representados por distintas formas.
@@ -493,7 +501,7 @@ ggplot(data = diamonds) +
   )
 ```
 
-![](Graficos_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+![](Graficos_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 
 

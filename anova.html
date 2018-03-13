@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-10">
+<meta name="date" content="2018-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -327,12 +327,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>12</b> Regresión</a><ul>
 <li class="chapter" data-level="12.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>12.1</b> Regresión Lineal Simple</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a></li>
-<li class="chapter" data-level="14" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>14</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="14.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>14.1</b> Biplots</a></li>
-<li class="chapter" data-level="14.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>14.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="14.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>14.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="14.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>14.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="13.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>13.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>13.1.1</b> Biplots</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -548,11 +549,11 @@ desviaciones absolutas son iguales. Si las varianzas son iguales entonces los
 valores esperados de las desviaciones absolutas también serán iguales. La prueba
 de Levene usa el estadístico <span class="math inline">\(F^{*}\)</span></p>
 <p><span class="math display">\[
-F_{L}^{*} = \frac{\text{CM_ET}}{CM_D}
+F_{L}^{*} = \frac{CM_{ET}}{CM_D}
 \]</span></p>
 <p>donde</p>
 <p><span class="math display">\[
-\text{CM_ET} = \frac{\sum n_{i}\left( \overline{d}_{i\bullet}\  - \overline{d}_{\bullet\bullet} \right)^{2}}{I - 1}
+CM_{ET} = \frac{\sum n_{i}\left( \overline{d}_{i\bullet}\  - \overline{d}_{\bullet\bullet} \right)^{2}}{I - 1}
 \]</span></p>
 <p><span class="math display">\[
 CM_D = \frac{\sum\sum\left( \overline{d}_{ij}\  - \overline{d}_{i\bullet}\right)^{2}}{N - 1}
@@ -588,26 +589,26 @@ ajustado:</p>
 respectiva media estimada del nivel del factor. A veces es útil trabajar con los
 residuos estandarizados, que se expresan como:</p>
 <p><span class="math display">\[
-\varepsilon_{\ _{\text{ij}}}^{\otimes} = \frac{\varepsilon_{\text{ij}} - \overline{\varepsilon}}{\sqrt{CM_D}}
+\varepsilon_{\ _{ij}}^{\otimes} = \frac{\varepsilon_{ij} - \overline{\varepsilon}}{\sqrt{CM_D}}
 \]</span></p>
 <p>Los residuos “<em>semistudentizados</em>”, los residuos “<em>studentizados</em>”, y los
 residuos “<em>studentizados borrados</em>” son a menudo útiles para diagnosticar los
 alejamientos del modelo de ANOVA.</p>
 <p>Los residuos “<em>semistudentizados</em>” se calculan como:</p>
 <p><span class="math display">\[
-\varepsilon_{\ _{\text{ij}}}^{*} = \frac{\varepsilon_{\text{ij}}}{\sqrt{CM_D}}
+\varepsilon_{\ _{ij}}^{*} = \frac{\varepsilon_{ij}}{\sqrt{CM_D}}
 \]</span></p>
 <p>Los residuos “<em>studentizados</em>” se calculan como:</p>
 <p><span class="math display">\[
-r_{\text{ij}} = \frac{\varepsilon_{\text{ij}}}{S\left( \varepsilon_{\text{ij}} \right)}
+r_{ij} = \frac{\varepsilon_{ij}}{S\left( \varepsilon_{ij} \right)}
 \]</span></p>
 <p>donde</p>
 <p><span class="math display">\[
-S\left( \varepsilon_{\text{ij}} \right) = \sqrt{\frac{CM_D\left( n_{i} - 1 \right)}{n_{i}}}
+S\left( \varepsilon_{ij} \right) = \sqrt{\frac{CM_D\left( n_{i} - 1 \right)}{n_{i}}}
 \]</span></p>
 <p>Finalmente, los residuos “<em>studentizados borrados</em>” se calculan</p>
 <p><span class="math display">\[
-t_{\text{ij}} = \varepsilon_{\text{ij}}\left\lbrack \frac{N - I - 1}{SC_D\left( 1 - \frac{1}{n_{i}} \right)\varepsilon_{\text{ij}}^{2}} \right\rbrack^{\frac{1}{2}}
+t_{ij} = \varepsilon_{ij}\left\lbrack \frac{N - I - 1}{SC_D\left( 1 - \frac{1}{n_{i}} \right)\varepsilon_{ij}^{2}} \right\rbrack^{\frac{1}{2}}
 \]</span></p>
 </div>
 <div id="graficos-de-residuos" class="section level3">
@@ -964,12 +965,10 @@ E\left( Y_{ij} \right) = \mu_{i}
 \sum_{j}^{}\left( y_{1j} - \mu_{1} \right)^{2} + \sum_{j}^{}\left( y_{2j} - \mu_{2} \right)^{2} + \ldots + \sum_{j}^{}\left( y_{Ij} - \mu_{I} \right)^{2}
 \]</span></p>
 <p>La media muestral minimiza una suma de desviaciones al cuadrado</p>
-<p><span class="math display" id="eq:minimoscuadrados">\[
-\begin{equation}
+<span class="math display" id="eq:minimoscuadrados">\[\begin{equation}
   \hat{\mu_{i}} = \overline{y}_{i\bullet}
   \tag{5.1}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span>
 <div id="comentarios" class="section level4">
 <h4><span class="header-section-number">5.8.4.1</span> Comentarios</h4>
 <ol style="list-style-type: decimal">
@@ -1003,39 +1002,39 @@ estimador:</p>
 </div>
 <div id="particion-de-la-suma-de-cuadrados-total" class="section level2">
 <h2><span class="header-section-number">5.9</span> Partición De La Suma De Cuadrados Total</h2>
-<p>La variabilidad total de las observaciones <span class="math inline">\(y_{\text{ij}}\)</span>, sin usar la
+<p>La variabilidad total de las observaciones <span class="math inline">\(y_{ij}\)</span>, sin usar la
 información sobre los niveles del factor, es medida en términos de la desviación
-de cada observación <span class="math inline">\(y_{\text{ij}}\)</span> alrededor de la media total
+de cada observación <span class="math inline">\(y_{ij}\)</span> alrededor de la media total
 <span class="math inline">\({\overline{y}}_{\bullet\bullet}\)</span>:</p>
 <p><span class="math display">\[
-y_{\text{ij}} - {\overline{y}}_{\bullet\bullet}
+y_{ij} - {\overline{y}}_{\bullet\bullet}
 \]</span></p>
 <p>Cuando se utiliza la información sobre los niveles del factor, las desviaciones
-son aquellas de cada observación <span class="math inline">\(y_{\text{ij}}\)</span> alrededor de su respectiva
+son aquellas de cada observación <span class="math inline">\(y_{ij}\)</span> alrededor de su respectiva
 media estimada <span class="math inline">\({\overline{y}}_{\text{i}\bullet}\)</span>:</p>
 <p><span class="math display">\[
-y_{\text{ij}} - {\overline{y}}_{\text{i}\bullet}
+y_{ij} - {\overline{y}}_{\text{i}\bullet}
 \]</span></p>
 <p>La diferencia entre la desviación total y la desviación anterior refleja la
 diferencia entre la media estimada del nivel del factor y la media total:</p>
 <p><span class="math display">\[
-{(y}_{\text{ij}} - {\overline{y}}_{\bullet\bullet}) - (y_{\text{ij}} - {\overline{y}}_{i}) = {\overline{y}}_{\text{i}\bullet} - {\overline{y}}_{\bullet\bullet}
+{(y}_{ij} - {\overline{y}}_{\bullet\bullet}) - (y_{ij} - {\overline{y}}_{i}) = {\overline{y}}_{\text{i}\bullet} - {\overline{y}}_{\bullet\bullet}
 \]</span></p>
-<p>Así, la desviación total <span class="math inline">\(y_{\text{ij}} - {\overline{y}}_{\bullet\bullet}\)</span> puede
+<p>Así, la desviación total <span class="math inline">\(y_{ij} - {\overline{y}}_{\bullet\bullet}\)</span> puede
 ser vista como la suma de dos componentes:</p>
 <p>La desviación de la media estimada del nivel del factor alrededor de la media
 total.</p>
-<p>La desviación de <span class="math inline">\(y_{\text{ij}}\)</span> alrededor de la media de su nivel del factor.
-Esta desviación es simplemente el residuo <span class="math inline">\(\varepsilon_{\text{ij}}\)</span> .</p>
+<p>La desviación de <span class="math inline">\(y_{ij}\)</span> alrededor de la media de su nivel del factor.
+Esta desviación es simplemente el residuo <span class="math inline">\(\varepsilon_{ij}\)</span> .</p>
 <p>Elevando al cuadrado se obtiene:</p>
 <p><span class="math display">\[
-\sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\bullet\bullet} \right)^{2}} = \sum_{i}^{}{n_{i}\left( {\overline{y}}_{\text{i}\bullet} - {\overline{y}}_{\bullet\bullet} \right)^{2}} + \sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\text{i}\bullet} \right)^{2}}
+\sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\bullet\bullet} \right)^{2}} = \sum_{i}^{}{n_{i}\left( {\overline{y}}_{\text{i}\bullet} - {\overline{y}}_{\bullet\bullet} \right)^{2}} + \sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\text{i}\bullet} \right)^{2}}
 \]</span></p>
 <p>El primer miembro de igualdad representa la variabilidad total de las
-<span class="math inline">\(y_{\text{ij}}\)</span> observaciones y es denotado como la <em>suma de cuadrados total
+<span class="math inline">\(y_{ij}\)</span> observaciones y es denotado como la <em>suma de cuadrados total
 (</em><span class="math inline">\(SCT\)</span><em>)</em>:</p>
 <p><span class="math display">\[
-SC_T = \sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\bullet\bullet} \right)^{2}}
+SC_T = \sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\bullet\bullet} \right)^{2}}
 \]</span></p>
 <p>El primer término del segundo miembro de la igualdad será indicado como
 <span class="math inline">\(SCE\)</span>, la <em>suma de cuadrados entre</em> tratamientos:</p>
@@ -1045,7 +1044,7 @@ SC_E = \sum_{i}^{}{n_{i}\left( y_{\text{i}\bullet} - {\overline{y}}_{\bullet\bul
 <p>El segundo término se indica como <span class="math inline">\(SCD\)</span>, la <em>suma de cuadrados dentro</em> de
 tratamientos o la <em>suma de cuadrados del error</em>.</p>
 <p><span class="math display">\[
-SC_D = \sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\text{i}\bullet} \right)^{2}} = \sum_{i}^{}{\sum_{j}^{}\varepsilon_{\text{ij}}^{2}}
+SC_D = \sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\text{i}\bullet} \right)^{2}} = \sum_{i}^{}{\sum_{j}^{}\varepsilon_{ij}^{2}}
 \]</span></p>
 <p>Así, podemos escribir:</p>
 <p><span class="math display">\[
@@ -1057,9 +1056,9 @@ compone en consecuencia de dos partes.</p>
 <h3><span class="header-section-number">5.9.1</span> Fórmulas computatorias</h3>
 <p><span class="math display">\[
 \begin{matrix}
-SC_T = \sum_{i}^{}{\sum_{j}^{}{y_{\text{ij}}^{2} - N{\overline{y}}_{\bullet\bullet}^{2}}} \\
+SC_T = \sum_{i}^{}{\sum_{j}^{}{y_{ij}^{2} - N{\overline{y}}_{\bullet\bullet}^{2}}} \\
 SC_E = \sum_{i}^{}{n_{i}y_{\text{i}\bullet}^{2} - N{\overline{y}}_{\bullet\bullet}^{2}} \\
-SC_D = \sum_{i}^{}{\sum_{j}^{}{y_{\text{ij}}^{2} - n_{i}{\overline{y}}_{\text{i}\bullet}^{2}}} = SC_T - SC_D \\
+SC_D = \sum_{i}^{}{\sum_{j}^{}{y_{ij}^{2} - n_{i}{\overline{y}}_{\text{i}\bullet}^{2}}} = SC_T - SC_E \\
 \end{matrix}
 \]</span></p>
 </div>
@@ -1069,10 +1068,10 @@ SC_D = \sum_{i}^{}{\sum_{j}^{}{y_{\text{ij}}^{2} - n_{i}{\overline{y}}_{\text{i}
 <p>Correspondiendo a la descomposición de la suma de cuadrados total, se puede
 obtener los grados de libertad asociados.</p>
 <p>La <span class="math inline">\(SCT\)</span> tiene <span class="math inline">\((N -\ 1)\)</span> grados de libertad asociados. Hay en conjunto N
-desviaciones <span class="math inline">\(Y_{\text{ij}} - {\overline{Y}}_{\bullet\bullet}\)</span> , pero un grado de
+desviaciones <span class="math inline">\(Y_{ij} - {\overline{Y}}_{\bullet\bullet}\)</span> , pero un grado de
 libertad se pierde debido a que las desviaciones no son independientes a causa
 de que la suma de ellas debe ser cero.</p>
-<p><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left(y_{\text{ij}} - {\overline{y}}_{\bullet\bullet} \right)} = 0\)</span></p>
+<p><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left(y_{ij} - {\overline{y}}_{\bullet\bullet} \right)} = 0\)</span></p>
 <p>La <span class="math inline">\(SCE\)</span> (entre tratamientos) tiene <span class="math inline">\((I -\ 1)\)</span> grados de libertad
 asociados. Hay I desviaciones de las medias de los niveles de los factores
 <span class="math inline">\({\overline{Y}}_{\text{i}\bullet} - {\overline{Y}}_{\bullet\bullet}\)</span>, pero un grado de
@@ -1081,7 +1080,7 @@ la suma pesada debe ser cero. <span class="math inline">\(\sum_{i}^{}{n_{i}\left
 <p>La <span class="math inline">\(SCD\)</span> tiene <span class="math inline">\((N -\ I)\)</span> grados de libertad asociados. Esto puede verse
 considerando el componente de la <span class="math inline">\(SCD\)</span> para el i-ésimo nivel del factor:</p>
 <p><span class="math display">\[
-\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\text{i}\bullet} \right)^{2}
+\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\text{i}\bullet} \right)^{2}
 \]</span></p>
 <p>La expresión es equivalente a la suma de cuadrados total considerando sólo el
 i-ésimo nivel del factor. Así, hay <span class="math inline">\(n_{i}\  - \ 1\)</span> grados de libertad
@@ -1112,19 +1111,17 @@ CM_D = \frac{SC_D}{N - I} \\
 <p><span class="math display">\[
 E\left( CM_D \right) = \sigma^{2}
 \]</span></p>
-<p><span class="math display">\[
-\begin{equation}
+<span class="math display">\[\begin{equation}
 E\left( CM_E \right) = \sigma^{2} + \frac{\sum_{}^{}{n_{i}\left( \mu_{i} - \mu_{\bullet} \right)^{2}}}{I - 1}
   (\#eq:eCM_E)
-\end{equation}
-\]</span></p>
+\end{equation}\]</span>
 <p>donde</p>
 <p><span class="math display">\[
 \mu_{\bullet} = \frac{\sum_{}^{}{n_{i}\mu_{i}}}{N}
 \]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>El <span class="math inline">\(CM_D\)</span> es un estimador insesgado de la varianza del error llamado
-<span class="math inline">\(\varepsilon_{\text{ij}}\)</span>, tanto si las medias <span class="math inline">\(u_{i}\)</span> son iguales como
+<span class="math inline">\(\varepsilon_{ij}\)</span>, tanto si las medias <span class="math inline">\(u_{i}\)</span> son iguales como
 si no.</p></li>
 <li><p>Cuando todas las medias <span class="math inline">\(\mu_i\)</span> de los niveles del factor son iguales y por lo
 tanto iguales a la media pesada <span class="math inline">\(\mu_{\bullet}\)</span>, entonces<span class="math inline">\(\ E(CM_E) = \sigma^{2}\)</span> dado
@@ -1159,14 +1156,14 @@ expresado como sigue:</li>
 </ol>
 <p><span class="math display">\[
 \begin{matrix}
-CM_D\  = \frac{1}{N - I}\sum_{i}^{}{\sum_{j}^{}\left( Y_{\text{ij}} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}} \\
- = \frac{1}{N - I}\sum_{i}^{}\left\lbrack \left( n_{i} - 1 \right)\frac{\sum_{j}^{}\left( Y_{\text{ij}} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}}{\left( n_{i} - 1 \right)} \right\rbrack \\
+CM_D\  = \frac{1}{N - I}\sum_{i}^{}{\sum_{j}^{}\left( Y_{ij} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}} \\
+ = \frac{1}{N - I}\sum_{i}^{}\left\lbrack \left( n_{i} - 1 \right)\frac{\sum_{j}^{}\left( Y_{ij} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}}{\left( n_{i} - 1 \right)} \right\rbrack \\
 \end{matrix}
 \]</span></p>
 <p>Indicamos la varianza muestral de las observaciones para el i-ésimo nivel del
 factor como <span class="math inline">\(s_{i}^{2}\)</span>:</p>
 <p><span class="math display">\[
-s_{i}^{2} = \frac{\sum_{j}^{}\left( Y_{\text{ij}} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}}{n_{i} - 1}
+s_{i}^{2} = \frac{\sum_{j}^{}\left( Y_{ij} - {\overline{Y}}_{\text{i}\bullet} \right)^{2}}{n_{i} - 1}
 \]</span></p>
 <p>Por lo tanto, el <span class="math inline">\(CM_D\)</span> puede ser expresado de la siguiente forma:</p>
 <p><span class="math display">\[
@@ -1198,19 +1195,19 @@ CM_E = \frac{n\sum_{}^{}\left( {\overline{Y}}_{\text{i}\bullet} -
 \]</span></p>
 <p>Para derivar el <span class="math inline">\(E(CM_D)\)</span>, se considera el modelo:</p>
 <p><span class="math display">\[
-Y_{\text{ij}}\  = \ u_{i}\  + \ \varepsilon_{\text{ij}}
+Y_{ij}\  = \ u_{i}\  + \ \varepsilon_{ij}
 \]</span></p>
-<p>Promediando el <span class="math inline">\(Y_{\text{ij}}\)</span> para el i-ésimo nivel del factor, se
+<p>Promediando el <span class="math inline">\(Y_{ij}\)</span> para el i-ésimo nivel del factor, se
 obtiene:</p>
 <p><span class="math display">\[
 {\overline{Y}}_{i \bullet} = \mu_{i} + {\overline{\varepsilon}}_{i \bullet}
 \]</span></p>
 <p>donde <span class="math inline">\({\overline{\varepsilon}}_{i \bullet}\)</span> es el promedio de los
-<span class="math inline">\(\varepsilon_{\text{ij}}\)</span> para el i-ésimo nivel del factor:</p>
+<span class="math inline">\(\varepsilon_{ij}\)</span> para el i-ésimo nivel del factor:</p>
 <p><span class="math display">\[
-{\overline{\varepsilon}}_{\text{i}\bullet} = \frac{\sum_{j}^{}\varepsilon_{\text{ij}}}{n}
+{\overline{\varepsilon}}_{\text{i}\bullet} = \frac{\sum_{j}^{}\varepsilon_{ij}}{n}
 \]</span></p>
-<p>Promediando los <span class="math inline">\(Y_{\text{ij}}\)</span> sobre todos los niveles del factor, se
+<p>Promediando los <span class="math inline">\(Y_{ij}\)</span> sobre todos los niveles del factor, se
 obtiene:</p>
 <p><span class="math display">\[
 {\overline{Y}}_{\bullet\bullet} = \mu_\bullet + {\overline{\varepsilon}}_{\bullet \bullet}
@@ -1220,9 +1217,9 @@ obtiene:</p>
 \mu_{\bullet} = \frac{n\sum_{}^{}\mu_{i}}{\text{nI}} = \frac{\sum_{}^{}\mu_{i}}{I}\text{ donde}\ n_{i} = n
 \]</span></p>
 <p>y <span class="math inline">\({\overline{\varepsilon}}_{\bullet\bullet}\)</span> es el promedio de todos los
-<span class="math inline">\(\varepsilon_{\text{ij}}\)</span> :</p>
+<span class="math inline">\(\varepsilon_{ij}\)</span> :</p>
 <p><span class="math display">\[
-{\overline{\varepsilon}}_{\bullet\bullet} = \frac{\sum_{}^{}{\sum_{}^{}\varepsilon_{\text{ij}}}}{\text{nI}}
+{\overline{\varepsilon}}_{\bullet\bullet} = \frac{\sum_{}^{}{\sum_{}^{}\varepsilon_{ij}}}{\text{nI}}
 \]</span></p>
 <p>Cuando los tamaños muestrales son iguales, se tiene:</p>
 <p><span class="math display">\[
@@ -1263,9 +1260,9 @@ términos <span class="math inline">\({\overline{\varepsilon}}_{\text{i}\bullet}
 muestral es un estimador insesgado de la varianza de la variable, en este
 caso de <span class="math inline">\({\overline{\varepsilon}}_{\text{i}\bullet}\)</span>. Pero
 <span class="math inline">\({\overline{\varepsilon}}_{\text{i}\bullet}\)</span> es la media de n términos
-independientes del error <span class="math inline">\(\varepsilon_{\text{ij}}\)</span>. Así:</p>
+independientes del error <span class="math inline">\(\varepsilon_{ij}\)</span>. Así:</p>
 <p><span class="math display">\[
-\text{Var}\left( {\overline{\varepsilon}}_{\text{i}\bullet} \right) = \frac{\text{Var}\left( \varepsilon_{\text{ij}} \right)}{n} = \frac{\sigma^{2}}{n}
+\text{Var}\left( {\overline{\varepsilon}}_{\text{i}\bullet} \right) = \frac{\text{Var}\left( \varepsilon_{ij} \right)}{n} = \frac{\sigma^{2}}{n}
 \]</span></p>
 <p>Por lo tanto:</p>
 <p><span class="math display">\[
@@ -1278,7 +1275,7 @@ E\left\{ \sum_{}^{}\left( {\overline{\varepsilon}}_{\text{i}\bullet} - {\overlin
 <ol start="5" style="list-style-type: decimal">
 <li>Dado que tanto <span class="math inline">\({\overline{\varepsilon}}_{\text{i}\bullet}\)</span> como
 <span class="math inline">\({\overline{\varepsilon}}_{\bullet\bullet}\)</span> son medias de los
-<span class="math inline">\(\varepsilon_{\text{ij}}\)</span> , los cuales tiene un valor esperado, se sigue
+<span class="math inline">\(\varepsilon_{ij}\)</span> , los cuales tiene un valor esperado, se sigue
 que:</li>
 </ol>
 <p><span class="math display">\[
@@ -1331,14 +1328,14 @@ E\left( CM_E \right)&amp; = E\left\{ \frac{n\sum_{}^{}\left( {\overline{Y}}_{\te
 </tr>
 <tr class="even">
 <td>Error (dentro de tratamientos)</td>
-<td><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\text{i}\bullet} \right)^{2}}\)</span></td>
+<td><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\text{i}\bullet} \right)^{2}}\)</span></td>
 <td><span class="math inline">\(N- I\)</span></td>
 <td><span class="math inline">\(CM_D = \frac{SC_D}{N - I}\)</span></td>
 <td><span class="math inline">\(\sigma^{2}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Total</td>
-<td><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left( y_{\text{ij}} - {\overline{y}}_{\bullet\bullet} \right)^{2}}\)</span></td>
+<td><span class="math inline">\(\sum_{i}^{}{\sum_{j}^{}\left( y_{ij} - {\overline{y}}_{\bullet\bullet} \right)^{2}}\)</span></td>
 <td><span class="math inline">\(N - 1\)</span></td>
 <td></td>
 <td></td>
@@ -1368,7 +1365,7 @@ F^{*} = \frac{CM_E}{CM_D}
 <div id="distribucion-de-mathbffmathbf" class="section level3">
 <h3><span class="header-section-number">5.12.2</span> Distribución de <span class="math inline">\(\mathbf{F}^{\mathbf{*}}\)</span></h3>
 <p>Cuando todas las medias de los tratamientos son iguales, cada observación
-<span class="math inline">\(Y_{\text{ij}}\)</span> tiene el mismo valor esperado. En vista de la aditividad de la
+<span class="math inline">\(Y_{ij}\)</span> tiene el mismo valor esperado. En vista de la aditividad de la
 suma de cuadrados y de los grados de libertad, del teorema de Cochran se sigue
 que:</p>
 <p>Cuando <span class="math inline">\(H_{0}\)</span> se verifica, <span class="math inline">\(SCE/\sigma^{2}\)</span> y <span class="math inline">\(SCD/\sigma^{2}\)</span> son
@@ -1415,13 +1412,13 @@ equivalente por medio de la identidad:</p>
 nivel del factor.</p>
 <p>El modelo I de ANOVA puede ser expresado como sigue:</p>
 <p><span class="math display">\[
-Y_{\text{ij}} = u_{\bullet} + \alpha_{i} + \varepsilon_{\text{ij}}
+Y_{ij} = u_{\bullet} + \alpha_{i} + \varepsilon_{ij}
 \]</span></p>
 <p>donde:</p>
 <p><span class="math inline">\(u_{\bullet}\)</span> es una componente constante común a todas las observaciones.</p>
 <p><span class="math inline">\(\alpha_{i}\)</span> es el efecto del i-ésimo nivel del factor (constante para cada
 nivel del factor)</p>
-<p><span class="math inline">\(\varepsilon_{\text{ij}}\)</span> son variables independientes que se distribuyen
+<p><span class="math inline">\(\varepsilon_{ij}\)</span> son variables independientes que se distribuyen
 <span class="math inline">\(N(0,\ \sigma^{2})\)</span></p>
 <p><span class="math display">\[
 i = 1,\ 2,\ldots,\ I;\ j = 1,\ 2,\ldots,\ n_{i}\ 
@@ -1537,9 +1534,11 @@ E\left( {\overline{Y}}_{i\bullet} \right) &amp;= \mu_{i} \\
 \end{aligned}
 \]</span></p>
 <p>El último resultado se sigue pues <span class="math inline">\({\overline{Y}}_{i}. = \mu_{i} + {\overline{\varepsilon}}_{\text{i}\bullet}\)</span>, la suma de una constante a una
-media de <span class="math inline">\(n_{i}\)</span> términos independientes <span class="math inline">\(\varepsilon_{\text{ij}}\)</span>, cada uno
-de los cuales tiene una varianza <span class="math inline">\(\sigma^{2}\)</span>. En consecuencia <span class="math inline">\({\overline{Y}} _{\text{i}\bullet}\)</span> está normalmente distribuido pues los términos del error $
-_{}$ son variables aleatorias normales e independientes.</p>
+media de <span class="math inline">\(n_{i}\)</span> términos independientes <span class="math inline">\(\varepsilon_{ij}\)</span>, cada uno
+de los cuales tiene una varianza <span class="math inline">\(\sigma^{2}\)</span>. En consecuencia
+<span class="math inline">\({\overline{Y}} _{\text{i}\bullet}\)</span> está normalmente distribuido pues los
+términos del error <span class="math inline">\(\varepsilon_{ij}\)</span> son variables aleatorias normales e
+independientes.</p>
 <p>La varianza estimada de <span class="math inline">\({\overline{Y}}_{\text{i}\bullet}\)</span> se simboliza
 <span class="math inline">\(S^{2}({\overline{Y}}_{\text{i}\bullet})\)</span></p>
 <p><span class="math display">\[
@@ -1747,15 +1746,13 @@ S_{{\overline{y}}_{\bullet\bullet}} = \sqrt{\frac{CM_D}{n}} \\
 <div id="ni-planeados-ni-no-planeados" class="section level4">
 <h4><span class="header-section-number">5.15.3.3</span> Ni planeados ni no planeados</h4>
 <p>Contrastes Ortogonales: son contrastes tales que:</p>
-$$
-f = \
-<span class="math display">\[\begin{aligned} 
- 
+<span class="math display">\[\begin{equation}
+\begin{aligned} 
+f = \sum{c_{i}\mu_{i}}\\ 
  \sum {c_{i}} &amp;= 0 \\
  \sum{c_{i}^{j}c_{i}^{j&#39;}} &amp;= 0\ \forall j \neq j&#39;
- 
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\end{equation}\]</span>
 <p>donde <span class="math inline">\(j\)</span> y <span class="math inline">\(j&#39;\)</span> son contrastes diferentes.</p>
 <p>Para aplicar estos contrastes se supone que los <span class="math inline">\(n_{i} = n\ \forall i\)</span>
 ; y que el número de contrastes ortogonales es el mismo que los grados de
@@ -1794,12 +1791,11 @@ c_{3} &amp;= \begin{pmatrix}
 <p>Se puede comprobar que cada uno es un contraste porque <span class="math inline">\(\sum{c_i}=0\)</span> y
 si hacemos la multiplicación de a pares se comprueba su ortogonalidad:</p>
 <p><span class="math display">\[
-\begin{matrix}
-\sum{c_i^1c_i^2} &amp;= 1&amp;\times &amp; 0 &amp;+&amp; -\frac{1}{3} &amp;\times&amp; 0 &amp;+&amp; -\frac{1}{3} &amp;\times&amp; 1 &amp;+&amp; -\frac{1}{3} &amp;\times&amp; -1 &amp;= 0 \\
-\sum{c_i^1c_i^3} &amp;= 1&amp;\times &amp;0 &amp;+&amp; -\frac{1}{3} &amp;\times&amp; 1 &amp;+&amp; -\frac{1}{3} &amp;\times&amp; -\frac{1}{2} &amp;+&amp; -\frac{1}{3} &amp;\times&amp; -\frac{1}{2} &amp;= 0\\
-\sum{c_i^2c_i^3} &amp;= 0 &amp;\times &amp;0 &amp;+&amp; 0 &amp;\times&amp; 1 &amp;+&amp; 1 &amp;\times&amp; -\frac{1}{2} 
-&amp;+&amp; -1 &amp;\times&amp; -\frac{1}{2} &amp;= 0
-\end{matrix}
+\begin{aligned}
+\sum{c_i^1c_i^2} &amp;= 1 &amp;\times &amp; 0 &amp; + &amp; -\frac{1}{3} &amp; \times &amp; 0 &amp; + &amp; -\frac{1}{3} &amp;\times &amp; 1            &amp; + &amp; -\frac{1}{3} &amp; \times &amp; -1           &amp;= 0 \\
+\sum{c_i^1c_i^3} &amp;= 1 &amp;\times &amp; 0 &amp; + &amp; -\frac{1}{3} &amp; \times &amp; 1 &amp; + &amp; -\frac{1}{3} &amp;\times &amp; -\frac{1}{2} &amp; + &amp; -\frac{1}{3} &amp; \times &amp; -\frac{1}{2} &amp;= 0\\
+\sum{c_i^2c_i^3} &amp;= 0 &amp;\times &amp; 0 &amp; + &amp; 0            &amp; \times &amp; 1 &amp; + &amp; 1            &amp;\times &amp; -\frac{1}{2} &amp; + &amp; -1           &amp; \times &amp; -\frac{1}{2} &amp;= 0
+\end{aligned}
 \]</span></p>
 <p>Esto es equivalente a tener una matriz ortogonal de coeficientes. Para estudiar
 la significación de los contrastes se debe encontrar un estadístico y compararlo
@@ -2789,52 +2785,52 @@ población. El Modelo II de ANOVA está diseñado para este tipo de situaciones.
 <h3><span class="header-section-number">5.17.1</span> Modelo Aleatorio de Medias de Celdas.</h3>
 <p>El modelo II de ANOVA para un factor es:</p>
 <p><span class="math display">\[
-Y_{\text{ij}}\  = \ u_{i}\  + \ \varepsilon_{\text{ij}}
+Y_{ij}\  = \ u_{i}\  + \ \varepsilon_{ij}
 \]</span></p>
 <p>donde</p>
 <p><span class="math inline">\(u_{i}\)</span> son variables independientes <span class="math inline">\(\sim N\left( \mu_{\bullet},\sigma_{\mu}^{2} \right)\)</span></p>
-<p><span class="math inline">\(\varepsilon\text{ij}\)</span> son variables independientes <span class="math inline">\(\sim N\left( 0,\sigma^{2} \right)\)</span></p>
-<p><span class="math inline">\(u_{i}\)</span> y <span class="math inline">\(\varepsilon_{\text{ij}}\)</span> son variables aleatorias independientes</p>
+<p><span class="math inline">\(\varepsilon{ij}\)</span> son variables independientes <span class="math inline">\(\sim N\left( 0,\sigma^{2} \right)\)</span></p>
+<p><span class="math inline">\(u_{i}\)</span> y <span class="math inline">\(\varepsilon_{ij}\)</span> son variables aleatorias independientes</p>
 <p><span class="math display">\[
 i = 1,\ 2,\ldots,\ I;\ j = 1,\ 2,\ \ldots,\ n_{i}
 \]</span></p>
 </div>
 <div id="caracteristicas-importantes-del-modelo-1" class="section level3">
 <h3><span class="header-section-number">5.17.2</span> Características importantes del Modelo</h3>
-<p>El valor esperado de una observación <span class="math inline">\(Y_{\text{ij}}\)</span> es:</p>
+<p>El valor esperado de una observación <span class="math inline">\(Y_{ij}\)</span> es:</p>
 <p><span class="math display">\[
-E(Y_{\text{ij}}) = u_{\bullet}
+E(Y_{ij}) = u_{\bullet}
 \]</span></p>
 <p>esto se debe a que:</p>
 <p><span class="math display">\[
 \begin{aligned}
-E\left( Y_{\text{ij}} \right)&amp; = E\left( u_{\bullet}\  \right) + \ E\left( \varepsilon_{\text{ij}} \right) \\
+E\left( Y_{ij} \right)&amp; = E\left( u_{\bullet}\  \right) + \ E\left( \varepsilon_{ij} \right) \\
 &amp; = \ u_{\bullet}\ \  + \ 0 \\
 &amp; = \ u_{\bullet} \\
 \end{aligned}
 \]</span></p>
-<p>La varianza de <span class="math inline">\(Y_{\text{ij}}\)</span>, que se indica <span class="math inline">\(\sigma_{Y}^{2}\)</span>, es:</p>
+<p>La varianza de <span class="math inline">\(Y_{ij}\)</span>, que se indica <span class="math inline">\(\sigma_{Y}^{2}\)</span>, es:</p>
 <p><span class="math display">\[
-\text{Var}\left( Y_{\text{ij}} \right) = \sigma_{Y}^{2} = \sigma_{\mu}^{2} + \sigma^{2}
+\text{Var}\left( Y_{ij} \right) = \sigma_{Y}^{2} = \sigma_{\mu}^{2} + \sigma^{2}
 \]</span></p>
 <p>A causa de que la varianza de Y en este modelo es la suma de dos componentes,
 este modelo se llama, algunas veces, un modelo de componentes de la varianza.</p>
-<p>Los <span class="math inline">\(Y_{\text{ij}}\)</span> están normalmente distribuidos pues son una combinación
-lineal de variables independientes, <span class="math inline">\(u_{i}\)</span> y <span class="math inline">\(\varepsilon_{\text{ij}}\)</span>,
+<p>Los <span class="math inline">\(Y_{ij}\)</span> están normalmente distribuidos pues son una combinación
+lineal de variables independientes, <span class="math inline">\(u_{i}\)</span> y <span class="math inline">\(\varepsilon_{ij}\)</span>,
 distribuidas normalmente</p>
-<p>Las <span class="math inline">\(Y_{\text{ij}}\)</span> para el modelo aleatorio son sólo independientes si
+<p>Las <span class="math inline">\(Y_{ij}\)</span> para el modelo aleatorio son sólo independientes si
 pertenecen a diferentes tratamientos o niveles del factor. Se puede demostrar
-que la covarianza para cualesquiera dos observaciones <span class="math inline">\(Y_{\text{ij}}\)</span> e
-<span class="math inline">\(Y_{\text{ij}&#39;}\)</span>, para el mismo nivel i con un modelo II es:</p>
+que la covarianza para cualesquiera dos observaciones <span class="math inline">\(Y_{ij}\)</span> e
+<span class="math inline">\(Y_{{ij}&#39;}\)</span>, para el mismo nivel i con un modelo II es:</p>
 <p><span class="math display">\[
-Cov(Y_{\text{ij}},\ Y_{ij&#39;}) = \sigma_{Y}^{2}\; \forall\ j \neq  j
+Cov(Y_{ij},\ Y_{ij&#39;}) = \sigma_{Y}^{2}\; \forall\ j \neq  j
 \]</span></p>
 <p>El modelo II supone que la covarianza entre cualesquiera dos observaciones para
 el mismo nivel del factor es constante para todos los niveles del factor.</p>
 <p>Una vez que los niveles del factor han sido seleccionados, el modelo II asume
 que dos observaciones cualesquiera para el mismo nivel del factor son
 independientes pues la media del nivel del factor µi es entonces fijada y las
-dos observaciones difieren sólo por los términos del error <span class="math inline">\(\varepsilon_{\text{ij}}\)</span>.</p>
+dos observaciones difieren sólo por los términos del error <span class="math inline">\(\varepsilon_{ij}\)</span>.</p>
 </div>
 <div id="cuestiones-de-interes" class="section level3">
 <h3><span class="header-section-number">5.17.3</span> Cuestiones de Interés</h3>
@@ -2855,8 +2851,8 @@ es grande o pequeño, pero sí en inferencias acerca de la población completa d
 <li><p>El denominador es <span class="math inline">\(\sigma_{Y}^{2}\)</span>.</p></li>
 </ol>
 <p>En vista de las propiedades 1 y 2, el cociente mide la proporción de la
-variabilidad total de los <span class="math inline">\(Y_{\text{ij}}\)</span> que se debe a la variabilidad en los
-µi</p>
+variabilidad total de los <span class="math inline">\(Y_{ij}\)</span> que se debe a la variabilidad en los
+<span class="math inline">\(\mu_{i\bullet}\)</span>.</p>
 </div>
 <div id="prueba-para-mathbfsigma_mathbfmumathbf2-0" class="section level3">
 <h3><span class="header-section-number">5.17.4</span> Prueba para <span class="math inline">\(\mathbf{\sigma}_{\mathbf{\mu}}^{\mathbf{2}}\)</span> = 0</h3>
@@ -3047,7 +3043,7 @@ técnicas.</p>
 <h3><span class="header-section-number">5.17.5</span> Estimación De <span class="math inline">\(\mathbf{\mu}_{\mathbf{\bullet}}\)</span></h3>
 <p>Se sabe que:</p>
 <p><span class="math display">\[
-E(Y_{\text{ij}}) = u_{\bullet}
+E(Y_{ij}) = u_{\bullet}
 \]</span></p>
 <p>Así, un estimador insesgado de <span class="math inline">\(\mu_{\bullet}\)</span> es:</p>
 <p><span class="math display">\[
@@ -3089,7 +3085,7 @@ de confianza del 95% es:</p>
 </div>
 <div id="estimacion-de-sigma_mu2left-sigma_mu2sigma2-right" class="section level3">
 <h3><span class="header-section-number">5.17.6</span> Estimación De <span class="math inline">\(\sigma_{\mu}^2/\left ( \sigma_{\mu}^2+\sigma^2 \right )\)</span></h3>
-<p>El cociente $<em>{}^2/( </em>{}<sup>2+</sup>2 ) $
+<p>El cociente <span class="math inline">\(\sigma_{\mu}^2/\left (\sigma_{\mu}^2+\sigma^2 \right )\)</span>
 revela el alcance del efecto de la varianza entre los <span class="math inline">\(mu_{i}\)</span>. Para
 desarrollar un intervalo de confianza para este cociente, se supone que todos
 los tamaños muestrales de los niveles del factor son iguales.</p>
@@ -3183,13 +3179,13 @@ CM_D = 1.25\; \chi_{0.975,16}^{2} = 6.908\; \chi_{0.025;16}^{2} = 28.845
 <h3><span class="header-section-number">5.17.7</span> Modelo De Efectos Aleatorios</h3>
 <p>El modelo se puede expresar como:</p>
 <p><span class="math display">\[
-Y_{\text{ij}} = u_{\bullet} + \alpha_{i} + \varepsilon_{\text{ij}}
+Y_{ij} = u_{\bullet} + \alpha_{i} + \varepsilon_{ij}
 \]</span></p>
 <p>donde</p>
 <p><span class="math inline">\(\mu_{\bullet}\)</span> es una componente constante común a todas las observaciones</p>
 <p><span class="math inline">\(\alpha_{i}\)</span> son variables aleatorias independientes <span class="math inline">\(\sim N(0,\sigma_{\mu}^{2})\)</span></p>
-<p><span class="math inline">\(\varepsilon_{\text{ij}}\)</span> son variables aleatorias independientes <span class="math inline">\(\sim N(0,\sigma^{2})\)</span></p>
-<p><span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\varepsilon_{\text{ij}}\)</span> son independientes</p>
+<p><span class="math inline">\(\varepsilon_{ij}\)</span> son variables aleatorias independientes <span class="math inline">\(\sim N(0,\sigma^{2})\)</span></p>
+<p><span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\varepsilon_{ij}\)</span> son independientes</p>
 <p><span class="math display">\[
 i = 1,2,\ldots,I;j = 1,2,\ldots,n_{i}
 \]</span></p>

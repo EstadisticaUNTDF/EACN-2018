@@ -43,9 +43,9 @@ objetos cambien entre los dos espacios, entonces la proyección es inútil. Por 
 tanto, a veces es útil considera la ordenación aun cuando esta represente una
 pequeña parte de la variación total.
 
->   Distancia en espacio multidimensional (*Dhi*)
 
-# Análisis de componentes principales
+
+## Análisis de componentes principales
 
 
 Supongamos que tenemos una distribución multivariada normal, el primer eje
@@ -109,10 +109,9 @@ Un ejemplo sencillo usando solo dos variables, algo que en la práctica nunca
 sucede, pero resulta útil como ejemplo
 
 $Y = \begin{bmatrix} 2 & 1 \\ 3 & 4 \\ 5 & 0 \\ 7 & 6 \\ 9 & 2 \\
-\end{bmatrix}$ luego de centrar con las medias de las columnas $\left\lbrack y
-- \overline{y} \right\rbrack = \begin{bmatrix}  - 3.2 & - 1.6 \\  -
-2.2 & 1.4 \\  - 0.2 & - 2.6 \\ 1.8 & 3.4 \\ 3.8 & - 0.6 \\ \end{bmatrix}
-$
+\end{bmatrix}$ luego de centrar con las medias de las columnas $\lbrack y
+- \overline{y} \rbrack = \begin{bmatrix}  - 3.2 & - 1.6 \\  -
+2.2 & 1.4 \\  - 0.2 & - 2.6 \\ 1.8 & 3.4 \\ 3.8 & - 0.6 \\ \end{bmatrix}$
 
 Calculando la matriz de dispersión:
 
@@ -239,7 +238,7 @@ análisis de regresión.
 El análisis componentes principales se pueden usar para estudiar el rol de las
 variables en la conformación de los componentes principales. Esto se puede ver
 en varias maneras: matriz de autovectores, proyección en un espacio reducido
-(matriz $\mathbf{U}\mathbf{\Lambda}^{1/2}\$), y proyección en un espacio
+(matriz $\mathbf{U}\mathbf{\Lambda}^{1/2}$), y proyección en un espacio
 reducido (matriz **U**)
 
 1.  La matriz de autovectores – Como la matriz U contiene los autovectores
@@ -258,7 +257,7 @@ rotación en el espacio multidimensional. Además, al normalizar los autovectore
 normaliza los ejes de las variables:
 
 $$
-\begin{align*}
+\begin{aligned}
   \mathbf{U} = 
     &\begin{bmatrix}
       u_{11}\hphantom{0000} & \hphantom{00}\cdots & \hphantom{000000}u_{1p}\hphantom{000000} \\\\
@@ -273,7 +272,7 @@ $$
     &\begin{matrix}
       \sqrt{\sum u_{j1}^{2}} = 1 & \cdots&& \sqrt{\sum u_{jp}^{2}} = 1 & \\
     &\end{matrix} \\
-\end{align*}
+\end{aligned}
 $$
 
 Otra forma de estudiar la relación entre los predictores consiste en escalar los
@@ -303,7 +302,7 @@ En este escalamiento, la relación entre las variables es la misma que en la
 matriz de dispersión $\mathbf{S}$
 
 $$
-\begin{align*}
+\begin{aligned}
   {\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}} = 
     &\begin{bmatrix}
       \hphantom{00}u_{11}\sqrt{\lambda_{1}}\hphantom{0000000} & \hphantom{000}\cdots & \hphantom{000000}u_{1p}\sqrt{\lambda_{p}}\hphantom{000000000} \\\\
@@ -320,7 +319,7 @@ $$
     &\begin{matrix}
       \sqrt{\sum\left( u_{j1}\sqrt{\lambda_{1}} \right)^{2}} = \sqrt{\lambda_{1}} & \cdots & \sqrt{\sum\left( u_{jp}\sqrt{\lambda_{p}} \right)^{2}} = \sqrt{\lambda_{p}} \\
     &\end{matrix} \\
-\end{align*}
+\end{aligned}
 $$
 
 1.  Proyección de las variables en un espacio reducido (matriz
@@ -480,9 +479,9 @@ reducido.
 | Ángulos en el espacio reducido            | Proyección de las covarianzas (correlaciones)                           | 90°, rotaciones rígidas del sistema de ejes                |
 | Longitud de la contribución en equilibrio | $s_{j}\sqrt{d/p}$                                                      | Círculo con radio $\sqrt{\frac{d}{p}}$                   |
 | Proyección en el eje principal $k$      | $u_{jk}\sqrt{\lambda_{k}}$ (la covarianza con el componente k) | $u_{jk}$ (proporcional a la covarianza con $k$) |
-| Correlación con el eje principal $k$    | $u_{jk}\sqrt{\lambda_{k}}/s_{j$}                                | $u_{jk}\sqrt{\lambda_{k}}/s_{j}$                   |
+| Correlación con el eje principal $k$    | $u_{jk}\sqrt{\lambda_{k}}/s_{j}$                                | $u_{jk}\sqrt{\lambda_{k}}/s_{j}$                   |
 
-## Biplots
+### Biplots
 
 
 Se le llama biplot al gráfico de componentes principales en donde se grafican al

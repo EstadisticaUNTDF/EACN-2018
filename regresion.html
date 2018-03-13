@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-10">
+<meta name="date" content="2018-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -327,12 +327,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>12</b> Regresión</a><ul>
 <li class="chapter" data-level="12.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>12.1</b> Regresión Lineal Simple</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a></li>
-<li class="chapter" data-level="14" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>14</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="14.1" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#biplots"><i class="fa fa-check"></i><b>14.1</b> Biplots</a></li>
-<li class="chapter" data-level="14.2" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>14.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="14.3" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>14.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="14.4" data-path="analisis-de-componentes-principales.html"><a href="analisis-de-componentes-principales.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>14.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="13" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>13</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="13.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>13.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>13.1.1</b> Biplots</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>13.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="13.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>13.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="13.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>13.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -363,7 +364,7 @@ independientes. A estos modelos se los conoce como modelos de regresión. Aunque
 las variables estén relacionadas esto no implica que haya una relación causal
 entre ellas. Sin un modelo causal que explique la manera que las variables
 se relación se está incurriendo una falacia del tipo <em>cum hoc ergo propter
-hoc</em>. Por ejemplo, en la Figura <a href="#fig:regresion-espuria"><strong>??</strong></a> se muestra que
+hoc</em>. Por ejemplo, en la Figura <a href="regresion.html#fig:regresion-espuria">12.1</a> se muestra que
 la relación entre los limones frescos importados desde México (ton) y tasa de
 mortalidad total en autopistas de EE.UU. Según esta regresión al ¡aumentar la
 importación de disminuye la tasa de mortalidad! Este resultado carece de lógica
@@ -372,12 +373,10 @@ Por este motivo hay que ser cuidadoso en cuanto a las conclusiones que se
 realizan con los resultados.</p>
 <p>(ref:regresion-espuria) Ejemplo de regresión espuria. Limones frescos importados
 desde México (ton) y tasa de mortalidad total en autopistas de EE.UU.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img</span><span class="ch">\r</span><span class="st">egresion-espuria.jpg&quot;</span>)</a></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
-<img src="img
-egresion-espuria.jpg" alt="(ref:regresion-espuria"  />
+<div class="figure"><span id="fig:regresion-espuria"></span>
+<img src="fig/regresion-espuria.png" alt="(ref:regresion-espuria"  />
 <p class="caption">
-Figura 10.1: (ref:regresion-espuria
+Figura 12.1: (ref:regresion-espuria
 </p>
 </div>
 <div id="regresion-lineal-simple" class="section level2">
@@ -387,35 +386,36 @@ distribución normal y solo una variable predictora. La varible predictora no
 es una variable aleatoria, sino que puede ser modificada por el investigador.
 El objetivo de esta técnica es obtener una ecuación lineal que explique
 el cambio de la variable aleatoria según el cambio de la variable predictora:</p>
-<p><span class="math display" id="eq:reg1">\[
+<span class="math display" id="eq:reg1">\[\begin{equation}
 Y_i = \beta_0 + \beta_1 X_i
 \tag{12.1}
-\]</span></p>
+\end{equation}\]</span>
 <p>Por ejemplo, el se tiene la edad y la longitud de alas de gorriones de varias
 edades en la Tabla <a href="regresion.html#tab:gorriones">12.1</a>. La edad es la variable independiente y
 la longitud de ala es la variable dependiente. Se busca ajustar un modelo como
-en el da la Ecuación <a href="regresion.html#eq:reg1">(12.1)</a>. En la Figura <a href="#fig:gorriones-reg"><strong>??</strong></a> la
+en el da la Ecuación <a href="regresion.html#eq:reg1">(12.1)</a>. En la Figura <a href="regresion.html#fig:gorriones-grafico">12.2</a> la
 recta que mejor ajusta a esto datos en azul. Sin embargo, el ajuste no es
 perfecto. La diferencia entre el valor ajustado o predicho y el valor observado
 es el error que se comete. Ese error se simboliza con la letra griega epsilon y
 debe ser incluido en el modelo:</p>
-<p><span class="math display" id="eq:reg2">\[
+<span class="math display" id="eq:reg2">\[\begin{equation}
 Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
 \tag{12.2}
-\]</span></p>
+\end{equation}\]</span>
 <p>Se asume que <span class="math inline">\(\epsilon_i\sim N\left ( 0, \sigma^2 \right )\)</span> y por lo tanto
 <span class="math inline">\(\sum \epsilon_i = 0\)</span>. El método que se usa para encontrar los estimadores de
 los <span class="math inline">\(\beta_i\)</span> consiste en minimizar el cuadrado de los errores. Por eso,
 el método se lo conoce como mínimos cuadrados o mínimos cuadrados ordinarios.
 Afortunadamente se pueden resolver de manera analítica por las siguientes
 ecuaciones</p>
-<p>$$
+<span class="math display" id="eq:b1">\[\begin{equation}
 \begin{aligned}
-b_1 &amp;= =
-\</p>
-<p>b_0 &amp;= Y - b_1X
+b_1 &amp;= \frac{\sum(X_i-\bar X)(Y_i-\bar Y)}{\sum (X_i-\bar X)^{2}}=
+\frac{\sum X_iY_i-\frac{\left (\sum X_i\right)\left ( \sum Y_i\right )}{n}}{\sum X_i^2-\frac{\left (\sum X_i \right )^2}{n}}
+\tag{12.3}\\
+b_0 &amp;= \bar Y - b_1\bar X
 \end{aligned}
-$$</p>
+\end{equation}\]</span>
 <table style="width:24%;">
 <caption><span id="tab:gorriones">Tabla 12.1: </span> Edad en días y longitud
 de ala en centímetros de 13 gorriones.</caption>
@@ -492,7 +492,7 @@ y los valores observados.</p>
 <div class="figure"><span id="fig:gorriones-grafico"></span>
 <img src="regresion_files/figure-html/gorriones-grafico-1.png" alt="(ref:gorriones-grafico)" width="672" />
 <p class="caption">
-Figura 12.1: (ref:gorriones-grafico)
+Figura 12.2: (ref:gorriones-grafico)
 </p>
 </div>
 

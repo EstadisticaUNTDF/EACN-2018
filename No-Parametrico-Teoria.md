@@ -65,16 +65,16 @@ Table: (\#tab:ejemplo-ranking)Datos de dos poblaciones de ejemplo
 
  Pob1   Pob2
 -----  -----
-    3      2
-    4      7
-    1      4
-    1      3
     2      4
-    4      4
-    1      3
-    1      4
-    3      6
-    1      3
+    2      3
+    0      2
+    1      8
+    2      2
+    1      5
+    2      7
+    0      3
+    1      2
+    4      3
 
 A continuación debemos reunir esos datos en una solo conjunto, agregando una
 identificación [^1]
@@ -87,25 +87,25 @@ Table: (\#tab:ejemplo-ranking-gather)Datos de ambas poblaciones juntas
 
 Pob     Valor
 -----  ------
-Pob1        3
-Pob1        4
-Pob1        1
+Pob1        2
+Pob1        2
+Pob1        0
 Pob1        1
 Pob1        2
+Pob1        1
+Pob1        2
+Pob1        0
+Pob1        1
 Pob1        4
-Pob1        1
-Pob1        1
-Pob1        3
-Pob1        1
+Pob2        4
+Pob2        3
 Pob2        2
+Pob2        8
+Pob2        2
+Pob2        5
 Pob2        7
-Pob2        4
 Pob2        3
-Pob2        4
-Pob2        4
-Pob2        3
-Pob2        4
-Pob2        6
+Pob2        2
 Pob2        3
 
 A continuación se ordenan y se la asigna un número de 1 hasta $N_1+N_2$ según 
@@ -128,26 +128,26 @@ kable(datos_long)
 
 Pob     Valor   Rango   Rango_Empates
 -----  ------  ------  --------------
-Pob1        1       1             3.0
-Pob1        1       2             3.0
-Pob1        1       3             3.0
-Pob1        1       4             3.0
-Pob1        1       5             3.0
-Pob2        2       6             6.5
-Pob1        2       7             6.5
-Pob2        3       8            10.0
-Pob1        3       9            10.0
-Pob2        3      10            10.0
-Pob2        3      11            10.0
-Pob1        3      12            10.0
-Pob2        4      13            15.5
-Pob1        4      14            15.5
-Pob2        4      15            15.5
-Pob2        4      16            15.5
-Pob2        4      17            15.5
-Pob1        4      18            15.5
-Pob2        6      19            19.0
-Pob2        7      20            20.0
+Pob1        0       1             1.5
+Pob1        0       2             1.5
+Pob1        1       3             4.0
+Pob1        1       4             4.0
+Pob1        1       5             4.0
+Pob1        2       6             9.0
+Pob2        2       7             9.0
+Pob1        2       8             9.0
+Pob2        2       9             9.0
+Pob1        2      10             9.0
+Pob1        2      11             9.0
+Pob2        2      12             9.0
+Pob2        3      13            14.0
+Pob2        3      14            14.0
+Pob2        3      15            14.0
+Pob1        4      16            16.5
+Pob2        4      17            16.5
+Pob2        5      18            18.0
+Pob2        7      19            19.0
+Pob2        8      20            20.0
 
 
 ## Estadísticos
@@ -569,8 +569,8 @@ Para poner a prueba esta hipótesis se utiliza el menor de los estadísticos T+ 
 T-, comparando el estadístico con los valores críticos $w_{\alpha/2}$ y $w_{1
 - \alpha/2}$.
 
-Si $T^{\frac{+}{-}} > \ w_{1 - \frac{\alpha}{2}}$ ó $T^{\frac{+}{-}} <
-w_{\frac{\alpha}{2}}\ \$ Entonces Rechazo $H_{0}$
+Si $T^{\pm} > \ w_{1 - \frac{\alpha}{2}}$ ó $T^{\pm} <w_{\frac{\alpha}{2}}$
+Entonces Rechazo $H_{0}$
 
 Si $w_{\frac{\alpha}{2}}\  < T^{\frac{+}{-}} < \ w_{1 - \frac{\alpha}{2}}$
 Entonces No rechazo $H_{0}$
@@ -595,7 +595,7 @@ $H_{a}:\ E(D) < 0$ ó $E(X) < E(Y)$
 Para poner a prueba esta hipótesis se utiliza el estadístico T+, comparando el
 estadístico con el valor crítico $w_{\alpha}$
 
-Si $T^{+} < w_{\alpha}\$ Entonces Rechazo $H_{0}$
+Si $T^{+} < w_{\alpha}$ Entonces Rechazo $H_{0}$
 
 Si $T^{+} \geq \text{\ w}\alpha$ Entonces No rechazo $H_{0}$
 
@@ -621,7 +621,7 @@ estadístico con el valor crítico w1-α
 
 Si $T^{+} > \ w_{1 - \alpha}$ Entonces Rechazo $H_{0}$
 
-Si $T^{+}\  \leq w_{1 - \alpha}$Entonces No rechazo $H_{0}$
+Si $T^{+}\leq w_{1 - \alpha}$Entonces No rechazo $H_{0}$
 
 *Empleando la aproximación normal, si*
 
@@ -664,7 +664,7 @@ $H_{a}:\ E\left( X \right) < E(Y)$ ó $E\left( D \right) < 0$
 
 Cálculo de los estadísticos:
 
-| Orden | X       | Y  | $D_{i}$    | $\|D_{i}\|$                                            | Rango     | $R_{i}$ |
+| Orden | X       | Y  | $D_{i}$    | $\|D_{i}\|$                                        | Rango     | $R_{i}$ |
 |-------|---------|----|----------|------------------------------------------------------|-----------|-------|
 | 1     | 72      | 72 | 0        | 0                                                    | \-        | \-    |
 | 2     | 76      | 77 | \-1      | 1                                                    | 1.5       | \-1.5 |
@@ -681,9 +681,9 @@ Cálculo de los estadísticos:
 | T+    | 24.5    |    | Valores  | 1 cola                                               | w_{0.05}  | 14    |
 | T-    | 41.5    |    | críticos | 2 colas                                              | w_{0.025} | 11    |
 | n     | 11      |    |          |                                                      | w_{0.975} | 55    |
-| Z     | \-0.756 |    |          | P(z \< = \|Z\|)                                      | 0.775     |       |
-|       |         |    |          | $1 - P(z \leq |Z|) = p$ (1 cola)                   | 0.225     |       |
-|       |         |    |          | $2*\lbrack 1 - P(z \leq |Z|)\rbrack = p$ (2 colas) | 0.449     |       |
+| Z     | -0.756  |    |          | $P(z < = \|Z\|)$                                     | 0.775     |       |
+|       |         |    |          | $1 - P(z \leq \|Z\|) = p$ (1 cola)                     | 0.225     |       |
+|       |         |    |          | $2*\lbrack 1 - P(z \leq \|Z\|)\rbrack = p$ (2 colas)   | 0.449     |       |
 
 La conclusión de esta prueba es no rechazar la $H_{0}$, ya que el $T^{+} >
 w_{0.05}$. Utilizando la aproximación normal, la conclusión es similar

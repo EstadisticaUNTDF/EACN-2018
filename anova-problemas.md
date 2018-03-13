@@ -242,7 +242,10 @@ del cajón `normalidad` y la variable `p.value` que es igual a extraer la caja
 
 \BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-8"><strong>(\#exr:unnamed-chunk-8) </strong></span>1. ¿Cuales son las hipótesis que se prueban en la prueba de Lilliefors? 
 
-2. ¿Se rechaza alguna de ellas?</div>\EndKnitrBlock{exercise}
+2. ¿Se rechaza alguna de ellas?
+  
+  
+  </div>\EndKnitrBlock{exercise}
 
 
 

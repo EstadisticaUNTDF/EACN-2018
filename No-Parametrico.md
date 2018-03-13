@@ -310,7 +310,10 @@ un objeto.
 
 \BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-8"><strong>(\#exr:unnamed-chunk-8) </strong></span>1. Notarán que los resultados son iguales pero de signo opuesto. ¿Por qué?
   
-2. Implementen el algoritmo para calcular la U de Mann-Whitney.</div>\EndKnitrBlock{exercise}
+2. Implementen el algoritmo para calcular la U de Mann-Whitney.
+
+
+</div>\EndKnitrBlock{exercise}
 
 
 
