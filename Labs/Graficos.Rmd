@@ -8,6 +8,18 @@ library(magrittr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{block, type = "atencion"}
+Para hacer el tutorial ingresen este código en la consola:
+
+`download.file("git.io/visualizacion.Rmd", file = "visualizacion.Rmd")`
+
+A continuación abran el archivo `visualizacion.Rmd` y hagan clic en el botón
+`Run document` arriba.
+
+```
+
+
+
 ## Introducción
 
 Una de las formas más útiles de visualizar la información es mediante gráficos

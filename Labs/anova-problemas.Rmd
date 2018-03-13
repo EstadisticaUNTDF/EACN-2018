@@ -160,6 +160,9 @@ del cajón `normalidad` y la variable `p.value` que es igual a extraer la caja
 1. ¿Cuales son las hipótesis que se prueban en la prueba de Lilliefors? 
 
 2. ¿Se rechaza alguna de ellas?
+  
+  
+  
 ```
 
 

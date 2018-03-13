@@ -520,8 +520,8 @@ Para poner a prueba esta hipótesis se utiliza el menor de los estadísticos T+ 
 T-, comparando el estadístico con los valores críticos $w_{\alpha/2}$ y $w_{1
 - \alpha/2}$.
 
-Si $T^{\frac{+}{-}} > \ w_{1 - \frac{\alpha}{2}}$ ó $T^{\frac{+}{-}} <
-w_{\frac{\alpha}{2}}\ \$ Entonces Rechazo $H_{0}$
+Si $T^{\pm} > \ w_{1 - \frac{\alpha}{2}}$ ó $T^{\pm} <w_{\frac{\alpha}{2}}$
+Entonces Rechazo $H_{0}$
 
 Si $w_{\frac{\alpha}{2}}\  < T^{\frac{+}{-}} < \ w_{1 - \frac{\alpha}{2}}$
 Entonces No rechazo $H_{0}$
@@ -546,7 +546,7 @@ $H_{a}:\ E(D) < 0$ ó $E(X) < E(Y)$
 Para poner a prueba esta hipótesis se utiliza el estadístico T+, comparando el
 estadístico con el valor crítico $w_{\alpha}$
 
-Si $T^{+} < w_{\alpha}\$ Entonces Rechazo $H_{0}$
+Si $T^{+} < w_{\alpha}$ Entonces Rechazo $H_{0}$
 
 Si $T^{+} \geq \text{\ w}\alpha$ Entonces No rechazo $H_{0}$
 
@@ -572,7 +572,7 @@ estadístico con el valor crítico w1-α
 
 Si $T^{+} > \ w_{1 - \alpha}$ Entonces Rechazo $H_{0}$
 
-Si $T^{+}\  \leq w_{1 - \alpha}$Entonces No rechazo $H_{0}$
+Si $T^{+}\leq w_{1 - \alpha}$Entonces No rechazo $H_{0}$
 
 *Empleando la aproximación normal, si*
 
@@ -615,7 +615,7 @@ $H_{a}:\ E\left( X \right) < E(Y)$ ó $E\left( D \right) < 0$
 
 Cálculo de los estadísticos:
 
-| Orden | X       | Y  | $D_{i}$    | $\|D_{i}\|$                                            | Rango     | $R_{i}$ |
+| Orden | X       | Y  | $D_{i}$    | $\|D_{i}\|$                                        | Rango     | $R_{i}$ |
 |-------|---------|----|----------|------------------------------------------------------|-----------|-------|
 | 1     | 72      | 72 | 0        | 0                                                    | \-        | \-    |
 | 2     | 76      | 77 | \-1      | 1                                                    | 1.5       | \-1.5 |
@@ -632,9 +632,9 @@ Cálculo de los estadísticos:
 | T+    | 24.5    |    | Valores  | 1 cola                                               | w_{0.05}  | 14    |
 | T-    | 41.5    |    | críticos | 2 colas                                              | w_{0.025} | 11    |
 | n     | 11      |    |          |                                                      | w_{0.975} | 55    |
-| Z     | \-0.756 |    |          | P(z \< = \|Z\|)                                      | 0.775     |       |
-|       |         |    |          | $1 - P(z \leq |Z|) = p$ (1 cola)                   | 0.225     |       |
-|       |         |    |          | $2*\lbrack 1 - P(z \leq |Z|)\rbrack = p$ (2 colas) | 0.449     |       |
+| Z     | -0.756  |    |          | $P(z < = \|Z\|)$                                     | 0.775     |       |
+|       |         |    |          | $1 - P(z \leq \|Z\|) = p$ (1 cola)                     | 0.225     |       |
+|       |         |    |          | $2*\lbrack 1 - P(z \leq \|Z\|)\rbrack = p$ (2 colas)   | 0.449     |       |
 
 La conclusión de esta prueba es no rechazar la $H_{0}$, ya que el $T^{+} >
 w_{0.05}$. Utilizando la aproximación normal, la conclusión es similar

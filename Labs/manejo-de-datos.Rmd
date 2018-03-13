@@ -1,7 +1,7 @@
 # Manejo de datos
 
 
-```{block, type = "rmdimportant"}
+```{block, type = "atencion"}
 
 Antes de comenzar bajen el archivo donde realizarán su informe reproducible.
 En la consola copien este código:
@@ -44,7 +44,9 @@ Para revisar su contenido podemos escribir el nombre del objeto o usar la
 función `glimpse`
 
 ```{r ver-datos, eval=FALSE}
+
 glimpse(nombres)
+
 ```
 
 ```{exercise ejercicio-4}
@@ -53,6 +55,9 @@ dentro el objeto `nombres`.
 
 1. ¿Cuantas columnas tiene y como se llaman?
 2. ¿Que tipo de dato tiene cada columna?
+  
+  
+  
 ```
 
 En *R* existen diversos tipos de dato, en estos datos solo hay 2: entero 
@@ -191,6 +196,8 @@ que dar y luego comprueben lo que piensan con lo que les devuelve R.
   4. TRUE != FALSE & TRUE
   5. !(TRUE | FALSE) & TRUE
   
+  
+  
 ```
 
 Estos dos últimos operadores son muy importantes porque nos permiten comprobar
@@ -254,6 +261,10 @@ nombres_comunes %>%
 
 1. ¿Qué sucede si olvidan los paréntesis en el código de arriba?
 2. Seleccionen las últimas 10 filas.
+  
+  
+
+
 ```
 
 ## Seleccionando columnas

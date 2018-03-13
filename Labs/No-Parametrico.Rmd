@@ -172,6 +172,9 @@ un objeto.
 1. Notarán que los resultados son iguales pero de signo opuesto. ¿Por qué?
   
 2. Implementen el algoritmo para calcular la U de Mann-Whitney.
+
+
+
 ```
 
 
