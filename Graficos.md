@@ -4,8 +4,8 @@
 
 <div class="atencion">
 <p>Para hacer el tutorial ingresen este código en la consola:</p>
-<p><code>download.file(&quot;git.io/visualizacion.Rmd&quot;, file = &quot;visualizacion.Rmd&quot;)</code></p>
-<p>A continuación abran el archivo <code>visualizacion.Rmd</code> y hagan clic en el botón <code>Run document</code> arriba.</p>
+<p><code>download.file(&quot;git.io/informe-visualizacion.Rmd&quot;, destfile = &quot;informe-visualizacion.Rmd&quot;)</code></p>
+<p>A continuación abran el archivo <code>informacion-visualizacion.Rmd</code> y completen el infome mientras leen el capítulo.</p>
 </div>
 
 
@@ -108,6 +108,16 @@ y abscisas dentro del argumento `mapping`. Hemos graficado el tamaño del motor 
 Siempre que quereamos mapear una columna a alguna parte del gráfico lo hemos de
 hacer dentro la función `aes()`, de *aestetics* que significa ésteticas en inglés. 
 
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-2"><strong>(\#exr:unnamed-chunk-2) </strong></span>a. Prueben correr `ggplot(data = mpg)`. ¿Qué ven?  
+
+b. ¿Cuantas columnas y filas hay en `mpg`?
+
+c. Hagan un gráfico de dispersión entre `cty` vs `hwy`  
+
+d. Hagan un gráfico de dispersión entre `class` y `fl`. ¿Qué ven? ¿Porqué el
+gráfico no es útil?
+
+    </div>\EndKnitrBlock{exercise}
 
 
 
@@ -217,12 +227,45 @@ usan `color` para cambiar el color. Del 15 a 18 son formas rellenas que usan
 `fill` para cambiar el color del relleno. Y de la forma 21 a 23 son formas con
 relleno y borde que usan ambas `fill` y `color`.
 
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-4"><strong>(\#exr:unnamed-chunk-4) </strong></span>
+a.  ¿Qué está mal con el siguiente código? ¿Porqué no son azules los puntos?
+    Corrijanlo 
+    
+    `ggplot(data = mpg) + 
+     geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))`
+    
+a.  ¿Cuáles son las variables categóricas en `mpg`? ¿Cuáles son las variables
+    continuas?
+    ¿Cómo puedes ver esta información cuando corres `mpg`?  
+    **Pista**: escribe `?mpg` para leer la documentación del conjunto de datos.
+    O `mpg` para ver los datos
+
+
+b.  Mapeen una variable continua a `color`, `size`y `shape`.
+    ¿Cuál es la diferencia en su acción entre variables categóricos y continuas?
+    
+
+a.  ¿Qué pasa si mapean la misma variable a varias estéticas?
+
+    **Pista**: Por ejemplo class a color y forma de punto.
+
+a.  ¿Qué hace la estética `stroke`? ¿Con qué formas funciona?
+
+    **Pista**:  usen `?geom_point` y busquen el ejemplo dentro de la ayuda.
+    
+a.  ¿Qué sucede cuando mapean una estética a algo que no sea un nombre de 
+    variable como `aes(colour = displ < 5)`?  
+    
+      
+    
+    </div>\EndKnitrBlock{exercise}
+
 
 ## Formas geometricas
 
 ¿En que se parecen los gráficos de abajo?
 
-<img src="Graficos_files/figure-epub3/unnamed-chunk-3-1.png" width="50%" /><img src="Graficos_files/figure-epub3/unnamed-chunk-3-2.png" width="50%" />
+<img src="Graficos_files/figure-epub3/unnamed-chunk-5-1.png" width="50%" /><img src="Graficos_files/figure-epub3/unnamed-chunk-5-2.png" width="50%" />
 
 
 Ambos tienen las mismas variables, pero están representados por distintas formas.
@@ -365,6 +408,44 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 Todavía no vieron `filter`, pero ya lo verán más adelante.
 
 
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-8"><strong>(\#exr:unnamed-chunk-8) </strong></span>a.  ¿Cuál geom usarias para dibujar un gráfico de líneas? ¿Un boxplot? ¿Un histograma?
+    ¿Un gráfico de áreas?
+    
+
+a.  Corre este código mentalmente y predice cómo se verá el gráfico.
+    Luego, ejecuta el código y comprueba lo que pensaste.
+    
+    `ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+      geom_point() + 
+      geom_smooth(se = FALSE)    `
+
+
+a.  ¿Qué crees que hace `show.legend = FALSE`? ¿Qué sucede si lo quitas?
+    ¿Por qué crees que lo usé antes en el capítulo?
+    
+    `ggplot(data = mpg) +
+      geom_smooth(
+        mapping = aes(x = displ, y = hwy, color = drv),
+        show.legend = FALSE
+  )`
+
+a.  ¿Qué hace el argumento `se` de `geom_smooth()`?
+
+    `ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+      geom_point() + 
+      geom_smooth(se = TRUE)`
+
+a.  ¿Serán diferentes estos dos gráficos? ¿Por qué sí o no?
+
+    `ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+      geom_point() + 
+      geom_smooth()
+    ggplot() + 
+      geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+      geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))`
+</div>\EndKnitrBlock{exercise}
+
+
 ## Transformaciones Estadísticas
 
 Pensemos en los gráficos de barras. En `ggplot2` se hacen con `geom_bar`. A
@@ -501,8 +582,37 @@ ggplot(data = diamonds) +
   )
 ```
 
-![](Graficos_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+![](Graficos_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-10"><strong>(\#exr:unnamed-chunk-10) </strong></span>a. ¿Cuál es el *geom* asociado por defecto a `stat_summary`? ¿Cómo podrías 
+reescribir el gráfico anterior para usar la función *geom* en vez la función *stat*?
+
+`ggplot(data = diamonds) +  
+  stat_summary(  
+    mapping = aes(x = cut, y = depth),  
+    fun.y = median,  
+    fun.ymax = max,  
+    fun.ymin = min  
+  )`
+
+b. ¿Qué hace `geom_col`? ¿En que se diferencia de `geom_bar`?
+
+
+c. La mayoría de los *geoms* y *stats* vienen en pares que casi siempre son 
+  usados juntos. Lee la documentación y haz una lista de todos los pares. 
+  ¿Qué tienen en común? 
+
+d. ¿Qué variables computa `stat_smooth()` ¿Qué parámetros controlan su 
+comportamiento?
+
+e. En el gráfico de proprociones, necesitamos poner `group = 1`. ¿Por qué? En 
+otras palabras ¿Por qué los siguientes gráficos tienen problemas?
+
+`ggplot(data = diamonds) +   
+  geom_bar(mapping = aes(x = cut, y = ..prop..))  
+ggplot(data = diamonds) +   
+  geom_bar(mapping = aes(x = cut, fill = color, y = ..prop..))`
+</div>\EndKnitrBlock{exercise}
 
 
 ## Ajuste de Posiciones
@@ -596,6 +706,19 @@ donde se superponen los puntos.
 Podes obtener más información el ayuda de cada uno: `?position_dodge`,
 `?position_identity`, `?position_fill`, `?position_stack`, `?position_jitter`
 
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-11"><strong>(\#exr:unnamed-chunk-11) </strong></span>a. ¿Cómo podrías mejorar el siguiente gráfico?
+
+`ggplot(data = mpg) +
+  geom_point(mapping = aes(x = hwy, y = cty))`
+
+b. ¿Cómo se controla el grado de separación en `position_dodge`?
+
+c. ¿Cómo se podría controlar el grado de ruido en `position_jitter`?
+  
+  
+  
+  </div>\EndKnitrBlock{exercise}
+
 
 ## Sistemas de Coordenadas
 
@@ -634,41 +757,6 @@ ggplot(data = arg, mapping = aes(x = long, y = lat, group = group)) +
 
 
   
-
-```
-## 
-## Attaching package: 'maps'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     map
-```
-
-```
-## <ggproto object: Class CoordQuickmap, CoordCartesian, Coord, gg>
-##     aspect: function
-##     default: FALSE
-##     distance: function
-##     expand: TRUE
-##     is_linear: function
-##     labels: function
-##     limits: list
-##     modify_scales: function
-##     range: function
-##     render_axis_h: function
-##     render_axis_v: function
-##     render_bg: function
-##     render_fg: function
-##     setup_data: function
-##     setup_layout: function
-##     setup_panel_params: function
-##     setup_params: function
-##     transform: function
-##     super:  <ggproto object: Class CoordQuickmap, CoordCartesian, Coord, gg>
-```
-
 ![](Graficos_files/figure-epub3/coord-quickmap-plot-1.png)<!-- -->
   
 Esto evita que el mapa se deforme, ya que los grados de longitud no miden lo 
@@ -687,6 +775,16 @@ cxc + coord_polar()
 ```
 
 ![](Graficos_files/figure-epub3/coord-polar-1.png)<!-- -->
+
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-12"><strong>(\#exr:unnamed-chunk-12) </strong></span>a. Inviertan los ejes de un gráfico de barras.
+
+`ggplot(data = diamonds) + 
+   geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")`
+
+a. ¿Cuál es la diferencia entre `coord_quickmap()` y `coord_map()`
+
+a.¿Para qué sirve la función `labs()`?
+</div>\EndKnitrBlock{exercise}
 
 
 ## Personalizando el gráfico
@@ -814,4 +912,27 @@ ggplot(data = mpg) +
 
 
 
+
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:unnamed-chunk-13"><strong>(\#exr:unnamed-chunk-13) </strong></span>a. ¿Qué sucede si modificas algún elemento particular del gráfico con `theme()`
+    y luego aplicas un tema en particular como `theme_dark()`
+    
+
+a. Pon la leyenda arriba.
+
+
+`ggplot(data = mpg) +
+  geom_bar(mapping = aes(x = class, fill = fl)) +
+  theme(legend.position = "")
+`
+
+a. Cambia el tipo de forma a puntos abiertos
+
+`ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, colour = class)) +
+  scale_ #completar`
+
+
+
+
+</div>\EndKnitrBlock{exercise}
 

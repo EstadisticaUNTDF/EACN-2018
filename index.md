@@ -1,7 +1,7 @@
 --- 
 title: "Estadística Avanzada para Ciencias Naturales"
 author: "Dr. Luciano Selzer"
-date: "2018-03-13"
+date: "2018-03-14"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
