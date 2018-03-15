@@ -3,7 +3,11 @@
 
 <div class="atencion">
 <p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
-<p><code>download.file(url = &quot;git.io/informe-manejo&quot;, destfile = &quot;informe-manejo-de-datos.Rmd&quot;)</code></p>
+</div>
+
+`download.file(url = "git.io/informe-manejo", destfile = "informe-manejo-de-datos.Rmd")`
+
+<div class="atencion">
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
 </div>
 
