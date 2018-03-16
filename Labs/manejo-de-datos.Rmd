@@ -33,7 +33,7 @@ extienden la funcionalidad de *R* agregando nuevas funciones.
 ```{r cargar-datos}
 library("dplyr")
 
-nombres <- readRDS("data/nombres-1980-1999.RDS")
+load("data/nombres-1980-1999.RData")
 
 ```
 
