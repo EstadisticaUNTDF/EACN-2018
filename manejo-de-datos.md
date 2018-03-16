@@ -22,7 +22,7 @@ extienden la funcionalidad de *R* agregando nuevas funciones.
 ```r
 library("dplyr")
 
-nombres <- readRDS("data/nombres-1980-1999.RDS")
+load("data/nombres-1980-1999.RData")
 ```
 
 Revisemos el código. Con `library("dplyr")` cargamos el paquete dplyr. Luego,
@@ -304,18 +304,18 @@ nombres_comunes %>%
 
 ```
 ## # A tibble: 10 x 3
-##    nombre          anio cantidad
-##    <chr>          <int>    <int>
-##  1 Aaron           2012      152
-##  2 Aaron           2013      167
-##  3 Aaron           2014      200
-##  4 Aaron Benjamin  2012      108
-##  5 Aaron Benjamin  2013      120
-##  6 Aaron Benjamin  2014      125
-##  7 Abel            1982      102
-##  8 Abel            1989      103
-##  9 Abel            1990      102
-## 10 Abigail         1991      132
+##    nombre   anio cantidad
+##    <chr>   <int>    <int>
+##  1 Aaron    2012      152
+##  2 Aaron    2013      167
+##  3 Aaron    2014      200
+##  4 Abel     1982      102
+##  5 Abel     1989      103
+##  6 Abel     1990      102
+##  7 Abigail  1991      132
+##  8 Abigail  1992      120
+##  9 Abigail  1993      165
+## 10 Abigail  1994      198
 ```
 
 O seleccionar las primeras 10 filas que corresponden números primos:
@@ -328,18 +328,18 @@ nombres_comunes %>%
 
 ```
 ## # A tibble: 10 x 3
-##    nombre          anio cantidad
-##    <chr>          <int>    <int>
-##  1 Aaron           2013      167
-##  2 Aaron           2014      200
-##  3 Aaron Benjamin  2013      120
-##  4 Abel            1982      102
-##  5 Abigail         1992      120
-##  6 Abigail         1994      198
-##  7 Abigail         1998      210
-##  8 Abigail         2010      171
-##  9 Abigail         2014      278
-## 10 Abril           1999      813
+##    nombre   anio cantidad
+##    <chr>   <int>    <int>
+##  1 Aaron    2013      167
+##  2 Aaron    2014      200
+##  3 Abel     1989      103
+##  4 Abigail  1991      132
+##  5 Abigail  1995      182
+##  6 Abigail  1997      167
+##  7 Abigail  2011      152
+##  8 Abigail  2013      276
+##  9 Abril    1996      235
+## 10 Abril    2012      534
 ```
 
 También es posible eliminar las filas según posición:
@@ -351,20 +351,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,665 x 3
+## # A tibble: 6,532 x 3
 ##    nombre   anio cantidad
 ##    <chr>   <int>    <int>
-##  1 Abigail  1992      120
-##  2 Abigail  1993      165
-##  3 Abigail  1994      198
-##  4 Abigail  1995      182
-##  5 Abigail  1996      159
-##  6 Abigail  1997      167
-##  7 Abigail  1998      210
-##  8 Abigail  1999      174
-##  9 Abigail  2010      171
-## 10 Abigail  2011      152
-## # ... with 33,655 more rows
+##  1 Abigail  1995      182
+##  2 Abigail  1996      159
+##  3 Abigail  1997      167
+##  4 Abigail  1998      210
+##  5 Abigail  1999      174
+##  6 Abigail  2010      171
+##  7 Abigail  2011      152
+##  8 Abigail  2012      272
+##  9 Abigail  2013      276
+## 10 Abigail  2014      278
+## # ... with 6,522 more rows
 ```
 
 \BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:ejercicio-9"><strong>(\#exr:ejercicio-9) </strong></span>
@@ -387,20 +387,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 2
-##    nombre         cantidad
-##    <chr>             <int>
-##  1 Aaron               152
-##  2 Aaron               167
-##  3 Aaron               200
-##  4 Aaron Benjamin      108
-##  5 Aaron Benjamin      120
-##  6 Aaron Benjamin      125
-##  7 Abel                102
-##  8 Abel                103
-##  9 Abel                102
-## 10 Abigail             132
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 2
+##    nombre  cantidad
+##    <chr>      <int>
+##  1 Aaron        152
+##  2 Aaron        167
+##  3 Aaron        200
+##  4 Abel         102
+##  5 Abel         103
+##  6 Abel         102
+##  7 Abigail      132
+##  8 Abigail      120
+##  9 Abigail      165
+## 10 Abigail      198
+## # ... with 6,532 more rows
 ```
 
 También es posible seleccionar varias columnas usando secuencias:
@@ -412,20 +412,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 3
-##    nombre          anio cantidad
-##    <chr>          <int>    <int>
-##  1 Aaron           2012      152
-##  2 Aaron           2013      167
-##  3 Aaron           2014      200
-##  4 Aaron Benjamin  2012      108
-##  5 Aaron Benjamin  2013      120
-##  6 Aaron Benjamin  2014      125
-##  7 Abel            1982      102
-##  8 Abel            1989      103
-##  9 Abel            1990      102
-## 10 Abigail         1991      132
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 3
+##    nombre   anio cantidad
+##    <chr>   <int>    <int>
+##  1 Aaron    2012      152
+##  2 Aaron    2013      167
+##  3 Aaron    2014      200
+##  4 Abel     1982      102
+##  5 Abel     1989      103
+##  6 Abel     1990      102
+##  7 Abigail  1991      132
+##  8 Abigail  1992      120
+##  9 Abigail  1993      165
+## 10 Abigail  1994      198
+## # ... with 6,532 more rows
 ```
 
 De la misma forma se puede eliminar columnas usando el signo `-`.
@@ -437,20 +437,20 @@ De la misma forma se puede eliminar columnas usando el signo `-`.
 ```
 
 ```
-## # A tibble: 33,675 x 2
-##    nombre         cantidad
-##    <chr>             <int>
-##  1 Aaron               152
-##  2 Aaron               167
-##  3 Aaron               200
-##  4 Aaron Benjamin      108
-##  5 Aaron Benjamin      120
-##  6 Aaron Benjamin      125
-##  7 Abel                102
-##  8 Abel                103
-##  9 Abel                102
-## 10 Abigail             132
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 2
+##    nombre  cantidad
+##    <chr>      <int>
+##  1 Aaron        152
+##  2 Aaron        167
+##  3 Aaron        200
+##  4 Abel         102
+##  5 Abel         103
+##  6 Abel         102
+##  7 Abigail      132
+##  8 Abigail      120
+##  9 Abigail      165
+## 10 Abigail      198
+## # ... with 6,532 more rows
 ```
 
 Se pueden renombrar columnas 
@@ -462,20 +462,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 1
+## # A tibble: 6,542 x 1
 ##      año
 ##    <int>
 ##  1  2012
 ##  2  2013
 ##  3  2014
-##  4  2012
-##  5  2013
-##  6  2014
-##  7  1982
-##  8  1989
-##  9  1990
-## 10  1991
-## # ... with 33,665 more rows
+##  4  1982
+##  5  1989
+##  6  1990
+##  7  1991
+##  8  1992
+##  9  1993
+## 10  1994
+## # ... with 6,532 more rows
 ```
 
 Pero se eliminan las no seleccionadas. Se puede renombrar sin tener que 
@@ -488,20 +488,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 1
+## # A tibble: 6,542 x 1
 ##      año
 ##    <int>
 ##  1  2012
 ##  2  2013
 ##  3  2014
-##  4  2012
-##  5  2013
-##  6  2014
-##  7  1982
-##  8  1989
-##  9  1990
-## 10  1991
-## # ... with 33,665 more rows
+##  4  1982
+##  5  1989
+##  6  1990
+##  7  1991
+##  8  1992
+##  9  1993
+## 10  1994
+## # ... with 6,532 more rows
 ```
 
 Hay muchas más formas de seleccionar columnas, pueden referirse a la 
@@ -523,20 +523,20 @@ nombres %>%
 ```
 
 ```
-## # A tibble: 3,749,133 x 4
-##    nombre         anio cantidad log_cantidad
-##    <chr>         <int>    <int>        <dbl>
-##  1 A Aron Misael  2012        2        0.301
-##  2 A Mi           1984        1        0.   
-##  3 A N A          2012        1        0.   
-##  4 A Reum         1983        5        0.699
-##  5 A Reum         1987        7        0.845
-##  6 A Sang         1994        4        0.602
-##  7 Aaaraon        2013        1        0.   
-##  8 Aadil          1992        1        0.   
-##  9 Aage Andres    1990        1        0.   
-## 10 Aage Carlos    1985        1        0.   
-## # ... with 3,749,123 more rows
+## # A tibble: 121,926 x 4
+##    nombre   anio cantidad log_cantidad
+##    <chr>   <int>    <int>        <dbl>
+##  1 Aaaraon  2013        1        0.   
+##  2 Aadil    1992        1        0.   
+##  3 Aakash   1985        2        0.301
+##  4 Aaminah  2011        1        0.   
+##  5 Aanisa   2013        1        0.   
+##  6 Aaran    1988        2        0.301
+##  7 Aarav    2011        2        0.301
+##  8 Aariel   1985        1        0.   
+##  9 Aaron    1980        2        0.301
+## 10 Aaron    1981       11        1.04 
+## # ... with 121,916 more rows
 ```
 
 Cualquier operación que funcione con vectores funciona con `mutate()`. También
@@ -578,20 +578,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 4,272 x 2
-##    nombre           total
-##    <chr>            <int>
-##  1 Aaron              519
-##  2 Aaron Benjamin     353
-##  3 Abel               307
-##  4 Abigail           2656
-##  5 Abril             4163
-##  6 Adolfo             688
-##  7 Adrian            4186
-##  8 Adrian Alberto    2009
-##  9 Adrian Alejandro  3460
-## 10 Adrian Eduardo     106
-## # ... with 4,262 more rows
+## # A tibble: 561 x 2
+##    nombre   total
+##    <chr>    <int>
+##  1 Aaron      519
+##  2 Abel       307
+##  3 Abigail   2656
+##  4 Abril     4163
+##  5 Adolfo     688
+##  6 Adrian    4186
+##  7 Adriana   2734
+##  8 Agostina 10925
+##  9 Agustin  38169
+## 10 Agustina 34866
+## # ... with 551 more rows
 ```
 
 Como pueden ver estos datos distan bastante de estar limpios ya que hay 
@@ -613,21 +613,21 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 4
-## # Groups:   nombre [4,272]
-##    nombre          anio cantidad acumulado
-##    <chr>          <int>    <int>     <int>
-##  1 Aaron           2012      152       152
-##  2 Aaron           2013      167       319
-##  3 Aaron           2014      200       519
-##  4 Aaron Benjamin  2012      108       108
-##  5 Aaron Benjamin  2013      120       228
-##  6 Aaron Benjamin  2014      125       353
-##  7 Abel            1982      102       102
-##  8 Abel            1989      103       205
-##  9 Abel            1990      102       307
-## 10 Abigail         1991      132       132
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 4
+## # Groups:   nombre [561]
+##    nombre   anio cantidad acumulado
+##    <chr>   <int>    <int>     <int>
+##  1 Aaron    2012      152       152
+##  2 Aaron    2013      167       319
+##  3 Aaron    2014      200       519
+##  4 Abel     1982      102       102
+##  5 Abel     1989      103       205
+##  6 Abel     1990      102       307
+##  7 Abigail  1991      132       132
+##  8 Abigail  1992      120       252
+##  9 Abigail  1993      165       417
+## 10 Abigail  1994      198       615
+## # ... with 6,532 more rows
 ```
 
 Acá hay una función nueva, `arrange()`. Lo que hace. Esta función ordena de manera
@@ -640,20 +640,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 3
-##    nombre              anio cantidad
-##    <chr>              <int>    <int>
-##  1 Adolfo              1981      101
-##  2 Adrian Alberto      1990      101
-##  3 Adrian Maximiliano  1988      101
-##  4 Agustin Adrian      1998      101
-##  5 Agustina Alejandra  1997      101
-##  6 Ailin               1993      101
-##  7 Alan Benjamin       2014      101
-##  8 Alan Gabriel        1989      101
-##  9 Alan Matias         1989      101
-## 10 Alberto Martin      1987      101
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 3
+##    nombre     anio cantidad
+##    <chr>     <int>    <int>
+##  1 Adolfo     1981      101
+##  2 Ailin      1993      101
+##  3 Alexia     2014      101
+##  4 Amparo     1999      101
+##  5 Anabella   1980      101
+##  6 Armando    1993      101
+##  7 Celina     1985      101
+##  8 Constanza  1983      101
+##  9 Dolores    1987      101
+## 10 Enrique    1983      101
+## # ... with 6,532 more rows
 ```
 
 Si queremos que sea decreciente (9-0, z-a), hay que agregar la función `desc()`.
@@ -666,20 +666,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 3
-##    nombre       anio cantidad
-##    <chr>       <int>    <int>
-##  1 Maria Belen  1993     6946
-##  2 Maria Belen  1992     6249
-##  3 Maria Belen  1994     6098
-##  4 Juan Pablo   1982     5561
-##  5 Maria Belen  1991     5307
-##  6 Maria Laura  1980     5144
-##  7 Maria Belen  1995     5094
-##  8 Benjamin     2013     4964
-##  9 Maria Laura  1981     4747
-## 10 Benjamin     2012     4726
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 3
+##    nombre    anio cantidad
+##    <chr>    <int>    <int>
+##  1 Benjamin  2013     4964
+##  2 Benjamin  2012     4726
+##  3 Camila    1994     4326
+##  4 Benjamin  2014     4286
+##  5 Isabella  2013     3589
+##  6 Martina   2014     3566
+##  7 Isabella  2014     3547
+##  8 Camila    1995     3539
+##  9 Martina   2013     3535
+## 10 Isabella  2012     3398
+## # ... with 6,532 more rows
 ```
 
 También se pueden poner varios criterios para que ordene según ellos. Por 
@@ -692,20 +692,20 @@ nombres_comunes %>%
 ```
 
 ```
-## # A tibble: 33,675 x 3
-##    nombre              anio cantidad
-##    <chr>              <int>    <int>
-##  1 Adolfo              1981      101
-##  2 Adrian Alberto      1990      101
-##  3 Adrian Maximiliano  1988      101
-##  4 Agustin Adrian      1998      101
-##  5 Agustina Alejandra  1997      101
-##  6 Ailin               1993      101
-##  7 Alan Benjamin       2014      101
-##  8 Alan Gabriel        1989      101
-##  9 Alan Matias         1989      101
-## 10 Alberto Martin      1987      101
-## # ... with 33,665 more rows
+## # A tibble: 6,542 x 3
+##    nombre     anio cantidad
+##    <chr>     <int>    <int>
+##  1 Adolfo     1981      101
+##  2 Ailin      1993      101
+##  3 Alexia     2014      101
+##  4 Amparo     1999      101
+##  5 Anabella   1980      101
+##  6 Armando    1993      101
+##  7 Celina     1985      101
+##  8 Constanza  1983      101
+##  9 Dolores    1987      101
+## 10 Enrique    1983      101
+## # ... with 6,532 more rows
 ```
 
 \BeginKnitrBlock{exercise}\iffalse{-91-79-114-100-101-110-32-100-101-32-116-111-116-97-108-101-115-93-}\fi{}<div class="exercise"><span class="exercise" id="exr:ejercicio-10"><strong>(\#exr:ejercicio-10)  \iffalse (Orden de totales) \fi{} </strong></span>Ordenen el resultado del total de nombres que calcularon en el ejercicio 
