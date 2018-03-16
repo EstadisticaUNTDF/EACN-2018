@@ -1,0 +1,277 @@
+---
+title: "Problemas ANOVA DOS FACTORES"
+author: "Su Nombre"
+date: "`r format(Sys.time(), "%A, %d de %B de %Y ")`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Cargar paquetes
+library(pander)
+library(tidyverse)
+library(ggfortify)
+library(emmeans)
+library(nortest) #normality test
+library(car)
+library(pwr)
+library(agricolae)
+library(compute.es)
+
+
+```
+
+
+
+```{r cargar-datos}
+load(url("http://bit.ly/anovadosfactoresRData"))
+```
+
+### Problema 1
+
+Los Dres. V Vampirus y José Dracul deciden llevar a cabo una experiencia para determinar el tiempo de sangrado de ciertos animales (Horno sapiens), cuando se les produce una mordedura. Aplican un método que supuestamente lo alarga y lo comparan con un control (método tradicional). Como les surgen dudas respecto a la hora en que se realiza el sangrado experimentan a la medianoche y a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.
+
+```{r sangrado-cargar}
+sangrado %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
+pander(caption = "(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo
+       el método tradicional y un nuevo método a la medianoche y a la 
+       madrugada.")
+```
+
+```{r sangrado-formato}
+sangrado <- sangrado %>% dplyr::rename(medianoche_tradicional = medianoche, 
+                           medianoche_nuevo = medianoche.1,
+                           madrugada_tradicional = madrugada, 
+                           madrugada_nuevo = madrugada.1) %>%
+  slice(-1) %>% 
+  gather(hora_metodo, minutos) %>% 
+  separate(hora_metodo, c("hora", "metodo")) %>% 
+  mutate(minutos = as.numeric(minutos))
+```
+
+
+a)	Comprobar las suposiciones del ANOVA.
+
+```{r comprobar-supuestos}
+
+```
+
+
+b)	Realizar el ANOVA.
+
+
+```{r sangrado-ANOVA}
+
+```
+
+
+
+c)	Si Ud. fuera uno de los mencionados galenos, ¿cuándo y cómo realizaría el sangrado?
+
+
+
+### Problema 2
+
+La siguiente tabla muestra la ganancia en peso de ratas macho sometidas a seis dietas diferentes:
+
+```{r ratas}
+peso_rata
+```
+
+
+¿En que formato están los datos?
+
+```{r rata-formato}
+## Hay que poner los datos en formato ...
+
+peso_rata_largo <- peso_rata %>% 
+  gather(key = "Dieta", value = "Ganancia", -Fuente) %>% 
+  mutate(Dieta = forcats::fct_collapse(Dieta))
+
+peso_rata_largo
+```
+
+
+
+
+a)	¿Hay diferencia entre los valores de proteína?
+
+```{r}
+
+```
+
+b)	¿Hay diferencia entre las fuentes animal y vegetal?
+
+```{r}
+
+```
+
+c)	La diferencia entre las fuentes animal y vegetal ¿varia con el nivel de proteína?
+
+```{r}
+
+```
+
+d)	¿Hay diferencia entre la carne vacuna y la de cerdo?
+
+```{r}
+
+```
+
+e)	La diferencia entre la carne vacuna y la de cerdo ¿varía con el nivel de proteína?
+
+```{r}
+
+```
+
+### Problema 3
+
+Se desean comparar tres genotipos distintos de *Drosophila melanogaster* observando si existen diferencias de viabilidad sembrando 100 y 800 huevos De este modo para cada uno de los tratamientos se dispusieron 6 preparados y al cabo de un tiempo suficiente de ser sembrados los huevos se obtuvo el porcentaje de huevos que hablan eclosionado. Los resultados fueron:
+	
+```{r 2_load}
+huevos
+```
+
+```{r formato-huevos}
+huevos_largo <- huevos %>% 
+  gather(key = "Genotipo", value = "Viabilidad", -Huevos.Sembrados) %>% 
+  mutate(Genotipo = forcats::fct_collapse(Genotipo,
+                                          PP = c("PP", "PP.1", "PP.2"),
+                                          PN = c("PN", "PN.1", "PN.2"),
+                                          NN = c("NN", "NN.1", "NN.2"))) %>% 
+  arrange(Genotipo, Huevos.Sembrados)
+
+huevos_largo
+```
+
+
+a)	¿Son diferentes los tres genotipos en cuanto a viabilidad?
+
+```{r}
+
+```
+
+b)	¿Es distinta la viabilidad sembrando 100 u 800 huevos?
+
+```{r}
+
+```
+
+c)	¿Existe interacción entre genotipo y número de huevos?
+
+```{r}
+
+```
+
+d) ¿Es necesario transformar los datos? Si considera que sí, realice la 
+transformación que considere adecuada y vuelva a realizar las preguntas 
+anteriores.
+
+
+## Problema 4
+
+4.- Se sembró *Lactobacíllus fermentus* en una mezcla de agar y un medio de
+cultivo sin tiamina se llenaron 18 tubos de ensayo con una cantidad fija de
+la mezcla. A grupos de tres, elegidos al azar, se les agregó un sobrenadante
+que contenía una dosis fija de tres preparaciones de tiamina. Después de una
+incubación por 18 horas se midió el crecimiento de L. fermentus en términos
+del largo de la columna de nebulosidad que se desarrolla por debajo del
+sobrenadante:
+	
+```{r 4_load}
+yogur %>% dplyr::rename(Concentracion_de_tiamina = Concent..de.tiamina) %>% 
+pander(caption = "(#tab:yogur) Nebulosidad (1/Transmitancia) de cultivos
+       de *Lactobacíllus fermentus* bajo varias concentraciones de tiamina.")
+```
+
+a) ¿Qué tipo de diseño es?
+b)	A un nivel del 1% y del 5% docimar la hipótesis de no significación entre 
+las preparaciones y entre las dosis. Interpretar los resultados.
+c)	Hacer un estudio de perfiles.
+
+```{r yogur-formato}
+
+yogur <- yogur %>% 
+  gather(preparacion, crecimiento, -Concent..de.tiamina) %>% 
+  rename(tiamina = Concent..de.tiamina) %>% 
+  mutate(tiamina_factor = as.factor(tiamina))
+```
+
+```{r yogur-aditividad}
+# Para hacer el test de aditividad de tukey la función espera una matriz donde
+# las columnas se corresponden a un factor y las filas al otro.
+# En este caso la columnas pueden ser la preparación, y las filas la 
+# concentracion de tiamina.
+
+yogur %>% 
+  spread(preparacion, crecimiento) %>% 
+  select(-(tiamina:tiamina_factor)) %>% 
+  as.matrix() %>% 
+  tukey.test()
+```
+
+## Problema 5
+
+5.- La siguiente tabla ilustra el engorde semanal de cerdos clasificados por
+sexo, con tres tipos de alimentación A, B y C.
+
+```{r cerdos-load}
+pander(setNames(cerdos, c("&nbsp;", LETTERS[1:3])), caption = "(#tab:cerdos) 
+       Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos 
+       de alimentación A, B y C")
+```
+
+
+```{r cerdo-formato}
+cerdos <- cerdos %>% dplyr::rename(Sexo = NA.) %>% 
+  gather(key = "Dieta", value = "Engorde", -Sexo)
+```
+
+a)	Hacer un estudio de perfiles
+
+```{r cerdo-grafico}
+
+```
+
+
+b)	Comprobar los supuestos del modelo.
+
+```{r supuestos}
+
+```
+
+c)	Estudiar si existe variabilidad entre sexos y entre tipos de alimentación
+	
+```{r}
+
+```
+
+
+
+
+
+## Problema 6
+
+6.- Se eligen al azar seis laboratorios para analizar la concentración de
+humedad en cuatro tipos de levadura: de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV). A cada uno de los laboratorios se les
+entregan recipientes con uno de los cuatro tipos de levadura, pero sin indicar
+cual. La concentración de humedad se analiza por secado de horno al vacío.
+Los datos que se dan a continuación corresponden al contenido de humedad (en
+términos de % de humedad - 6.00) de 4 alícuotas de 2 gramos cada una.
+
+```{r levadura-cargar}
+pander(levadura, caption = "(#tab:levadura) Humedad (en porcentaje) de cuatro
+       tipos de levadura (de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios 
+diferentes.")
+```
+
+
+```{r levadura-formato}
+levadura <- levadura %>%  
+  rename(tipo = Laboratorio) %>% 
+  gather(laboratorio, humedad, -tipo)
+```
+

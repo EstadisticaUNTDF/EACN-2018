@@ -1,0 +1,434 @@
+# Problemas ANOVA Dos Factores
+
+
+```{r setup, include=FALSE}
+# Setup -------------------------------------------------------------------
+library(tidyverse)
+library(pander)
+library(ggfortify)
+library(emmeans)
+library(magrittr)
+library(nortest) #normality test
+library(car)
+library(pwr)
+library(agricolae)
+library(compute.es)
+library(knitr)
+library(additivityTests)
+library(broom)
+
+solucion <- FALSE
+```
+
+```{r cargar-datos, echo=FALSE}
+load("data/anova_dos_factores.RData")
+```
+
+## Formulas con más de una variable independiente
+
+Para indicar que la variable $Y$ depende de la variable $X$ usabamos el tilde
+para construir una fórmula en *R*, e.g. `Y ~ X`. Cuando tenemos más de una
+variable no podemos construir un modelo por cada variable (¿Por qué?), entonces
+hay que construir una fórmula que muestre que hay más variables. Para eso se
+usa el símbolo `+`. Por ejemplo, además de la variable $X$ tenemos también la
+variable $Z$:
+
+```
+Y ~ X + Z
+```
+
+Este modelo equivale a decir que la variable $Y$ depende de $X$ y $Z$ asumiendo
+que no hay interacción entre estas últimas. La interacción se indica con dos 
+puntos `:`. Por ejemplo:  
+
+```
+Y ~ X + Z + X:Z
+```
+
+Un atajo, para escribir menos es usar la múltiplicación. Que en las formulas
+en verdad no es una multiplicación sino que se expande para dar como resultado
+los efectos principales más la interacción entre ellos. Por ejemplo, 
+`Y ~ X * Z`, es equivalente al ejemplo anterior. Esto es ventajoso para cuando
+hay más de dos variables:
+
+```
+Y ~ X * Z * W
+Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W
+```
+### Test de aditividad de Tukey.
+
+Para probar que $H_0: D=0$ se debe realizar el [test de aditividad de Tukey][Prueba de Tukey (Aditividad)].
+
+
+## Problemas
+
+
+1.- Los Dres. V Vampirus y José Dracul deciden llevar a cabo una experiencia
+para determinar el tiempo de sangrado de ciertos animales (*Horno sapiens*),
+cuando se les produce una mordedura. Aplican un método que supuestamente lo
+alarga y lo comparan con un control (método tradicional). Como les surgen dudas
+respecto a la hora en que se realiza el sangrado experimentan a la medianoche y
+a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.
+
+	  
+```{r 3_load, eval=solucion, echo=solucion}
+sangrado %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
+pander(caption = "(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo
+       el método tradicional y un nuevo método a la medianoche y a la 
+       madrugada.")
+```
+
+a)  ¿En qué formato están los datos? ¿Largo, ancho o intermedio?
+a)	Comprobar las suposiciones del ANOVA
+b)	Realizar el ANOVA
+c)	Si Ud. fuera uno de los mencionados galenos, ¿Cuándo y cómo realizaría el sangrado?
+
+```{r 3_test_assumptions, fig.width=4, fig.height=3, eval=solucion, echo=solucion}
+sangrado <- sangrado %>% dplyr::rename(medianoche_tradicional = medianoche, 
+                           medianoche_nuevo = medianoche.1,
+                           madrugada_tradicional = madrugada, 
+                           madrugada_nuevo = madrugada.1) %>%
+  slice(-1) %>% 
+  gather(hora_metodo, minutos) %>% 
+  separate(hora_metodo, c("hora", "metodo")) %>% 
+  mutate(minutos = as.numeric(minutos))
+
+analisis_anova_doble(sangrado, minutos, hora, metodo)
+```
+
+
+```{r 3_aov, fig.width=4, fig.height=3, eval=solucion, echo=solucion}
+sangrado_aov <- aov(minutos ~ metodo*hora, data = sangrado)
+pander(sangrado_aov)
+sangrado_lsm <- lsmeans(sangrado_aov, ~metodo|hora)
+
+ggplot(summary(sangrado_lsm), aes(metodo, lsmean)) +
+  geom_point(aes(shape = hora), size = 5) +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), width = 0.1)+
+  geom_line(aes(linetype = hora, group = hora)) +
+  ylab("Minutos") +
+  scale_shape(solid = FALSE)
+cat("Figura 3.2 -- Diagrama de perfiles de los minutos de sangrado según método y hora")
+```
+
+
+```{r 3_autoplot, fig.cap="Figura 3.3 -- Gráficos diagnostico para ANOVA Viabilidad ~ Genotipo*Huevos.Sembrados", eval=solucion, echo=solucion}
+autoplot(sangrado_aov)
+```
+
+
+2.- La siguiente tabla muestra la ganancia en peso de ratas macho sometidas a
+seis dietas diferentes:
+
+```{r 1_load}
+peso_rata %>% dplyr::rename(Alta.proteína = Alta.proteína.1,
+                            Baja.proteína = Baja.proteína.1) %>% 
+pander(caption = "(#tab:peso_rata) Datos de ganancia de peso (en g.)
+       en ratas macho sometidas a seis dietas diferentes")
+```
+
+a)	¿Hay diferencia entre los valores de proteína?
+b)	¿Hay diferencia entre las fuentes animal y vegetal?
+c)	La diferencia entre las fuentes animal y vegetal ¿varia con el nivel de proteína?
+d)	¿Hay diferencia entre la carne vacuna y la de cerdo?
+e)	La diferencia entre la carne vacuna y la de cerdo ¿varía con el nivel de proteína?
+
+**Pista**: Piensen en los contrastes que son necesarios hacer.
+
+
+```{r 1_test_assumptions, eval = solucion, echo = solucion}
+peso_rata <- peso_rata %>% gather(key = "Proteina", value = "Ganancia", -Fuente) %>% 
+  mutate(Proteina = stringr::str_replace(Proteina, pattern = "\\.\\d$", "") %>% 
+           as_factor())
+
+rata_analisis <- analisis_anova_doble(peso_rata, Ganancia, Fuente, Proteina)
+
+```
+
+
+
+```{r 1_plot, fig.height=3, fig.width=5, eval=solucion, echo=solucion}
+peso_rata_smr <- summary(rata_supuestos$estimated_means)
+ggplot(peso_rata_smr, aes(Fuente, emmean, ymax = upper.CL, ymin = lower.CL)) +
+  geom_point(aes(shape = Proteina)) +
+  geom_linerange() +
+  geom_line(aes(linetype = Proteina, group = Proteina)) +
+  scale_x_discrete(labels = c("Carne de \ncerdo", "Carne de \nvaca", "Cereal"))+
+  labs(x = "Fuente", y = "Ganancía de Peso")
+  
+```
+
+
+
+
+
+```{r 1_comparisons, eval=solucion, echo=solucion}
+p1b <- emmeans(peso_rata_aov, "Fuente" )
+set.caption("Contraste entre: c1 = Fuentes animales vs vegetal, c2 = Fuente Vacuna vs Porcina")
+pander(summary(contrast(p1b, list(c1 = c(-.5, -.5, 1), 
+                                  c2 = c(-1, 1,0 )))))
+
+p1c <- lsmeans(peso_rata_aov, ~ Fuente|Proteina)
+set.caption("Contraste entre Dietas animales y vegetal dentro de cada nivel de
+            proteína c1 = Fuentes animales vs vegetal, c2 = Fuente Vacuna vs
+            Porcina")
+pander(summary(contrast(p1c, list(c1 = c(-.5, -.5, 1),
+                                  c2 = c(-1, 1,0 )))))
+
+```
+
+3.- Se desean comparar tres genotipos distintos de *Drosophila melanogaster*
+observando si existen diferencias de viabilidad sembrando 100 y 800 huevos. De
+este modo para cada uno de los tratamientos se dispusieron 6 preparados y al
+cabo de un tiempo suficiente de ser sembrados los huevos se obtuvo el porcentaje
+de huevos que hablan eclosionado. Los resultados fueron:
+	
+```{r 2_load}
+huevos %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
+pander(caption = "(#tab:huevos) Viabilidad en porcentaje de huevos sembrados
+       para tres genotipos (PP, NN, PN) sembrando distintas cantidades de
+       huevos")
+```
+
+
+a)  ¿Son diferentes los tres genotipos en cuanto a viabilidad?
+b)  ¿Es distinta la viabilidad sembrando 100 u 800 huevos?
+c)  ¿Existe interacción entre genotipo y número de huevos?
+d)  ¿Es necesario transformar los datos? ¿Por qué? Si su respuesta es
+afirmativa vuelva a realizar los análisis, comprobar supuestos y revise sus
+conclusiones.
+
+```{r 2_test_assumptions, fig.height=3, fig.width=4, eval=solucion, echo=solucion}
+huevos <- huevos %>% 
+  gather(key = "Genotipo", value = "Viabilidad", -Huevos.Sembrados) %>% 
+  mutate(Genotipo = forcats::fct_collapse(Genotipo,
+                                          PP = c("PP", "PP.1", "PP.2"),
+                                          PN = c("PN", "PN.1", "PN.2"),
+                                          NN = c("NN", "NN.1", "NN.2"))) %>% 
+  arrange(Genotipo, Huevos.Sembrados)
+
+analisis_anova_doble(huevos, Viabilidad, Genotipo, Huevos.Sembrados)
+ 
+```
+
+Datos transformados con arcoseno.
+
+```{r 2_test_asin_asumptions, eval=solucion, echo=solucion}
+huevos <- mutate(huevos, aViabilidad = asin(sqrt(Viabilidad/100)))
+
+analisis_anova_doble(huevos, aViabilidad, Genotipo, Huevos.Sembrados)
+```
+
+
+```{r 2_aov, eval=solucion, echo=solucion}
+huevos_aov <- aov(aViabilidad ~ Genotipo*Huevos.Sembrados, data = huevos)
+pander(huevos_aov)
+```
+
+```{r 2_aov_plot, fig.cap="Figura 2.3 -- Gráficos diagnostico para ANOVA Viabilidad ~ Genotipo*Huevos.Sembrados", eval=solucion, echo=solucion}
+autoplot(huevos_aov)
+```
+
+
+
+
+4.- Se sembró *Lactobacíllus fermentus* en una mezcla de agar y un medio de
+cultivo sin tiamina se llenaron 18 tubos de ensayo con una cantidad fija de
+la mezcla. A grupos de tres, elegidos al azar, se les agregó un sobrenadante
+que contenía una dosis fija de tres preparaciones de tiamina. Después de una
+incubación por 18 horas se midió el crecimiento de L. fermentus en términos
+del largo de la columna de nebulosidad que se desarrolla por debajo del
+sobrenadante:
+	
+```{r 4_load}
+yogur %>% dplyr::rename(Concentracion_de_tiamina = Concent..de.tiamina) %>% 
+pander(caption = "(#tab:yogur) Nebulosidad (1/Transmitancia) de cultivos
+       de *Lactobacíllus fermentus* bajo varias concentraciones de tiamina.")
+```
+
+a) ¿Qué tipo de diseño es?
+b)	A un nivel del 1% y del 5% docimar la hipótesis de no significación entre 
+las preparaciones y entre las dosis. Interpretar los resultados.
+c)	Hacer un estudio de perfiles.
+
+```{r 4_test_assumptions, eval=solucion, echo=solucion}
+
+yogur <- yogur %>% 
+  gather(preparacion, crecimiento, -Concent..de.tiamina) %>% 
+  rename(tiamina = Concent..de.tiamina) %>% 
+  mutate(tiamina_factor = as.factor(tiamina))
+
+yogur_aov <- aov(crecimiento ~ tiamina_factor + preparacion, data = yogur)
+
+summary(yogur_aov)
+
+autoplot(yogur_aov)
+
+
+# Para hacer el test de aditividad de tukey la función espera una matriz donde
+# las columnas se corresponden a un factor y las filas al otro.
+# En este caso la columnas pueden ser la preparación, y las filas la 
+# concentracion de tiamina.
+
+yogur %>% 
+  spread(preparacion, crecimiento) %>% 
+  select(-(tiamina:tiamina_factor)) %>% 
+  as.matrix() %>% 
+  tukey.test()
+
+```
+
+
+
+5.- La siguiente tabla ilustra el engorde semanal de cerdos clasificados por
+sexo, con tres tipos de alimentación A, B y C.
+
+```{r 5_load}
+pander(setNames(cerdos, c("&nbsp;", LETTERS[1:3])), caption = "(#tab:cerdos) 
+       Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos 
+       de alimentación A, B y C")
+```
+
+a)	Hacer un estudio de perfiles
+b)	Comprobar los supuestos del modelo
+c)	Estudiar si existe variabilidad entre sexos y entre tipos de alimentación
+	
+```{r 5_analysis, warning=TRUE, fig.width=4, fig.height=3 , eval=solucion, echo=solucion}
+cerdos <- cerdos %>% dplyr::rename(Sexo = NA.) %>% 
+  gather(key = "Dieta", value = "Engorde", -Sexo)
+
+
+ggplot(cerdos, aes(alimentacion, engorde)) +
+  geom_point(aes(shape = sexo), size = 5) +
+  geom_line(aes(linetype = sexo, group = sexo)) +
+  labs(x = "Alimentación", y = "Engorde") +
+  scale_shape(solid = FALSE)
+cat("Figura 5.1 -- Engorde de cerdos bajo tres alimentaciones para ambos sexos")
+
+pander(bartlett.test(engorde ~ 
+                       alimentacion , 
+                     data = cerdos))
+pander(bartlett.test(engorde ~ 
+                       sexo , 
+                     data = cerdos))
+pander(leveneTest(engorde ~ alimentacion, data = cerdos))
+pander(leveneTest(engorde ~ sexo, data = cerdos))
+# pander(ddply(cerdos, .(alimentacion), 
+#              function(x) lillie.test(x$engorde)))
+# pander(ddply(cerdos, .(sexo), 
+#              function(x) lillie.test(x$engorde)))
+
+pander(cerdos_aov <- aov(engorde ~ sexo + alimentacion, data = cerdos))
+```
+
+```{r 5_autoplot, fig.cap="Figura 5.2 -- Gráfico diagnostico para ANOVA engorde ~ sexo * alimentación", eval=solucion, echo=solucion}
+autoplot(cerdos_aov)
+```
+
+
+6.- Se eligen al azar seis laboratorios para analizar la concentración de
+humedad en cuatro tipos de levadura: de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV). A cada uno de los laboratorios se les
+entregan recipientes con uno de los cuatro tipos de levadura, pero sin indicar
+cual. La concentración de humedad se analiza por secado de horno al vacío.
+Los datos que se dan a continuación corresponden al contenido de humedad (en
+términos de % de humedad - 6.00) de 4 alícuotas de 2 gramos cada una.
+
+```{r 6_load}
+pander(levadura, caption = "(#tab:levadura) Humedad (en porcentaje) de cuatro
+       tipos de levadura (de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios 
+diferentes.")
+```
+
+```{r 6_test_assumption, fig.height=3, fig.width=4, eval=solucion, echo=solucion}
+
+levadura <- levadura %>%  
+  rename(tipo = Laboratorio) %>% 
+  gather(laboratorio, humedad, -tipo)
+  
+
+analisis_anova_doble(levadura, humedad, tipo, laboratorio)
+
+
+```
+
+```{r 6_plot_res, fig.cap="Figura 6.3 -- Gráfico diagnostico de ANOVA humedad ~ tipo * laboratorio", eval=solucion, echo=solucion}
+autoplot(levadura_aov)
+```
+
+7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
+diferentes profundidades, con los siguientes resultados
+
+```{r 7_load}
+lago %>% select_all(funs(stringr::str_replace(., "X", ""))) %>% 
+pander(caption = "(#tab:lago) Temperatura de un lago (°C) en cuatro tardes
+       elegidas al azar durante el verano en distintas profundidades (m).")
+
+```
+
+
+¿Que tipo de diseño se utilizó? 
+Examinar si hay diferencias entre profundidades y entre fechas
+
+```{r 7_plot, fig.height=2, fig.width=3, eval=solucion, echo=solucion}
+
+lago <- lago %>% 
+  gather(dia, temp, -profundidad) %>% 
+  transform(profundidad = as.factor(profundidad))
+
+
+
+lago_smr <- ddply(lago, .(dia, profundidad), summarise,
+                      m = mean(temp),
+                      sd = sd(temp))
+ggplot(lago_smr, aes(profundidad, m)) +
+  geom_point(aes(shape = dia), size = 2) +
+  geom_errorbar(aes(ymin = m - sd, ymax = m + sd), width = 0.1) +
+  geom_line(aes(linetype = dia, group = dia)) +
+  labs(x = "Profundidad", y = "Temperatura (°C)") +
+  scale_shape(solid = FALSE)
+```
+
+
+```{r 7_test_assumption, eval=solucion, echo=solucion}
+pander(bartlett.test(temp ~ profundidad, data = lago))
+pander(leveneTest(temp ~ profundidad, data = lago))
+pander(lillie.test(lago$temp))
+
+```
+ 
+No se puede hacer un test formal de normalidad para cada grupo debido al bajo número de replicas.
+
+```{r 7_plot_normaltiy, fig.width=5, fig.height=3, fig.cap="Histograma con la normal superpuesta."}
+grid <- with(lago, seq(min(temp), max(temp), length = 100))
+normaldens <- ddply(lago, "profundidad", function(df) {
+  data.frame( 
+    temp = grid,
+    Density = dnorm(grid, mean(df$temp), sd(df$temp))
+  )
+})
+
+
+ggplot(lago, aes(temp)) + 
+  geom_bar() + 
+  geom_line(data = normaldens, aes(temp, Density), colour = "red") +
+  facet_wrap(~profundidad)
+```
+
+```{r 7_anova, eval=solucion, echo=solucion}
+lago_aov <- aov(temp ~ dia + profundidad, data = lago)
+
+pander(anova(lago_aov))
+pander(cld(lsmeans(lago_aov, ~profundidad)))
+```
+
+```{r 7_autoplot, fig.cap="Gráfico de residudales del ANOVA", eval=solucion, echo=solucion}
+autoplot(lago_aov)
+```
+
+```{r, eval=solucion, echo=solucion}
+lago_augmented <- augment(lago_aov)
+lillie.test(lago_augmented$.std.resid)
+```
+
