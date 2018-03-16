@@ -256,7 +256,14 @@ Dado que $P[X>x]=0.1272$ no rechazamos la hipótesis nula.
 ## Fórmulas
 
 Otra forma muy común de analizar datos es utilizando fórmulas. Estas no son
-fórmulas algebraicas como ya vimos en la parte de gráficos con `ggplot2`. Las formulas en R describen como se relacionan las variables. Por un lado, tenemos las variables dependientes y por otro las independientes y estás separadas por la virguilla (`~`). Por ejemplo: `variable_dependiente ~ variable_independiente`. Por ahora solo vamos a trabajar con una sola variable dependiente e independiente, pero es posible describir todo tipo de modelos mediante esta interfaz. El ejemplo anterior puede ser analizado usando la interfaz de fórmula:
+fórmulas algebraicas como ya vimos en la parte de gráficos con `ggplot2`.
+Las formulas en R describen como se relacionan las variables. Por un lado,
+tenemos las variables dependientes y por otro las independientes y estás
+separadas por la virguilla (`~`). Por ejemplo: `variable_dependiente ~
+variable_independiente`. Por ahora solo vamos a trabajar con una sola variable
+dependiente e independiente, pero es posible describir todo tipo de modelos
+mediante esta interfaz. El ejemplo anterior puede ser analizado usando la
+interfaz de fórmula:
 
 ```{r wicox-permeabilidad-formula}
 # Debemos usar el argumento data para que la función sepa donde estan los datos.
