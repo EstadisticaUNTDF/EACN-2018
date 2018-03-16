@@ -3,7 +3,7 @@ library(tidyverse)
 nombres <- readRDS("Labs/data/nombres-1980-1999.RDS")
 
 nombres <- nombres %>%
-filter(grepl("^\\d+$", nombre))
+filter(!grepl("^\\d+$", nombre))
 
 nombres <- nombres %>% 
   mutate(nombre = str_to_title(string = nombre)) %>% 
@@ -28,8 +28,8 @@ nombres <-
   nombres %>% 
   slice(-1)
 
-nombres_simples <- nombres %>% 
+nombres <- nombres %>% 
   filter(stringr::str_detect(nombre, "^\\w+$"))
 
-saveRDS(nombres, "Labs/data/nombres-1980-1999.RDS")
-saveRDS(nombres_simples, "Labs/data/nombres-1980-1999.RDS")
+save(nombres, file = "Labs/data/nombres-1980-1999.RData")
+
