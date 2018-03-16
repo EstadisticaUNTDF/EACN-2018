@@ -169,10 +169,16 @@ del cajón `normalidad` y la variable `p.value` que es igual a extraer la caja
 
 ## Problemas
 
+```{block, type = "atencion"}
 Primero bajen la planilla para completar los problemas:
 
-```{r eval=FALSE}
-download.file("git.io/informe-anova.Rmd", "informe-anova.Rmd")
+```
+
+`download.file("git.io/informe-anova.Rmd", "informe-anova.Rmd")`
+
+```{block, type = "atencion"}
+Y abran el archivo `informe-anova.Rmd`
+
 ```
 
 
