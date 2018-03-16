@@ -28,4 +28,8 @@ nombres <-
   nombres %>% 
   slice(-1)
 
+nombres_simples <- nombres %>% 
+  filter(stringr::str_detect(nombre, "^\\w+$"))
+
 saveRDS(nombres, "Labs/data/nombres-1980-1999.RDS")
+saveRDS(nombres_simples, "Labs/data/nombres-1980-1999.RDS")
