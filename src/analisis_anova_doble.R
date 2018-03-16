@@ -19,10 +19,12 @@ analisis_anova_doble <- function(data, respuesta, factor_1, factor_2) {
               n = n())
     
     if(all(smr[["n"]]>4)) {
-      smr <- smr %>% 
+      smr <- data %>% 
+        group_by(!! en_factor_1, !! en_factor_2) %>%
         summarise(normalidad = list(lillie.test(!!q_respuesta))) %>% 
         mutate(lillie.test.value = map_dbl(normalidad, "statistic"),
-               lillie.test.p.value = map_dbl(normalidad, "p.value"))
+               lillie.test.p.value = map_dbl(normalidad, "p.value")) %>% 
+        inner_join(smr, .)
     }
 
       print(smr)

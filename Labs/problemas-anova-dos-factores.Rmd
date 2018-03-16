@@ -22,6 +22,8 @@ solucion <- FALSE
 
 ```{r cargar-datos, echo=FALSE}
 load("data/anova_dos_factores.RData")
+
+source("../src/analisis_anova_doble.R")
 ```
 
 ## Formulas con más de una variable independiente
@@ -57,10 +59,44 @@ Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W
 ```
 ### Test de aditividad de Tukey.
 
-Para probar que $H_0: D=0$ se debe realizar el [test de aditividad de Tukey][Prueba de Tukey (Aditividad)].
+Para probar que $H_0: D=0$ se debe realizar el [test de aditividad de Tukey][Prueba de Tukey (Aditividad)]. 
+En *R* está implementado como una función del paquete `additivityTests`. 
+Especificamente en la función `tukey.test`. Tiene dos argumentos, `data`, los
+datos y el nivel de `alpha`. Hay que tener especial cuidado en los datos, ya
+que debe ser una matriz. Una matriz como un *data frame* en el sentido que 
+tiene filas y columnas. Pero a diferencia de este donde las columnas pueden
+tener distintos tipos de datos, en la matriz todos los datos tienen que ser
+del mismo tipo. 
 
+Por ejemplo:
+
+```{r}
+matrix(1:10, nrow = 2)
+```
+
+
+Esto implica que los datos que queramos comprobar deben estar en formato
+ancho y sin las columnas que identifican los tratamientos.
 
 ## Problemas
+
+
+```{block, type = "atencion"}
+Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:
+
+
+```
+
+`download.file("http://bit.ly/informe-anova-dos-factores", "informe-anova-dos-factores.Rmd")`
+
+```{block, type = "atencion"}
+Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.
+
+
+```
+
+
+
 
 
 1.- Los Dres. V Vampirus y José Dracul deciden llevar a cabo una experiencia
@@ -71,7 +107,7 @@ respecto a la hora en que se realiza el sangrado experimentan a la medianoche y
 a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.
 
 	  
-```{r 3_load, eval=solucion, echo=solucion}
+```{r 3_load}
 sangrado %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
 pander(caption = "(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo
        el método tradicional y un nuevo método a la medianoche y a la 
@@ -148,7 +184,8 @@ rata_analisis <- analisis_anova_doble(peso_rata, Ganancia, Fuente, Proteina)
 
 
 ```{r 1_plot, fig.height=3, fig.width=5, eval=solucion, echo=solucion}
-peso_rata_smr <- summary(rata_supuestos$estimated_means)
+peso_rata_smr <- summary(rata_analisis$estimated_means)
+peso_rata_aov <- rata_analisis$model
 ggplot(peso_rata_smr, aes(Fuente, emmean, ymax = upper.CL, ymin = lower.CL)) +
   geom_point(aes(shape = Proteina)) +
   geom_linerange() +
@@ -298,27 +335,27 @@ cerdos <- cerdos %>% dplyr::rename(Sexo = NA.) %>%
   gather(key = "Dieta", value = "Engorde", -Sexo)
 
 
-ggplot(cerdos, aes(alimentacion, engorde)) +
-  geom_point(aes(shape = sexo), size = 5) +
-  geom_line(aes(linetype = sexo, group = sexo)) +
-  labs(x = "Alimentación", y = "Engorde") +
+ggplot(cerdos, aes(Dieta, Engorde)) +
+  geom_point(aes(shape = Sexo), size = 5) +
+  geom_line(aes(linetype = Sexo, group = Sexo)) +
+  labs(x = "Dieta", y = "Engorde") +
   scale_shape(solid = FALSE)
 cat("Figura 5.1 -- Engorde de cerdos bajo tres alimentaciones para ambos sexos")
 
-pander(bartlett.test(engorde ~ 
-                       alimentacion , 
+pander(bartlett.test(Engorde ~ 
+                       Dieta , 
+                     data  = cerdos))
+pander(bartlett.test(Engorde ~ 
+                       Sexo , 
                      data = cerdos))
-pander(bartlett.test(engorde ~ 
-                       sexo , 
-                     data = cerdos))
-pander(leveneTest(engorde ~ alimentacion, data = cerdos))
-pander(leveneTest(engorde ~ sexo, data = cerdos))
-# pander(ddply(cerdos, .(alimentacion), 
-#              function(x) lillie.test(x$engorde)))
+pander(leveneTest(Engorde ~ Dieta, data = cerdos))
+pander(leveneTest(Engorde ~ Sexo, data = cerdos))
+# pander(ddply(cerdos, .(Dieta), 
+#              function(x) lillie.test(x$Engorde)))
 # pander(ddply(cerdos, .(sexo), 
-#              function(x) lillie.test(x$engorde)))
+#              function(x) lillie.test(x$Engorde)))
 
-pander(cerdos_aov <- aov(engorde ~ sexo + alimentacion, data = cerdos))
+pander(cerdos_aov <- aov(Engorde ~ Sexo + Dieta, data = cerdos))
 ```
 
 ```{r 5_autoplot, fig.cap="Figura 5.2 -- Gráfico diagnostico para ANOVA engorde ~ sexo * alimentación", eval=solucion, echo=solucion}
@@ -353,9 +390,6 @@ analisis_anova_doble(levadura, humedad, tipo, laboratorio)
 
 ```
 
-```{r 6_plot_res, fig.cap="Figura 6.3 -- Gráfico diagnostico de ANOVA humedad ~ tipo * laboratorio", eval=solucion, echo=solucion}
-autoplot(levadura_aov)
-```
 
 7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
 diferentes profundidades, con los siguientes resultados
@@ -375,16 +409,16 @@ Examinar si hay diferencias entre profundidades y entre fechas
 
 lago <- lago %>% 
   gather(dia, temp, -profundidad) %>% 
-  transform(profundidad = as.factor(profundidad))
+  mutate(profundidad = as.factor(profundidad),
+         dia = stringr::str_remove(dia, "X"))
 
+lago_smr <- lago %>% 
+  group_by(profundidad) %>% 
+  summarise(m = mean(temp),
+            sd = sd(temp))
 
-
-lago_smr <- ddply(lago, .(dia, profundidad), summarise,
-                      m = mean(temp),
-                      sd = sd(temp))
-ggplot(lago_smr, aes(profundidad, m)) +
+ggplot(lago, aes(profundidad, temp)) +
   geom_point(aes(shape = dia), size = 2) +
-  geom_errorbar(aes(ymin = m - sd, ymax = m + sd), width = 0.1) +
   geom_line(aes(linetype = dia, group = dia)) +
   labs(x = "Profundidad", y = "Temperatura (°C)") +
   scale_shape(solid = FALSE)
@@ -399,22 +433,6 @@ pander(lillie.test(lago$temp))
 ```
  
 No se puede hacer un test formal de normalidad para cada grupo debido al bajo número de replicas.
-
-```{r 7_plot_normaltiy, fig.width=5, fig.height=3, fig.cap="Histograma con la normal superpuesta."}
-grid <- with(lago, seq(min(temp), max(temp), length = 100))
-normaldens <- ddply(lago, "profundidad", function(df) {
-  data.frame( 
-    temp = grid,
-    Density = dnorm(grid, mean(df$temp), sd(df$temp))
-  )
-})
-
-
-ggplot(lago, aes(temp)) + 
-  geom_bar() + 
-  geom_line(data = normaldens, aes(temp, Density), colour = "red") +
-  facet_wrap(~profundidad)
-```
 
 ```{r 7_anova, eval=solucion, echo=solucion}
 lago_aov <- aov(temp ~ dia + profundidad, data = lago)
