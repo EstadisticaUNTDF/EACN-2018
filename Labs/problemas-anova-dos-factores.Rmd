@@ -157,8 +157,8 @@ autoplot(sangrado_aov)
 seis dietas diferentes:
 
 ```{r 1_load}
-peso_rata %>% dplyr::rename(Alta.proteína = Alta.proteína.1,
-                            Baja.proteína = Baja.proteína.1) %>% 
+peso_rata %>% dplyr::rename(Alta.proteina = Alta.proteina.1,
+                            Baja.proteina = Baja.proteina.1) %>% 
 pander(caption = "(#tab:peso_rata) Datos de ganancia de peso (en g.)
        en ratas macho sometidas a seis dietas diferentes")
 ```
