@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="regresion.html">
-
+<link rel="prev" href="anova-de-dos-factores.html">
+<link rel="next" href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -362,712 +362,753 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ordenacion-en-espacios-reducidos" class="section level1">
-<h1><span class="header-section-number">Capítulo 14</span> Ordenación en Espacios Reducidos</h1>
-<p>En la Ciencias Naturales, generalmente, se poseen varias variables por cada
-objeto o unidad. Pero en un diagrama de dispersión es solo posible ver dos
-dimensiones, como máximo se podrán ver tres. Cuando queremos ver cuáles son las
-tendencias de variación en los objetos con respecto a todas las variables, estos
-gráficos se quedan cortos. Podríamos ver cada para de combinaciones, pero
-resulta tedioso y en general no es muy iluminador. Además, que podemos perdernos
-algunas relaciones interesantes entre varias variables que se manifiestan en más
-de dos dimensiones.</p>
-<p>Lo métodos para ordenación en espacio reducido permiten extraer información
-sobre la calidad de la proyección y el estudio de las relaciones tanto entre las
-variables como entre objetos.</p>
-<p>Existen varios métodos de ordenación resumidos en la tabla de abajo, más otros
-no incluidos que no vamos a ver en este curso.</p>
+<div id="problemas-anova-dos-factores" class="section level1">
+<h1><span class="header-section-number">Capítulo 8</span> Problemas ANOVA Dos Factores</h1>
+<div id="formulas-con-mas-de-una-variable-independiente" class="section level2">
+<h2><span class="header-section-number">8.1</span> Formulas con más de una variable independiente</h2>
+<p>Para indicar que la variable <span class="math inline">\(Y\)</span> depende de la variable <span class="math inline">\(X\)</span> usabamos el tilde
+para construir una fórmula en <em>R</em>, e.g. <code>Y ~ X</code>. Cuando tenemos más de una
+variable no podemos construir un modelo por cada variable (¿Por qué?), entonces
+hay que construir una fórmula que muestre que hay más variables. Para eso se
+usa el símbolo <code>+</code>. Por ejemplo, además de la variable <span class="math inline">\(X\)</span> tenemos también la
+variable <span class="math inline">\(Z\)</span>:</p>
+<pre><code>Y ~ X + Z</code></pre>
+<p>Este modelo equivale a decir que la variable <span class="math inline">\(Y\)</span> depende de <span class="math inline">\(X\)</span> y <span class="math inline">\(Z\)</span> asumiendo
+que no hay interacción entre estas últimas. La interacción se indica con dos
+puntos <code>:</code>. Por ejemplo:</p>
+<pre><code>Y ~ X + Z + X:Z</code></pre>
+<p>Un atajo, para escribir menos es usar la múltiplicación. Que en las formulas
+en verdad no es una multiplicación sino que se expande para dar como resultado
+los efectos principales más la interacción entre ellos. Por ejemplo,
+<code>Y ~ X * Z</code>, es equivalente al ejemplo anterior. Esto es ventajoso para cuando
+hay más de dos variables:</p>
+<pre><code>Y ~ X * Z * W
+Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W</code></pre>
+<div id="test-de-aditividad-de-tukey." class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Test de aditividad de Tukey.</h3>
+<p>Para probar que <span class="math inline">\(H_0: D=0\)</span> se debe realizar el <a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad">test de aditividad de Tukey</a>.
+En <em>R</em> está implementado como una función del paquete <code>additivityTests</code>.
+Especificamente en la función <code>tukey.test</code>. Tiene dos argumentos, <code>data</code>, los
+datos y el nivel de <code>alpha</code>. Hay que tener especial cuidado en los datos, ya
+que debe ser una matriz. Una matriz como un <em>data frame</em> en el sentido que
+tiene filas y columnas. Pero a diferencia de este donde las columnas pueden
+tener distintos tipos de datos, en la matriz todos los datos tienen que ser
+del mismo tipo.</p>
+<p>Por ejemplo:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10</code></pre>
+<p>Esto implica que los datos que queramos comprobar deben estar en formato
+ancho y sin las columnas que identifican los tratamientos.</p>
+</div>
+</div>
+<div id="problemas-1" class="section level2">
+<h2><span class="header-section-number">8.2</span> Problemas</h2>
+<div class="atencion">
+<p>
+Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:
+</p>
+</div>
+<p><code>download.file(&quot;http://bit.ly/informe-anova-dos-factores&quot;, &quot;informe-anova-dos-factores.Rmd&quot;)</code></p>
+<div class="atencion">
+<p>
+Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.
+</p>
+</div>
+<p>1.- Los Dres. V Vampirus y José Dracul deciden llevar a cabo una experiencia
+para determinar el tiempo de sangrado de ciertos animales (<em>Horno sapiens</em>),
+cuando se les produce una mordedura. Aplican un método que supuestamente lo
+alarga y lo comparan con un control (método tradicional). Como les surgen dudas
+respecto a la hora en que se realiza el sangrado experimentan a la medianoche y
+a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">sangrado <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">d$&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo</span></a>
+<a class="sourceLine" id="cb174-3" data-line-number="3"><span class="st">       el método tradicional y un nuevo método a la medianoche y a la </span></a>
+<a class="sourceLine" id="cb174-4" data-line-number="4"><span class="st">       madrugada.&quot;</span>)</a></code></pre></div>
 <table>
+<caption><span id="tab:sangrado">Tabla 8.1: </span> Minutos de sangrado en <em>Horno sapiens</em> bajo
+el método tradicional y un nuevo método a la medianoche y a la
+madrugada.</caption>
 <colgroup>
-<col width="38%" />
-<col width="11%" />
-<col width="49%" />
+<col width="29%" />
+<col width="29%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Método</th>
-<th>Distancia Preservada</th>
-<th>Variables</th>
+<th align="center">medianoche</th>
+<th align="center">madrugada</th>
+<th align="center">medianoche</th>
+<th align="center">madrugada</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Análisis de Componentes Principales</td>
-<td>Distancia Euclídea</td>
-<td>Datos Cuantitativos, Relaciones lineales (cuidado con los doble-ceros)</td>
+<td align="center">método tradicional</td>
+<td align="center">método tradicional</td>
+<td align="center">método nuevo</td>
+<td align="center">método nuevo</td>
 </tr>
 <tr class="even">
-<td>Análisis de Coordenadas Principales, Escalamiento (multidimensional) métrico, escalamiento clásico</td>
-<td>Cualquier medida de distancia</td>
-<td>Cuantitativos, semicuantitativos, cualitativos, o mezclados</td>
+<td align="center">8.53</td>
+<td align="center">17.53</td>
+<td align="center">39.14</td>
+<td align="center">32</td>
 </tr>
 <tr class="odd">
-<td>Análisis de Correspondencias</td>
-<td>Distancia <span class="math inline">\(\chi^{2}\)</span></td>
-<td>No-negativos, datos cuantitativos dimensionalmente homogéneos o binarios; abundancia de especies, o datos de presencia/ausencia</td>
+<td align="center">20.53</td>
+<td align="center">21.07</td>
+<td align="center">26.2</td>
+<td align="center">23.8</td>
+</tr>
+<tr class="even">
+<td align="center">12.53</td>
+<td align="center">20.8</td>
+<td align="center">31.33</td>
+<td align="center">28.87</td>
+</tr>
+<tr class="odd">
+<td align="center">14</td>
+<td align="center">17.33</td>
+<td align="center">45.8</td>
+<td align="center">25.06</td>
+</tr>
+<tr class="even">
+<td align="center">10.8</td>
+<td align="center">20.07</td>
+<td align="center">40.2</td>
+<td align="center">29.33</td>
 </tr>
 </tbody>
 </table>
-<p>Los métodos de ordenación pueden usarse para delinear grupos de objetos cuando
-la estructura de los datos no es continua (las variables si deben ser
-continuas). En particular, la ordenación puede ser usada siempre para
-complementar los análisis de agrupamientos. Esto es así porque mientras en
-análisis de agrupamiento investiga las relacionas finas entre objetos; la
-ordenación investiga la variabilidad entera de los datos y extrae los gradientes
-generales.</p>
-<p>En general, se usa la ordenación para estudiar las posiciones relativas de los
-objetos en un espacio reducido, es decir pasar de un espacio multidimensional a
-dos o tres dimensiones. Cuando la proyección de los datos en un espacio reducido
-representa una gran proporción de la variabilidad las distancias entre los
-objetos sean similares a la que existen en un espacio multidimensional. Cuando
-las proyecciones no son tan eficientes, la distancia entre los objetos es menor
-que en el espacio multidimensional. Se pueden dar dos casos: (1) que los objetos
-estén a distancias <em>proporcionalmente</em> similares en los dos espacios, entonces
-la proyección seguirá siendo útil (2) que las posiciones relativas de los
-objetos cambien entre los dos espacios, entonces la proyección es inútil. Por lo
-tanto, a veces es útil considera la ordenación aun cuando esta represente una
-pequeña parte de la variación total.</p>
-<div id="analisis-de-componentes-principales" class="section level2">
-<h2><span class="header-section-number">14.1</span> Análisis de componentes principales</h2>
-<p>Supongamos que tenemos una distribución multivariada normal, el primer eje
-principal es la línea que atraviesa la mayor dimensión del elipsoide de densidad
-que describe la densidad. De la misma manera, los siguientes ejes principales
-(ortogonales entre sí, es decir en ángulo recto e incorrelados, y sucesivamente
-más cortos) atraviesan las siguientes dimensiones del elipsoide
-<span class="math inline">\(p\)</span>-dimensional. Por lo tanto, pueden encontrarse un número <span class="math inline">\(p\)</span> de ejes
-principales de una matriz de datos de <span class="math inline">\(p\)</span> variables.</p>
-<p>Las relaciones entre las variables pueden representarse con una matriz cuadrada
-<span class="math inline">\(\mathbf{S}_{p \times p}\)</span>:</p>
-<p><span class="math display">\[
-\mathbf{S} = \begin{bmatrix}
-\sigma_{11} &amp; \sigma_{12} &amp; \cdots &amp; \sigma_{1p} \\
-\sigma_{21} &amp; \sigma_{22} &amp; \cdots &amp; \sigma_{2p} \\
- \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\sigma_{p1} &amp; \sigma_{p2} &amp; \cdots &amp; \sigma_{pp} \\
-\end{bmatrix}
-\]</span></p>
-<p>Donde la diagonal es la varianza de una variable y fuera de ellas se encuentran
-las covarianzas</p>
-<p>Los ejes principales de una matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> pueden
-encontrarse resolviendo la ecuación:</p>
-<p><span class="math display">\[
-\left( \mathbf{S} - \lambda_{k}\mathbf{I} \right)\mathbf{u}_{k} = 0
-\]</span></p>
-<p>Cuya ecuación característica es:</p>
-<p><span class="math display">\[
-\left| \mathbf{S} - \lambda_{k}\mathbf{I} \right| = 0
-\]</span></p>
-<p>Se usa para computar los autovalores. Los autovectores <span class="math inline">\(\mathbf{u}_{k}\)</span>
-asociados a los <span class="math inline">\(\lambda_{k}\)</span> se encuentran poniendo los distintos valores de
-<span class="math inline">\(\lambda_{k}\)</span> en la primera ecuación. Estos autovectores son los ejes
-principales de la matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span>. Los componentes
-principales tienen las siguientes propiedades:</p>
-<ol style="list-style-type: decimal">
-<li><p>Dado que cualquier matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> es simétrica, sus
-ejes principales <span class="math inline">\(u_{k}\)</span> son ortogonales entre sí. Es decir, que
-representan direcciones linealmente independientes en el elipsoide de
-densidad de la distribución de objetos.</p></li>
-<li><p>Los autovalores <span class="math inline">\(\lambda_{k}\)</span> de una matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span>
-dan la cantidad de varianza que corresponde a cada uno de los sucesivos ejes
-principales.</p></li>
-<li><p>Dadas las dos primeras propiedades, el análisis de componentes principales
-puede resumir, en unas pocas dimensiones, la mayor parte de la variabilidad
-de una matriz de dispersión con un gran número de variables. También provee
-de una medida de la variabilidad explicada por cada uno de esos pocos ejes
-principales independientes.</p></li>
+<ol style="list-style-type: lower-alpha">
+<li>¿En qué formato están los datos? ¿Largo, ancho o intermedio?</li>
+<li>Comprobar las suposiciones del ANOVA</li>
+<li>Realizar el ANOVA</li>
+<li>Si Ud. fuera uno de los mencionados galenos, ¿Cuándo y cómo realizaría el sangrado?</li>
 </ol>
-<p>Un ejemplo sencillo usando solo dos variables, algo que en la práctica nunca
-sucede, pero resulta útil como ejemplo</p>
-<p><span class="math inline">\(Y = \begin{bmatrix} 2 &amp; 1 \\ 3 &amp; 4 \\ 5 &amp; 0 \\ 7 &amp; 6 \\ 9 &amp; 2 \\ \end{bmatrix}\)</span> luego de centrar con las medias de las columnas <span class="math inline">\(\lbrack y - \overline{y} \rbrack = \begin{bmatrix} - 3.2 &amp; - 1.6 \\ - 2.2 &amp; 1.4 \\ - 0.2 &amp; - 2.6 \\ 1.8 &amp; 3.4 \\ 3.8 &amp; - 0.6 \\ \end{bmatrix}\)</span></p>
-<p>Calculando la matriz de dispersión:</p>
-<p><span class="math display">\[
-S = \frac{1}{n - 1}\left\lbrack y - \overline{y} \right\rbrack^{&#39;}\left\lbrack y - \overline{y} \right\rbrack = \begin{bmatrix}
-8.2 &amp; 1.6 \\
-1.6 &amp; 5.8 \\
-\end{bmatrix}
-\]</span></p>
-<p>La ecuación característica correspondiente es:</p>
-<p><span class="math display">\[
-\left| S - \lambda_{k}I \right| = \left| \begin{bmatrix}
-8.2 &amp; 1.6 \\
-1.6 &amp; 5.8 \\
-\end{bmatrix} - \begin{bmatrix}
-\lambda_{k} &amp; 0 \\
-0 &amp; \lambda_{k} \\
-\end{bmatrix} \right| = 0
-\]</span></p>
-<p>Tiene dos autovalores, <span class="math inline">\(\lambda_{1} = 9\)</span> y <span class="math inline">\(\lambda_{2} = 2\)</span>. La varianza
-total es la misma, pero particionada de otra manera. La suma de la varianza en
-la diagonal de <span class="math inline">\(\mathbf{S}\)</span> es <span class="math inline">\(8.2 + 5.8 = 14\)</span>, y la suma de los dos
-autovalores es <span class="math inline">\((9 + 5) = 14\)</span>. El primer componente principal tiene el 64.3%
-de la varianza (<span class="math inline">\(\lambda_{1} = 9)\)</span> y el segundo el resto, 35.7%. Hay tantos
-autovalores como variables, pero cada autovalor tiene cada vez menos varianza.
-Con los valores de <span class="math inline">\(\lambda_{k}\)</span> podemos calcular los autovectores con la
-ecuación:</p>
-<p><span class="math display">\[
-\left( \mathbf{S} - \lambda_{k}\mathbf{I} \right)\mathbf{u}_{k} = 0
-\]</span></p>
-<p>Una vez que los vectores son normalizados (i.e. la longitud es uno,
-<span class="math inline">\(\mathbf{u}^{&#39;}\mathbf{u} = 1\)</span>) se convierten en columnas de la matriz
-<span class="math inline">\(\mathbf{U}\)</span>:</p>
-<p><span class="math display">\[
-U = \begin{bmatrix}
-0.8944 &amp; - 0.4472 \\
-0.4472 &amp; 0.8944 \\
-\end{bmatrix}
-\]</span></p>
-<p>Los signos de la matriz son totalmente arbitrarios, si se multiplica por -1 se
-consigue una imagen especular que es igual de buena representando los datos.</p>
-<p>Los autovectores son ortogonales entre sí (incorrelados). Podemos comprobarlo
-con su producto cruzado <span class="math inline">\(\mathbf{u}_{1}^{&#39;}\mathbf{u}_{2} = \left( 0.8944 \times \left( - 0.4472 \right) \right) + \left( 0.4472 \times 0.8944 \right) = 0\)</span>. Además, los elementos de <span class="math inline">\(\mathbf{U}\)</span> son los cosenos del ángulo entre
-las variables originales. Usando esta propiedad, se puede ver que los ejes
-principales especifican una rotación de los ejes de <span class="math inline">\(\left( \operatorname{}{0.8944} \right) = 2634^{&#39;}\)</span>.</p>
-<p>Los elementos de los autovectores también son pesos (<em>loadings</em>) de las
-variables originales. Por lo tanto, la posición del objeto <span class="math inline">\(x_{i}\)</span> en el
-primer eje principal está dada por la siguiente función o combinación linear:</p>
-<p><span class="math display">\[
-f_{i1} = \left( y_{i1} - {\overline{y}}_{1} \right)u_{11} + \ldots + \left( y_{ip} - {\overline{y}}_{p} \right)u_{p1} = \left\lbrack y - \overline{y} \right\rbrack_{i}\mathbf{u}_{1}
-\]</span></p>
-<p>Los valores de <span class="math inline">\(\left( y_{ij} - {\overline{y}}_{j} \right)\)</span>
-son los valores del objeto <span class="math inline">\(i\)</span> en las variables <span class="math inline">\(j\)</span> centrados y los valores
-de <span class="math inline">\(u_{i1}\)</span> son lo pesos de las variables en el primer autovector. Las
-posiciones de los objetos con respecto a los ejes principales están dadas en la
-matriz F de variables transformadas. Es llamada <em>matriz de valores de
-componentes</em>:</p>
-<p><span class="math display">\[
-\mathbf{F} = \left\lbrack y - \overline{y} \right\rbrack\mathbf{U}
-\]</span></p>
-<p>Para el ejemplo esto sería:</p>
-<p><span class="math display">\[
-\mathbf{F} = \begin{bmatrix}
- - 3.2 &amp; - 1.6 \\
- - 2.2 &amp; 1.4 \\
- - 0.2 &amp; - 2.6 \\
-1.8 &amp; 3.4 \\
-3.8 &amp; - 0.6 \\
-\end{bmatrix}\begin{bmatrix}
-0.8944 &amp; - 0.4472 \\
-0.4472 &amp; 0.8944 \\
-\end{bmatrix} = \begin{bmatrix}
- - 3.578 &amp; 0 \\
- - 1.342 &amp; 2.236 \\
- - 1.342 &amp; - 2.236 \\
-3.130 &amp; 2.236 \\
-3.130 &amp; - 2.236 \\
-\end{bmatrix}
-\]</span></p>
-<p>En este caso simple, con solo dos variables, los componentes principales son una
-representación perfecta de la variabilidad y es solo una rotación de estas dos
-variables. Cuando hay más de dos variables, como es usual, el análisis de
-componentes principales también realiza una rotación del sistema de
-variables-ejes, pero en un espacio multidimensional. En este caso, los
-componentes principales I y II definen un plano que permite la representación de
-la mayor variabilidad. Los objetos son proyectados en este plano de tal forma
-que conserven, lo más posible, las distancias euclídeas que tienen en el espacio
-multidimensional de las variables originales.</p>
-<p>La posición relativa de los objetos en el espacio p-dimensional rotado de los
-componentes principales son las mismas que en el espacio p-dimensional de las
-variables originales. Esto significa que <strong>las distancias euclídeas entre los
-objetos se conservan a través de la rotación de los ejes</strong>. Esta es una de las
-propiedades más importantes de análisis de componentes principales.</p>
-<p>La calidad de la representación en un espacio euclídeo reducido con m
-dimensiones puede ser estudiada con la relación</p>
-<p><span class="math display">\[
-\left( \sum_{k = 1}^{m}{\ \lambda_{k}} \right)/\left( \sum_{k = 1}^{p}{\ \lambda_{k}} \right)
-\]</span></p>
-<p>Esta relación es equivalente al coeficiente de determinación (<span class="math inline">\(R^{2}\)</span>) en el
-análisis de regresión.</p>
-<p>El análisis componentes principales se pueden usar para estudiar el rol de las
-variables en la conformación de los componentes principales. Esto se puede ver
-en varias maneras: matriz de autovectores, proyección en un espacio reducido
-(matriz <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{1/2}\)</span>), y proyección en un espacio
-reducido (matriz <strong>U</strong>)</p>
-<ol style="list-style-type: decimal">
-<li>La matriz de autovectores – Como la matriz U contiene los autovectores
-normalizados, la diagonal <span class="math inline">\(\mathbf{U}&#39;\mathbf{U}\)</span> es igual 1 y los
-elementos fuera de la marginal es igual 0 porque los autovectores son
-ortogonales entre sí.</li>
-</ol>
-<p><span class="math display">\[
-\mathbf{U}^{&#39;}\mathbf{U} = \mathbf{I}
-\]</span></p>
-<p>Por lo tanto, las variables tienen longitud de unidad en el espacio
-multidimensional y están a 90° entre sí (ortogonales) dado que los autovectores
-son ortogonales entre sí. Esto es así porque el análisis de componentes es una
-rotación en el espacio multidimensional. Además, al normalizar los autovectores
-normaliza los ejes de las variables:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \mathbf{U} = 
-    &amp;\begin{bmatrix}
-      u_{11}\hphantom{0000} &amp; \hphantom{00}\cdots &amp; \hphantom{000000}u_{1p}\hphantom{000000} \\\\
-      \vdots\hphantom{0000} &amp; \  &amp; \hphantom{00000}\vdots\hphantom{000000} \\\\
-      u_{p1}\hphantom{0000} &amp; \hphantom{00}\cdots &amp; \hphantom{000000}u_{pp}\hphantom{000000} \\
-    &amp;\end{bmatrix}
-    \begin{matrix}
-      \sqrt{\sum u_{1k}^{2}} = 1 \\\\
-      \vdots \\\\
-      \sqrt{\sum u_{pk}^{2}} = 1 \\
-    \end{matrix} \\
-    &amp;\begin{matrix}
-      \sqrt{\sum u_{j1}^{2}} = 1 &amp; \cdots&amp;&amp; \sqrt{\sum u_{jp}^{2}} = 1 &amp; \\
-    &amp;\end{matrix} \\
-\end{aligned}
-\]</span></p>
-<p>Otra forma de estudiar la relación entre los predictores consiste en escalar los
-autovectores de tal forma que los cosenos de los ángulos entre los ejes de las
-variables sean <strong>proporcionales</strong> a su <em>covarianza</em>. Se logra escalando cada
-autovector <span class="math inline">\(k\)</span> a una longitud igual a su desvío estándar
-<span class="math inline">\(\sqrt{\lambda_{k}}\)</span>. La <em>distancia euclídea</em> entre objetos <strong>no se conserva</strong>
-de esta manera.</p>
-<p>Usando la matriz diagonal de autovalores <span class="math inline">\(\mathbf{\Lambda}\)</span> se puede computar
-la nueva de autovectores <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>:</p>
-<p><span class="math display">\[
-\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\mathbf{=}\begin{bmatrix}
-0.8944 &amp; - 0.4472 \\
-0.4472 &amp; 0.8944 \\
-\end{bmatrix}\begin{bmatrix}
-\sqrt{9} &amp; 0 \\
-0 &amp; \sqrt{5} \\
-\end{bmatrix} = \begin{bmatrix}
-2.6633 &amp; - 1.000 \\
-1.3416 &amp; 2.000 \\
-\end{bmatrix}
-\]</span></p>
-<p>En este escalamiento, la relación entre las variables es la misma que en la
-matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-  {\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}} = 
-    &amp;\begin{bmatrix}
-      \hphantom{00}u_{11}\sqrt{\lambda_{1}}\hphantom{0000000} &amp; \hphantom{000}\cdots &amp; \hphantom{000000}u_{1p}\sqrt{\lambda_{p}}\hphantom{000000000} \\\\
-      \vdots\hphantom{0000} &amp; \  &amp; \hphantom{00000}\vdots\hphantom{00000000} \\\\
-      u_{p1}\sqrt{\lambda_{1}}\hphantom{0000} &amp; \hphantom{000}\cdots &amp; \hphantom{000000}u_{pp}\sqrt{\lambda_{p}}\hphantom{000000000} \\
-    &amp;\end{bmatrix}
-    \begin{matrix}
-      \sqrt{\sum\left( u_{1k}\sqrt{\lambda_{k}} \right)^{2}} = s_{1} \\
-      \\
-      \vdots \\
-      \\
-      \sqrt{\sum\left( u_{pk}\sqrt{\lambda_{k}} \right)^{2}} = s_{p} \\
-    \end{matrix} \\
-    &amp;\begin{matrix}
-      \sqrt{\sum\left( u_{j1}\sqrt{\lambda_{1}} \right)^{2}} = \sqrt{\lambda_{1}} &amp; \cdots &amp; \sqrt{\sum\left( u_{jp}\sqrt{\lambda_{p}} \right)^{2}} = \sqrt{\lambda_{p}} \\
-    &amp;\end{matrix} \\
-\end{aligned}
-\]</span></p>
-<ol style="list-style-type: decimal">
-<li>Proyección de las variables en un espacio reducido (matriz
-<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>): Lo interesante no es todo el
-espacio multidimensional, sino la proyección simplificada del mismo en un
-espacio reducido, en general dos dimensiones. Los elementos
-<span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> de los autovectores, escalados en
-<span class="math inline">\(\sqrt{\lambda_{k}}\)</span>, son coordenadas de la proyección de las <span class="math inline">\(j\)</span>
-variables en los diferentes ejes <span class="math inline">\(k\)</span>. Se grafican como <strong>flechas</strong> ya que
-son <strong>ejes</strong>. Sus proyecciones son más cortas o iguales que sus longitudes
-en el espacio multidimensional.</li>
-</ol>
-<p>Los ángulos entre las variables son proyecciones de sus verdaderos ángulos de
-covarianza. Por lo tanto, es importante solo considerar variables que estén bien
-representadas en el plano de proyección. Una forma de evaluarlo es verificando
-la longitud de la proyección. En un espacio reducido la longitud de la
-proyección del eje de la variable es <span class="math inline">\(s_{j}\sqrt{d/p\ }\)</span>. Esta expresión
-define la <em>contribución en equilibrio de la variable</em> en los varios ejes del
-espacio multidimensional.</p>
-<p>Esta medida nos sirve para comparar con la longitud de la variable y ver si su
-contribución en mayor o menor de lo esperado bajo la hipótesis de contribuciones
-iguales en todos los ejes principales. Para nuestro ejemplo, la longitud de las
-variables:</p>
-<p><span class="math display">\[
-\text{longitud de la primera variable} = \sqrt{{2.6833}^{2} + \left( - 1.000 \right)^{2}} = 2.8636
-\]</span></p>
-<p><span class="math display">\[
-\text{longitud de la segunda variable} = \sqrt{{1.3516}^{2} + {2.000}^{2}} = 2.4083
-\]</span></p>
-<p>Como el ejemplo tiene solo dos variables, las longitudes son iguales a las
-contribuciones en equilibrio:</p>
-<p><span class="math display">\[
-\text{proyeccion en equilibrio de la variable 1} = s_{1}\sqrt{2/2} = \sqrt{8.2}\sqrt{2/2} = 2.8636
-\]</span></p>
-<p><span class="math display">\[
-\text{proyeccion en equilibrio de la variable 2} = s_{2}\sqrt{2/2} = \sqrt{5.8}\sqrt{2/2} = 2.4083
-\]</span></p>
-<p>La matriz de correlación <span class="math inline">\(\mathbf{R}\)</span> está conectada a la matriz de dispersión
-<span class="math inline">\(\mathbf{S}\)</span> por la diagonal de matriz de desvíos estándar <span class="math inline">\(\mathbf{D}(s)\)</span>.
-El coseno del ángulo <span class="math inline">\(\alpha_{jl}\)</span> entre dos variables <span class="math inline">\(y_{j}\)</span> e
-<span class="math inline">\(y_{l}\)</span> en el espacio multidimensional, está por lo tanto relaciona a la
-correlación (<span class="math inline">\(r_{jl}\)</span>); puede demostrarse que <span class="math inline">\(\cos\left( \alpha_{jl} \right) = r_{jl}\)</span>. Este ángulo es igual a la
-covarianza, porque la estandarización cambió las longitudes de las variables a
-la unidad. En el ejemplo, la correlación entre las dos variables es igual a
-<span class="math inline">\(\frac{1.6}{\sqrt{8.2 \times 5.8}} = \ 0.232\)</span> . El ángulo correspondiente es
-<span class="math inline">\(\operatorname{}{0.232} = 7635&#39;\)</span>.</p>
-<p>Igualmente, el ángulo entre la variable <span class="math inline">\(j\)</span> y el eje principal <span class="math inline">\(k\)</span>, en el
-espacio multidimensional, es el arco coseno de la correlación entre la variable
-<span class="math inline">\(j\)</span> y el eje principal <span class="math inline">\(k\)</span>. Esta correlación es el elemento <span class="math inline">\(jk\)</span> de
-la nueva matriz de autovectores:</p>
-<p><span class="math display">\[
-u_{jk}\sqrt{\lambda_{k}}/s_{j}
-\]</span></p>
-<p>Es decir que la correlación es calculada pesando cada elemento de los
-autovectores por la relación del desvío estándar del eje principal al de la
-variable. Para el ejemplo, los desvíos estándar <span class="math inline">\(s_{1} = 2.8636\ s_{2} = 2.4083\)</span>:</p>
-<p><span class="math display">\[
-\left\lbrack \frac{u_{jk}\sqrt{\lambda_{k}}}{s_{j}} \right\rbrack = \begin{bmatrix}
-0.9370 &amp; - 0.3492 \\
-0.5571 &amp; 0.8305 \\
-\end{bmatrix}\begin{bmatrix}
-2026&#39; &amp; 11026&#39; \\
-5609&#39; &amp; 3351&#39; \\
-\end{bmatrix}
-\]</span></p>
-<p>Una consecuencia importante de esto es que las variables con <strong>correlación más
-alta</strong>, en valor absoluto, son las que <strong>más contribuyen</strong> a cada autovector.
-Sin embargo, no se puede hacer la prueba estadística de Pearson para los
-coeficientes de correlación porque los componentes principales son combinaciones
-lineales de las variables.</p>
-<p>Cuando los ejes de las variables de <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>
-están estandarizados a longitud unidad sus proyecciones en el espacio principal
-<strong>no es recomendada</strong> porque los autovectores re-escalados no son necesariamente
-ortogonales y pueden tener cualquier longitud.</p>
-<p>La matriz de las proyecciones de los ejes de las variables de la matriz puede
-ser examinada con respecto a los siguientes puntos:</p>
-<ul>
-<li><p>Las proyecciones de las coordenadas de los ejes de las variables especifican
-la posición de los ápices de ese eje de variable en el espacio reducido. Se
-recomienda usar flechas para representarlos.</p></li>
-<li><p>La proyección de los <span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> del eje de la
-variable <span class="math inline">\(j\)</span> en el eje principal <span class="math inline">\(k\)</span> muestra su covarianza con respecto
-al eje principal, y su signo.</p></li>
-<li><p>Verificar variables cuyas <strong>longitudes proyectadas alcancen o excedan</strong> los
-valores de sus respectivas contribuciones en equilibrio. Los ejes de
-variables que sean claramente más cortos que esto contribuyen poco a la
-formación del espacio reducido bajo estudio y, por lo tanto, contribuyen
-poco a la estructura que se puede ser encontrada para los objetos en ese
-espacio reducido.</p></li>
-<li><p>La <strong>correlación</strong> entre las variables está dada por el <strong>ángulo</strong> entre los
-ejes de las variables y <strong>no</strong> por la proximidad entre los ápices de los
-ejes. Hay que tener en cuenta que, la proyección de los ejes en el espacio
-reducido puede no ser la representación completa de la correlación espacio
-multidimensional. Puede ser mejor agrupar variables, en el espacio reducido
-del gráfico, con respecto al espacio multidimensional, realizando un método
-<em>de análisis de agrupamiento</em>.</p></li>
-<li><p>Los objetos pueden ser proyectados en ángulo recto sobre los ejes de las
-variables de acuerdo a sus valores en esas variables. Sin embargo, las
-distancias entre los objetos <strong>no son aproximaciones de sus distancias
-euclídeas</strong>.</p></li>
-</ul>
-<ol style="list-style-type: decimal">
-<li>Proyección de las variables en un espacio reducido (matriz <span class="math inline">\(\mathbf{U}\)</span>):
-Difiere de lo anterior en los autovectores no han sido escalados a las
-longitudes de sus desvíos estándar. Los ángulos entre los ejes de las
-variables y los ejes principales son proyecciones de sus ángulos de
-rotación. Por ejemplo:</li>
-</ol>
-<p><span class="math display">\[
-U = \begin{bmatrix}
-0.8944 &amp; - 0.4472 \\
-0.4472 &amp; 0.8944 \\
-\end{bmatrix}\begin{bmatrix}
-2634&#39; &amp; 11634&#39; \\
-6326&#39; &amp; 2634&#39; \\
-\end{bmatrix}
-\]</span></p>
-<p>En esta proyección no es posible interpretar las correlaciones entre las
-variables ya que siempre son ortogonales en esta representación, donde los
-autovectores están escalados a 1.</p>
-<p>La proyección de <span class="math inline">\(u_{jk}\)</span> de una variable <span class="math inline">\(j\)</span> en el eje principal
-<span class="math inline">\(k\)</span> es <strong>proporcional</strong> a la <strong>covarianza</strong> de ese descriptor con el eje
-principal. Se puede comparar la proyección de diferentes ejes de variables en el
-mismo eje principal. Se puede probar que una proyección isogonal (con ángulos
-iguales) de <span class="math inline">\(p\)</span> ejes ortogonales de longitud uno da una longitud de
-<span class="math inline">\(\sqrt{\frac{d}{p}}\)</span> en cada eje de un espacio <span class="math inline">\(d\)</span>-dimensional.</p>
-<p>Se puede dibujar un <em>círculo de equilibrio de las variables</em> como referencia
-para evaluar la contribución de cada variable a la conformación del espacio
-reducido.</p>
+<p>2.- La siguiente tabla muestra la ganancia en peso de ratas macho sometidas a
+seis dietas diferentes:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">peso_rata <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">Alta.proteina =</span> Alta.proteina<span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2">                            <span class="dt">Baja.proteina =</span> Baja.proteina<span class="fl">.1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb175-3" data-line-number="3"><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:peso_rata) Datos de ganancia de peso (en g.)</span></a>
+<a class="sourceLine" id="cb175-4" data-line-number="4"><span class="st">       en ratas macho sometidas a seis dietas diferentes&quot;</span>)</a></code></pre></div>
 <table>
+<caption>(#tab:peso_rata) Datos de ganancia de peso (en g.)
+en ratas macho sometidas a seis dietas diferentes</caption>
 <colgroup>
-<col width="24%" />
-<col width="41%" />
-<col width="34%" />
+<col width="20%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Variable centrada <span class="math inline">\(j\)</span></th>
-<th>Escalado de los autovectores</th>
-<th></th>
+<th align="center">Fuente</th>
+<th align="center">Alta.proteina</th>
+<th align="center">Alta.proteina</th>
+<th align="center">Baja.proteina</th>
+<th align="center">Baja.proteina</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td><span class="math inline">\(\sqrt{\lambda_{k}}\)</span></td>
-<td>1</td>
+<td align="center">Carne de vaca</td>
+<td align="center">107</td>
+<td align="center">79</td>
+<td align="center">90</td>
+<td align="center">51</td>
 </tr>
 <tr class="even">
-<td>Longitud total</td>
-<td>s_{j}</td>
-<td>1</td>
+<td align="center">Carne de vaca</td>
+<td align="center">102</td>
+<td align="center">100</td>
+<td align="center">76</td>
+<td align="center">72</td>
 </tr>
 <tr class="odd">
-<td>Ángulos en el espacio reducido</td>
-<td>Proyección de las covarianzas (correlaciones)</td>
-<td>90°, rotaciones rígidas del sistema de ejes</td>
+<td align="center">Carne de vaca</td>
+<td align="center">118</td>
+<td align="center">87</td>
+<td align="center">90</td>
+<td align="center">90</td>
 </tr>
 <tr class="even">
-<td>Longitud de la contribución en equilibrio</td>
-<td><span class="math inline">\(s_{j}\sqrt{d/p}\)</span></td>
-<td>Círculo con radio <span class="math inline">\(\sqrt{\frac{d}{p}}\)</span></td>
+<td align="center">Carne de vaca</td>
+<td align="center">104</td>
+<td align="center">117</td>
+<td align="center">64</td>
+<td align="center">95</td>
 </tr>
 <tr class="odd">
-<td>Proyección en el eje principal <span class="math inline">\(k\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> (la covarianza con el componente k)</td>
-<td><span class="math inline">\(u_{jk}\)</span> (proporcional a la covarianza con <span class="math inline">\(k\)</span>)</td>
+<td align="center">Carne de vaca</td>
+<td align="center">81</td>
+<td align="center">111</td>
+<td align="center">86</td>
+<td align="center">78</td>
 </tr>
 <tr class="even">
-<td>Correlación con el eje principal <span class="math inline">\(k\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}/s_{j}\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}/s_{j}\)</span></td>
+<td align="center">Cereal</td>
+<td align="center">98</td>
+<td align="center">88</td>
+<td align="center">107</td>
+<td align="center">74</td>
+</tr>
+<tr class="odd">
+<td align="center">Cereal</td>
+<td align="center">74</td>
+<td align="center">82</td>
+<td align="center">95</td>
+<td align="center">74</td>
+</tr>
+<tr class="even">
+<td align="center">Cereal</td>
+<td align="center">56</td>
+<td align="center">77</td>
+<td align="center">97</td>
+<td align="center">67</td>
+</tr>
+<tr class="odd">
+<td align="center">Cereal</td>
+<td align="center">95</td>
+<td align="center">92</td>
+<td align="center">98</td>
+<td align="center">58</td>
+</tr>
+<tr class="even">
+<td align="center">Cereal</td>
+<td align="center">111</td>
+<td align="center">86</td>
+<td align="center">80</td>
+<td align="center">89</td>
+</tr>
+<tr class="odd">
+<td align="center">Carne de cerdo</td>
+<td align="center">94</td>
+<td align="center">102</td>
+<td align="center">49</td>
+<td align="center">97</td>
+</tr>
+<tr class="even">
+<td align="center">Carne de cerdo</td>
+<td align="center">79</td>
+<td align="center">108</td>
+<td align="center">82</td>
+<td align="center">106</td>
+</tr>
+<tr class="odd">
+<td align="center">Carne de cerdo</td>
+<td align="center">96</td>
+<td align="center">91</td>
+<td align="center">73</td>
+<td align="center">70</td>
+</tr>
+<tr class="even">
+<td align="center">Carne de cerdo</td>
+<td align="center">98</td>
+<td align="center">120</td>
+<td align="center">86</td>
+<td align="center">61</td>
+</tr>
+<tr class="odd">
+<td align="center">Carne de cerdo</td>
+<td align="center">102</td>
+<td align="center">105</td>
+<td align="center">81</td>
+<td align="center">82</td>
 </tr>
 </tbody>
 </table>
-<div id="biplots" class="section level3">
-<h3><span class="header-section-number">14.1.1</span> Biplots</h3>
-<p>Se le llama biplot al gráfico de componentes principales en donde se grafican al
-mismo tiempo los ejes de las variables y los objetos en el espacio reducido.
-Existen dos tipos de gráficos biplots según el escalamiento que se use:</p>
-<ul>
-<li><p>los de <em>distancia</em> se hacen con la yuxtaposición de la matriz <span class="math inline">\(\mathbf{U}\)</span>
-(los autovectores escalados a longitud unidad) y <span class="math inline">\(\mathbf{F}\)</span> (donde cada
-componente principal <span class="math inline">\(k\)</span> está escalado a la varianza = <span class="math inline">\(\lambda_{k}\)</span>),</p></li>
-<li><p>los de <em>correlación</em> usan la matriz
-<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span> para las variables (cada
-autovector escalado a longitud <span class="math inline">\(\sqrt{\lambda_{k}}\)</span>) y la matriz
-<span class="math inline">\(\mathbf{G} = \mathbf{F}\mathbf{\Lambda}^{\frac{1}{2}}\)</span> para los objetos,
-cuyas columnas tienen varianzas de unidad.</p></li>
-</ul>
-<p>Las principales propiedades de los biplot de distancias son:</p>
-<ol style="list-style-type: decimal">
-<li><p>La distancia entre los objetos del biplot <strong>son aproximaciones</strong> de sus
-distancias euclídeas en el espacio multidimensional.</p></li>
-<li><p>La proyección del objeto en ángulo recto sobre la variable da la posición
-aproximada del objeto en esa variable.</p></li>
-<li><p>Dado que las variables tienen longitud 1 en el espacio multidimensional, la
-longitud de su proyección sobre el espacio reducido indica <strong>cuanto
-contribuye</strong> a la formación de ese espacio.</p></li>
-<li><p>Los ángulos entre los vectores de las variables no tienen interpretación</p></li>
+<ol style="list-style-type: lower-alpha">
+<li>¿Hay diferencia entre los valores de proteína?</li>
+<li>¿Hay diferencia entre las fuentes animal y vegetal?</li>
+<li>La diferencia entre las fuentes animal y vegetal ¿varia con el nivel de proteína?</li>
+<li>¿Hay diferencia entre la carne vacuna y la de cerdo?</li>
+<li>La diferencia entre la carne vacuna y la de cerdo ¿varía con el nivel de proteína?</li>
 </ol>
-<p>En los biplots de correlación:</p>
-<ol style="list-style-type: decimal">
-<li><p>Las distancias entre los objetos del biplot <strong>no son aproximaciones</strong> de sus
-distancias euclídeas en el espacio multidimensional.</p></li>
-<li><p>La proyección del objeto en ángulo recto sobre la variable da la posición
-aproximada del objeto en esa variable.</p></li>
-<li><p>Dado que la longitud de las variables es <span class="math inline">\(s_{j}\)</span> en un espacio
-multidimensional completo, la longitud de la proyección de la variable en el
-espacio reducido es una aproximación de su <strong>desvío estándar</strong>.</p></li>
-<li><p>Lo <strong>ángulos</strong> entre las variables reflejan su <strong>correlación</strong>.</p></li>
-</ol>
-<p>En cualquiera de los dos casos, los objetos o variables pueden ser multiplicados
-por una constante para producir un gráfico claro.</p>
-</div>
-</div>
-<div id="componentes-principales-de-una-matriz-de-correlacion" class="section level2">
-<h2><span class="header-section-number">14.2</span> Componentes principales de una matriz de correlación</h2>
-<p>También puede realizar este análisis sobre una matriz <span class="math inline">\(\mathbf{R}\)</span> de
-correlación, ya que las correlaciones son las covarianzas estandarizadas de las
-variables. La suma de autovalores de <span class="math inline">\(S\)</span> es igual a la suma de varianzas,
-mientras que la suma de autovalores de <span class="math inline">\(\mathbf{R}\)</span> es igual <span class="math inline">\(p\)</span>, por lo que
-los autovalores y por lo tanto los autovectores son diferentes. Esto se debe a
-que las distancias entre los objetos no son las mismas en los dos casos.</p>
-<p>En el caso de las correlaciones, las variables están estandarizadas. Por lo
-tanto, las distancias entre los objetos son independientes de las unidades de
-medición, por otro lado, las que están en el espacio original de medida cambian
-de acuerdo a su cambio en unidad de medida. Cuando todas las variables son del
-mismo orden de magnitud y tienen las mismas unidades conviene usar la matriz
-<span class="math inline">\(\mathbf{S}\)</span>. En ese caso, los autovectores y los coeficientes de correlación
-entre las variables y los componen proporcionan información complementaria. El
-primero da la ponderación de las variables y el segundo cuantifica su
-importancia relativa. Cuando las variables son de naturaleza diferente, puede
-ser necesario usar la matriz <span class="math inline">\(\mathbf{R}\)</span> en vez de <span class="math inline">\(\mathbf{S}\)</span>.</p>
-<p>¿Cuándo usar una <span class="math inline">\(\mathbf{S}\)</span> o <span class="math inline">\(\mathbf{R}\)</span>?</p>
-<ul>
-<li>Si uno quiere agrupar los objetos en el espacio reducido ¿El agrupamiento
-debe hacerse con respecto a las variables originales, por lo tanto,
-preservando sus diferencias en magnitud? ¿O las variables deberían
-contribuir de igual forma al agrupamiento de los objetos, independientemente
-de su varianza? En el segundo caso uno debería proceder con la matriz de
-correlación</li>
-</ul>
-<p>Otra forma de ver esto es:</p>
-<ul>
-<li>Considere que la distancia euclídea es la que se conserva entre los objetos
-con el análisis de componente principales. ¿Qué es más interesante de
-interpretar en términos de la configuración espacial de las distancias
-euclídeas? La covarianza (los datos crudos) o las correlaciones (los datos
-estandarizados)</li>
-</ul>
-<p>Igual que con el caso anterior, el análisis de componentes principales es una
-rotación del sistema de ejes. Pero, como ahora las variables están
-<em>estandarizadas</em>, los objetos no están posicionados de la misma forma que si las
-variables fuesen solo <em>centradas</em>.</p>
-<p>Las conclusiones de lo visto anteriormente no cambian, solo hay que reemplazar
-matriz de dispersión <span class="math inline">\(\mathbf{S}\)</span> por matriz de correlación <span class="math inline">\(\mathbf{R}\)</span>,
-covarianza por correlación y <span class="math inline">\(s_{jl}\)</span> por <span class="math inline">\(r_{jl}\)</span>. Por lo
-tanto, las varianzas y desvíos estándar son iguales a 1. Lo que da lugar a
-ciertas propiedades especiales para la matriz
-<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>. Primero, <span class="math inline">\(\mathbf{D}\left( s \right) = \mathbf{I}\)</span>, por lo que <span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}} = \mathbf{D}\left( s \right)^{- 1}\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>, esto
-significa que los coeficientes <span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> son los
-coeficientes de correlación entre las variables <span class="math inline">\(j\)</span> y los componentes <span class="math inline">\(k\)</span>.
-La contribución en equilibrio, en el espacio reducido de
-<span class="math inline">\(\mathbf{U}\mathbf{\Lambda}^{\frac{1}{2}}\)</span>, es <span class="math inline">\(s_{j}\sqrt{\frac{d}{p}} = \sqrt{\frac{d}{p}}\)</span> (<span class="math inline">\(s_{j} = 1\)</span>). Por lo tanto, es posible juzgar si la
-contribución de una variable es mayor o menor a lo esperado comparando la
-longitud de las proyecciones a un círculo de equilibrio con radio
-<span class="math inline">\(\sqrt{\frac{d}{p}}\)</span>.</p>
-<p>Las propiedades principales de un variable estandarizada se dan en la tabla de
-abajo.</p>
-<table>
+<p><strong>Pista</strong>: Piensen en los contrastes que son necesarios hacer.</p>
+<p>3.- Se desean comparar tres genotipos distintos de <em>Drosophila melanogaster</em>
+observando si existen diferencias de viabilidad sembrando 100 y 800 huevos. De
+este modo para cada uno de los tratamientos se dispusieron 6 preparados y al
+cabo de un tiempo suficiente de ser sembrados los huevos se obtuvo el porcentaje
+de huevos que hablan eclosionado. Los resultados fueron:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">huevos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">d$&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:huevos) Viabilidad en porcentaje de huevos sembrados</span></a>
+<a class="sourceLine" id="cb176-3" data-line-number="3"><span class="st">       para tres genotipos (PP, NN, PN) sembrando distintas cantidades de</span></a>
+<a class="sourceLine" id="cb176-4" data-line-number="4"><span class="st">       huevos&quot;</span>)</a></code></pre></div>
+<table style="width:100%;">
+<caption><span id="tab:huevos">Tabla 8.2: </span> Viabilidad en porcentaje de huevos sembrados
+para tres genotipos (PP, NN, PN) sembrando distintas cantidades de
+huevos</caption>
 <colgroup>
-<col width="24%" />
-<col width="41%" />
-<col width="34%" />
+<col width="23%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Variable estandarizada <span class="math inline">\(j\)</span></th>
-<th>Escalado de los autovectores</th>
-<th></th>
+<th align="center">Huevos.Sembrados</th>
+<th align="center">PP</th>
+<th align="center">PP</th>
+<th align="center">PP</th>
+<th align="center">PN</th>
+<th align="center">PN</th>
+<th align="center">PN</th>
+<th align="center">NN</th>
+<th align="center">NN</th>
+<th align="center">NN</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td><span class="math inline">\(\sqrt{\lambda_{k}}\)</span></td>
-<td>1</td>
+<td align="center">100</td>
+<td align="center">93</td>
+<td align="center">94</td>
+<td align="center">93</td>
+<td align="center">95.5</td>
+<td align="center">83.5</td>
+<td align="center">92</td>
+<td align="center">92</td>
+<td align="center">91</td>
+<td align="center">90</td>
 </tr>
 <tr class="even">
-<td>Longitud total</td>
-<td>1</td>
-<td>1</td>
+<td align="center">100</td>
+<td align="center">90</td>
+<td align="center">93</td>
+<td align="center">86</td>
+<td align="center">92.5</td>
+<td align="center">82</td>
+<td align="center">82.5</td>
+<td align="center">95</td>
+<td align="center">84</td>
+<td align="center">78</td>
 </tr>
 <tr class="odd">
-<td>Ángulos en el espacio reducido</td>
-<td>Proyección de las correlaciones</td>
-<td>90°, rotaciones rígidas del sistema de ejes</td>
+<td align="center">800</td>
+<td align="center">83.3</td>
+<td align="center">80.1</td>
+<td align="center">79.6</td>
+<td align="center">84</td>
+<td align="center">84.4</td>
+<td align="center">77</td>
+<td align="center">85.3</td>
+<td align="center">89.4</td>
+<td align="center">85.4</td>
 </tr>
 <tr class="even">
-<td>Longitud de la contribución en equilibrio</td>
-<td><span class="math inline">\(\sqrt{d/p}\)</span></td>
-<td>Círculo con radio <span class="math inline">\(\sqrt{\frac{d}{p}}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Proyección en el eje principal <span class="math inline">\(k\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span> (la covarianza con el componente k)</td>
-<td><span class="math inline">\(u_{jk}\)</span> (proporcional a la covarianza con <span class="math inline">\(k\)</span>)</td>
-</tr>
-<tr class="even">
-<td>Correlación con el eje principal <span class="math inline">\(k\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span></td>
-<td><span class="math inline">\(u_{jk}\sqrt{\lambda_{k}}\)</span></td>
+<td align="center">800</td>
+<td align="center">87.6</td>
+<td align="center">81.9</td>
+<td align="center">49.4</td>
+<td align="center">67</td>
+<td align="center">69.1</td>
+<td align="center">88.4</td>
+<td align="center">87.4</td>
+<td align="center">52</td>
+<td align="center">77</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div id="cuantos-componentes-son-significativos" class="section level2">
-<h2><span class="header-section-number">14.3</span> ¿Cuantos componentes son significativos?</h2>
-<p>Una propiedad de los componentes es que cada uno representa una cantidad cada
-vez menor de la varianza total. Por lo tanto, un problema es cuantos componentes
-son significativos en términos biológicos. La misma pregunta vista de otra
-manera es, cuantas dimensiones tendría que tener el espacio reducido. La mejor
-manera de ver esto es con diagrama de Shepard. Sin embargo, dado que el análisis
-de componentes principales es una forma de partición de la varianza uno podría
-realizar una prueba formal para la varianza asociada con los sucesivos ejes
-principales.</p>
-<p>Existen varias pruebas clásicas para contestar esta pregunta, pero el problema
-que tienen es que requieren normalidad en las variables, una condición que rara
-vez se cumple por datos ecológicos.</p>
-<p>Hay una regla empírica que sugiere que solo se deben interpretar los componentes
-principales si su autovalor <span class="math inline">\(\lambda\)</span> es mayor que la media de los
-<span class="math inline">\(\lambda\)</span>. Este es llamado el criterio Kaiser-Guttman.</p>
-<p>Otra forma, también empírica, es comparar los valores decrecientes de los
-autovalores con los valores de modelo de bastón roto. Considere que la varianza
-es un recurso embebida en un bastón de longitud 1. Si los componentes
-principales dividieran la varianza al azar entre los ejes principales, las
-fracciones de la varianza explicada por los ejes principales tendría la misma
-longitud relativa que las piezas obtenidas al romper el bastón en puntos al azar
-en tantas piezas como ejes. Si un bastón de unidad es roto en al azar en <span class="math inline">\(p = 2,\ 3,\ \ldots\)</span> piezas, los valores esperados (E) de las longitudes relativas
-de las piezas sucesivamente menores (j) están dados por la ecuación:</p>
-<p><span class="math display">\[
-E\left( \text{pieza}_{j} \right) = \frac{1}{p}\sum_{x = j}^{p}\frac{1}{x}
-\]</span></p>
-<p>Los valores esperados son iguales a la media de las longitudes que fuesen
-obtenidas al romper el bastón al azar muchas veces y calcular la media de la
-pieza más grande, la segunda más grande, etc. No tendría sentido interpretar los
-ejes principales que explican una fracción de la varianza menor o igual que la
-predicha por el modelo del bastón roto. Puede comprobarse que ejes deben
-interpretarse consultando una tabla y seleccionando los autovalores que son
-mayores que las predicciones del modelo. O comparar la suma de los autovalores
-de 1 hasta <span class="math inline">\(k\)</span> con la suma de los valores de 1 hasta <span class="math inline">\(k\)</span> en el modelo. Esta
-prueba generalmente selecciona los primeros dos o tres componentes principales.</p>
-</div>
-<div id="mal-uso-de-los-componentes-principales" class="section level2">
-<h2><span class="header-section-number">14.4</span> Mal uso de los componentes principales</h2>
-<p>Los errores más comunes son: uso de las variables para las cuales la covarianza
-no tiene sentido y la interpretación de la relación entre variables, en el
-espacio reducido, basa en las posiciones relativas de los ápices de los ejes en
-vez de los ángulos entre ellas.</p>
-<p>El análisis de componentes principales fue definido originalmente para el
-estudio de datos con distribución multinormal, por lo que para usarlo
-óptimamente es necesario normalizar los datos. Las desviaciones de la normalidad
-no afectan necesariamente el análisis. Hay que tener cuidado con las
-distribuciones sesgadas, los primeros ejes principales solo van a separar los
-pocos objetos con valores extremos del resto, en vez de mostrar los ejes
-principales de variación de todos los objetos en estudio.</p>
-<p>El método debe ser usado con una matriz de varianzas o correlaciones con las
-siguientes propiedades: a) la matriz S o R ha sido calculada entre variables b)
-que son cuantitativos y c) para las cuales estimadores validos de la covarianza
-pueden ser obtenidos. Esto se viola bajo las siguientes condiciones:</p>
-<ol style="list-style-type: decimal">
-<li><p>Una matriz de dispersión no puede ser estimada cuando el número de
-observaciones n es menor o igual al número de variables p. El número de
-objetos de ser mayor a p para obtener estimadores validos de la matriz de
-dispersión. Sin embargo, los primeros ejes principales son poco afectados
-por cuando la matriz no es rango completo. Por lo que no debería haber
-interpretaciones incorrectas de las ordenaciones en espacio reducido.</p></li>
-<li><p>Algunos autores han transpuesto las matriz original y computado
-correlaciones entre objetos en vez de entre variables. Esto no tiene sentido
-porque el análisis produce información tanto de los objetos como de las
-variables. Además, la covarianza entre objetos no tiene sentido. Y la
-correlación implica estandarización de los vectores, y solo tiene sentido
-para datos dimensionalmente homogéneos.</p></li>
-<li><p>Las covarianzas y correlaciones solo están definidas para variables
-cuantitativas. Sin embargo, el análisis de componentes principales es muy
-robusto a variaciones de precisión de los datos. Las variables pueden ser
-recodificadas en pocas clases sin cambiar notablemente los resultados. Los
-coeficientes de correlación usando datos semicuantitativos son equivalentes
-al coeficiente de correlación de rangos de Spearman.</p></li>
-<li><p>Cuando se calcula en conjuntos de datos con muchos doble ceros, los
-coeficientes de covarianza o correlación dan ordenaciones que producen
-estimadores inadecuados de las distancias entre objetos. Con este tipo de
-datos solo se debe usar componentes principales en gradientes pequeños.</p></li>
+<ol style="list-style-type: lower-alpha">
+<li>¿Son diferentes los tres genotipos en cuanto a viabilidad?</li>
+<li>¿Es distinta la viabilidad sembrando 100 u 800 huevos?</li>
+<li>¿Existe interacción entre genotipo y número de huevos?</li>
+<li>¿Es necesario transformar los datos? ¿Por qué? Si su respuesta es
+afirmativa vuelva a realizar los análisis, comprobar supuestos y revise sus
+conclusiones.</li>
 </ol>
+<p>Datos transformados con arcoseno.</p>
+<p>4.- Se sembró <em>Lactobacíllus fermentus</em> en una mezcla de agar y un medio de
+cultivo sin tiamina se llenaron 18 tubos de ensayo con una cantidad fija de
+la mezcla. A grupos de tres, elegidos al azar, se les agregó un sobrenadante
+que contenía una dosis fija de tres preparaciones de tiamina. Después de una
+incubación por 18 horas se midió el crecimiento de L. fermentus en términos
+del largo de la columna de nebulosidad que se desarrolla por debajo del
+sobrenadante:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">yogur <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">Concentracion_de_tiamina =</span> Concent..de.tiamina) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb177-2" data-line-number="2"><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:yogur) Nebulosidad (1/Transmitancia) de cultivos</span></a>
+<a class="sourceLine" id="cb177-3" data-line-number="3"><span class="st">       de *Lactobacíllus fermentus* bajo varias concentraciones de tiamina.&quot;</span>)</a></code></pre></div>
+<table style="width:67%;">
+<caption><span id="tab:yogur">Tabla 8.3: </span> Nebulosidad (1/Transmitancia) de cultivos
+de <em>Lactobacíllus fermentus</em> bajo varias concentraciones de tiamina.</caption>
+<colgroup>
+<col width="37%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Concentracion_de_tiamina</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.0125</td>
+<td align="center">5.5</td>
+<td align="center">6.4</td>
+<td align="center">5.2</td>
+</tr>
+<tr class="even">
+<td align="center">0.05</td>
+<td align="center">6.9</td>
+<td align="center">7.3</td>
+<td align="center">6.9</td>
+</tr>
+<tr class="odd">
+<td align="center">0.2</td>
+<td align="center">10.1</td>
+<td align="center">10</td>
+<td align="center">10.2</td>
+</tr>
+<tr class="even">
+<td align="center">0.8</td>
+<td align="center">12.3</td>
+<td align="center">12.5</td>
+<td align="center">12.7</td>
+</tr>
+<tr class="odd">
+<td align="center">3.2</td>
+<td align="center">18.3</td>
+<td align="center">18.5</td>
+<td align="center">15.9</td>
+</tr>
+<tr class="even">
+<td align="center">12.8</td>
+<td align="center">17.3</td>
+<td align="center">19.5</td>
+<td align="center">21.6</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>¿Qué tipo de diseño es?</li>
+<li>A un nivel del 1% y del 5% docimar la hipótesis de no significación entre
+las preparaciones y entre las dosis. Interpretar los resultados.</li>
+<li>Hacer un estudio de perfiles.</li>
+</ol>
+<p>5.- La siguiente tabla ilustra el engorde semanal de cerdos clasificados por
+sexo, con tres tipos de alimentación A, B y C.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">pander</span>(<span class="kw">setNames</span>(cerdos, <span class="kw">c</span>(<span class="st">&quot;&amp;nbsp;&quot;</span>, LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])), <span class="dt">caption =</span> <span class="st">&quot;(#tab:cerdos) </span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="st">       Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos </span></a>
+<a class="sourceLine" id="cb178-3" data-line-number="3"><span class="st">       de alimentación A, B y C&quot;</span>)</a></code></pre></div>
+<table style="width:42%;">
+<caption><span id="tab:cerdos">Tabla 8.4: </span>
+Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos
+de alimentación A, B y C</caption>
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Macho</td>
+<td align="center">9.52</td>
+<td align="center">10</td>
+<td align="center">9.75</td>
+</tr>
+<tr class="even">
+<td align="center">Hembra</td>
+<td align="center">9.94</td>
+<td align="center">8.51</td>
+<td align="center">9.11</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>Hacer un estudio de perfiles</li>
+<li>Comprobar los supuestos del modelo</li>
+<li>Estudiar si existe variabilidad entre sexos y entre tipos de alimentación</li>
+</ol>
+<p>6.- Se eligen al azar seis laboratorios para analizar la concentración de
+humedad en cuatro tipos de levadura: de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV). A cada uno de los laboratorios se les
+entregan recipientes con uno de los cuatro tipos de levadura, pero sin indicar
+cual. La concentración de humedad se analiza por secado de horno al vacío.
+Los datos que se dan a continuación corresponden al contenido de humedad (en
+términos de % de humedad - 6.00) de 4 alícuotas de 2 gramos cada una.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="kw">pander</span>(levadura, <span class="dt">caption =</span> <span class="st">&quot;(#tab:levadura) Humedad (en porcentaje) de cuatro</span></a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="st">       tipos de levadura (de panadería (I), liviana de cerveza (II),</span></a>
+<a class="sourceLine" id="cb179-3" data-line-number="3"><span class="st">pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios </span></a>
+<a class="sourceLine" id="cb179-4" data-line-number="4"><span class="st">diferentes.&quot;</span>)</a></code></pre></div>
+<table style="width:88%;">
+<caption><span id="tab:levadura">Tabla 8.5: </span> Humedad (en porcentaje) de cuatro
+tipos de levadura (de panadería (I), liviana de cerveza (II),
+pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios
+diferentes.</caption>
+<colgroup>
+<col width="29%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Laboratorio</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">de panadería</td>
+<td align="center">0.81</td>
+<td align="center">0.69</td>
+<td align="center">0.74</td>
+<td align="center">0.6</td>
+<td align="center">0.41</td>
+<td align="center">0.74</td>
+</tr>
+<tr class="even">
+<td align="center">de panadería</td>
+<td align="center">0.73</td>
+<td align="center">0.82</td>
+<td align="center">0.77</td>
+<td align="center">0.57</td>
+<td align="center">0.52</td>
+<td align="center">0.77</td>
+</tr>
+<tr class="odd">
+<td align="center">de panadería</td>
+<td align="center">0.19</td>
+<td align="center">0.78</td>
+<td align="center">0.7</td>
+<td align="center">0.65</td>
+<td align="center">0.59</td>
+<td align="center">0.79</td>
+</tr>
+<tr class="even">
+<td align="center">de panadería</td>
+<td align="center">0.82</td>
+<td align="center">0.67</td>
+<td align="center">0.67</td>
+<td align="center">0.57</td>
+<td align="center">0.59</td>
+<td align="center">0.81</td>
+</tr>
+<tr class="odd">
+<td align="center">pesada de cerveza</td>
+<td align="center">0.86</td>
+<td align="center">0.98</td>
+<td align="center">0.8</td>
+<td align="center">0.63</td>
+<td align="center">0.55</td>
+<td align="center">0.56</td>
+</tr>
+<tr class="even">
+<td align="center">pesada de cerveza</td>
+<td align="center">0.87</td>
+<td align="center">0.84</td>
+<td align="center">0.78</td>
+<td align="center">0.66</td>
+<td align="center">0.62</td>
+<td align="center">0.63</td>
+</tr>
+<tr class="odd">
+<td align="center">pesada de cerveza</td>
+<td align="center">0.92</td>
+<td align="center">0.76</td>
+<td align="center">0.58</td>
+<td align="center">0.58</td>
+<td align="center">0.83</td>
+<td align="center">0.67</td>
+</tr>
+<tr class="even">
+<td align="center">pesada de cerveza</td>
+<td align="center">0.99</td>
+<td align="center">0.78</td>
+<td align="center">0.72</td>
+<td align="center">0.49</td>
+<td align="center">0.87</td>
+<td align="center">0.73</td>
+</tr>
+<tr class="odd">
+<td align="center">liviana de cerveza</td>
+<td align="center">0.65</td>
+<td align="center">0.62</td>
+<td align="center">0.48</td>
+<td align="center">0.5</td>
+<td align="center">0.15</td>
+<td align="center">0.43</td>
+</tr>
+<tr class="even">
+<td align="center">liviana de cerveza</td>
+<td align="center">0.68</td>
+<td align="center">0.68</td>
+<td align="center">0.48</td>
+<td align="center">0.34</td>
+<td align="center">0.23</td>
+<td align="center">0.46</td>
+</tr>
+<tr class="odd">
+<td align="center">liviana de cerveza</td>
+<td align="center">0.65</td>
+<td align="center">0.56</td>
+<td align="center">0.33</td>
+<td align="center">0.47</td>
+<td align="center">0.56</td>
+<td align="center">0.52</td>
+</tr>
+<tr class="even">
+<td align="center">liviana de cerveza</td>
+<td align="center">0.73</td>
+<td align="center">0.44</td>
+<td align="center">0.34</td>
+<td align="center">0.43</td>
+<td align="center">0.53</td>
+<td align="center">0.51</td>
+</tr>
+<tr class="odd">
+<td align="center">Torula</td>
+<td align="center">2.25</td>
+<td align="center">2.15</td>
+<td align="center">2.16</td>
+<td align="center">2.16</td>
+<td align="center">1.88</td>
+<td align="center">2.06</td>
+</tr>
+<tr class="even">
+<td align="center">Torula</td>
+<td align="center">2.23</td>
+<td align="center">2.13</td>
+<td align="center">2.21</td>
+<td align="center">1.9</td>
+<td align="center">1.88</td>
+<td align="center">1.12</td>
+</tr>
+<tr class="odd">
+<td align="center">Torula</td>
+<td align="center">2.2</td>
+<td align="center">1.87</td>
+<td align="center">2.03</td>
+<td align="center">1.86</td>
+<td align="center">2.04</td>
+<td align="center">2.1</td>
+</tr>
+<tr class="even">
+<td align="center">Torula</td>
+<td align="center">2.16</td>
+<td align="center">1.87</td>
+<td align="center">2.1</td>
+<td align="center">1.84</td>
+<td align="center">2.06</td>
+<td align="center">2.15</td>
+</tr>
+</tbody>
+</table>
+<p>7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
+diferentes profundidades, con los siguientes resultados</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">lago <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;X&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb180-2" data-line-number="2"><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:lago) Temperatura de un lago (°C) en cuatro tardes</span></a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="st">       elegidas al azar durante el verano en distintas profundidades (m).&quot;</span>)</a></code></pre></div>
+<table style="width:58%;">
+<caption><span id="tab:lago">Tabla 8.6: </span> Temperatura de un lago (°C) en cuatro tardes
+elegidas al azar durante el verano en distintas profundidades (m).</caption>
+<colgroup>
+<col width="19%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">profundidad</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">23.8</td>
+<td align="center">24</td>
+<td align="center">24.6</td>
+<td align="center">24.8</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">22.6</td>
+<td align="center">22.4</td>
+<td align="center">22.9</td>
+<td align="center">23.2</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">22.2</td>
+<td align="center">22.1</td>
+<td align="center">22.1</td>
+<td align="center">22.2</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">21.2</td>
+<td align="center">21.8</td>
+<td align="center">21</td>
+<td align="center">21.2</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">18.4</td>
+<td align="center">19.3</td>
+<td align="center">19</td>
+<td align="center">18.8</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">13.5</td>
+<td align="center">14.4</td>
+<td align="center">14.2</td>
+<td align="center">13.8</td>
+</tr>
+</tbody>
+</table>
+<p>¿Que tipo de diseño se utilizó?
+Examinar si hay diferencias entre profundidades y entre fechas</p>
+<p>No se puede hacer un test formal de normalidad para cada grupo debido al bajo número de replicas.</p>
 
 </div>
 </div>
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="regresion.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="anova-de-dos-factores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-wilcoxon-mann-whitney-para-dos-pruebas-independientes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1097,7 +1138,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/ordenacion.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/problemas-anova-dos-factores.Rmd",
 "text": "Edit"
 },
 "download": ["EACN.pdf", "EACN.epub"],

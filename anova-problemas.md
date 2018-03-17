@@ -1,6 +1,7 @@
 
 
 
+
 # Problemas ANOVA Simple
 
 Para analizar datos con ANOVA en R hay que conocer unas pocas funciones 
@@ -251,12 +252,15 @@ del cajón `normalidad` y la variable `p.value` que es igual a extraer la caja
 
 ## Problemas
 
-Primero bajen la planilla para completar los problemas:
+<div class="atencion">
+<p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
+</div>
 
+`download.file("git.io/informe-anova.Rmd", "informe-anova.Rmd")`
 
-```r
-download.file("git.io/informe-anova.Rmd", "informe-anova.Rmd")
-```
+<div class="atencion">
+<p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
+</div>
 
 
 
@@ -296,10 +300,7 @@ g <- 5 + 1
 # Número de réplicas por grupo N-I/I
 n <- (54 + g) / g
 
-# bv <- (as.numeric(as.character(soja$SC[1])) +
-#          as.numeric(as.character(soja$SC[2]))) / (n*g-1)/n
-
-# Varianza entre grupo CM entre /n
+# Varianza entre grupos CM entre /n
 bv <- 754.25 / 5 / n
 
 # Varianza dentro de grupos CM dentro
@@ -464,7 +465,7 @@ y de las comparaciones de entre ellas.
 plot(alga.em, comparisons = TRUE)
 ```
 
-![](anova-problemas_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+![](anova-problemas_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
 
 Las barras azules son los intervalos de confianza para las medias y las flechas
 rojas son los intervalos de confianza de las comparaciones entre ellos. Si las
