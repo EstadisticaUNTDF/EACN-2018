@@ -1,50 +1,5 @@
 
 
-```r
-library(tidyverse)
-```
-
-```
-## ── Attaching packages ────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ ggplot2 2.2.1.9000     ✔ purrr   0.2.4     
-## ✔ tibble  1.4.2          ✔ dplyr   0.7.4     
-## ✔ tidyr   0.8.0          ✔ stringr 1.3.0     
-## ✔ readr   1.1.1          ✔ forcats 0.3.0
-```
-
-```
-## ── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
-```r
-library(magrittr)
-```
-
-```
-## 
-## Attaching package: 'magrittr'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     set_names
-```
-
-```
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-```
-
-```r
-solucion <- FALSE
-```
 
 # Ejercicios de dos muestras no paramétrico
 
@@ -489,9 +444,69 @@ wilcox.test(formula = permeabilidad ~ muestra, alternative = "greater", data = p
 
 **¡Noten que los resultados son muy distintos!**
 
+## Muestras apareadas
+
+En el caso de tener muestras apareadas, la función para realizar la prueba 
+la prueba de *Wilcoxon de rangos con signos*  es la misma que usamos antes
+`wilcox.test()`. Debemos indicar que se trata de muestras apareadas con
+el argumento `paired = TRUE`. Además, no acepta formulas. Ejemplo de la ayuda
+de `wilcox.test()`:
+
+
+```r
+## One-sample test.
+## Hollander & Wolfe (1973), 29f.
+## Hamilton depression scale factor measurements in 9 patients with
+##  mixed anxiety and depression, taken at the first (x) and second
+##  (y) visit after initiation of a therapy (administration of a
+##  tranquilizer).
+x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88, 1.55, 3.06, 1.30)
+y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29, 1.06, 3.14, 1.29)
+wilcox.test(x, y, paired = TRUE, alternative = "greater")
+```
+
+```
+## 
+## 	Wilcoxon signed rank test
+## 
+## data:  x and y
+## V = 40, p-value = 0.01953
+## alternative hypothesis: true location shift is greater than 0
+```
+
+
+```r
+tibble(x, y) %>% 
+  gather(tiempo, hamilton) %>% 
+  ggplot(aes(tiempo, hamilton)) +
+  geom_boxplot()
+```
+
+![](No-Parametrico_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
+
+Como no tiene opción para usar formula, tampoco funciona el argumento `data`. 
+Solo funciona si las columnas están directamente disponibles en el espacio de
+trabajo. Hacerlo implica de alguna forma desorganizar los datos, que ya no 
+estarán juntos sino que estarán separados en el espacio de trabajo. Por ejemplo,
+si hay columnas `antes` y `después` dentro de *data frames* diferentes, 
+también a hay que poner alguna indicación de donde vino esa columna. Hay una
+manera mejor de hacer esto. Usando el operador `%$%`*exposition*, del paquete 
+`magrittr`. Funciona de manera similar `%>%` *pipe*, pero expone los nombres
+de las columnas del lado izquierdo a la función de lado derecho.
+
+
+```r
+data.frame(z = rnorm(100)) %$%
+  ts.plot(z)
+```
+
+![](No-Parametrico_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
+
+
 ## Problemas
 
-En todos los casos indicar la hipótesis nula y la alternativa. Graficar y realizar la prueba.
+En todos los casos indicar la hipótesis nula y la alternativa. Graficar y 
+realizar la prueba apropiada.
 
 
 Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
@@ -571,7 +586,7 @@ jefes
 
 
 
-\BeginKnitrBlock{definition}<div class="definition"><span class="definition" id="def:unnamed-chunk-11"><strong>(\#def:unnamed-chunk-11) </strong></span>Más adelante no podrán usar la formulas para hacer las pruebas apareadas.
+\BeginKnitrBlock{definition}<div class="definition"><span class="definition" id="def:unnamed-chunk-14"><strong>(\#def:unnamed-chunk-14) </strong></span>Más adelante no podrán usar la formulas para hacer las pruebas apareadas.
 Para hacer comparaciones de datos apareados cada unidad muestral debe estar en
 una fila, con dos columnas: una para antes y otra para el después. Sin embargo,
 esta forma no permite utilizar el argumento `data` para indicar donde se 

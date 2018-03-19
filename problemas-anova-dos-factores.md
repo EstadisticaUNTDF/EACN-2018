@@ -62,7 +62,13 @@ matrix(1:10, nrow = 2)
 
 
 Esto implica que los datos que queramos comprobar deben estar en formato
-ancho y sin las columnas que identifican los tratamientos.
+ancho y sin las columnas que identifican los tratamientos. Por la tanto
+si los datos están en formato largo: 1- deben ser puestos en formato ancho,
+2- eliminar las columnas que no continen la variable de respuesta, 3 - covertir
+a matriz, 4- realizar la prueba de aditividad de Tukey. Vean el ejercicio 4 
+para un ejemplo de como se aplica.
+
+
 
 ## Problemas
 
@@ -75,6 +81,7 @@ ancho y sin las columnas que identifican los tratamientos.
 
 <div class="atencion">
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
+<p>En todos los casos recuerden hacer gráficos, comprobar supuestos e indicar que tipo de diseño es.</p>
 </div>
 
 
@@ -139,7 +146,7 @@ seis dietas diferentes:
 ```r
 peso_rata %>% dplyr::rename(Alta.proteina = Alta.proteina.1,
                             Baja.proteina = Baja.proteina.1) %>% 
-pander(caption = "(#tab:peso_rata) Datos de ganancia de peso (en g.)
+pander(caption = "(#tab:peso-rata) Datos de ganancia de peso (en g.)
        en ratas macho sometidas a seis dietas diferentes")
 ```
 
@@ -178,7 +185,7 @@ pander(caption = "(#tab:peso_rata) Datos de ganancia de peso (en g.)
  Carne de cerdo        102             105             81              82       
 --------------------------------------------------------------------------------
 
-Table: (#tab:peso_rata) Datos de ganancia de peso (en g.)
+Table: (#tab:peso-rata) Datos de ganancia de peso (en g.)
        en ratas macho sometidas a seis dietas diferentes
 
 a)	¿Hay diferencia entre los valores de proteína?

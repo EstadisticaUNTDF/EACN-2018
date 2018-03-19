@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-17">
+<meta name="date" content="2018-03-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -303,7 +303,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#reproduciendo-el-algoritmo-manualmente"><i class="fa fa-check"></i><b>10.1</b> Reproduciendo el algoritmo manualmente</a></li>
 <li class="chapter" data-level="10.2" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#funciones-no-parametricas-en-r"><i class="fa fa-check"></i><b>10.2</b> Funciones no paramétricas en <em>R</em></a></li>
 <li class="chapter" data-level="10.3" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#formulas"><i class="fa fa-check"></i><b>10.3</b> Fórmulas</a></li>
-<li class="chapter" data-level="10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas-2"><i class="fa fa-check"></i><b>10.4</b> Problemas</a></li>
+<li class="chapter" data-level="10.4" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#muestras-apareadas"><i class="fa fa-check"></i><b>10.4</b> Muestras apareadas</a></li>
+<li class="chapter" data-level="10.5" data-path="ejercicios-de-dos-muestras-no-parametrico.html"><a href="ejercicios-de-dos-muestras-no-parametrico.html#problemas-2"><i class="fa fa-check"></i><b>10.5</b> Problemas</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html"><i class="fa fa-check"></i><b>11</b> ANOVA No Paramétrico</a><ul>
 <li class="chapter" data-level="11.1" data-path="anova-no-parametrico.html"><a href="anova-no-parametrico.html#pruebas-para-varias-muestras-independientes"><i class="fa fa-check"></i><b>11.1</b> Pruebas para varias muestras independientes</a><ul>
@@ -695,10 +696,10 @@ considerando el valor de <span class="math inline">\(M\)</span> fue:</p>
 diferente de las demás.</p>
 <p>Se puede utilizar la función <code>Median.test()</code> en R. La tabla de resultados obtenida
 es:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">trt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">7</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb249-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">91</span>, <span class="dv">94</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">96</span>, <span class="dv">91</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">91</span>, <span class="dv">89</span>, </a>
-<a class="sourceLine" id="cb249-3" data-line-number="3">       <span class="dv">84</span>, <span class="dv">101</span>, <span class="dv">100</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">96</span>, <span class="dv">95</span>, <span class="dv">94</span>, <span class="dv">78</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">81</span>)</a>
-<a class="sourceLine" id="cb249-4" data-line-number="4"><span class="kw">Median.test</span>(y, trt, <span class="dt">group =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">trt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">7</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb244-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">91</span>, <span class="dv">94</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">96</span>, <span class="dv">91</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">91</span>, <span class="dv">89</span>, </a>
+<a class="sourceLine" id="cb244-3" data-line-number="3">       <span class="dv">84</span>, <span class="dv">101</span>, <span class="dv">100</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">96</span>, <span class="dv">95</span>, <span class="dv">94</span>, <span class="dv">78</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">81</span>)</a>
+<a class="sourceLine" id="cb244-4" data-line-number="4"><span class="kw">Median.test</span>(y, trt, <span class="dt">group =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## 
 ## The Median Test for y ~ trt 
 ## 
