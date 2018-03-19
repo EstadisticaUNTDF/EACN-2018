@@ -23,7 +23,10 @@ solucion <- FALSE
 ```{r cargar-datos, echo=FALSE}
 load("data/anova_dos_factores.RData")
 
+## url http://bit.ly/analisis-anova-doble
+
 source("../src/analisis_anova_doble.R")
+
 ```
 
 ## Formulas con más de una variable independiente
