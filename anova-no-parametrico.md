@@ -251,8 +251,10 @@ difieren entre sí, exceptuando a los tratamientos 1 y 2, los cuáles no present
 diferencias significativas. Estas diferencias pueden apreciarse en la siguiente
 figura:
 
+
 (ref:cajas-medianas) Gráfico de cajas y bigotes para la producción de maíz en cuatro
 tratamientos.
+
 
 <div class="figure">
 <img src="anova-no-parametrico_files/figure-epub3/unnamed-chunk-1-1.png" alt="(ref:cajas-medianas)"  />

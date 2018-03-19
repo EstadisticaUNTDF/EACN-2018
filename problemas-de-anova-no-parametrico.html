@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduccion-a-r-y-rstudio.html">
+<link rel="prev" href="anova-no-parametrico.html">
+<link rel="next" href="disenos-experimentales.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -366,327 +366,579 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Estadística Avanzada para Ciencias Naturales</h1>
-<h4 class="author"><em>Dr. Luciano Selzer</em></h4>
-<h4 class="date"><em>2018-03-19</em></h4>
-</div>
-<div id="reglamento" class="section level1">
-<h1><span class="header-section-number">Capítulo 1</span> Reglamento</h1>
-<p>Para aprobar la asignatura el alumno deberá tener obtener una nota de cursada
-mínina de 60%, aprobar los parciales. La nota se calcula ponderando los
-siguientes items.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Actividad</th>
-<th>Ponderación</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Asistencia a clases, participación y evaluación de pares</td>
-<td>5%</td>
-</tr>
-<tr class="even">
-<td>Entrega de Ejercicios</td>
-<td>10%</td>
-</tr>
-<tr class="odd">
-<td>Cuestionario de Comprensión</td>
-<td>10%</td>
-</tr>
-<tr class="even">
-<td>Laboratorios en R</td>
-<td>15%</td>
-</tr>
-<tr class="odd">
-<td>Parcial 1</td>
-<td>30%</td>
-</tr>
-<tr class="even">
-<td>Parcial 2</td>
-<td>30%</td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td>100%</td>
-</tr>
-</tbody>
-</table>
-<div id="asistencia-a-clases-participacion-y-evaluacion-de-pares" class="section level2">
-<h2><span class="header-section-number">1.1</span> Asistencia a clases, participación y evaluación de pares</h2>
-<p>Se espera que los alumnos vayan a clases y participen activamente de la misma,
-con preguntas y respuestas. La asistencia y participación es una parte pequeña
-pero no insignificante de la nota de cursada. Si bien puede pedirse a algún
-alumno en particular que responda una pregunta o resuelva un ejercicio, se
-espera que sean participativos sin tener que ser llamados.</p>
-<p>A través del cuatrimestre también se pedirá a los alumnos que completen algunas
-evaluaciones de pares. Estas serán usadas para asegurar que todos los miembros
-del equipo contribuyan al éxito del grupo y poder resolver los posibles
-problemas de manera temprana.</p>
-</div>
-<div id="entrega-de-ejercicios" class="section level2">
-<h2><span class="header-section-number">1.2</span> Entrega de Ejercicios</h2>
-<p>Al principio de cada unidad se harán un pequeño número de ejercicios de forma
-manual.</p>
-<p>El objetivo de los problemas es ayudar a desarrollar una comprensión profunda de
-los temas y preparar a los alumnos para los parciales y el proyecto. Se evaluará
-la precisión y la completitud. Para recibir la nota deben mostrar todo el
-trabajo.</p>
-<p>Se espera que los alumnos colaboren, y se alienta, pero cada uno debe entregar
-su propio trabajo. Si se detectan copias ambos recibirán 0 para ese grupo de
-problemas.</p>
-<p>La nota menor no se tomará en cuenta.</p>
-</div>
-<div id="laboratorios" class="section level2">
-<h2><span class="header-section-number">1.3</span> Laboratorios</h2>
-<p>Cada laboratorio se completará de forma individual. Se puede realizar
-consultas entre alumnos y se alienta la colaboración. Pero la entrega de
-informes se debe realizar de forma individual. Es importante que el informe sea
-completamente reproducible. Se puede asegurar de ello usando el botón <em>knit</em>.
-Deben entregar el archivo <em>.Rmd</em> y el <em>.html</em>.</p>
-<p>La nota menor no se tomará en cuenta.</p>
-</div>
-<div id="cuestionario-de-comprension" class="section level2">
-<h2><span class="header-section-number">1.4</span> Cuestionario de Comprensión</h2>
-<p>Al final de la unidad se harán cuestionarios para evaluar la comprensión que
-tiene el alumno sobre el tema. El mismo se hará en la plataforma de Moodle, y
-tendrán una semana para realizarla. Luego de ese tiempo tendrán 0 puntos. Se
-harán 10 preguntas de elección múltiple.</p>
-<p>La menor puntuación no será tenida en cuenta.</p>
-</div>
-<div id="parciales" class="section level2">
-<h2><span class="header-section-number">1.5</span> Parciales</h2>
-<p>La asignatura contará con 2 parciales prácticos (se considera parcial aprobado
-con el 60% bien desarrollado y si no se cometen errores conceptuales básicos en
-lo referente a los temas propios de la asignatura), con sus respectivos
-recuperatorios; como requerimiento para aprobar la cursada. Además de asistir al
-80% de las clases prácticas de acuerdo con lo que estipula la Resolución N°
-350/14. La asignatura tiene <em>promoción</em>. Para promocionar es necesario aprobar con
-más del 80% los parciales sin ir a recuperatorio, y tener una nota de cursada
-mayor al 80%. Y realizar un trabajo final que consiste en poner en práctica los
-conocimientos adquiridos.</p>
-<p><em>Examen Final</em>: El énfasis estará en los conocimientos teóricos y su
-interpretación con la aplicación. Se tendrá en cuenta la síntesis que alumno
-realice con los nuevos conceptos adquiridos. Para ello, el examen final
-consistirá un trabajo final donde los alumnos deberán analizar e interpretar
-datos provistos por la asignatura y un examen escrito donde deberán saber qué
-técnicas usar para resolver diferentes problemas. Los exámenes se rendirán en
-las fechas previstas en el Calendario Académico de la Facultad</p>
-</div>
-<div id="cronograma" class="section level2">
-<h2><span class="header-section-number">1.6</span> Cronograma</h2>
-<table>
+<div id="problemas-de-anova-no-parametrico" class="section level1">
+<h1><span class="header-section-number">Capítulo 12</span> Problemas de ANOVA No Paramétrico</h1>
+<p>Las dos pruebas de ANOVA No Paramétrico están implentandas en <em>R</em> bajo las
+funciones <code>Median.test()</code> del paquete <code>agricolae</code> y la funcion <code>kruskal.test()</code>
+en el paquete <code>stats</code> de <em>R</em> o la función <code>krukal()</code> de <code>agricolae</code>.</p>
+<p>La función <code>Median.test()</code> tiene varios argumentos, el primero <code>y =</code>
+corresponde a la variable de respuesta, el segundo <code>trt =</code> es la
+columna que contiene la identificación del tratamiento. Esos dos son los
+únicos argumentos obligatorios. Otro argumento interesante es <code>groups</code> que
+puede ser verdadero o falso y agrupa los tratamientos según si hay diferencias
+significativas entre sí. La función <code>krukal()</code> tiene los mismos argumentos
+principales. Ambos requieren acceso directo a las columnas, de igual forma
+que la función <code>wilcox.test()</code> para muestras apareadas por eso es necesario
+usar el operador de exposición <code>%$%</code>.</p>
+<p>Por otro lado, la función <code>kruskal.test()</code> funciona de forma similar a<br />
+<code>wilcox.test()</code>. Tiene una interfaz que es igual a la anterior, con el primer
+argumento siendo la variable de respuesta y el segundo la variable de
+tratamientos. Esta forma necesita ser expuestas la variables del objeto
+directamente con el operador de exposición. Además, tiene la forma de ingresar
+como fórmula y especificar el objeto donde están lso datos.</p>
+<div id="problemas-3" class="section level2">
+<h2><span class="header-section-number">12.1</span> Problemas</h2>
+<p><code>download.file(&quot;http://bit.ly/informe-anova-no-parametrico&quot;, &quot;informe-anova-no-parametrico.Rmd&quot;)</code></p>
+<p>Un ecólogo ha estudiado la estructura social de los lobos marinos durante su
+permanencia en los apostaderos y ha sugerido que los juveniles de 1-2 años
+permanecen asociados a grupos de hembras, presumiblemente donde se encuentran
+sus madres. Para intentar establecer si la información disponible permite
+respaldar la existencia de esta asociación durante los viajes de alimentación,
+el ecólogo utiliza información previamente colectada mediante registradores
+satelitales sobre la distancia media recorrida por viaje de alimentación. Esta
+información se encuentra discriminada por sexo y categoría de edad. En este caso
+sólo utilizó la información de los machos y hembras adultos y de juveniles de
+1-2 años de ambos sexos. Estos datos fueron:</p>
+<table style="width:99%;">
+<caption><span id="tab:lobos">Tabla 12.1: </span> Distancia media (km) recorrida por
+viaje de alimentación de lobos marinos machos y hembras,
+juveniles y adultos.
+¿Qué concluyó el ecólogo a partir de estos datos?</caption>
 <colgroup>
-<col width="5%" />
-<col width="8%" />
-<col width="5%" />
-<col width="79%" />
+<col width="27%" />
+<col width="25%" />
+<col width="25%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Semana</th>
-<th>Fecha</th>
-<th>Día</th>
-<th>Tema</th>
+<th align="center">Hembras.Juveniles</th>
+<th align="center">Hembras.Adultas</th>
+<th align="center">Macho.Juveniles</th>
+<th align="center">Macho.Adultos</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>13/3/2018</td>
-<td>Martes</td>
-<td>Visualización</td>
+<td align="center">124</td>
+<td align="center">114</td>
+<td align="center">109</td>
+<td align="center">123</td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td>15/3/2018</td>
-<td>Jueves</td>
-<td>Análisis Reproducible - Manejo de Datos</td>
+<td align="center">85</td>
+<td align="center">121</td>
+<td align="center">83</td>
+<td align="center">177</td>
 </tr>
 <tr class="odd">
-<td>2</td>
-<td>20/3/2018</td>
-<td>Martes</td>
-<td>Planificación de experimentos. ANOVA de un factor- Supuestos del ANOVA.</td>
+<td align="center">71</td>
+<td align="center">95</td>
+<td align="center">90</td>
+<td align="center">179</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>22/3/2018</td>
-<td>Jueves</td>
-<td>ANOVA: Contrastes- Modelo aleatorio</td>
+<td align="center">83</td>
+<td align="center">116</td>
+<td align="center">85</td>
+<td align="center">119</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>27/3/2018</td>
-<td>Martes</td>
-<td>Métodos no paramétricos para comparar varias muestras</td>
+<td align="center">105</td>
+<td align="center">97</td>
+<td align="center">91</td>
+<td align="center">157</td>
 </tr>
 <tr class="even">
-<td>3</td>
-<td>29/3/2018</td>
-<td>Jueves</td>
-<td>Jueves Santo</td>
+<td align="center">78</td>
+<td align="center">73</td>
+<td align="center">134</td>
+<td align="center">151</td>
 </tr>
 <tr class="odd">
-<td>4</td>
-<td>3/4/2018</td>
-<td>Martes</td>
-<td>Anova de dos factores.</td>
+<td align="center">57</td>
+<td align="center">95</td>
+<td align="center">133</td>
+<td align="center">164</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>5/4/2018</td>
-<td>Jueves</td>
-<td>Modelo aleatorio. Modelo Mixto</td>
+<td align="center">90</td>
+<td align="center">128</td>
+<td align="center">75</td>
+<td align="center">176</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>10/4/2018</td>
-<td>Martes</td>
-<td>Diseños experimentales</td>
+<td align="center">112</td>
+<td align="center">103</td>
+<td align="center">90</td>
+<td align="center">145</td>
 </tr>
 <tr class="even">
-<td>5</td>
-<td>12/4/2018</td>
-<td>Jueves</td>
-<td>Pruebas no paramétricas: Análisis, para dos muestras, varias muestras y para varias muestras relacionadas</td>
+<td align="center">82</td>
+<td align="center">134</td>
+<td align="center">120</td>
+<td align="center">179</td>
 </tr>
 <tr class="odd">
-<td>6</td>
-<td>17/4/2018</td>
-<td>Martes</td>
-<td>Repaso Regresión lineal simple</td>
+<td align="center">109</td>
+<td align="center">74</td>
+<td align="center">85</td>
+<td align="center">154</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>19/4/2018</td>
-<td>Jueves</td>
-<td>Regresión lineal múltiple</td>
+<td align="center">64</td>
+<td align="center">74</td>
+<td align="center"></td>
+<td align="center">158</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>24/4/2018</td>
-<td>Martes</td>
-<td>Representación Matricial ANCOVA</td>
+<td align="center">68</td>
+<td align="center">131</td>
+<td align="center"></td>
+<td align="center">119</td>
 </tr>
 <tr class="even">
-<td>7</td>
-<td>26/4/2018</td>
-<td>Jueves</td>
-<td>Modelos Lineales generalizados</td>
+<td align="center">112</td>
+<td align="center">85</td>
+<td align="center"></td>
+<td align="center">143</td>
 </tr>
 <tr class="odd">
-<td>8</td>
-<td>1/5/2018</td>
-<td>Martes</td>
-<td>Día del Trabajo</td>
+<td align="center">125</td>
+<td align="center">115</td>
+<td align="center"></td>
+<td align="center">178</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>3/5/2018</td>
-<td>Jueves</td>
-<td>Modelos Lineales generalizados</td>
+<td align="center">89</td>
+<td align="center">68</td>
+<td align="center"></td>
+<td align="center">185</td>
 </tr>
 <tr class="odd">
-<td>9</td>
-<td>8/5/2018</td>
-<td>Martes</td>
-<td>Parcial</td>
+<td align="center">57</td>
+<td align="center">85</td>
+<td align="center"></td>
+<td align="center">141</td>
 </tr>
 <tr class="even">
-<td>9</td>
-<td>10/5/2018</td>
-<td>Jueves</td>
-<td>Modelos Lineales generalizados</td>
+<td align="center"></td>
+<td align="center">99</td>
+<td align="center"></td>
+<td align="center">172</td>
 </tr>
 <tr class="odd">
-<td>10</td>
-<td>15/5/2018</td>
-<td>Martes</td>
-<td>Análisis Multivariado: Medidas de distancias y similitudes</td>
+<td align="center"></td>
+<td align="center">85</td>
+<td align="center"></td>
+<td align="center">115</td>
 </tr>
 <tr class="even">
-<td>10</td>
-<td>17/5/2018</td>
-<td>Jueves</td>
-<td>Recuperatorio</td>
+<td align="center"></td>
+<td align="center">69</td>
+<td align="center"></td>
+<td align="center">126</td>
 </tr>
 <tr class="odd">
-<td>11</td>
-<td>22/5/2018</td>
-<td>Martes</td>
-<td>Análisis Multivariado: Clusters</td>
+<td align="center"></td>
+<td align="center">122</td>
+<td align="center"></td>
+<td align="center">126</td>
 </tr>
 <tr class="even">
-<td>11</td>
-<td>24/5/2018</td>
-<td>Jueves</td>
-<td>Análisis Multivariado: Análisis de Componentes Principales</td>
-</tr>
-<tr class="odd">
-<td>12</td>
-<td>29/5/2018</td>
-<td>Martes</td>
-<td>Análisis Multivariado: Análisis de Coordenadas Principales</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>31/5/2018</td>
-<td>Jueves</td>
-<td>Análisis Multivariado: Análisis de Redundancia y Análisis de correspondencias canónicas</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>5/6/2018</td>
-<td>Martes</td>
-<td>Análisis Multivariado: Análisis discriminante.</td>
-</tr>
-<tr class="even">
-<td>13</td>
-<td>7/6/2018</td>
-<td>Jueves</td>
-<td>Análisis Multivariado: Análisis discriminante.</td>
-</tr>
-<tr class="odd">
-<td>14</td>
-<td>12/6/2018</td>
-<td>Martes</td>
-<td>Introducción a Inferencia Multimodelo</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>14/6/2018</td>
-<td>Jueves</td>
-<td>Introducción a GAM</td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td>19/6/2018</td>
-<td>Martes</td>
-<td>Introducción a GAM</td>
-</tr>
-<tr class="even">
-<td>15</td>
-<td>21/6/2018</td>
-<td>Jueves</td>
-<td>Parcial</td>
-</tr>
-<tr class="odd">
-<td>16</td>
-<td>26/6/2018</td>
-<td>Martes</td>
-<td>Introducción a Estadística Bayesiana</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>28/6/2018</td>
-<td>Jueves</td>
-<td>Recuperatorio</td>
+<td align="center"></td>
+<td align="center">113</td>
+<td align="center"></td>
+<td align="center">155</td>
 </tr>
 </tbody>
 </table>
+<ol start="2" style="list-style-type: decimal">
+<li>En un estudio de ecología trófica se han detectado diferencias en la dieta
+entre machos y hembras del lobo marino. Estas diferencias parecerían deberse a
+que las hembras se alimentarían en aguas más someras y cercanas a la costa que
+los machos. Sabiendo que los cormoranes son predadores exclusivamente costeros,
+que los tiburones son predadores típicos de la plataforma intermedia, y que las
+áreas costeras y someras se caracterizan por ser zonas de cría para muchas
+especies de peces, un biólogo comparó las tallas de las raneyas (pez demersal-
+bentónico) consumidas por cormoranes, tiburones y machos y hembras del lobo
+marino. La intención de esta comparación fue evaluar si la hipótesis planteada
+sobre las diferentes áreas de forrajeo de machos y hembras del lobo marino se ve
+sustentada o no.</li>
+</ol>
+<table style="width:58%;">
+<caption><span id="tab:dieta">Tabla 12.2: </span> Largo total (cm) de raneyas consumidas
+por machos y hembras del lobo marino,
+por tiburones y por cormoranes.</caption>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Lobo.Hem</th>
+<th align="center">Lobo.Mac</th>
+<th align="center">Tiburon</th>
+<th align="center">Cormoran</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">12</td>
+<td align="center">26</td>
+<td align="center">13</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">23</td>
+<td align="center">17</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">21</td>
+<td align="center">25</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">26</td>
+<td align="center">22</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">17</td>
+<td align="center">19</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">17</td>
+<td align="center">13</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">17</td>
+<td align="center">22</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">26</td>
+<td align="center">16</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">15</td>
+<td align="center">21</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">13</td>
+<td align="center">21</td>
+<td align="center">26</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">18</td>
+<td align="center">27</td>
+<td align="center">14</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">13</td>
+<td align="center">15</td>
+<td align="center"></td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">20</td>
+<td align="center">16</td>
+<td align="center"></td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">17</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">19</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>¿Cuál es su conclusión?</p>
+<ol start="3" style="list-style-type: decimal">
+<li>La dirección nacional de pesca desea determinar si los tres tipos de redes
+que se utilizan para la pesca de langostino son igualmente eficaces. Para ello
+calcula (para cada barco) el promedio anual de sus capturas (kg de langostino/
+lance) y clasifica a los barcos en función del tipo de red empleada. Los
+resultados obtenidos fueron:</li>
+</ol>
+<table style="width:33%;">
+<caption><span id="tab:red">Tabla 12.3: </span> Promedio anual de capturas de langostino
+por barco según el tipo de red empleada (kg/lance)</caption>
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Red.1</th>
+<th align="center">Red.2</th>
+<th align="center">Red.3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">195</td>
+<td align="center">227</td>
+<td align="center">213</td>
+</tr>
+<tr class="even">
+<td align="center">280</td>
+<td align="center">254</td>
+<td align="center">231</td>
+</tr>
+<tr class="odd">
+<td align="center">262</td>
+<td align="center">216</td>
+<td align="center">180</td>
+</tr>
+<tr class="even">
+<td align="center">279</td>
+<td align="center">248</td>
+<td align="center">198</td>
+</tr>
+<tr class="odd">
+<td align="center">206</td>
+<td align="center">243</td>
+<td align="center">172</td>
+</tr>
+<tr class="even">
+<td align="center">263</td>
+<td align="center">245</td>
+<td align="center">239</td>
+</tr>
+<tr class="odd">
+<td align="center">208</td>
+<td align="center">222</td>
+<td align="center">218</td>
+</tr>
+<tr class="even">
+<td align="center">229</td>
+<td align="center">222</td>
+<td align="center">161</td>
+</tr>
+<tr class="odd">
+<td align="center">236</td>
+<td align="center">228</td>
+<td align="center">179</td>
+</tr>
+<tr class="even">
+<td align="center">235</td>
+<td align="center">216</td>
+<td align="center">195</td>
+</tr>
+<tr class="odd">
+<td align="center">277</td>
+<td align="center">245</td>
+<td align="center">223</td>
+</tr>
+<tr class="even">
+<td align="center">255</td>
+<td align="center">231</td>
+<td align="center">183</td>
+</tr>
+<tr class="odd">
+<td align="center">262</td>
+<td align="center">205</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">193</td>
+<td align="center">231</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">248</td>
+<td align="center">208</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">231</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">213</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">224</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">206</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>¿Se podría recomendar alguna red en particular?</p>
+<ol start="4" style="list-style-type: decimal">
+<li>En una primera etapa de un proyecto sobre el cultivo de pulpos, se desea
+determinar si es posible aumentar la tasa de crecimiento de los pulpos mediante
+un incremento de la temperatura del agua. Para ello se seleccionaron al azar
+juveniles de pulpo y se los asignó aleatoriamente a tres peceras de cultivo.
+En la primera pecera (Temp 0) se mantuvo a los pulpitos en condiciones de
+temperatura similares a las del medio natural, en la segunda pecera (Temp 1)
+se utilizó una temperatura constante de 20ºC y en la tercera pecera (Temp 2)
+se mantuvo una temperatura constante de 25ºC. Los pulpitos fueron alimentados
+ad libitum durante los 60 días que duró la experiencia. Debido a que no se
+dispuso de peceras individuales, los datos de los ejemplares de una misma pecera
+no pueden considerarse verdaderas réplicas, sino más bien pseudo-réplicas.
+Estos datos fueron asumidos como réplicas verdaderas teniendo en cuenta las
+dimensiones de las peceras (re-grandotas) en relación con los pulpitos (re-
+chiquitos) y a la nula observación de interacciones entre los ejemplares.
+Para cada pulpito se determinó el porcentaje de incremento en peso durante la
+experiencia como:</li>
+</ol>
+<p><span class="math display">\[\%Peso=\frac{Peso_{inicial}-Peso_{final}}{Peso_{inicial}}100 \]</span>
+Los resultados obtenidos fueron:
+%Peso para los pulpos utilizados en cada experiencia</p>
+<table style="width:38%;">
+<caption><span id="tab:pulpos">Tabla 12.4: </span> Porcentaje de aumento de peso de
+pulpos juveniles bajo tres temperaturas diferentes.
+Temp.0 = Medio Natural, Temp.1 = 20°C, Temp.2 = 25°C.</caption>
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Temp.0</th>
+<th align="center">Temp.1</th>
+<th align="center">Temp.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">78</td>
+<td align="center">107</td>
+<td align="center">124</td>
+</tr>
+<tr class="even">
+<td align="center">84</td>
+<td align="center">115</td>
+<td align="center">121</td>
+</tr>
+<tr class="odd">
+<td align="center">117</td>
+<td align="center">96</td>
+<td align="center">140</td>
+</tr>
+<tr class="even">
+<td align="center">82</td>
+<td align="center">110</td>
+<td align="center">141</td>
+</tr>
+<tr class="odd">
+<td align="center">112</td>
+<td align="center">106</td>
+<td align="center">134</td>
+</tr>
+<tr class="even">
+<td align="center">115</td>
+<td align="center">92</td>
+<td align="center">125</td>
+</tr>
+<tr class="odd">
+<td align="center">107</td>
+<td align="center">114</td>
+<td align="center">118</td>
+</tr>
+<tr class="even">
+<td align="center">102</td>
+<td align="center">85</td>
+<td align="center">133</td>
+</tr>
+<tr class="odd">
+<td align="center">104</td>
+<td align="center">90</td>
+<td align="center">128</td>
+</tr>
+<tr class="even">
+<td align="center">103</td>
+<td align="center">108</td>
+<td align="center">141</td>
+</tr>
+<tr class="odd">
+<td align="center">77</td>
+<td align="center">94</td>
+<td align="center">126</td>
+</tr>
+<tr class="even">
+<td align="center">125</td>
+<td align="center">108</td>
+<td align="center">143</td>
+</tr>
+<tr class="odd">
+<td align="center">123</td>
+<td align="center"></td>
+<td align="center">134</td>
+</tr>
+<tr class="even">
+<td align="center">76</td>
+<td align="center"></td>
+<td align="center">118</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">140</td>
+</tr>
+</tbody>
+</table>
+<p>¿Es factible aumentar la tasa de crecimiento de los pulpos aumentando la temperatura del medio?</p>
 
 </div>
 </div>
@@ -695,8 +947,8 @@ las fechas previstas en el Calendario Académico de la Facultad</p>
           </div>
         </div>
       </div>
-
-<a href="introduccion-a-r-y-rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova-no-parametrico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="disenos-experimentales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -726,7 +978,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/problemas-anova-no-parametrico.Rmd",
 "text": "Edit"
 },
 "download": ["EACN.pdf", "EACN.epub"],

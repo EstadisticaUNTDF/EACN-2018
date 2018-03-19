@@ -505,8 +505,16 @@ data.frame(z = rnorm(100)) %$%
 
 ## Problemas
 
-En todos los casos indicar la hipótesis nula y la alternativa. Graficar y 
-realizar la prueba apropiada.
+<div class="atencion">
+<p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
+</div>
+
+`download.file("http://bit.ly/informe-dos-muestras-NP", "informe-dos-muestras-NP.Rmd")`
+
+<div class="atencion">
+<p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
+<p>En todos los casos indicar la hipótesis nula y la alternativa. Graficar y realizar la prueba apropiada.</p>
+</div>
 
 
 Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
@@ -586,7 +594,7 @@ jefes
 
 
 
-\BeginKnitrBlock{definition}<div class="definition"><span class="definition" id="def:unnamed-chunk-14"><strong>(\#def:unnamed-chunk-14) </strong></span>Más adelante no podrán usar la formulas para hacer las pruebas apareadas.
+\BeginKnitrBlock{definition}<div class="definition"><span class="definition" id="def:unnamed-chunk-16"><strong>(\#def:unnamed-chunk-16) </strong></span>Más adelante no podrán usar la formulas para hacer las pruebas apareadas.
 Para hacer comparaciones de datos apareados cada unidad muestral debe estar en
 una fila, con dos columnas: una para antes y otra para el después. Sin embargo,
 esta forma no permite utilizar el argumento `data` para indicar donde se 
