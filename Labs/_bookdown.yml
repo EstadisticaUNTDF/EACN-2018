@@ -33,7 +33,9 @@ rmd_files:
     
     "No-Parametrico-Teoria.Rmd",
     "No-Parametrico.Rmd",
+    
     "anova-no-parametrico.Rmd",
+    "problemas-anova-no-parametrico.Rmd",
     
     "diseno-experimental.Rmd",
     
