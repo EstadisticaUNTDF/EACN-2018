@@ -1,4 +1,4 @@
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
 library(magrittr)
 options(knitr.kable.NA = '')

@@ -1,0 +1,295 @@
+---
+title: "Problemas ANOVA simple"
+author: "Su Nombre"
+date: "`r format(Sys.time(), "%A, %d de %B de %Y ")`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Cargar paquetes
+library(pander)
+library(tidyverse)
+library(ggfortify)
+library(emmeans)
+library(nortest) #normality test
+library(car)
+library(pwr)
+library(agricolae)
+library(compute.es)
+
+```
+
+## Problemas
+
+En todos los casos indicar la hipótesis nula y la alternativa. Graficar y 
+realizar la prueba apropiada.
+
+
+Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
+
+```{r cargar-datos}
+load(url("http://bit.ly/dos-muestras-np"))
+```
+
+
+1.- Un investigador, trabajando con una especie de ratones de campo, desea saber
+si los ejemplares provenientes del valle son de similar tamaño a los 
+provenientes de la meseta. Para ello realizó capturas de ratones en ambos 
+ambientes, midiendo el peso en gr de los ejemplares capturados. Los datos
+obtenidos fueron:
+
+```{r ratones}
+ratones
+```
+
+¿Qué conclusión se puede sacar con estos datos?
+
+```{r ratones-analisis }
+wilcox.test(Peso ~ Ambiente, alternative = , data = ratones)
+```
+
+```{r ratones-grafico}
+ggplot(ratones, aes(Ambiente, Peso)) +
+  geom_boxplot()
+```
+
+2.- Una empresa pesquera desea evaluar si existen diferencias entre dos jefes
+de planta que trabajan en uno de sus buques factoría. De acuerdo a lo expresado
+por el capitán del buque, el Jefe 1 aprovecha mejor la captura que el Jefe 2.
+Para estudiar esta cuestión embarcaron a ambos jefes de planta en un mismo viaje
+de pesca y les asignaron aleatoriamente a cada uno de ellos los lances que 
+debían procesar. En cada lance, un empleado imparcial de control de calidad
+registraba el porcentaje de descarte producido a partir de la captura. Los 
+resultados obtenidos fueron:
+
+```{r jefes, results='markup'}
+jefes 
+```
+
+¿Tiene razón el capitán?
+
+```{r jefes-analisis }
+
+```
+
+
+3.- En un estudio clínico, se desea evaluar si una cierta droga disminuye o no 
+la concentración de un virus en sangre. Para ello se utilizaron 17 cobayos
+infectados, registrándose previamente al inicio de la experiencia la 
+concentración del virus en sangre. Luego de finalizado el tratamiento con la
+droga, se volvió a estudiar la concentración del virus en los cobayos. Los
+resultados obtenidos fueron:
+
+```{r cobayos, results='markup'}
+cobayos
+```
+
+¿Qué conclusiones puede Ud. sacar acerca de la efectividad del tratamiento?
+
+```{r cobayos-analisis }
+# Abajo se usa un operador nuevo %$% es como %>% pero expone las columnas a 
+# la siguiente función.
+cobayos %$% wilcox.test(x = Despues, y =  Antes, alternative = "", paired = )
+```
+
+```{r cobayos-grafico}
+
+```
+
+
+4 - Un ecólogo desea evaluar en una especie de foca si el éxito reproductivo de
+las hembras está asociado al sexo de sus crías. Para ello utilizó información
+de una población que ha sido seguida durante varias generaciones, registrando 
+para 15 hembras el número de nietos producidos por sus hijos e hijas. Los datos
+fueron:
+
+```{r focas, results='markup'}
+focas
+```
+
+¿Depende el éxito reproductivo de las hembras del sexo de sus hijos? 
+
+```{r focas-analisis }
+
+```
+
+```{r focas-grafico }
+
+```
+
+5.- Una especie de ave pone dos huevos por temporada reproductiva. Se ha visto 
+que de los dos pichones el primero en eclosionar tiene mayores probabilidades de sobrevivir. Un biólogo desea establecer si esta situación está relacionada con 
+el peso del pichón al momento de la eclosión. Para ello registró el peso de los 
+pichones al momento de la eclosión del huevo, obteniendo los siguientes datos:
+
+```{r pichones, results='markup'}
+pichones
+```
+
+¿Cuál es la conclusión que debería sacar el biólogo?
+
+```{r pichones-analisis }
+
+```
+```{r pichones-grafico}
+
+```
+
+6.- Un biólogo está estudiando el efecto del aprendizaje en la habilidad de los
+osos para capturar peces. Para ello registra el porcentaje de éxitos de captura
+durante una semana de 17 ositos cuando comienzan a pescar y repite el análisis
+6 meses después. Los resultados obtenidos fueron:
+
+```{r osos, results='markup'}
+osos
+```
+
+¿Mejora la capacidad de captura de los ositos con la experiencia?
+
+```{r osos-analisis }
+
+```
+
+```{r osos-grafico}
+
+```
+
+7.- Los pingüinos de Magallanes hacen sus nidos en cuevas en las laderas o bajo
+de los arbustos. Un biólogo sostiene que el éxito reproductivo de las hembras 
+que nidifican en las laderas es mayor que el de aquellas que lo hacen bajo los 
+arbustos. Para poner a prueba esta hipótesis utilizó datos del número de 
+pichones vivos que tuvieron durante su vida hembras que nidificaron en laderas
+y en arbustos. Las hembras pudieron identificarse debido a que fueron anilladas
+de pichones y no se registraron cambios en el tipo de nido que utilizaron a lo
+largo de la vida. Los datos obtenidos fueron:
+
+Número de pichones producidos por hembras de pingüino de Magallanes a lo largo
+de su vida, discriminado por el tipo de nido que utilizaron.
+
+```{r pinguinos, results='markup'}
+pinguinos
+```
+
+¿Está Ud. de acuerdo con el biólogo?
+
+```{r pinguinos-analisis }
+
+```
+
+```{r pinguinos-grafico }
+
+```
+
+8.- Estudiando la dieta de un delfín y del lobo marino, un biólogo desea
+establecer si las tallas consumidas de calamares por estos predadores son
+similares. Utilizando regresiones alométricas estimó los largos dorsales del
+manto (LDM) a partir de los picos hallados en los contenidos estomacales.
+Los datos obtenidos fueron:
+
+Tallas de calamares (LDM, cm) consumidos por delfines y lobos marinos.
+```{r LDM, results='markup'}
+LDM 
+```
+
+¿Qué puede concluir sobre las tallas de los calamares consumidos por los 
+delfines y lobos marinos?
+
+```{r LDM-analisis }
+
+```
+
+
+```{r LDM-grafico }
+
+```
+
+
+9.- Para determinar si una droga es eficaz para disminuir la concentración de un
+virus en sangre, se seleccionaron al azar ratones infectados y se les inyectó la
+droga a evaluar. Otro grupo de ratones infectados fue utilizado como control 
+empleándose un placebo en lugar de droga. Luego del experimento se midió la 
+concentración del virus en sangre utilizando una escala apropiada. Los 
+resultados fueron:
+Concentración del virus en sangre de los ratones tratados y del grupo control 
+
+
+```{r droga, results='markup'}
+droga
+```
+
+ ¿Es eficaz la droga para disminuir la concentración del virus en sangre?
+ 
+```{r droga-analisis }
+
+```
+
+
+```{r droga-grafico }
+
+```
+
+
+10.- Se desea establecer si las poblaciones bonaerense y patagónica de anchoita
+presentan similares niveles de parasitosis por nematodes en músculo. Para ello 
+se tomaron muestras aleatorias de anchoitas de ambas poblaciones y se determinó
+para cada ejemplar el número de larvas de nematodes alojadas en el músculo.
+Los resultados fueron:
+Número de larvas de nematodes en el músculo de anchoitas discriminadas por poblaciones.
+
+
+```{r nematodes, results='markup'}
+nematodes
+```
+
+¿Existen diferencias entre poblaciones de anchoita con respecto a la parasitosis
+por nematodes en músculo?
+
+```{r nematodes-analisis }
+
+```
+
+```{r nematodes-grafico }
+
+```
+
+
+11.- Un ecólogo desea determinar si la eficiencia de captura de dos especies de
+araña es similar. Para ello realizó un experimento donde seleccionó al azar 
+ejemplares de cada especie, les permitió confeccionar sus telas y luego 
+introdujo una mosca en cada caja. El ecólogo determinó para cada araña el tiempo
+en segundos que tardó en capturar la mosca. Los resultados fueron:
+Tiempo de captura de la mosca en segundos.
+
+```{r arana, results='markup'}
+arana
+```
+
+¿Existen diferencias en las eficiencias de captura entre las especies de araña?
+
+```{r arana-analisis }
+
+```
+
+```{r arana-grafico }
+
+```
+
+
+12. Un productor de fruta fina está convencido que la producción en el Bolsón es
+más alta que en Esquel. Para ello tomó datos producción de distintas parcelas en
+ambas localidades. Sabiendo que el azar tenía algo que ver con la estadística,
+se preocupó de seleccionar al azar las parcelas. Los datos obtenidos fueron:
+Producción de fruta fina (kg) en cada parcela, discriminada por localidad
+
+
+```{r}
+fruta
+```
+
+
+Una vez tomados los datos, el productor acude a Ud. en busca de ayuda para 
+responder su pregunta. ¿Qué le dirá al productor?
+
+
