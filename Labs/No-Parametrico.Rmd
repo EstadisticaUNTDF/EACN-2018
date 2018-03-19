@@ -347,8 +347,20 @@ data.frame(z = rnorm(100)) %$%
 
 ## Problemas
 
+```{block, type = "atencion"}
+Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:
+
+
+```
+
+`download.file("http://bit.ly/informe-dos-muestras-NP", "informe-dos-muestras-NP.Rmd")`
+
+```{block, type = "atencion"}
+Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.
+
 En todos los casos indicar la hipótesis nula y la alternativa. Graficar y 
 realizar la prueba apropiada.
+```
 
 
 Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
