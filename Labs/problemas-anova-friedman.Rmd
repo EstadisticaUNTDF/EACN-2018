@@ -1,0 +1,152 @@
+# Práctico de Pruebas no paramétricas para muestras relacionadas
+
+
+```{r setup, include=FALSE}
+# Setup -------------------------------------------------------------------
+library(pander)
+library(tidyverse)
+library(magrittr)
+library(agricolae)
+
+solucion <- FALSE
+### Datos --------
+
+load("data/anova-bloques-np.RData")
+```
+
+
+Es posible realizar el equivalente no paramétrico de un anova simple con bloques.
+Hay al menos dos formas de hacerlo en *R*. Una es con la función 
+`friedman.test()` del paquete `stats`. Tiene una interfaz de vectores y otra
+de formula. La de vectores tiene tres argumentos, `y` la variable de respuesta,
+`groups` la variable tratamiento, y `blocks` los bloques. La interfaz de formula
+usa la ya conocida forma `y ~ groups` pero para indicar los bloques usa una 
+barra recta de esta manera `y ~ groups | blocks`.
+
+
+
+```{r ej}
+pasto
+pasto <- gather(pasto, key = "Pasto", value = "performance", -Parcela)
+
+friedman.test(performance ~ Pasto | Parcela, data = pasto)
+
+```
+```{r}
+out <- pasto %$% friedman(Parcela, Pasto, performance, group = FALSE, console = TRUE)
+
+```
+
+La función imprime el resultado en la pantalla. Pero si no lo guardamos no es
+posible seguir trabajando con él. Por eso, al guardarlo, podemos ver la misma
+información que vemos arribal y algunos datos extra con la diferencia mínima
+significativa.
+
+```{r}
+out
+```
+
+Podemos usar los datos que nos da para calcular a mano el valor crítico con la 
+distribución *q*:
+
+```{r}
+alpha <- 0.05
+c <- nrow(out$means)
+Z <- abs(qnorm(alpha/(c*(c-1))))
+r <- unique(out$means$r)
+VC <- Z * sqrt(r*c*(c+1)/6)
+VC
+```
+
+
+Con el paquete
+```{r}
+library(PMCMR)
+library(PMCMRplus)
+posthoc.friedman.nemenyi.test(performance ~ Pasto | Parcela, data = pasto)
+pasto %$% frdAllPairsNemenyiTest(performance, Pasto, Parcela)
+```
+
+
+## Problemas
+
+1. Un ecólogo desea determinar si cuatro índices de importancia relativa empleados
+para análisis de la dieta evalúan en forma similar la importancia relativa de
+las presas. Para ello utilizó datos de dieta del lobo marino, calculó todos
+los índices y los expresó en porcentaje. ¿Son equivalentes estos índices para
+estudiar la importancia relativa de las presas?. Los resultados obtenidos
+fueron:
+
+```{r 1, echo=FALSE}
+dieta %>% pander(caption = )
+```
+
+```{r, echo=solucion, eval=solucion}
+dieta <- gather(dieta, key = "Indice", value = "porcentaje", -Presa)
+
+
+out <- with(dieta, friedman(Presa, Indice, porcentaje, group = FALSE))
+pander(out)
+```
+
+
+2. En un estudio veterinario se desea determinar la efectividad de distintas drogas
+para minimizar el nivel de parasitosis intestinales. Para ello se tomaron al
+azar camadas de ratones y a diferentes individuos de cada camada se les aplicó
+al azar una de las drogas. Posteriormente, se alimentó a los ratones con comida
+infestada y luego de un mes fueron sacrificados, realizándose la necropsia para
+determinar el número de helmintos hallados en el intestino. ¿Existe un efecto de
+las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:
+
+```{r 2}
+parasitosis 
+```
+
+```{r, echo=solucion, eval=solucion}
+parasitosis <- gather(parasitosis, key = "Droga", value = "helmintos", -Camada)
+
+out <- with(parasitosis, friedman(Camada, Droga, helmintos, group = FALSE))
+pander(out)
+```
+
+
+
+3. Un ingeniero agrónomo desea determinar si cuatro fertilizantes tienen igual
+efecto en la producción de soja. Para ello seleccionó al azar 12 parcelas
+con características de suelo diferentes, aplicando al azar cada uno de los
+fertilizantes en distintos sectores de iguales dimensiones de cada parcela.
+La producción de soja en toneladas obtenida en cada parcela con cada tipo de
+fertilizante fue:
+
+```{r 3}
+soja
+```
+¿Cuál fertilizante conviene utilizar?
+
+```{r, echo = solucion, eval = solucion}
+soja <- gather(soja, key = "Fertilizante",value= "produccion", -Parcela )
+
+out <- with(soja, friedman(Parcela, Fertilizante, produccion, group = FALSE))
+pander(out)
+```
+
+
+## Problema 4
+
+Un biólogo pesquero desea establecer si el descarte de especies asociadas (by-
+catch) en la pesquería de merluza varía estacionalmente. Para ello realizó un
+seguimiento de 12 barcos de la flota pesquera comercial, determinando para cada
+uno de ellos el porcentaje en biomasa del descarte realizado en cada estación
+del año. ¿Existe una variación estacional en el descarte realizado por la flota
+merlucera? Sus resultados fueron:
+
+```{r 4}
+pesca 
+```
+```{r, echo = solucion, eval=solucion}
+pesca <- gather(pesca, key =  "Estacion", value = "Biomasa", -Barco)
+
+out <- with(pesca, friedman(Barco, Estacion, Biomasa, group = FALSE))
+pander(out)
+```
+
