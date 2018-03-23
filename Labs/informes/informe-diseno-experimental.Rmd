@@ -21,7 +21,7 @@ library(directlabels)
 ## Problemas
 
 ```{r cargar-datos}
-load(url("https://bit.ly/bloques"))
+load(url("https://bit.ly/bloque-data"))
 ```
 
 1. Se estudia mediante un diseño de bloques al azar el efecto de una hormona
