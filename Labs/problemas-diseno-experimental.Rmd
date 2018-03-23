@@ -49,6 +49,10 @@ fert %>%  pander(caption = "(#tab:papas) Rendimiento en toneladas de papa por
 El gráfico de perfiles de los datos
 
 ```{r ej_plot, fig.width=5, fig.height=3, fig.cap="Perfiles", message=FALSE}
+fert_long <- fert %>%
+  gather(key = "Fertilizante", value = "Produccion", -Finca) %>% 
+  mutate(Finca = factor(Finca))
+
 p <- ggplot(fert_long, aes(Finca, Produccion, color = Fertilizante)) +
   geom_line(aes(group = Fertilizante, linetype = Fertilizante)) +
   geom_point(aes(shape = Fertilizante))
@@ -72,17 +76,11 @@ fert %>% select(-Finca) %>%
 Medias por Fertilizante:
 
 ```{r}
-fert_long <- fert %>%
-  gather(key = "Fertilizante", value = "Produccion", -Finca) %>% 
-  mutate(Finca = factor(Finca))
-
 fert_long %>% 
   group_by(Fertilizante) %>% 
   summarise(media = mean(Produccion),
              var = var(Produccion),
              sd = sd(Produccion))
-
-
 ```
 
 Medias por Finca:

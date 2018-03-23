@@ -1,0 +1,112 @@
+---
+title: "Problemas Diseño Experimental"
+author: "Su Nombre"
+date: "`r format(Sys.time(), "%A, %d de %B de %Y ")`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Cargar paquetes
+library(pander)
+library(tidyverse)
+library(additivityTests)
+library(emmeans)
+library(car)
+library(directlabels)
+
+```
+
+## Problemas
+
+```{r cargar-datos}
+load(url("https://bit.ly/bloques"))
+```
+
+1. Se estudia mediante un diseño de bloques al azar el efecto de una hormona
+de crecimiento sobre ratas jóvenes. Se prueba una dosis débil (tratamiento A),
+una dosis fuerte (tratamiento B) y un tercer tratamiento, que sería el testigo,
+consistente en la aplicación de un placebo. Se toman 6 camadas de ratas al
+azar, también al azar se seleccionan tres animales de cada una. Se asignan
+los tratamientos al azar dentro de cada camada y al cabo de 15 días se mide el
+aumento en peso, en decigramos, con los siguientes resultados:
+
+```{r}
+ratas
+```
+
+a)	Estudiar la aditividad del modelo (validez del modelo).
+
+```{r 1}
+
+```
+
+
+b)	Poner a prueba la efectividad de la hormona.
+
+```{r}
+
+```
+
+
+c)	Realizar contrastes múltiples, si corresponde.
+
+```{r}
+
+```
+
+d) ¿Qué sucede si omitimos el factor bloque? ¿A donde fue a parar toda la 
+variabilidad debida a los bloques?
+
+```{r }
+
+```
+
+
+2. Un investigador estudia los efectos de tres dietas experimentales con
+variado contenido de grasas sobre el nivel total de lípidos en el plasma. El
+nivel total de lípidos en el plasma es utilizado como un indicador de posibles
+enfermedades coronarias. Quince hombres de peso corporal (unos Adonis) ideal
+fueron agrupados en 5 bloques de acuerdo a la edad. Dentro de cada bloque las
+dietas fueron asignadas al azar a los tres sujetos. La tabla presenta los datos
+correspondientes a la reducción en el nivel de lípidos (g/l) después de que los
+individuos fueron sometidos a la dieta durante un período de tiempo fijo:
+
+```{r echo=FALSE}
+lipidos
+```
+
+
+a) ¿Por qué la edad fue usada como una variable de bloque? 
+
+
+b) Realice la prueba
+de Tukey, ¿cuáles son sus conclusiones? (trabaje con $\alpha$ = 0.05 y 
+$\alpha$ = 0.01)
+
+```{r}
+
+```
+
+Asumiendo que un diseño en bloques al azar es el adecuado 
+c) Obtenga la tabla de ANOVA 
+```{r} 
+
+```
+
+
+d) Estime $D_1 = \mu_1- \mu_2 $ y $D_2 = \mu_2 - \mu_3 $ , usando un
+intervalo de confianza de Bonferroni. ¿Es significativo alguno de los contrastes?
+
+```{r 2}
+
+```
+
+e) En este experimento no fue usada una dieta estándar como control. ¿Que
+tipo de justificación puede haber tenido el investigador para no incluir un
+tratamiento testigo con fines comparativos?
+
+
+
+
