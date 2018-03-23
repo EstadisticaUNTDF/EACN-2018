@@ -38,6 +38,10 @@ rmd_files:
     "problemas-anova-no-parametrico.Rmd",
     
     "diseno-experimental.Rmd",
+    "problemas-diseno-experimental.Rmd",
+    
+    "anova-no-parametrico-bloques.Rmd",
+    "problemas-anova-friedman.Rmd",
     
     "regresion.Rmd",
     
