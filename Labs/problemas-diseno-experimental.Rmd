@@ -1,0 +1,278 @@
+# Problemas ANOVA Diseño Experimental
+
+
+```{r setup, include=FALSE}
+# Setup -------------------------------------------------------------------
+library(pander)
+library(tidyverse)
+library(additivityTests)
+library(emmeans)
+library(car)
+library(directlabels)
+
+
+solucion <- FALSE
+
+load("data/bloques.RData")
+```
+
+```{block, type = "atencion"}
+Antes de comenzar bajen el archivo donde realizarán su informe reproducible. 
+En la consola copien este código:
+
+```
+
+`download.file("bit.ly/informe-bloques", "informe-bloques.Rmd")`
+
+```{block, type = "atencion"}
+Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre 
+por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.
+
+
+```
+
+## Ejemplo
+
+Para estudiar las diferencias entre tres fertilizantes sobre la
+producción de papas, se dispuso de 5 fincas, cada una de las cuales se dividió
+en tres parcelas del mismo tamaño y tipo. Los fertilizantes fueron asignados al
+azar en las parcelas de cada finca. El rendimiento en toneladas fue:
+
+
+```{r ej}
+fert %>%  pander(caption = "(#tab:papas) Rendimiento en toneladas de papa por
+                 ha en 5 fincas (bloques) bajo tres fertilizantes 
+                 (tratamientos).")
+
+```
+
+El gráfico de perfiles de los datos
+
+```{r ej_plot, fig.width=5, fig.height=3, fig.cap="Perfiles", message=FALSE}
+p <- ggplot(fert_long, aes(Finca, Produccion, color = Fertilizante)) +
+  geom_line(aes(group = Fertilizante, linetype = Fertilizante)) +
+  geom_point(aes(shape = Fertilizante))
+direct.label(p, "last.qp")
+```
+
+Lo primero que hay comprobar es que se da el supuesto de supuesto de aditividad.
+Es decir que no hay interacción entre los bloques y los tratamientos. Es decir,
+que el bloque que produce mayores o menores rendimientos lo hace para todos los 
+fertilizantes y viceversa. Esto se hace con el test de aditividad de Tukey, 
+la función `tukey.test()` en *R*. Recuerden del práctico de 
+[ANOVA doble][aditividad-tukey] que la función necesita una matriz con solo
+los datos.
+
+```{r}
+fert %>% select(-Finca) %>% 
+  as.matrix() %>% 
+  tukey.test()
+```
+
+Medias por Fertilizante:
+
+```{r}
+fert_long <- fert %>%
+  gather(key = "Fertilizante", value = "Produccion", -Finca) %>% 
+  mutate(Finca = factor(Finca))
+
+fert_long %>% 
+  group_by(Fertilizante) %>% 
+  summarise(media = mean(Produccion),
+             var = var(Produccion),
+             sd = sd(Produccion))
+
+
+```
+
+Medias por Finca:
+
+```{r}
+fert_long %>% 
+  group_by(Finca) %>% 
+  summarise(media = mean(Produccion),
+             var = var(Produccion),
+             sd = sd(Produccion))
+```
+
+Prueba de supuestos:
+
+```{r}
+bartlett.test(Produccion ~ Fertilizante, 
+                     data = fert_long)
+leveneTest(Produccion ~ Fertilizante, data = fert_long)
+
+```
+
+Para realizar el ANOVA se usa la formula de misma manera que cuando tenemos un diseño
+de dos factores sin réplicas. Es decir, del lado derecho de la fórmula, se escribe
+el nombre de la variable unido con un signo `+`con la variable que corresponde a los
+bloques. El orden no importa. Siguiendo el ejemplo de fertilizante:
+
+```{r}
+fert_aov <- aov(Produccion ~ Fertilizante + Finca, data = fert_long)
+summary(fert_aov)
+```
+
+Para obtener las comparaciones múltiples entre los fertilizantes se puede usar
+la función `emmeans()` (*estimated marginal means*).
+
+```{r}
+fert_lsm <- emmeans(fert_aov, pairwise ~ Fertilizante)
+summary(fert_lsm)
+```
+
+Para obtener los grupos la función `cld()` (*compact letter display*) permite 
+construirlos:
+
+```{r}
+cld(fert_lsm)
+```
+
+
+## Problemas
+
+1. Se estudia mediante un diseño de bloques al azar el efecto de una hormona
+de crecimiento sobre ratas jóvenes. Se prueba una dosis débil (tratamiento A),
+una dosis fuerte (tratamiento B) y un tercer tratamiento, que sería el testigo,
+consistente en la aplicación de un placebo. Se toman 6 camadas de ratas al
+azar, también al azar se seleccionan tres animales de cada una. Se asignan
+los tratamientos al azar dentro de cada camada y al cabo de 15 días se mide el
+aumento en peso, en decigramos, con los siguientes resultados:
+
+```{r echo = FALSE}
+ratas %>% setNames(c("Tratamiento", 1:6)) %>% 
+pander(caption = "(#tab:hormona-crecimiento) Aumento de peso (dg) en ratas
+                  de 6 camadas bajo el efecto de la hormona de crecimiento
+                  en bajo dos concetraciones (A: baja, B: alta) y un control.")
+```
+
+a)	Estudiar la aditividad del modelo (validez del modelo).
+
+```{r 1, echo=solucion, eval=solucion}
+ratas_long <- ratas %>% 
+  gather(key = "camada", value = "aumento_peso", -tratamiento)
+
+ratas_long %>% 
+  group_by(tratamiento) %>% 
+  summarise(mean = mean(aumento_peso),
+             var = var(aumento_peso),
+             sd = sd(aumento_peso))
+  
+
+bartlett.test(aumento_peso ~ tratamiento, 
+                     data = ratas_long)
+leveneTest(aumento_peso ~ tratamiento, data = ratas_long)
+ratas %>%
+  select(-1) %>% 
+  as.matrix() %>% 
+  tukey.test()
+
+
+```
+
+```{r 1_log, echo=solucion, eval=solucion}
+ratas_long <- ratas_long %>% 
+  mutate(log_aumento_peso = log1p(aumento_peso))
+
+ratas_long %>% 
+  group_by(tratamiento) %>% 
+  summarise(mean = mean(aumento_peso),
+             var = var(aumento_peso),
+             sd = sd(aumento_peso))
+
+bartlett.test(log_aumento_peso ~ tratamiento, 
+                     data = ratas_long)
+leveneTest(log_aumento_peso ~ tratamiento, data = ratas_long)
+#Tukey additivity test
+ratas_long %>% 
+  select(tratamiento, camada, log_aumento_peso) %>%
+  spread(tratamiento, log_aumento_peso) %>% 
+  select(-camada) %>% 
+  as.matrix %>% 
+  tukey.test()
+
+```
+
+b)	Poner a prueba la efectividad de la hormona.
+
+```{r, eval=solucion, echo=solucion}
+ratas_aov <- aov(log_aumento_peso ~ tratamiento + camada, data = ratas_long)
+summary(ratas_aov)
+```
+
+
+c)	Realizar contrastes múltiples, si corresponde.
+
+```{r 1_log_plot, fig.width=4, fig.height=3, fig.cap="Perfiles", eval=solucion, echo=solucion}
+ggplot(ratas, aes(camada, log_aumento_peso)) +
+  geom_line(aes(group = tratamiento, linetype = tratamiento)) +
+  scale_x_discrete(labels = 1:6)
+```
+
+```{r, eval=solucion, echo=solucion}
+ratas_lsm <- emmeans(ratas_aov, ~ tratamiento)
+cld(ratas_lsm)
+```
+
+d) ¿Qué sucede si omitimos el factor bloque? ¿A donde fue a parar toda la 
+variabilidad debida a los bloques?
+
+```{r, eval=solucion, echo=solucion }
+ratas_aov <- aov(log_aumento_peso ~ tratamiento, data = ratas_long)
+summary(ratas_aov)
+```
+
+
+2. Un investigador estudia los efectos de tres dietas experimentales con
+variado contenido de grasas sobre el nivel total de lípidos en el plasma. El
+nivel total de lípidos en el plasma es utilizado como un indicador de posibles
+enfermedades coronarias. Quince hombres de peso corporal (unos Adonis) ideal
+fueron agrupados en 5 bloques de acuerdo a la edad. Dentro de cada bloque las
+dietas fueron asignadas al azar a los tres sujetos. La tabla presenta los datos
+correspondientes a la reducción en el nivel de lípidos (g/l) después de que los
+individuos fueron sometidos a la dieta durante un período de tiempo fijo:
+
+```{r echo=FALSE}
+pander(lipidos, caption = "(#tab:lipidos) Reducción de lípidos (g/l) bajo tres
+       dieta con distinto contenido de grasas.")
+```
+
+
+a) ¿Por qué la edad fue usada como una variable de bloque? 
+b) Realice la prueba
+de Tukey, ¿cuáles son sus conclusiones? (trabaje con $\alpha$ = 0.05 y 
+$\alpha$ = 0.01)
+
+```{r, eval=solucion, echo=solucion}
+tukey.test(as.matrix(lipidos[, -1])) 
+```
+
+Asumiendo que un diseño en bloques al azar es el adecuado 
+c) Obtenga la tabla de ANOVA 
+```{r, eval=solucion, echo=solucion} 
+lipidos_largo <- lipidos %>% 
+  gather(key = "dieta", value = "reduccion", -Bloque) 
+lipidos_aov <- aov(reduccion ~ dieta + Bloque, data = lipidos_largo)
+summary(lipidos_aov) 
+```
+
+
+d) Estime $D_1 = \mu_1- \mu_2 $ y $D_2 = \mu_2 - \mu_3 $ , usando un
+intervalo de confianza de Bonferroni. ¿Es significativo alguno de los contrastes?
+
+```{r 2, eval=solucion, echo=solucion}
+# Poner los coeficientes de los contrastes separados por comas. contrastres
+contrastes <- list(c1 = c(1, -1, 0),
+                   c2 = c(0, 1, -1))
+lipidos_lsm <- emmeans(lipidos_aov, ~ dieta)
+confint(contrast(lipidos_lsm, contrastes), adjust = "bonf")
+```
+
+e) En este experimento no fue usada una dieta estándar como control. ¿Que
+tipo de justificación puede haber tenido el investigador para no incluir un
+tratamiento testigo con fines comparativos?
+
+
+
+
