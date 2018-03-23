@@ -941,7 +941,7 @@ $$
 
 \begin{equation}
 E\left( CM_E \right) = \sigma^{2} + \frac{\sum_{}^{}{n_{i}\left( \mu_{i} - \mu_{\bullet} \right)^{2}}}{I - 1}
-  (\#eq:eCM_E)
+  (\#eq:eCM-E)
 \end{equation}
 
 
@@ -960,7 +960,7 @@ $$
     tanto iguales a la media pesada $\mu_{\bullet}$, entonces$\ E(CM_E) = \sigma^{2}$ dado
     que el segundo término se vuelve cero. Cuando las medias de los niveles del
     factor no son iguales, el $CM_E$ tiende en promedio a ser mayor que el $CM_D$,
-    dado que el segundo término de la Ecuación \@ref(eq:eCM_E) será positivo. Esto es
+    dado que el segundo término de la Ecuación \@ref(eq:eCM-E) será positivo. Esto es
     intuitivamente razonable, como se ilustra en la figura para cuatro tratamientos.
     En la situación planteada se asume que todos los tamaños muestrales son iguales,
     o sea$\ n_{i} = n$. Cuando todos los $\mu_{i}$ son iguales, entonces todos lo
