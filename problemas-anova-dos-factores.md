@@ -36,7 +36,7 @@ hay más de dos variables:
 Y ~ X * Z * W
 Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W
 ```
-### Test de aditividad de Tukey.
+### Test de aditividad de Tukey {#aditividad-tukey}.
 
 Para probar que $H_0: D=0$ se debe realizar el [test de aditividad de Tukey][Prueba de Tukey (Aditividad)]. 
 En *R* está implementado como una función del paquete `additivityTests`. 

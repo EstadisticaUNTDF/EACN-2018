@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="problemas-de-anova-no-parametrico.html">
-<link rel="next" href="problemas-anova-diseno-experimental.html">
+<link rel="prev" href="problemas-anova-diseno-experimental.html">
+<link rel="next" href="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -382,755 +382,734 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="disenos-experimentales" class="section level1">
-<h1><span class="header-section-number">Capítulo 13</span> DISEÑOS EXPERIMENTALES</h1>
-<div id="bloques-al-azar" class="section level2">
-<h2><span class="header-section-number">13.1</span> Bloques al azar</h2>
-<div id="diseno-de-experimentos" class="section level3">
-<h3><span class="header-section-number">13.1.1</span> Diseño de experimentos</h3>
-<p>El diseño de un experimento se refiere a la estructura del experimento, en
-particular a:</p>
-<ol style="list-style-type: decimal">
-<li><p>El grupo de tratamientos incluidos en el estudio.</p></li>
-<li><p>El grupo de unidades experimentales incluidas en el estudio.</p></li>
-<li><p>Las reglas y procedimientos por los cuales los tratamientos son asignados a
-las unidades experimentales (o viceversa).</p></li>
-<li><p>Las medidas son hechas sobre las unidades experimentales después que los
-tratamientos han sido aplicados.</p></li>
-</ol>
-<p>Los diseños estadísticos hacen referencia a las reglas y procedimientos a través
-de los cuales los tratamientos son asignados a las unidades experimentales. El
-uso de reglas y procedimientos impropios en la asignación de los tratamientos a
-las unidades experimentales puede traer serias dificultades.</p>
-<p>El proceso de medición es otro problema importante en los diseños
-experimentales. Idealmente, el proceso de medición debería producir medidas
-insesgadas y precisas. Medidas sesgadas pueden causar serias dificultades en el
-análisis del estudio. Una fuente importante de sesgo se debe a la falta de
-reconocimiento de diferencias en el proceso de evaluación.</p>
-</div>
-<div id="elementos-de-los-disenos-de-bloques-al-azar" class="section level3">
-<h3><span class="header-section-number">13.1.2</span> Elementos de los Diseños de Bloques al Azar</h3>
-<p>Un diseño de bloques al azar es un diseño aleatorio restringido en el cual las
-unidades experimentales son distribuidas en grupos homogéneos, llamados
-<em>bloques</em>, y los tratamientos son asignados al azar dentro de los bloques. Es un
-diseño especialmente utilizado en experimentación agrícola, en el que se desean
-comparar I tratamientos (por ejemplo, fertilizantes), asignando los tratamientos
-en J bloques (por ejemplo J fincas), de modo que se reparten los I tratamientos
-aleatoriamente en cada bloque (los fertilizantes se aplican aleatoriamente en I
-parcelas de una misma finca). Para una correcta aplicación de este diseño debe
-haber una máxima homogeneidad dentro de cada bloque, para que el efecto bloque
-sea el mismo para todos los tratamientos dentro de cada bloque.</p>
-<p>En un experimento agrícola, cada bloque está constituido por un número de
-parcelas que forman una superficie de relativa homogeneidad respecto al resto
-del campo. Cuando se conoce de gradiente de variabilidad del suelo, los bloques
-deben orientarse perpendicularmente al gradiente y las unidades experimentales
-deben tener su mayor dimensión en la misma dirección y sentido que dicho
-gradiente.</p>
-<p>En experimentos con animales, cada bloque estará constituido por un número de
-animales de aproximadamente igual peso, edad, raza, etc. Debe haber diferencias
-entre bloques.</p>
-<p>(ref:bloque) Esquema de diseño en bloques al azar. Cada bloque se dividió en
-cuatro y cada uno de los tratamientos dentro de los bloques se asignó al azar.</p>
-<div class="figure"><span id="fig:bloques"></span>
-<img src="diseno-experimental_files/figure-html/bloques-1.png" alt="(ref:bloque)" width="672" />
-<p class="caption">
-Figura 13.1: (ref:bloque)
-</p>
-</div>
-</div>
-<div id="criterios-para-definir-los-bloques" class="section level3">
-<h3><span class="header-section-number">13.1.3</span> Criterios para definir los bloques</h3>
-<p>Es necesaria una definición precisa de la unidad experimental, que dependerá del
-problema en particular. Una vez definida existen dos tipos de criterios para
-definir los bloques:</p>
-<ol style="list-style-type: decimal">
-<li><p>Características asociadas con la unidad experimental: edad, inteligencia,
-educación, áreas geográficas, tamaño de la población, etc.</p></li>
-<li><p>Características asociadas con las características experimentales:
-observadores, instrumento de medición, tiempo de procesado, etc.</p></li>
-</ol>
-</div>
-<div id="ventajas-y-desventajas" class="section level3">
-<h3><span class="header-section-number">13.1.4</span> Ventajas y desventajas</h3>
-<ol style="list-style-type: decimal">
-<li><p>Ventajas</p></li>
-<li><p>Puede proveer resultados más precisos que un diseño completamente al azar de
-tamaño comparable.</p></li>
-<li><p>Se pueden estimar los datos de algunas unidades experimentales si se
-pierden.</p></li>
-<li><p>El análisis estadístico es relativamente simple.</p></li>
-<li><p>Desventajas</p></li>
-<li><p>Las observaciones perdidas dentro de cada bloque requieren cálculos
-complejos.</p></li>
-<li><p>Los grados de libertad del error experimental no son tan grandes como en un
-diseño completamente aleatorizado.</p></li>
-<li><p>Se hacen más suposiciones que en un modelo completamente al azar.</p></li>
-</ol>
-</div>
-<div id="modelo" class="section level3">
-<h3><span class="header-section-number">13.1.5</span> Modelo</h3>
-<p>Se puede pensar a un diseño en bloques al azar como un estudio de dos factores
-(los bloques y los tratamientos son los factores), con una observación por
-celda. Si se puede asumir que no hay interacción entre los dos factores, se
-puede realizar un análisis de los efectos de los factores cuando hay una sola
-observación por celda y los factores tienen efectos fijos.</p>
-<p>Así, el modelo para un diseño en bloques al azar, cuando tanto los bloques como
-los tratamientos tienen efectos fijos y hay n bloques y r tratamientos, es:</p>
-<p><span class="math display">\[
-Y_{ij} = \mu_{\bullet \bullet} + \rho_{i} + \tau_{j} + \varepsilon_{ij}
-\]</span></p>
-<p>donde:</p>
-<p><span class="math inline">\(\mu_{\bullet \bullet}\)</span>. es una constante</p>
-<p><span class="math inline">\(\rho_{i}\)</span>son constantes para el efecto del bloque, sujetas a la restricción
-<span class="math inline">\(\sum\rho_{i} = 0\)</span>.</p>
-<p><span class="math inline">\(\tau_{j}\)</span> son constantes para los efectos de los tratamientos, sujetas a la
-restricción <span class="math inline">\(\sum\tau_{i} = 0\)</span></p>
-<p><span class="math inline">\(\varepsilon_{ij}\)</span> son v. a. independientes <span class="math inline">\(N(0, \sigma^{2})\)</span></p>
-<p><span class="math display">\[
-i = 1,2,...,n;j = 1,2,...,r
-\]</span></p>
-<p>Las <span class="math inline">\(Y_{ij}\)</span> observaciones son independientes y se distribuyen normalmente, con
-media:</p>
-<p><span class="math display">\[
-E\left( Y_{ij} \right) = \mu_{\bullet \bullet} + \rho_{i} + \tau_{j}
-\]</span></p>
-<p>y varianza constante:</p>
-<p><span class="math display">\[
-{Var}\left( Y_{ij} \right) = \sigma^{2}
-\]</span></p>
-</div>
-</div>
-<div id="analisis-de-la-varianza-y-pruebas" class="section level2">
-<h2><span class="header-section-number">13.2</span> Análisis de la varianza y pruebas</h2>
-<p>Los estimadores de mínimos cuadrados son:</p>
+<div id="pruebas-para-varias-muestras-pareadas" class="section level1">
+<h1><span class="header-section-number">Capítulo 15</span> Pruebas para varias muestras pareadas</h1>
+<p>Existen diversos tipos de pruebas no paramétricas para comparar k muestras
+relacionadas. Se considera un bloque a una unidad experimental homogénea que
+puede ser particionada en k elementos o una serie de k unidades experimentales
+que se encuentran vinculadas entre sí de tal forma que la respuesta de cada una
+de ellas a un tratamiento dado no es independiente de las demás. Un bloque puede
+estar constituido por diferentes animales de una misma camada (base genética
+común y diferente de cualquier otra camada), un mismo individuo sometido a k
+tratamientos diferentes, una parcela de terreno dividida en k sub-parcelas
+(idéntico tipo de suelo para las k-sub-parcelas), etc.</p>
+<p>De esta manera, el diseño experimental subyacente a las pruebas no paramétricas
+para k muestras relacionadas es el diseño de bloques al azar. Este diseño
+consiste en comparar una serie de <em>c</em> tratamientos. Para ello, se toman <em>r</em>
+bloques que son particionados en <em>c</em> partes y a cada una de ellas se le asigna
+al azar cada uno de los <em>c</em> tratamientos.</p>
+<p>Si los diferentes bloques utilizados fueran homogéneos entre sí, el diseño
+experimental puede reducirse a un diseño análogo al del ANOVA de un factor de la
+estadística paramétrica. La tabla básica de datos para estas pruebas no
+paramétricas es de la forma:</p>
 <table>
-<colgroup>
-<col width="24%" />
-<col width="75%" />
-</colgroup>
 <thead>
 <tr class="header">
-<th>Parámetro</th>
-<th align="left">Estimador</th>
+<th></th>
+<th>Tratamientos</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(\mu_{\bullet \bullet}\)</span></td>
-<td align="left"><span class="math inline">\({\hat{\mu}}_{\bullet \bullet} = \overline{Y_{\bullet \bullet}}\)</span></td>
+<td>Bloques</td>
+<td>1</td>
+<td>2</td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(c\)</span></td>
+<td>Total de fila</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\rho_{i}\)</span></td>
-<td align="left"><span class="math inline">\({\hat{\rho}}_{i} = {\overline{Y}}_{i \bullet} - {\overline{Y}}_{\bullet \bullet}\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(X_{11}\)</span></td>
+<td><span class="math inline">\(X_{12}\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(X_{1c}\)</span></td>
+<td><span class="math inline">\(R_{1}\)</span></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\tau_{j}\)</span></td>
-<td align="left"><span class="math inline">\({\hat{\tau}}_{j} = {\overline{Y}}_{\bullet j} - {\overline{Y}}_{\bullet \bullet}\)</span></td>
+<td>2</td>
+<td><span class="math inline">\(X_{21}\)</span></td>
+<td><span class="math inline">\(X_{22}\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(X_{2c}\)</span></td>
+<td><span class="math inline">\(R_{2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\ddots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r\)</span></td>
+<td><span class="math inline">\(X_{r1}\)</span></td>
+<td><span class="math inline">\(X_{r2}\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(X_{rc}\)</span></td>
+<td><span class="math inline">\(R_{r}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total de columna</td>
+<td><span class="math inline">\(C_{1}\)</span></td>
+<td><span class="math inline">\(C_{2}\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(C_{c}\)</span></td>
+<td><span class="math inline">\(N\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Los valores ajustados serán entonces:</p>
-<p><span class="math display">\[
-{\hat{Y}}_{ij}  = \overline{Y}_{\bullet \bullet} + \left( {\overline{Y}}_{i \bullet} - {\overline{Y}}_{\bullet \bullet} \right) + \left( {\overline{Y}}_{\bullet j} - {\overline{Y}}_{\bullet \bullet} \right) = {\overline{Y}}_{i \bullet} + {\overline{Y}}_{\bullet j} - {\overline{Y}}_{\bullet \bullet}
-\]</span></p>
-<p>y los residuos son:</p>
-<p><span class="math display">\[
-\varepsilon_{ij} = {\overline{Y}}_{ij} - {\hat{Y}}_{ij}  = {\overline{Y}}_{ij} - {\overline{Y}}_{i \bullet} + {\overline{Y}}_{\bullet j} - {\overline{Y}}_{\bullet \bullet}
-\]</span></p>
-<div id="analisis-de-la-varianza" class="section level3">
-<h3><span class="header-section-number">13.2.1</span> Análisis de la varianza</h3>
-<div id="hipotesis-4" class="section level4">
-<h4><span class="header-section-number">13.2.1.1</span> Hipótesis</h4>
+<div id="prueba-de-friedman-para-varias-muestras-relacionadas" class="section level2">
+<h2><span class="header-section-number">15.1</span> Prueba de Friedman para varias muestras relacionadas</h2>
+<p>La prueba de Friedman es la versión no paramétrica del ANOVA de dos vías con una
+única observación por celda cuando el diseño es el de bloques al azar.</p>
+<p>En este caso, se asignan rangos dentro de cada bloque [<span class="math inline">\(R(X_{ij})\)</span>] de
+tal manera que la menor observación tiene el rango 1 y así sucesivamente hasta
+llegar a la mayor observación que se corresponde con el rango <em>c</em>. En caso de
+empates, se promedian los rangos correspondientes. Este procedimiento se realiza
+en cada bloque, obteniéndose una tabla de rangos de la forma:</p>
 <table>
 <thead>
 <tr class="header">
-<th>Efectos de los tratamientos fijos</th>
-<th>Efectos de los tratamientos aleatorios</th>
+<th></th>
+<th>Tratamientos</th>
+<th></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(H_{0}\)</span>: todos <span class="math inline">\(\tau_{j} = 0\)</span></td>
-<td><span class="math inline">\(H_{0}:\sigma_{\tau}^{2} = 0\)</span></td>
+<td>Bloques</td>
+<td>1</td>
+<td>2</td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td>c</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(H_{a}\)</span>: no todos los <span class="math inline">\(\tau_{j} = 0\)</span></td>
-<td><span class="math inline">\(H_{a}:\sigma_{\tau}^{2} &gt; 0\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(R(X_{11})\)</span></td>
+<td><span class="math inline">\(R(X_{12})\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(R(X_{1c})\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(R(X_{21}\)</span>)</td>
+<td><span class="math inline">\(R(X_{22})\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(R(X_{2c})\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\ddots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td>r</td>
+<td><span class="math inline">\(R(X_{r1})\)</span></td>
+<td><span class="math inline">\(R(X_{r2})\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(R(X_{rc})\)</span></td>
+</tr>
+<tr class="even">
+<td>Suma de rangos (<span class="math inline">\(R_{j}\)</span>)</td>
+<td><span class="math inline">\(R_{1}\)</span></td>
+<td><span class="math inline">\(R_{2}\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(R_{c}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Se usa la misma prueba estadística, tanto si los efectos de los tratamientos son
-al azar como si son fijos.</p>
+<div id="estadistico" class="section level3">
+<h3><span class="header-section-number">15.1.1</span> Estadístico</h3>
+<p>La prueba de Friedman presenta dos estadísticos diferentes (<span class="math inline">\(\chi_{F}^{2}\)</span> y
+<span class="math inline">\(F_{F}\)</span>). Estos estadísticos, calculados con la corrección por empates, se
+obtienen como:</p>
 <p><span class="math display">\[
-F^{*} = \frac{CM_{TR}}{CM_{\text{BL.TR}}}
+{A_{1} = \sum_{i = 1}^{r}{\sum_{j = 1}^{c}\left\lbrack R\left( X_{ij} \right) \right\rbrack^{2}} }
+\\{C_{1} = \frac{\text{rc}\left( c + 1 \right)^{2}}{4}}\\{\chi_{F}^{2} = \frac{\left( c - 1 \right)\sum_{j = 1}^{c}\left( R_{j} - \frac{r\left( c + 1 \right)}{2} \right)^{2}}{A_{1} - C_{1}}}\\{F_{F} = \frac{\left( r - 1 \right)\chi_{F}^{2}}{r\left( c - 1 \right) - \chi_{F}^{2}}}
 \]</span></p>
-<p>la regla de decisión será entonces:</p>
-<p>Sí <span class="math inline">\(F^{*} \leq F_{\alpha;\left( r-1 \right),\left( n-1 \right)\left( r-1 \right)}\)</span> no se rechaza <span class="math inline">\(H_{0}\)</span></p>
-<p>Sí <span class="math inline">\(F^{*} &gt; F_{\alpha;\left( r-1 \right),\left( n-1 \right)\left( r-1 \right)}\)</span>
-se rechaza <span class="math inline">\(H_{0}\)</span></p>
+<p>El <span class="math inline">\(\chi_{F}^{2}\)</span> se distribuye en forma aproximada según una <span class="math inline">\(\chi^{2}\)</span> con
+<span class="math inline">\(c - 1\)</span> grados de libertad. Sin embargo, aún con muestras relativamente
+grandes, esta aproximación no es buena. Por esta razón es preferible utilizar el
+estadístico <span class="math inline">\(F\)</span> el cuál se distribuye aproximadamente según una distribución de
+Fisher con <span class="math inline">\(\nu_1=(c-1)\)</span> y <span class="math inline">\(\nu_2=(r-1)(c-1)\)</span> grados de libertad.</p>
 </div>
+<div id="supuestos-4" class="section level3">
+<h3><span class="header-section-number">15.1.2</span> Supuestos</h3>
+<ol style="list-style-type: decimal">
+<li><p>Los <em>r</em> bloques son mutuamente independientes. Esto significa que los
+resultados obtenidos en un bloque no influencian los resultados de los otros
+bloques.</p></li>
+<li><p>Dentro de cada bloque se asignan los rangos a los resultados de los <em>c</em>
+tratamientos de acuerdo a algún criterio de interés.</p></li>
+</ol>
 </div>
-<div id="prueba-de-tukey-de-aditividad" class="section level3">
-<h3><span class="header-section-number">13.2.2</span> Prueba de Tukey de Aditividad</h3>
-<p>La suma de cuadrados especial de interacción está dada, en este caso, por:</p>
+<div id="hipotesis-5" class="section level3">
+<h3><span class="header-section-number">15.1.3</span> Hipótesis</h3>
+<p><span class="math inline">\(H_{0}\)</span>: los <em>c</em> tratamientos tiene idéntico efecto.</p>
+<p><span class="math inline">\(H_{a}\)</span>: al menos uno de los <em>c</em> tratamientos presenta un efecto diferente de
+los demás.</p>
+<p>Los criterios de decisión para la prueba son:</p>
+<p>Si <span class="math inline">\(\chi_{F}^{2} \geq \chi_{c - 1;1 - \alpha}^{2}\)</span> ó <span class="math inline">\(F_{F} \geq F_{\nu_{1} = \left( c - 1 \right);\nu_{2} = \left( r - 1 \right)\left( c - 1 \right);1 - \alpha\ }\)</span> entonces Rechazo <span class="math inline">\(H_{0}\)</span>.</p>
+<p>Si <span class="math inline">\(\chi_{F}^{2} &lt; \chi_{c - 1;1 - \alpha}^{2}\)</span> ó <span class="math inline">\(F_{F} &lt; F_{\nu_{1} = \left( c - 1 \right);\nu_{2} = \left( r - 1 \right)\left( c - 1 \right);1 - \alpha\ }\)</span> entonces No Rechazo <span class="math inline">\(H_{0}\)</span>.</p>
+</div>
+<div id="comparaciones-multiples-1" class="section level3">
+<h3><span class="header-section-number">15.1.4</span> Comparaciones múltiples</h3>
+<p>Si la prueba de Friedman resultó significativa, es pertinente realizar
+contrastes para determinar cuáles son los tratamientos que difieren entre sí.
+Para ello se realizan comparaciones de a pares entre los <em>c</em> tratamientos. Se
+considera que dos tratamientos son significativamente diferentes si se verifica
+la siguiente desigualdad:</p>
 <p><span class="math display">\[
-SC_{BL \bullet TR}^{*} = \frac{\left\lbrack \sum_{i}^{}{\sum_{j}^{}{\left(  \overline{Y_{i \bullet}} -  \overline{Y_{\bullet \bullet}} \right)\left(  \overline{Y_{\bullet j}} -  \overline{Y_{\bullet \bullet}} \right)Y_{ij}}} \right\rbrack^{2}}{{\sum_{i}^{}\left(  \overline{Y_{i \bullet}} -  \overline{Y_{\bullet \bullet}} \right)}^{2}\sum_{j}^{}\left(  \overline{Y_{\bullet j}} -  \overline{Y_{\bullet \bullet}} \right)^{2}}
+\left| R_{j} - R_{i} \right| \geq t_{\nu = \left( r - 1 \right)\left( c - 1 \right);1 - \alpha\backslash 2}\sqrt{\frac{2\left( rA_{1} - \sum_{j = 1}^{c}R_{j}^{2} \right)}{\left( r - 1 \right)\left( c - 1 \right)}}
 \]</span></p>
-<p>La suma de cuadrados remanente se obtiene como:</p>
+<p>Otro método de contraste que es más sencillo de calcular, pero más conservativo
+que el anterior, es el que se define con la siguiente desigualdad:</p>
 <p><span class="math display">\[
-SC_{Rem}^{*} = SC_{T}-SC_{BL}-SC_{TR}-SC_{BL \bullet TR}^{*}
+\left| R_{j} - R_{i} \right| \geq \frac{q_{\infty;c;\alpha}}{\sqrt{2}}\sqrt{\frac{c(c + 1)}{6\ n}}
 \]</span></p>
-<p>La prueba estadística es.</p>
-<p><span class="math display">\[
-F^{*} = \frac{SC_{BL\bullet TR}^{*}}{1} \div \frac{SC_{Rem}^{*}}{rn - r - n}
-\]</span></p>
-<table>
-<caption><span id="tab:anova-bloque-azar">Tabla 13.1: </span> Tabla de anova para un diseño de bloques al azar</caption>
-<colgroup>
-<col width="3%" />
-<col width="30%" />
-<col width="4%" />
-<col width="21%" />
-<col width="19%" />
-<col width="19%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Fte. de variación</strong></th>
-<th>SC</th>
-<th>GL</th>
-<th>CM</th>
-<th>E(CM) Tratamientos fijos</th>
-<th>E(CM) Tratamientos aleatorios</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Bloques</strong></td>
-<td><span class="math inline">\(r{\sum_{i}^{}\left( \overline{Y_{i \bullet}}- \overline{Y_{\bullet \bullet}} \right)}^{2}\)</span></td>
-<td><span class="math inline">\(n - 1\)</span></td>
-<td><span class="math inline">\(\frac{SC_{BL}}{n - 1}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}+\frac{r\sum_{i}^{}\rho_{i}}{n - 1}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}+\frac{r\sum_{i}^{}\rho_{i}}{n - 1}\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Tratamientos</strong></td>
-<td><span class="math inline">\(n\sum_{j}^{}\left( \overline{Y_{\bullet j}}- \overline{Y_{\bullet \bullet}} \right)^{2}\)</span></td>
-<td><span class="math inline">\(r - 1\)</span></td>
-<td><span class="math inline">\(\frac{SC_{TR}}{r - 1}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}+\frac{n\sum_{j}^{}\tau_{j}}{r - 1}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}+ \backslash n\sigma_{\tau}^{2}\)</span></td>
-</tr>
-<tr class="odd">
-<td><strong>Error</strong></td>
-<td><span class="math inline">\(SC_T - SC_{BL} - SC_{TR}\)</span></td>
-<td><span class="math inline">\((n 1)(r 1)\)</span></td>
-<td><span class="math inline">\(\frac{SC_{BL \bullet TR}^{*}}{\left( n - 1 \right)\left( r - 1 \right)}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}\)</span></td>
-<td><span class="math inline">\(\sigma^{2}\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Total</strong></td>
-<td></td>
-<td><span class="math inline">\(nr - 1\)</span></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Ejemplo:</strong> Para estudiar las diferencias entre tres fertilizantes sobre la
-producción de papas, se dispuso de 5 fincas, cada una de las cuales se dividió
-en tres parcelas del mismo tamaño y tipo. Los fertilizantes fueron asignados al
-azar en las parcelas de cada finca. El rendimiento en toneladas fue:</p>
+<p>Para ambos tipos de contrastes, α es el nivel de significación de la prueba y
+debe ser el mismo que se empleó para la prueba de Friedman.</p>
+<p><strong>Ejemplo.</strong> En un estudio sobre diferentes métodos posibles para detener el
+proceso de desertificación, se intenta evaluar si cuatro variedades de pasto son
+igualmente efectivas para fijar el suelo. Para ello se seleccionaron al azar
+distintas parcelas con diferentes niveles de desertificación y cada una de ellas
+fue dividida en cuatro sectores. Cada sector fue plantado con una de las
+variedades de pasto, realizándose esta asignación aleatoriamente. Luego de un
+tiempo razonable se evaluó con una escala apropiada el porcentaje de suelo
+cubierto por cada variedad de pasto, considerándose que cuanto mayor sea este
+índice mejor es la <em>performance</em> de la variedad de pasto para fijar el suelo.</p>
+<p>Los resultados obtenidos fueron:</p>
 <table>
 <thead>
 <tr class="header">
-<th>Finca</th>
-<th>Fertilizante 1</th>
-<th>Fertilizante 2</th>
-<th>Fertilizante 3</th>
+<th>Parcela</th>
+<th>Pasto 1</th>
+<th>Pasto 2</th>
+<th>Pasto 3</th>
+<th>Pasto 4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>1</td>
-<td>5</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>2</td>
-<td>8</td>
 <td>14</td>
-</tr>
-<tr class="odd">
-<td>3</td>
+<td>10.5</td>
 <td>7</td>
-<td>9</td>
-<td>16</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>14</td>
+<td>7</td>
+<td>10.5</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>10.5</td>
+<td>5.25</td>
+<td>5.25</td>
+<td>14</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>6</td>
-<td>13</td>
-<td>18</td>
+<td>10.5</td>
+<td>3.5</td>
+<td>7</td>
+<td>14</td>
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>12</td>
 <td>14</td>
-<td>17</td>
+<td>7</td>
+<td>3.5</td>
+<td>10.5</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>3.5</td>
+<td>10.5</td>
+<td>7</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>7</td>
+<td>14</td>
+<td>3.5</td>
+<td>10.5</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>12.25</td>
+<td>3.5</td>
+<td>7</td>
+<td>12.25</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>14</td>
+<td>3.5</td>
+<td>10.5</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>14</td>
+<td>7</td>
+<td>10.5</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>12.25</td>
+<td>3.5</td>
+<td>7</td>
+<td>12.25</td>
 </tr>
 </tbody>
 </table>
-<p>Se desea saber si hay diferencias entre los fertilizantes.</p>
-<p>Se trata de un diseño de bloques al azar, cada finca es un bloque.</p>
-<ol style="list-style-type: decimal">
-<li>Prueba de aditividad</li>
-</ol>
-<p><span class="math display">\[
-SC_{BL \bullet TR}^{*} = 0.262665101
-\]</span></p>
-<p><span class="math display">\[
-SC_{Rem}^{*} = 23.60400157
-\]</span></p>
-<p><span class="math display">\[
-CM_{Rem}^{*} = 3.372000224
-\]</span></p>
-<p><span class="math display">\[
-F = 0.077895932
-\]</span></p>
-<p><span class="math display">\[
-p = 0.78823515
-\]</span></p>
-<p>Por lo tanto, no se rechaza la hipótesis nula, no hay interacción.</p>
-<ol style="list-style-type: decimal">
-<li>ANOVA</li>
-</ol>
+<p>Empleando la prueba de Friedman, los cálculos realizados pueden esquematizarse
+como:</p>
 <table>
 <thead>
 <tr class="header">
-<th>RESUMEN</th>
-<th>Cuenta</th>
-<th>Suma</th>
-<th>Promedio</th>
-<th>Varianza</th>
-<th></th>
-<th></th>
+<th>Rangos</th>
+<th>PASTO1</th>
+<th>PASTO2</th>
+<th>PASTO3</th>
+<th>PASTO4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
+<td>4</td>
 <td>3</td>
-<td>14</td>
-<td>4.66666667</td>
-<td>12.3333333</td>
-<td></td>
-<td></td>
+<td>2</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td>2</td>
+<td>4</td>
+<td>2</td>
 <td>3</td>
-<td>24</td>
-<td>8</td>
-<td>36</td>
-<td></td>
-<td></td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td>3</td>
-<td>32</td>
-<td>10.6666667</td>
-<td>22.3333333</td>
-<td></td>
-<td></td>
+<td>1.5</td>
+<td>1.5</td>
+<td>4</td>
 </tr>
 <tr class="even">
 <td>4</td>
 <td>3</td>
-<td>37</td>
-<td>12.3333333</td>
-<td>36.3333333</td>
-<td></td>
-<td></td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
 </tr>
 <tr class="odd">
 <td>5</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
 <td>3</td>
-<td>43</td>
-<td>14.3333333</td>
-<td>6.33333333</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>3.5</td>
+<td>1</td>
+<td>2</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>3.5</td>
+<td>1</td>
+<td>2</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td><em>r</em></td>
+<td>12</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><em>c</em></td>
+<td>4</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Fertilizante 1</td>
-<td>5</td>
-<td>28</td>
-<td>5.6</td>
-<td>19.3</td>
+<td><span class="math inline">\(A_1\)</span></td>
+<td>356.500</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Fertilizante 2</td>
-<td>5</td>
-<td>49</td>
-<td>9.8</td>
-<td>13.7</td>
+<td><span class="math inline">\(C_1\)</span></td>
+<td>300.000</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Fertilizante 3</td>
-<td>5</td>
-<td>73</td>
-<td>14.6</td>
-<td>15.8</td>
+<td><span class="math inline">\(R_j\)</span></td>
+<td>38.000</td>
+<td>23.500</td>
+<td>24.500</td>
+<td>34.000</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((R_j-r(c+1)/2)^2\)</span></td>
+<td>64.000</td>
+<td>42.250</td>
+<td>30.250</td>
+<td>16.000</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\chi^2_F\)</span></td>
+<td>8.097</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>gl</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Valor p</td>
+<td>0.044</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(F_F\)</span></td>
+<td>3.192</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nu_1\)</span></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\nu_2\)</span></td>
+<td>33</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Valor p</td>
+<td>0.036</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<table>
-<colgroup>
-<col width="19%" />
-<col width="13%" />
-<col width="14%" />
-<col width="19%" />
-<col width="8%" />
-<col width="9%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Origen de las variaciones</th>
-<th>Suma de cuadrados</th>
-<th>Grados de libertad</th>
-<th>Promedio de los cuadrados</th>
-<th>F</th>
-<th>Probabilidad</th>
-<th>Valor crítico para F</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Filas</td>
-<td>171.333333</td>
-<td>4</td>
-<td>42.8333333</td>
-<td>14.3575419</td>
-<td>0.00100812</td>
-<td>3.83785448</td>
-</tr>
-<tr class="even">
-<td>Columnas</td>
-<td>202.8</td>
-<td>2</td>
-<td>101.4</td>
-<td>33.9888268</td>
-<td>0.00012292</td>
-<td>4.45896831</td>
-</tr>
-<tr class="odd">
-<td>Error</td>
-<td>23.8666667</td>
-<td>8</td>
-<td>2.98333333</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td>398</td>
-<td>14</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><em>En R</em></p>
+<p>En R:</p>
+<p>Esta prueba puede realizarse en R. Existen dos funciones:</p>
+<ul>
+<li><p>friedman.test() en el paquete stats, que viene por defecto con la
+instalación de R.</p></li>
+<li><p>friedman() en el paquete agricolae, hay que instalar el paquete pero ofrece,
+además del test, las comparaciones entre tratamientos.</p></li>
+<li><p>posthoc.friedman.conover.test() en el paquete PMCMR realiza la comparación
+de a pares usando la distribución <em>t</em>.</p></li>
+<li><p>posthoc.friedman.nemeyi.test() en el paquete PMCMR realiza la comparación de
+a pares usando la distribución <em>q</em>, de .</p></li>
+</ul>
+<p>En ambos casos los resultados de la prueba son iguales. Abajo está el resultado
+de friedman()</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1">pasto &lt;-<span class="st"> </span><span class="kw">gather</span>(pasto, <span class="dt">key =</span> <span class="st">&quot;Pasto&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;performance&quot;</span>, <span class="op">-</span>Parcela)</a>
+<a class="sourceLine" id="cb272-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb272-3" data-line-number="3">pasto <span class="op">%$%</span><span class="st"> </span><span class="kw">friedman</span>(Parcela, Pasto, performance, <span class="dt">group =</span> <span class="ot">FALSE</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 
-## Tukey test on 5% alpha-level:
+## Study: performance ~ Parcela + Pasto 
 ## 
-## Test statistic: 0.0779 
-## Critival value: 5.591 
-## The additivity hypothesis cannot be rejected.</code></pre>
-<table style="width:53%;">
-<caption><span id="tab:fert-1">Tabla 13.2: </span> Producción de papas por fertilizante</caption>
-<colgroup>
-<col width="23%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-</colgroup>
+## Pasto,  Sum of the ranks
+## 
+##         performance  r
+## Pasto.1        38.0 12
+## Pasto.2        23.5 12
+## Pasto.3        24.5 12
+## Pasto.4        34.0 12
+## 
+## Friedman&#39;s Test
+## ===============
+## Adjusted for ties
+## Critical Value: 8.097345
+## P.Value Chisq: 0.04404214
+## F Value: 3.192198
+## P.Value F: 0.03621547 
+## 
+## Post Hoc Analysis
+## 
+## Comparison between treatments
+## Sum of the ranks
+## 
+##                   difference pvalue signif.    LCL   UCL
+## Pasto.1 - Pasto.2       14.5 0.0149       *   3.02 25.98
+## Pasto.1 - Pasto.3       13.5 0.0226       *   2.02 24.98
+## Pasto.1 - Pasto.4        4.0 0.4834          -7.48 15.48
+## Pasto.2 - Pasto.3       -1.0 0.8604         -12.48 10.48
+## Pasto.2 - Pasto.4      -10.5 0.0717       . -21.98  0.98
+## Pasto.3 - Pasto.4       -9.5 0.1017         -20.98  1.98</code></pre>
+<p>Y aquí el resultado de <code>friedman.test()</code> :</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">friedman.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</a></code></pre></div>
+<pre><code>## 
+##  Friedman rank sum test
+## 
+## data:  performance and Pasto and Parcela
+## Friedman chi-squared = 8.0973, df = 3, p-value = 0.04404</code></pre>
+<p>La función devuelve los dos tipos de estadísticos con su probabilidad asociada.
+En ambos casos la probabilidad resulta menor a <span class="math inline">\(\alpha\)</span> por lo que se concluye
+que existen diferencias significativas entre las especies de pasto. Entonces,
+resulta de interés saber que pasto es el mejor. La función también nos da el
+resultado del primer tipo de contraste, es decir del contraste <em>t</em>:</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">library</span>(PMCMR)</a>
+<a class="sourceLine" id="cb276-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb276-3" data-line-number="3"><span class="kw">posthoc.friedman.nemenyi.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Nemenyi multiple comparison test 
+##              with q approximation for unreplicated blocked data 
+## 
+## data:  performance and Pasto and Parcela 
+## 
+##         Pasto.1 Pasto.2 Pasto.3
+## Pasto.2 0.10    -       -      
+## Pasto.3 0.14    1.00    -      
+## Pasto.4 0.92    0.34    0.44   
+## 
+## P value adjustment method: none</code></pre>
+<p>No nos da el segundo tipo de contraste, pero a partir de los datos que devuelve
+la función resulta sencillo calcularlo.</p>
+<p>Utilizando ambos tipos de contrastes los resultados son:</p>
+<table>
 <thead>
 <tr class="header">
-<th align="center">fertilizante</th>
-<th align="center">mean</th>
-<th align="center">var</th>
-<th align="center">sd</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>38</th>
+<th>23.5</th>
+<th>24.5</th>
+<th>34</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">Fertilizante 1</td>
-<td align="center">5.6</td>
-<td align="center">19.3</td>
-<td align="center">4.393</td>
+<td>Contraste <em>t</em></td>
+<td></td>
+<td></td>
+<td>VC</td>
+<td>11.481687</td>
+<td>PASTO1</td>
+<td>PASTO2</td>
+<td>PASTO3</td>
+<td>PASTO4</td>
 </tr>
 <tr class="even">
-<td align="center">Fertilizante 2</td>
-<td align="center">9.8</td>
-<td align="center">13.7</td>
-<td align="center">3.701</td>
+<td>t</td>
+<td>2.035</td>
+<td></td>
+<td>38</td>
+<td>PASTO1</td>
+<td></td>
+<td>S</td>
+<td>S</td>
+<td>ns</td>
 </tr>
 <tr class="odd">
-<td align="center">Fertilizante 3</td>
-<td align="center">14.6</td>
-<td align="center">15.8</td>
-<td align="center">3.975</td>
+<td>gl</td>
+<td>33</td>
+<td></td>
+<td>23.5</td>
+<td>PASTO2</td>
+<td>14.5</td>
+<td></td>
+<td>ns</td>
+<td>ns</td>
+</tr>
+<tr class="even">
+<td>ES</td>
+<td>5.643</td>
+<td></td>
+<td>24.5</td>
+<td>PASTO3</td>
+<td>13.5</td>
+<td>1</td>
+<td></td>
+<td>ns</td>
+</tr>
+<tr class="odd">
+<td>VC</td>
+<td>11.482</td>
+<td></td>
+<td>34</td>
+<td>PASTO4</td>
+<td>4</td>
+<td>10.5</td>
+<td>9.5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>38</td>
+<td>23.5</td>
+<td>24.5</td>
+<td>34</td>
+</tr>
+<tr class="even">
+<td>Contraste <em>q</em></td>
+<td></td>
+<td></td>
+<td>VC</td>
+<td>16.685835</td>
+<td>PASTO1</td>
+<td>PASTO2</td>
+<td>PASTO3</td>
+<td>PASTO4</td>
+</tr>
+<tr class="odd">
+<td>Z</td>
+<td>2.638</td>
+<td></td>
+<td>38</td>
+<td>PASTO1</td>
+<td></td>
+<td>ns</td>
+<td>ns</td>
+<td>ns</td>
+</tr>
+<tr class="even">
+<td>1-α</td>
+<td>0.996</td>
+<td></td>
+<td>23.5</td>
+<td>PASTO2</td>
+<td>14.5</td>
+<td></td>
+<td>ns</td>
+<td>ns</td>
+</tr>
+<tr class="odd">
+<td>ES</td>
+<td>6.325</td>
+<td></td>
+<td>24.5</td>
+<td>PASTO3</td>
+<td>13.5</td>
+<td>1</td>
+<td></td>
+<td>ns</td>
+</tr>
+<tr class="even">
+<td>VC</td>
+<td>16.686</td>
+<td></td>
+<td>34</td>
+<td>PASTO4</td>
+<td>4</td>
+<td>10.5</td>
+<td>9.5</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table style="width:44%;">
-<caption><span id="tab:fert-2">Tabla 13.3: </span> Producción de papas por finca</caption>
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Finca</th>
-<th align="center">mean</th>
-<th align="center">var</th>
-<th align="center">sd</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center">4.667</td>
-<td align="center">12.33</td>
-<td align="center">3.512</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">8</td>
-<td align="center">36</td>
-<td align="center">6</td>
-</tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">10.67</td>
-<td align="center">22.33</td>
-<td align="center">4.726</td>
-</tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">12.33</td>
-<td align="center">36.33</td>
-<td align="center">6.028</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">14.33</td>
-<td align="center">6.333</td>
-<td align="center">2.517</td>
-</tr>
-</tbody>
-</table>
-<table style="width:43%;">
-<caption><span id="tab:fert-3">Tabla 13.4: </span> Prueba de homogeneidad de varianzas de Bartlett.</caption>
-<colgroup>
-<col width="23%" />
-<col width="6%" />
-<col width="12%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Test statistic</th>
-<th align="center">df</th>
-<th align="center">P value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0.1074</td>
-<td align="center">2</td>
-<td align="center">0.9477</td>
-</tr>
-</tbody>
-</table>
-<table style="width:51%;">
-<caption><span id="tab:fert-4">Tabla 13.5: </span> Prueba de homogeneidad
-de varianzas de Levene.</caption>
-<colgroup>
-<col width="16%" />
-<col width="6%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
-<th align="center">Df</th>
-<th align="center">F value</th>
-<th align="center">Pr(&gt;F)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>group</strong></td>
-<td align="center">2</td>
-<td align="center">0.06604</td>
-<td align="center">0.9364</td>
-</tr>
-<tr class="even">
-<td align="center"></td>
-<td align="center">12</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-</tr>
-</tbody>
-</table>
-<table style="width:89%;">
-<caption><span id="tab:anova-fert">Tabla 13.6: </span> ANOVA para la producción de papa
-con tres fertilizantes con bloques al alzar.</caption>
-<colgroup>
-<col width="26%" />
-<col width="6%" />
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
-<th align="center">Df</th>
-<th align="center">Sum Sq</th>
-<th align="center">Mean Sq</th>
-<th align="center">F value</th>
-<th align="center">Pr(&gt;F)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>fertilizante</strong></td>
-<td align="center">2</td>
-<td align="center">202.8</td>
-<td align="center">101.4</td>
-<td align="center">33.99</td>
-<td align="center">0.0001229</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>Finca</strong></td>
-<td align="center">4</td>
-<td align="center">171.3</td>
-<td align="center">42.83</td>
-<td align="center">14.36</td>
-<td align="center">0.001008</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>Residuals</strong></td>
-<td align="center">8</td>
-<td align="center">23.87</td>
-<td align="center">2.983</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-</tr>
-</tbody>
-</table>
-<table style="width:97%;">
-<caption><span id="tab:anova-fert">Tabla 13.6: </span> Medias marginales, error
-estándar, grados de libertad, intervalo de confianza inferior y superior
-del 95%, y agrupamiento según la prueba de Tukey.</caption>
-<colgroup>
-<col width="23%" />
-<col width="12%" />
-<col width="12%" />
-<col width="6%" />
-<col width="15%" />
-<col width="15%" />
-<col width="11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">fertilizante</th>
-<th align="center">lsmean</th>
-<th align="center">SE</th>
-<th align="center">df</th>
-<th align="center">lower.CL</th>
-<th align="center">upper.CL</th>
-<th align="center">.group</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Fertilizante 1</td>
-<td align="center">5.6</td>
-<td align="center">0.7724</td>
-<td align="center">8</td>
-<td align="center">3.819</td>
-<td align="center">7.381</td>
-<td align="center">1</td>
-</tr>
-<tr class="even">
-<td align="center">Fertilizante 2</td>
-<td align="center">9.8</td>
-<td align="center">0.7724</td>
-<td align="center">8</td>
-<td align="center">8.019</td>
-<td align="center">11.58</td>
-<td align="center">2</td>
-</tr>
-<tr class="odd">
-<td align="center">Fertilizante 3</td>
-<td align="center">14.6</td>
-<td align="center">0.7724</td>
-<td align="center">8</td>
-<td align="center">12.82</td>
-<td align="center">16.38</td>
-<td align="center">3</td>
-</tr>
-</tbody>
-</table>
-<p>(ref:produccion) Producción de papas (tn/ha) bajo tres fertilizantes en
-5 fincas.</p>
-<div class="figure"><span id="fig:unnamed-chunk-2"></span>
-<img src="diseno-experimental_files/figure-html/unnamed-chunk-2-1.png" alt="(ref:produccion)" width="75%" />
-<p class="caption">
-Figura 13.2: (ref:produccion)
-</p>
-</div>
+<p>El método 1 de contrastes permite determinar que el Pasto 1 presenta una mayor
+eficiencia para fijar el suelo que los Pastos 2 y 3, mientras que el resto de
+las comparaciones resultan no significativas. En base a estos resultados, el
+Pasto 1 sería la variedad a elegir para fijar los suelos en zonas
+desertificadas.</p>
+<p>Se puede resaltar que el método 2 de contrastes fue incapaz de detectar estas
+diferencias.</p>
 
 </div>
 </div>
@@ -1140,8 +1119,8 @@ Figura 13.2: (ref:produccion)
           </div>
         </div>
       </div>
-<a href="problemas-de-anova-no-parametrico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="problemas-anova-diseno-experimental.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="problemas-anova-diseno-experimental.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1171,7 +1150,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/diseno-experimental.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/anova-no-parametrico-bloques.Rmd",
 "text": "Edit"
 },
 "download": ["EACN.pdf", "EACN.epub"],
