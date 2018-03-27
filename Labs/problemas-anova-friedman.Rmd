@@ -62,9 +62,7 @@ VC
 Con el paquete
 ```{r}
 library(PMCMR)
-library(PMCMRplus)
 posthoc.friedman.nemenyi.test(performance ~ Pasto | Parcela, data = pasto)
-pasto %$% frdAllPairsNemenyiTest(performance, Pasto, Parcela)
 ```
 
 
@@ -78,7 +76,7 @@ estudiar la importancia relativa de las presas?. Los resultados obtenidos
 fueron:
 
 ```{r 1, echo=FALSE}
-dieta %>% pander(caption = )
+dieta %>% pander(caption = "Porcentaje de consumo de presas según cuatro índices.")
 ```
 
 ```{r, echo=solucion, eval=solucion}
@@ -99,7 +97,8 @@ determinar el número de helmintos hallados en el intestino. ¿Existe un efecto 
 las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:
 
 ```{r 2}
-parasitosis 
+parasitosis %>% pander(caption = "Número de helmitos en intestino de ratones 
+                       tratados con cuatro antiparasitarios distintos.")
 ```
 
 ```{r, echo=solucion, eval=solucion}
@@ -119,7 +118,8 @@ La producción de soja en toneladas obtenida en cada parcela con cada tipo de
 fertilizante fue:
 
 ```{r 3}
-soja
+soja %>% pander(caption = "Rendimiento en toneladas por parcela en 
+                parcelas fertilizadas con cuatro fertilizantes.")
 ```
 ¿Cuál fertilizante conviene utilizar?
 
@@ -141,7 +141,7 @@ del año. ¿Existe una variación estacional en el descarte realizado por la flo
 merlucera? Sus resultados fueron:
 
 ```{r 4}
-pesca 
+pesca %>% pander(caption = "Porcentaje de descarte en las cuatro estaciones.")
 ```
 ```{r, echo = solucion, eval=solucion}
 pesca <- gather(pesca, key =  "Estacion", value = "Biomasa", -Barco)
