@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -391,10 +391,10 @@ funciona. Una buena forma es realizar los cálculos manualmente. No vamos a
 hacer todo manualmente, vamos a aprovechar algunas funciones para hacer los
 pasos más tediosos.</p>
 <p>Usando los datos del ejemplo de los lobos marinos:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb186-2" data-line-number="2">lobos_marinos &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Machos =</span> <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">13</span>, <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5</span>)),</a>
-<a class="sourceLine" id="cb186-3" data-line-number="3">           <span class="dt">Hembras =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>,<span class="dv">6</span>))</a>
-<a class="sourceLine" id="cb186-4" data-line-number="4">lobos_marinos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+lobos_marinos &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Machos =</span> <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">13</span>, <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5</span>)),
+           <span class="dt">Hembras =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">12</span>,<span class="dv">6</span>))
+lobos_marinos</code></pre>
 <pre><code>## # A tibble: 14 x 2
 ##    Machos Hembras
 ##     &lt;dbl&gt;   &lt;dbl&gt;
@@ -423,8 +423,8 @@ tener el mismo número de observaciones</em>. Luego, se puede ver el resultado
 escribiendo el nombre del objeto.</p>
 <p>Ahora ya tengo los datos, pero para ordenarlos debo tener los largos en una
 columna, sin perder de vista que datos corresponden a machos y cuales a hembras.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT)</code></pre>
 <pre><code>## # A tibble: 28 x 2
 ##    Sexo      LT
 ##    &lt;chr&gt;  &lt;dbl&gt;
@@ -446,9 +446,9 @@ como nombres <code>Sexo</code> a la columna <code>key</code> y <code>LT</code> (
 Todo muy bonito, pero hay un problema. Tenemos los valores <code>NA</code> que no
 necesitamos. Los podemos quitar con <code>na.omit()</code> que va eliminar todas las
 filas que contengan <code>NA</code>.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">na.omit</span>()</code></pre>
 <pre><code>## # A tibble: 23 x 2
 ##    Sexo       LT
 ##    &lt;chr&gt;   &lt;dbl&gt;
@@ -476,11 +476,11 @@ Entonces el valor que le corresponde es el promedio de 11 y 12, 11.5.
 Afortunadamente, la función <code>rank()</code> tiene un argumento para indicar como queremos
 definir los empates. Lo que pide el algoritmo es la media que equivale colocar
 el argumento <code>ties = &quot;average&quot;</code>.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">lobos_marinos &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb192-3" data-line-number="3"><span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb192-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rango =</span> <span class="kw">rank</span>(<span class="dt">x =</span> LT, <span class="dt">ties =</span> <span class="st">&quot;average&quot;</span>))</a>
-<a class="sourceLine" id="cb192-5" data-line-number="5">lobos_marinos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lobos_marinos &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> Sexo, <span class="dt">value =</span> LT) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rango =</span> <span class="kw">rank</span>(<span class="dt">x =</span> LT, <span class="dt">ties =</span> <span class="st">&quot;average&quot;</span>))
+lobos_marinos</code></pre>
 <pre><code>## # A tibble: 23 x 3
 ##    Sexo       LT rango
 ##    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -502,10 +502,10 @@ no modifiqué los datos originales, sino que solo agregué variables nuevas.</p>
 <p>Ahora podemos calcular el estadístico <span class="math inline">\(W\)</span> que igual a la suma de los rangos
 de la población 1. Recordemos que la definición de población 1 y 2 es totalmente
 arbitraria.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">W =</span> <span class="kw">sum</span>(rango),</a>
-<a class="sourceLine" id="cb194-4" data-line-number="4">            <span class="dt">N =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Sexo) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">W =</span> <span class="kw">sum</span>(rango),
+            <span class="dt">N =</span> <span class="kw">n</span>())</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   Sexo        W     N
 ##   &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;
@@ -517,8 +517,8 @@ la función <code>summarize</code> resume los datos según las funciones que esp
 Aquí, sumamos los valores de la columna rango según la columna sexo.</p>
 <p>Estos valores que calculamos sirven si los empates son pocos. ¿Pero realmente
 son pocos? Podemos comprobarlo con la ayuda de otra función:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">frecuencias &lt;-<span class="st"> </span><span class="kw">table</span>(lobos_marinos<span class="op">$</span>LT)</a>
-<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="kw">sum</span>(frecuencias[frecuencias <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>])<span class="op">/</span><span class="kw">sum</span>(frecuencias)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">frecuencias &lt;-<span class="st"> </span><span class="kw">table</span>(lobos_marinos<span class="op">$</span>LT)
+<span class="kw">sum</span>(frecuencias[frecuencias <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>])<span class="op">/</span><span class="kw">sum</span>(frecuencias)</code></pre>
 <pre><code>## [1] 0.6521739</code></pre>
 <p>La función <code>table()</code> calcula las frecuencias de los valores y usé esas
 frecuencias para ver cuantos de esos se repiten, es decir que la frecuencia es
@@ -528,41 +528,41 @@ hice. Entonces, el 65% de los valores están empatados. Es un porcentaje alto de
 los datos. Lo que justifica calcular el [estadístico mucho mas complejo][w-con-empates].</p>
 <p>Es una formula larga que puede dar lugar a errores. Hay varios valores que se
 usan varias veces y conviene calcularlos antes.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">lobos_marinos_W_N &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Sexo) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">W =</span> <span class="kw">sum</span>(rango),</a>
-<a class="sourceLine" id="cb198-4" data-line-number="4">            <span class="dt">N =</span> <span class="kw">n</span>())</a>
-<a class="sourceLine" id="cb198-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb198-6" data-line-number="6">N1 &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>N[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb198-7" data-line-number="7">N2 &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>N[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb198-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb198-9" data-line-number="9">N1N2 &lt;-<span class="st"> </span>N1 <span class="op">*</span><span class="st"> </span>N2</a>
-<a class="sourceLine" id="cb198-10" data-line-number="10">N1_N2 &lt;-<span class="st"> </span>N1 <span class="op">+</span><span class="st"> </span>N2</a>
-<a class="sourceLine" id="cb198-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb198-12" data-line-number="12">W &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>W[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb198-13" data-line-number="13">Ri2 &lt;-<span class="st"> </span><span class="kw">sum</span>(lobos_marinos<span class="op">$</span>rango<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb198-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb198-15" data-line-number="15">(W <span class="op">-</span><span class="st"> </span>N1<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-16" data-line-number="16"><span class="st">  </span><span class="kw">sqrt</span>((N1N2<span class="op">/</span>(N1_N2<span class="op">*</span>(N1_N2<span class="dv">-1</span>))<span class="op">*</span>Ri2 <span class="op">-</span><span class="st"> </span>(N1N2<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>(N1_N2<span class="dv">-1</span>))))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lobos_marinos_W_N &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Sexo) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">W =</span> <span class="kw">sum</span>(rango),
+            <span class="dt">N =</span> <span class="kw">n</span>())
+
+N1 &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>N[<span class="dv">1</span>]
+N2 &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>N[<span class="dv">2</span>]
+
+N1N2 &lt;-<span class="st"> </span>N1 <span class="op">*</span><span class="st"> </span>N2
+N1_N2 &lt;-<span class="st"> </span>N1 <span class="op">+</span><span class="st"> </span>N2
+
+W &lt;-<span class="st"> </span>lobos_marinos_W_N<span class="op">$</span>W[<span class="dv">1</span>]
+Ri2 &lt;-<span class="st"> </span><span class="kw">sum</span>(lobos_marinos<span class="op">$</span>rango<span class="op">^</span><span class="dv">2</span>)
+
+(W <span class="op">-</span><span class="st"> </span>N1<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">sqrt</span>((N1N2<span class="op">/</span>(N1_N2<span class="op">*</span>(N1_N2<span class="dv">-1</span>))<span class="op">*</span>Ri2 <span class="op">-</span><span class="st"> </span>(N1N2<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>(N1_N2<span class="dv">-1</span>))))</code></pre>
 <pre><code>## [1] -3.199432</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">wilcox_empates &lt;-<span class="st"> </span><span class="cf">function</span>(r1, r2){</a>
-<a class="sourceLine" id="cb200-2" data-line-number="2">  W &lt;-<span class="st"> </span><span class="kw">sum</span>(r1)</a>
-<a class="sourceLine" id="cb200-3" data-line-number="3">  r &lt;-<span class="st"> </span><span class="kw">c</span>(r1, r2)</a>
-<a class="sourceLine" id="cb200-4" data-line-number="4">  N1 &lt;-<span class="st"> </span><span class="kw">length</span>(r1)</a>
-<a class="sourceLine" id="cb200-5" data-line-number="5">  N2 &lt;-<span class="st"> </span><span class="kw">length</span>(r2)</a>
-<a class="sourceLine" id="cb200-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb200-7" data-line-number="7">  N1N2 &lt;-<span class="st"> </span>N1 <span class="op">*</span><span class="st"> </span>N2</a>
-<a class="sourceLine" id="cb200-8" data-line-number="8">  N1_N2 &lt;-<span class="st"> </span>N1 <span class="op">+</span><span class="st"> </span>N2</a>
-<a class="sourceLine" id="cb200-9" data-line-number="9">  Ri2 &lt;-<span class="st"> </span><span class="kw">sum</span>(r<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb200-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb200-11" data-line-number="11">  (W <span class="op">-</span><span class="st"> </span>N1<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb200-12" data-line-number="12"><span class="st">  </span><span class="kw">sqrt</span>((N1N2<span class="op">/</span>(N1_N2<span class="op">*</span>(N1_N2<span class="dv">-1</span>))<span class="op">*</span>Ri2 <span class="op">-</span><span class="st"> </span>(N1N2<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>(N1_N2<span class="dv">-1</span>))))</a>
-<a class="sourceLine" id="cb200-13" data-line-number="13">}</a>
-<a class="sourceLine" id="cb200-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb200-15" data-line-number="15">rango_machos &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Sexo <span class="op">==</span><span class="st"> &quot;Machos&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rango)</a>
-<a class="sourceLine" id="cb200-16" data-line-number="16">rango_hembras &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Sexo <span class="op">==</span><span class="st"> &quot;Hembras&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rango)</a>
-<a class="sourceLine" id="cb200-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb200-18" data-line-number="18"><span class="kw">wilcox_empates</span>(rango_machos, rango_hembras)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">wilcox_empates &lt;-<span class="st"> </span><span class="cf">function</span>(r1, r2){
+  W &lt;-<span class="st"> </span><span class="kw">sum</span>(r1)
+  r &lt;-<span class="st"> </span><span class="kw">c</span>(r1, r2)
+  N1 &lt;-<span class="st"> </span><span class="kw">length</span>(r1)
+  N2 &lt;-<span class="st"> </span><span class="kw">length</span>(r2)
+  
+  N1N2 &lt;-<span class="st"> </span>N1 <span class="op">*</span><span class="st"> </span>N2
+  N1_N2 &lt;-<span class="st"> </span>N1 <span class="op">+</span><span class="st"> </span>N2
+  Ri2 &lt;-<span class="st"> </span><span class="kw">sum</span>(r<span class="op">^</span><span class="dv">2</span>)
+
+  (W <span class="op">-</span><span class="st"> </span>N1<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">sqrt</span>((N1N2<span class="op">/</span>(N1_N2<span class="op">*</span>(N1_N2<span class="dv">-1</span>))<span class="op">*</span>Ri2 <span class="op">-</span><span class="st"> </span>(N1N2<span class="op">*</span>(N1_N2<span class="op">+</span><span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>(N1_N2<span class="dv">-1</span>))))
+}
+
+rango_machos &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Sexo <span class="op">==</span><span class="st"> &quot;Machos&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rango)
+rango_hembras &lt;-<span class="st"> </span>lobos_marinos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Sexo <span class="op">==</span><span class="st"> &quot;Hembras&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rango)
+
+<span class="kw">wilcox_empates</span>(rango_machos, rango_hembras)</code></pre>
 <pre><code>## [1] 3.199432</code></pre>
 <p>Lo primero es probar que lo que pretendemos convertir en función funcione como
 esperamos fuera. Luego, es más fácil convertir el código en función. No vamos a
@@ -588,11 +588,11 @@ muestras apareadas. Por ejemplo, dados estos datos de constante de permeabilidad
 de la membrana corioaminiótica humana a término (<code>x</code>) y entre 12 y 26 semanas
 de gestación (<code>y</code>). La hipótesis alternativa de interés es que hay mayor
 permabilidad de esta membrana al término del embarazo.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.80</span>, <span class="fl">0.83</span>, <span class="fl">1.89</span>, <span class="fl">1.04</span>, <span class="fl">1.45</span>, <span class="fl">1.38</span>, <span class="fl">1.91</span>, <span class="fl">1.64</span>, <span class="fl">0.73</span>, <span class="fl">1.46</span>)</a>
-<a class="sourceLine" id="cb202-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.15</span>, <span class="fl">0.88</span>, <span class="fl">0.90</span>, <span class="fl">0.74</span>, <span class="fl">1.21</span>)</a>
-<a class="sourceLine" id="cb202-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb202-4" data-line-number="4">perm &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">muestra =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="kw">length</span>(x), <span class="kw">length</span>(y))),</a>
-<a class="sourceLine" id="cb202-5" data-line-number="5">           <span class="dt">permeabilidad =</span> <span class="kw">c</span>(x, y))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.80</span>, <span class="fl">0.83</span>, <span class="fl">1.89</span>, <span class="fl">1.04</span>, <span class="fl">1.45</span>, <span class="fl">1.38</span>, <span class="fl">1.91</span>, <span class="fl">1.64</span>, <span class="fl">0.73</span>, <span class="fl">1.46</span>)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.15</span>, <span class="fl">0.88</span>, <span class="fl">0.90</span>, <span class="fl">0.74</span>, <span class="fl">1.21</span>)
+
+perm &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">muestra =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="kw">length</span>(x), <span class="kw">length</span>(y))),
+           <span class="dt">permeabilidad =</span> <span class="kw">c</span>(x, y))</code></pre>
 <p>Los datos son de Hollander &amp; Wolfe (1973), 69f. Aquí, los guardamos como
 <code>x</code> e <code>y</code>. Luego los reunimos en un <em>data frame</em> para poder gráficar con
 <code>ggplot</code>. Para esto queremos que quede en una columna los valores, que se puede
@@ -610,14 +610,14 @@ la longitud cada uno de esos objetos.</p>
 revelar mucha información y posibles problemas solo con mirarlos. Hay que
 graficar los datos tal cual están, ya que si solo graficamos las medidas de
 resúmen típcas hay información que puede quedar escondida.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">ggplot</span>(perm, <span class="kw">aes</span>(muestra, permeabilidad)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(perm, <span class="kw">aes</span>(muestra, permeabilidad)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
 <p><img src="No-Parametrico_files/figure-html/grafico-permeabilidad-puntos-1.png" width="672" /></p>
 <p>Aunque también podemos combinar este gráfico con un boxplot y obtener un poco
 más de información.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1"><span class="kw">ggplot</span>(perm, <span class="kw">aes</span>(muestra, permeabilidad)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb204-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb204-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(perm, <span class="kw">aes</span>(muestra, permeabilidad)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
 <p><img src="No-Parametrico_files/figure-html/grafico-permeabilidad-puntos-boxplot-1.png" width="672" /></p>
 <p>Graficamente, parece ser que la permeabilidad es mayor a término que en menores
 semanas de gestación. Pero, ¿es significativa estadísticamente?. Para responder
@@ -627,7 +627,7 @@ los objetos que contienen los datos, <code>x</code> e <code>y</code> en nuestro 
 la hipótesis alternativa, la distribución de <code>x</code> es mayor (<em>greater</em>),
 menor (<em>less</em>) o distinta (mayor o menor, <em>two.sided</em>) que <code>y</code>. Es importante
 tener esto en claro. Siempre se trata del primero versus el segundo.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">wilcox.test</span>(x, y, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)   </a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(x, y, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)   </code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test
 ## 
@@ -646,10 +646,10 @@ separadas por la virguilla (<code>~</code>). Por ejemplo: <code>variable_dependi
 dependiente e independiente, pero es posible describir todo tipo de modelos
 mediante esta interfaz. El ejemplo anterior puede ser analizado usando la
 interfaz de fórmula:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="co"># Debemos usar el argumento data para que la función sepa donde estan los datos.</span></a>
-<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="co"># Prueben que sucede si no está.</span></a>
-<a class="sourceLine" id="cb207-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb207-4" data-line-number="4"><span class="kw">wilcox.test</span>(<span class="dt">formula =</span> permeabilidad <span class="op">~</span><span class="st"> </span>muestra, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">data =</span> perm)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Debemos usar el argumento data para que la función sepa donde estan los datos.</span>
+<span class="co"># Prueben que sucede si no está.</span>
+
+<span class="kw">wilcox.test</span>(<span class="dt">formula =</span> permeabilidad <span class="op">~</span><span class="st"> </span>muestra, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">data =</span> perm)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test
 ## 
@@ -664,17 +664,17 @@ debe a que los niveles de los factores se asignan por orden alfabético si no
 los especificamos. Entonces, el orden puede ser distinto, y recordemos que la
 prueba especifica el primero vs el segundo. Por ejemplo, si vemos los niveles
 de muestra, no dice que tiene dos niveles, <code>x</code> y luego <code>y</code>.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">perm<span class="op">$</span>muestra</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">perm<span class="op">$</span>muestra</code></pre>
 <pre><code>##  [1] x x x x x x x x x x y y y y y
 ## Levels: x y</code></pre>
 <p>Veamos que pasa si cambiamos el orden de los niveles:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">perm &lt;-<span class="st"> </span>perm <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">muestra =</span> <span class="kw">factor</span>(<span class="dt">x =</span> muestra, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;x&quot;</span>) ))</a>
-<a class="sourceLine" id="cb211-3" data-line-number="3">perm<span class="op">$</span>muestra</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">perm &lt;-<span class="st"> </span>perm <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">muestra =</span> <span class="kw">factor</span>(<span class="dt">x =</span> muestra, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;x&quot;</span>) ))
+perm<span class="op">$</span>muestra</code></pre>
 <pre><code>##  [1] x x x x x x x x x x y y y y y
 ## Levels: y x</code></pre>
 <p>Ahora volvamos a hacer el análisis igual que antes:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">wilcox.test</span>(<span class="dt">formula =</span> permeabilidad <span class="op">~</span><span class="st"> </span>muestra, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">data =</span> perm)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(<span class="dt">formula =</span> permeabilidad <span class="op">~</span><span class="st"> </span>muestra, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">data =</span> perm)</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test
 ## 
@@ -690,25 +690,25 @@ la prueba de <em>Wilcoxon de rangos con signos</em> es la misma que usamos antes
 <code>wilcox.test()</code>. Debemos indicar que se trata de muestras apareadas con
 el argumento <code>paired = TRUE</code>. Además, no acepta formulas. Ejemplo de la ayuda
 de <code>wilcox.test()</code>:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">## One-sample test.</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2">## Hollander &amp; Wolfe (1973), 29f.</a>
-<a class="sourceLine" id="cb215-3" data-line-number="3">## Hamilton depression scale factor measurements in 9 patients with</a>
-<a class="sourceLine" id="cb215-4" data-line-number="4">##  mixed anxiety and depression, taken at the first (x) and second</a>
-<a class="sourceLine" id="cb215-5" data-line-number="5">##  (y) visit after initiation of a therapy (administration of a</a>
-<a class="sourceLine" id="cb215-6" data-line-number="6">##  tranquilizer).</a>
-<a class="sourceLine" id="cb215-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.83</span>,  <span class="fl">0.50</span>,  <span class="fl">1.62</span>,  <span class="fl">2.48</span>, <span class="fl">1.68</span>, <span class="fl">1.88</span>, <span class="fl">1.55</span>, <span class="fl">3.06</span>, <span class="fl">1.30</span>)</a>
-<a class="sourceLine" id="cb215-8" data-line-number="8">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.878</span>, <span class="fl">0.647</span>, <span class="fl">0.598</span>, <span class="fl">2.05</span>, <span class="fl">1.06</span>, <span class="fl">1.29</span>, <span class="fl">1.06</span>, <span class="fl">3.14</span>, <span class="fl">1.29</span>)</a>
-<a class="sourceLine" id="cb215-9" data-line-number="9"><span class="kw">wilcox.test</span>(x, y, <span class="dt">paired =</span> <span class="ot">TRUE</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">## One-sample test.
+## Hollander &amp; Wolfe (1973), 29f.
+## Hamilton depression scale factor measurements in 9 patients with
+##  mixed anxiety and depression, taken at the first (x) and second
+##  (y) visit after initiation of a therapy (administration of a
+##  tranquilizer).
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.83</span>,  <span class="fl">0.50</span>,  <span class="fl">1.62</span>,  <span class="fl">2.48</span>, <span class="fl">1.68</span>, <span class="fl">1.88</span>, <span class="fl">1.55</span>, <span class="fl">3.06</span>, <span class="fl">1.30</span>)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.878</span>, <span class="fl">0.647</span>, <span class="fl">0.598</span>, <span class="fl">2.05</span>, <span class="fl">1.06</span>, <span class="fl">1.29</span>, <span class="fl">1.06</span>, <span class="fl">3.14</span>, <span class="fl">1.29</span>)
+<span class="kw">wilcox.test</span>(x, y, <span class="dt">paired =</span> <span class="ot">TRUE</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre>
 <pre><code>## 
 ##  Wilcoxon signed rank test
 ## 
 ## data:  x and y
 ## V = 40, p-value = 0.01953
 ## alternative hypothesis: true location shift is greater than 0</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">tibble</span>(x, y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(tiempo, hamilton) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb217-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tiempo, hamilton)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb217-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tibble</span>(x, y) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(tiempo, hamilton) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tiempo, hamilton)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
 <p><img src="No-Parametrico_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Como no tiene opción para usar formula, tampoco funciona el argumento <code>data</code>.
 Solo funciona si las columnas están directamente disponibles en el espacio de
@@ -719,8 +719,8 @@ también a hay que poner alguna indicación de donde vino esa columna. Hay una
 manera mejor de hacer esto. Usando el operador <code>%$%</code><em>exposition</em>, del paquete
 <code>magrittr</code>. Funciona de manera similar <code>%&gt;%</code> <em>pipe</em>, pero expone los nombres
 de las columnas del lado izquierdo a la función de lado derecho.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">z =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>)) <span class="op">%$%</span></a>
-<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="st">  </span><span class="kw">ts.plot</span>(z)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(<span class="dt">z =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>)) <span class="op">%$%</span>
+<span class="st">  </span><span class="kw">ts.plot</span>(z)</code></pre>
 <p><img src="No-Parametrico_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="problemas-2" class="section level2">
@@ -740,13 +740,13 @@ En todos los casos indicar la hipótesis nula y la alternativa. Graficar y reali
 </p>
 </div>
 <p>Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;data/dos_muestras_np.RData&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/dos_muestras_np.RData&quot;</span>)</code></pre>
 <p>1.- Un investigador, trabajando con una especie de ratones de campo, desea saber
 si los ejemplares provenientes del valle son de similar tamaño a los
 provenientes de la meseta. Para ello realizó capturas de ratones en ambos
 ambientes, midiendo el peso en gr de los ejemplares capturados. Los datos
 obtenidos fueron:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">ratones</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">ratones</code></pre>
 <pre><code>## # A tibble: 35 x 3
 ##     Peso Ambiente   row
 ##    &lt;dbl&gt; &lt;fct&gt;    &lt;int&gt;
@@ -770,7 +770,7 @@ de pesca y les asignaron aleatoriamente a cada uno de ellos los lances que
 debían procesar. En cada lance, un empleado imparcial de control de calidad
 registraba el porcentaje de descarte producido a partir de la captura. Los
 resultados obtenidos fueron:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">jefes </a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">jefes </code></pre>
 <pre><code>## # A tibble: 35 x 3
 ##    Descarte  Jefe   row
 ##       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
@@ -806,7 +806,7 @@ infectados, registrándose previamente al inicio de la experiencia la
 concentración del virus en sangre. Luego de finalizado el tratamiento con la
 droga, se volvió a estudiar la concentración del virus en los cobayos. Los
 resultados obtenidos fueron:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">cobayos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cobayos</code></pre>
 <pre><code>## # A tibble: 17 x 3
 ##    Ejemplar Antes Despues
 ##       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
@@ -833,7 +833,7 @@ las hembras está asociado al sexo de sus crías. Para ello utilizó informació
 de una población que ha sido seguida durante varias generaciones, registrando
 para 15 hembras el número de nietos producidos por sus hijos e hijas. Los datos
 fueron:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">focas</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">focas</code></pre>
 <pre><code>## # A tibble: 15 x 3
 ##    Ejemplar Hembra Macho
 ##       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -857,7 +857,7 @@ fueron:</p>
 que de los dos pichones el primero en eclosionar tiene mayores probabilidades de sobrevivir. Un biólogo desea establecer si esta situación está relacionada con
 el peso del pichón al momento de la eclosión. Para ello registró el peso de los
 pichones al momento de la eclosión del huevo, obteniendo los siguientes datos:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">pichones</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">pichones</code></pre>
 <pre><code>## # A tibble: 17 x 3
 ##     Nido Primer Segundo
 ##    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -883,7 +883,7 @@ pichones al momento de la eclosión del huevo, obteniendo los siguientes datos:<
 osos para capturar peces. Para ello registra el porcentaje de éxitos de captura
 durante una semana de 17 ositos cuando comienzan a pescar y repite el análisis
 6 meses después. Los resultados obtenidos fueron:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">osos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">osos</code></pre>
 <pre><code>## # A tibble: 17 x 3
 ##      Oso Tiempo0 Tiempo6
 ##    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -915,7 +915,7 @@ de pichones y no se registraron cambios en el tipo de nido que utilizaron a lo
 largo de la vida. Los datos obtenidos fueron:</p>
 <p>Número de pichones producidos por hembras de pingüino de Magallanes a lo largo
 de su vida, discriminado por el tipo de nido que utilizaron.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">pinguinos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">pinguinos</code></pre>
 <pre><code>## # A tibble: 32 x 3
 ##    Pichones Nido      row
 ##       &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;
@@ -937,7 +937,7 @@ similares. Utilizando regresiones alométricas estimó los largos dorsales del
 manto (LDM) a partir de los picos hallados en los contenidos estomacales.
 Los datos obtenidos fueron:</p>
 <p>Tallas de calamares (LDM, cm) consumidos por delfines y lobos marinos.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">LDM </a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">LDM </code></pre>
 <pre><code>## # A tibble: 37 x 3
 ##      LDM Especie   row
 ##    &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;
@@ -961,7 +961,7 @@ empleándose un placebo en lugar de droga. Luego del experimento se midió la
 concentración del virus en sangre utilizando una escala apropiada. Los
 resultados fueron:
 Concentración del virus en sangre de los ratones tratados y del grupo control</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">droga</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">droga</code></pre>
 <pre><code>## # A tibble: 24 x 3
 ##    Virus Tratamiento   row
 ##    &lt;dbl&gt; &lt;fct&gt;       &lt;int&gt;
@@ -983,7 +983,7 @@ se tomaron muestras aleatorias de anchoitas de ambas poblaciones y se determinó
 para cada ejemplar el número de larvas de nematodes alojadas en el músculo.
 Los resultados fueron:
 Número de larvas de nematodes en el músculo de anchoitas discriminadas por poblaciones.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">nematodes</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">nematodes</code></pre>
 <pre><code>## # A tibble: 41 x 3
 ##    Larvas Anchoita     row
 ##     &lt;dbl&gt; &lt;fct&gt;      &lt;int&gt;
@@ -1006,7 +1006,7 @@ ejemplares de cada especie, les permitió confeccionar sus telas y luego
 introdujo una mosca en cada caja. El ecólogo determinó para cada araña el tiempo
 en segundos que tardó en capturar la mosca. Los resultados fueron:
 Tiempo de captura de la mosca en segundos.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">arana</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">arana</code></pre>
 <pre><code>## # A tibble: 36 x 3
 ##    Tiempo Especie   row
 ##     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
@@ -1029,7 +1029,7 @@ ambas localidades. Sabiendo que el azar tenía algo que ver con la estadística,
 se preocupó de seleccionar al azar las parcelas. Los datos obtenidos fueron:
 Producción de fruta fina (kg) en cada parcela, discriminada por localidad</li>
 </ol>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">fruta</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">fruta</code></pre>
 <pre><code>## # A tibble: 35 x 3
 ##    Producción Localidad   row
 ##         &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt;

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -715,10 +715,10 @@ considerando el valor de <span class="math inline">\(M\)</span> fue:</p>
 diferente de las demás.</p>
 <p>Se puede utilizar la función <code>Median.test()</code> en R. La tabla de resultados obtenida
 es:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">trt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">7</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb244-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">91</span>, <span class="dv">94</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">96</span>, <span class="dv">91</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">91</span>, <span class="dv">89</span>, </a>
-<a class="sourceLine" id="cb244-3" data-line-number="3">       <span class="dv">84</span>, <span class="dv">101</span>, <span class="dv">100</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">96</span>, <span class="dv">95</span>, <span class="dv">94</span>, <span class="dv">78</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">81</span>)</a>
-<a class="sourceLine" id="cb244-4" data-line-number="4"><span class="kw">Median.test</span>(y, trt, <span class="dt">group =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">trt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">7</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">8</span>))
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">91</span>, <span class="dv">94</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">96</span>, <span class="dv">91</span>, <span class="dv">92</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">91</span>, <span class="dv">89</span>, 
+       <span class="dv">84</span>, <span class="dv">101</span>, <span class="dv">100</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">96</span>, <span class="dv">95</span>, <span class="dv">94</span>, <span class="dv">78</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">79</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">81</span>)
+<span class="kw">Median.test</span>(y, trt, <span class="dt">group =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code>## 
 ## The Median Test for y ~ trt 
 ## 

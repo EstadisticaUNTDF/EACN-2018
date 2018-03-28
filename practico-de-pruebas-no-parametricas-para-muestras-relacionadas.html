@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -391,7 +391,7 @@ de formula. La de vectores tiene tres argumentos, <code>y</code> la variable de 
 <code>groups</code> la variable tratamiento, y <code>blocks</code> los bloques. La interfaz de formula
 usa la ya conocida forma <code>y ~ groups</code> pero para indicar los bloques usa una
 barra recta de esta manera <code>y ~ groups | blocks</code>.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">pasto</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">pasto</code></pre>
 <pre><code>##    Parcela Pasto.1 Pasto.2 Pasto.3 Pasto.4
 ## 1        1   14.00   10.50    7.00    3.50
 ## 2        2   14.00    7.00   10.50    3.50
@@ -405,15 +405,15 @@ barra recta de esta manera <code>y ~ groups | blocks</code>.</p>
 ## 10      10   14.00    3.50   10.50    7.00
 ## 11      11   14.00    7.00   10.50    3.50
 ## 12      12   12.25    3.50    7.00   12.25</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">pasto &lt;-<span class="st"> </span><span class="kw">gather</span>(pasto, <span class="dt">key =</span> <span class="st">&quot;Pasto&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;performance&quot;</span>, <span class="op">-</span>Parcela)</a>
-<a class="sourceLine" id="cb280-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb280-3" data-line-number="3"><span class="kw">friedman.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">pasto &lt;-<span class="st"> </span><span class="kw">gather</span>(pasto, <span class="dt">key =</span> <span class="st">&quot;Pasto&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;performance&quot;</span>, <span class="op">-</span>Parcela)
+
+<span class="kw">friedman.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</code></pre>
 <pre><code>## 
 ##  Friedman rank sum test
 ## 
 ## data:  performance and Pasto and Parcela
 ## Friedman chi-squared = 8.0973, df = 3, p-value = 0.04404</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">out &lt;-<span class="st"> </span>pasto <span class="op">%$%</span><span class="st"> </span><span class="kw">friedman</span>(Parcela, Pasto, performance, <span class="dt">group =</span> <span class="ot">FALSE</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span>pasto <span class="op">%$%</span><span class="st"> </span><span class="kw">friedman</span>(Parcela, Pasto, performance, <span class="dt">group =</span> <span class="ot">FALSE</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ## Study: performance ~ Parcela + Pasto 
 ## 
@@ -449,7 +449,7 @@ barra recta de esta manera <code>y ~ groups | blocks</code>.</p>
 posible seguir trabajando con él. Por eso, al guardarlo, podemos ver la misma
 información que vemos arribal y algunos datos extra con la diferencia mínima
 significativa.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">out</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">out</code></pre>
 <pre><code>## $statistics
 ##      Chisq Df    p.chisq        F DFerror        p.F  t.value      LSD
 ##   8.097345  3 0.04404214 3.192198      33 0.03621547 2.034515 11.48168
@@ -481,43 +481,34 @@ significativa.</p>
 ## [1] &quot;group&quot;</code></pre>
 <p>Podemos usar los datos que nos da para calcular a mano el valor crítico con la
 distribución <em>q</em>:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
-<a class="sourceLine" id="cb286-2" data-line-number="2">c &lt;-<span class="st"> </span><span class="kw">nrow</span>(out<span class="op">$</span>means)</a>
-<a class="sourceLine" id="cb286-3" data-line-number="3">Z &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">qnorm</span>(alpha<span class="op">/</span>(c<span class="op">*</span>(c<span class="dv">-1</span>))))</a>
-<a class="sourceLine" id="cb286-4" data-line-number="4">r &lt;-<span class="st"> </span><span class="kw">unique</span>(out<span class="op">$</span>means<span class="op">$</span>r)</a>
-<a class="sourceLine" id="cb286-5" data-line-number="5">VC &lt;-<span class="st"> </span>Z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(r<span class="op">*</span>c<span class="op">*</span>(c<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb286-6" data-line-number="6">VC</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>
+c &lt;-<span class="st"> </span><span class="kw">nrow</span>(out<span class="op">$</span>means)
+Z &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">qnorm</span>(alpha<span class="op">/</span>(c<span class="op">*</span>(c<span class="dv">-1</span>))))
+r &lt;-<span class="st"> </span><span class="kw">unique</span>(out<span class="op">$</span>means<span class="op">$</span>r)
+VC &lt;-<span class="st"> </span>Z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(r<span class="op">*</span>c<span class="op">*</span>(c<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">6</span>)
+VC</code></pre>
 <pre><code>## [1] 16.6858</code></pre>
 <p>Con el paquete</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="kw">library</span>(PMCMR)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PMCMR)</code></pre>
 <pre><code>## PMCMR is superseded by PMCMRplus and will be no longer maintained. You may wish to install PMCMRplus instead.</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;PMCMR&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:agricolae&#39;:
 ## 
 ##     durbin.test</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1"><span class="kw">library</span>(PMCMRplus)</a>
-<a class="sourceLine" id="cb292-2" data-line-number="2"><span class="kw">posthoc.friedman.nemenyi.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">posthoc.friedman.nemenyi.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</code></pre>
 <pre><code>## 
 ##  Pairwise comparisons using Nemenyi multiple comparison test 
-##              with q approximation for unreplicated blocked data</code></pre>
-<pre><code>## data: performance and Pasto and Parcela</code></pre>
-<pre><code>##         Pasto.1 Pasto.2 Pasto.3
+##              with q approximation for unreplicated blocked data 
+## 
+## data:  performance and Pasto and Parcela 
+## 
+##         Pasto.1 Pasto.2 Pasto.3
 ## Pasto.2 0.10    -       -      
 ## Pasto.3 0.14    1.00    -      
-## Pasto.4 0.92    0.34    0.44</code></pre>
-<pre><code>## 
+## Pasto.4 0.92    0.34    0.44   
+## 
 ## P value adjustment method: none</code></pre>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">pasto <span class="op">%$%</span><span class="st"> </span><span class="kw">frdAllPairsNemenyiTest</span>(performance, Pasto, Parcela)</a></code></pre></div>
-<pre><code>## 
-##  Pairwise comparisons using Nemenyi-Wilcoxon-Wilcox all-pairs test for a two-way balanced complete block design</code></pre>
-<pre><code>## data: performance , Pasto and Parcela</code></pre>
-<pre><code>##         Pasto.1 Pasto.1 Pasto.1
-## Pasto.1 0.82    -       -      
-## Pasto.1 0.98    0.96    -      
-## Pasto.1 0.99    0.64    0.89</code></pre>
-<pre><code>## 
-## P value adjustment method: single-step</code></pre>
 <div id="problemas-5" class="section level2">
 <h2><span class="header-section-number">16.1</span> Problemas</h2>
 <ol style="list-style-type: decimal">
@@ -529,6 +520,7 @@ estudiar la importancia relativa de las presas?. Los resultados obtenidos
 fueron:</li>
 </ol>
 <table style="width:79%;">
+<caption>Porcentaje de consumo de presas según cuatro índices.</caption>
 <colgroup>
 <col width="18%" />
 <col width="15%" />
@@ -641,20 +633,114 @@ infestada y luego de un mes fueron sacrificados, realizándose la necropsia para
 determinar el número de helmintos hallados en el intestino. ¿Existe un efecto de
 las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:</li>
 </ol>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">parasitosis </a></code></pre></div>
-<pre><code>##    Camada Droga.1 Droga.2 Droga.3 Droga.4
-## 1       1      20      13      23      26
-## 2       2      22      12      23      15
-## 3       3      31      24      36      65
-## 4       4      18       9      10      62
-## 5       5      25      23      50      70
-## 6       6      17       7      25      60
-## 7       7      29      11      28      68
-## 8       8      26      21      15      15
-## 9       9      26      23      51      38
-## 10     10      29      15      31      13
-## 11     11      24      15      45      46
-## 12     12      19       6      24      42</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">parasitosis <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Número de helmitos en intestino de ratones </span>
+<span class="st">                       tratados con cuatro antiparasitarios distintos.&quot;</span>)</code></pre>
+<table style="width:68%;">
+<caption>Número de helmitos en intestino de ratones
+tratados con cuatro antiparasitarios distintos.</caption>
+<colgroup>
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Camada</th>
+<th align="center">Droga.1</th>
+<th align="center">Droga.2</th>
+<th align="center">Droga.3</th>
+<th align="center">Droga.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">20</td>
+<td align="center">13</td>
+<td align="center">23</td>
+<td align="center">26</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">22</td>
+<td align="center">12</td>
+<td align="center">23</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">31</td>
+<td align="center">24</td>
+<td align="center">36</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">18</td>
+<td align="center">9</td>
+<td align="center">10</td>
+<td align="center">62</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">25</td>
+<td align="center">23</td>
+<td align="center">50</td>
+<td align="center">70</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">17</td>
+<td align="center">7</td>
+<td align="center">25</td>
+<td align="center">60</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">29</td>
+<td align="center">11</td>
+<td align="center">28</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">26</td>
+<td align="center">21</td>
+<td align="center">15</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">26</td>
+<td align="center">23</td>
+<td align="center">51</td>
+<td align="center">38</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">29</td>
+<td align="center">15</td>
+<td align="center">31</td>
+<td align="center">13</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">24</td>
+<td align="center">15</td>
+<td align="center">45</td>
+<td align="center">46</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">19</td>
+<td align="center">6</td>
+<td align="center">24</td>
+<td align="center">42</td>
+</tr>
+</tbody>
+</table>
 <ol start="3" style="list-style-type: decimal">
 <li>Un ingeniero agrónomo desea determinar si cuatro fertilizantes tienen igual
 efecto en la producción de soja. Para ello seleccionó al azar 12 parcelas
@@ -663,21 +749,115 @@ fertilizantes en distintos sectores de iguales dimensiones de cada parcela.
 La producción de soja en toneladas obtenida en cada parcela con cada tipo de
 fertilizante fue:</li>
 </ol>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">soja</a></code></pre></div>
-<pre><code>##    Parcela Fertilizante.1 Fertilizante.2 Fertilizante.3 Fertilizante.4
-## 1        1            320            314            165            202
-## 2        2            244            277            171            121
-## 3        3            229            244            128            124
-## 4        4            301            301            209            212
-## 5        5            293            311            182            208
-## 6        6            260            292            153            197
-## 7        7            293            300            200            152
-## 8        8            295            316            130            212
-## 9        9            232            235            178            165
-## 10      10            310            281            181            201
-## 11      11            322            349            247            218
-## 12      12            315            306            160            219</code></pre>
-<p>¿Cuál fertilizante conviene utilizar?</p>
+<pre class="sourceCode r"><code class="sourceCode r">soja <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Rendimiento en toneladas por parcela en </span>
+<span class="st">                parcelas fertilizadas con cuatro fertilizantes.&quot;</span>)</code></pre>
+<table>
+<caption>Rendimiento en toneladas por parcela en
+parcelas fertilizadas con cuatro fertilizantes.
+¿Cuál fertilizante conviene utilizar?</caption>
+<colgroup>
+<col width="12%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Parcela</th>
+<th align="center">Fertilizante.1</th>
+<th align="center">Fertilizante.2</th>
+<th align="center">Fertilizante.3</th>
+<th align="center">Fertilizante.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">320</td>
+<td align="center">314</td>
+<td align="center">165</td>
+<td align="center">202</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">244</td>
+<td align="center">277</td>
+<td align="center">171</td>
+<td align="center">121</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">229</td>
+<td align="center">244</td>
+<td align="center">128</td>
+<td align="center">124</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">301</td>
+<td align="center">301</td>
+<td align="center">209</td>
+<td align="center">212</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">293</td>
+<td align="center">311</td>
+<td align="center">182</td>
+<td align="center">208</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">260</td>
+<td align="center">292</td>
+<td align="center">153</td>
+<td align="center">197</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">293</td>
+<td align="center">300</td>
+<td align="center">200</td>
+<td align="center">152</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">295</td>
+<td align="center">316</td>
+<td align="center">130</td>
+<td align="center">212</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">232</td>
+<td align="center">235</td>
+<td align="center">178</td>
+<td align="center">165</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">310</td>
+<td align="center">281</td>
+<td align="center">181</td>
+<td align="center">201</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">322</td>
+<td align="center">349</td>
+<td align="center">247</td>
+<td align="center">218</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">315</td>
+<td align="center">306</td>
+<td align="center">160</td>
+<td align="center">219</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="problema-4" class="section level2">
 <h2><span class="header-section-number">16.2</span> Problema 4</h2>
@@ -687,20 +867,112 @@ seguimiento de 12 barcos de la flota pesquera comercial, determinando para cada
 uno de ellos el porcentaje en biomasa del descarte realizado en cada estación
 del año. ¿Existe una variación estacional en el descarte realizado por la flota
 merlucera? Sus resultados fueron:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1">pesca </a></code></pre></div>
-<pre><code>##    Barco Primavera Verano Oto\xf1o Invierno
-## 1      1        32     25       43       43
-## 2      2        27     16       30       38
-## 3      3        27     30       38       37
-## 4      4        26     31       51       52
-## 5      5        28     32       52       44
-## 6      6        21     23       41       38
-## 7      7        21     21       44       48
-## 8      8        24     37       41       46
-## 9      9        33     29       45       54
-## 10    10        27     23       45       41
-## 11    11        35     22       44       43
-## 12    12        31     35       43       44</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pesca <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Porcentaje de descarte en las cuatro estaciones.&quot;</span>)</code></pre>
+<table style="width:65%;">
+<caption>Porcentaje de descarte en las cuatro estaciones.</caption>
+<colgroup>
+<col width="11%" />
+<col width="16%" />
+<col width="12%" />
+<col width="11%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Barco</th>
+<th align="center">Primavera</th>
+<th align="center">Verano</th>
+<th align="center">Otono</th>
+<th align="center">Invierno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">32</td>
+<td align="center">25</td>
+<td align="center">43</td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">27</td>
+<td align="center">16</td>
+<td align="center">30</td>
+<td align="center">38</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">27</td>
+<td align="center">30</td>
+<td align="center">38</td>
+<td align="center">37</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">26</td>
+<td align="center">31</td>
+<td align="center">51</td>
+<td align="center">52</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">28</td>
+<td align="center">32</td>
+<td align="center">52</td>
+<td align="center">44</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">21</td>
+<td align="center">23</td>
+<td align="center">41</td>
+<td align="center">38</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">21</td>
+<td align="center">21</td>
+<td align="center">44</td>
+<td align="center">48</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">24</td>
+<td align="center">37</td>
+<td align="center">41</td>
+<td align="center">46</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">33</td>
+<td align="center">29</td>
+<td align="center">45</td>
+<td align="center">54</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">27</td>
+<td align="center">23</td>
+<td align="center">45</td>
+<td align="center">41</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">35</td>
+<td align="center">22</td>
+<td align="center">44</td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">31</td>
+<td align="center">35</td>
+<td align="center">43</td>
+<td align="center">44</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

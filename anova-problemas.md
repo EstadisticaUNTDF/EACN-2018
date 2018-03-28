@@ -507,8 +507,8 @@ coef(pairs(alga.em))
 ```
 
 Ahora, la pregunta que nos hacen es poner a prueba el supuesto teórico de que 
-solo las roja es efectiva. Podemos hacerlo de dos formas distintas. Una por contrastes
-ortogonales. Es quizás el método más complicado, aunque más poderoso, de hacer.
+solo las roja es efectiva. Podemos hacerlo de dos formas distintas. Una por 
+*contrastes ortogonales*. Es quizás el método más complicado, aunque más poderoso, de hacer.
 Primero debemos implementar nuestros coeficientes. Los niveles del factor 
 son ordenados por orden alfabético a menos que indiquemos otro orden. Por lo 
 tanto, el orden de los niveles de `Color` es: Amarillo, Azul, Infrarrojo, Rojo,
@@ -618,6 +618,22 @@ contrast(object = alga.em, method = "trt.vs.ctrl", ref = 4)
 ## P value adjustment: dunnettx method for 4 tests
 ```
 
+También es posible especificar un contraste o varios usando una lista
+donde cada item es un contraste:
+
+
+```r
+contrast(object = alga.em, list("Rojo vs Todos" = c(-1, -1, -1, 4, -1),
+                                "Amarillo vs Verde" = c(1, 0, 0, 0, -1)))
+```
+
+```
+##  contrast           estimate       SE df t.ratio p.value
+##  Rojo vs Todos     -11058.50 784.7266 15 -14.092  <.0001
+##  Amarillo vs Verde   -924.75 248.1523 15  -3.727  0.0020
+```
+Es importante recordar que el orden de los coeficientes del contraste deben ser
+igual a que como estan ordenados los niveles del factor.
 
 
 

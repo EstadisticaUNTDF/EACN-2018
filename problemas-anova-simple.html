@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -405,10 +405,10 @@ probable que hayan especificado mal este argumento o se lo hayan olvidado.</p>
 <p>Un ejemplo concreto, con los datos de contenido de nitrógeno en tres suelos.
 La variable dependiente es el nitrógeno, y la explicatoria es el tipo de suelo.
 Estas corresponden a las columnas <code>nitro</code> y <code>trt</code> respectivamente.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="co"># Cargar datos</span></a>
-<a class="sourceLine" id="cb123-3" data-line-number="3">nitro &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nitrogeno.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb123-4" data-line-number="4">nitro</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="co"># Cargar datos</span>
+nitro &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nitrogeno.csv&quot;</span>)
+nitro</code></pre>
 <pre><code>## # A tibble: 8 x 3
 ##       A     B     C
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -420,12 +420,12 @@ Estas corresponden a las columnas <code>nitro</code> y <code>trt</code> respecti
 ## 6   300   288   298
 ## 7   242   282   298
 ## 8   271   287   278</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="co"># Poner los datos en formato largo</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="co"># Una columna para la variable dependiente</span></a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="co"># Una columna para la variable explicatoria</span></a>
-<a class="sourceLine" id="cb125-4" data-line-number="4">nitro &lt;-<span class="st"> </span>nitro <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-5" data-line-number="5"><span class="st">  </span><span class="kw">gather</span>(trt, nitro)</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">nitro</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Poner los datos en formato largo</span>
+<span class="co"># Una columna para la variable dependiente</span>
+<span class="co"># Una columna para la variable explicatoria</span>
+nitro &lt;-<span class="st"> </span>nitro <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(trt, nitro)
+nitro</code></pre>
 <pre><code>## # A tibble: 24 x 2
 ##    trt   nitro
 ##    &lt;chr&gt; &lt;int&gt;
@@ -440,8 +440,8 @@ Estas corresponden a las columnas <code>nitro</code> y <code>trt</code> respecti
 ##  9 B       309
 ## 10 B       295
 ## # ... with 14 more rows</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">nitro_aov &lt;-<span class="st"> </span><span class="kw">aov</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2">nitro_aov</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">nitro_aov &lt;-<span class="st"> </span><span class="kw">aov</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)
+nitro_aov</code></pre>
 <pre><code>## Call:
 ##    aov(formula = nitro ~ trt, data = nitro)
 ## 
@@ -458,7 +458,7 @@ cuales son los términos del modelo, junto con sus repectivas suma de cuadados
 (<em>Sum of Squares</em>) y grados de libertad (<em>Deg. of Freedom</em>). Y finalmente, el
 error estándar residual o sea <span class="math inline">\(\sqrt{\hat\sigma^2}\)</span>.</p>
 <p>Para obtener la tabla de ANOVA es necesario usar la función <code>summary</code></p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">summary</span>(nitro_aov)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(nitro_aov)</code></pre>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## trt          2   1444   722.0   2.632 0.0955 .
 ## Residuals   21   5761   274.3                 
@@ -467,20 +467,20 @@ error estándar residual o sea <span class="math inline">\(\sqrt{\hat\sigma^2}\)
 <p>Como vemos, esto nos devuelve la típica tabla de ANOVA.</p>
 <p>Además, para saber si el ajuste ha sido adecuado podemos ver los gráficos de
 residuales</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">library</span>(ggfortify)</a>
-<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="kw">autoplot</span>(nitro_aov)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggfortify)
+<span class="kw">autoplot</span>(nitro_aov)</code></pre>
 <p><img src="anova-problemas_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Por lo que vemos en el los gráficos no hay motivo para preocuparse por la falta
 de cumplimiento de los supuestos. Pero para estar seguros podemos usar las
 pruebas que vimos en la teoría: la prueba de bartlett y la prueba de levene.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">bartlett.test</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)</code></pre>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  nitro by trt
 ## Bartlett&#39;s K-squared = 1.0316, df = 2, p-value = 0.597</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="kw">leveneTest</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+<span class="kw">leveneTest</span>(nitro <span class="op">~</span><span class="st"> </span>trt, <span class="dt">data =</span> nitro)</code></pre>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
 ## factor.</code></pre>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
@@ -499,13 +499,13 @@ Levene no lo hace?
 <h3><span class="header-section-number">6.0.1</span> Recordatorio</h3>
 <p>Recuerden que pueden calcular las medias, desvios, etc. por grupo usando la
 función <code>group_by()</code> y a continuación la función <code>summarise()</code>. Por ejemplo:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1">nitro <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(trt) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb137-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb137-4" data-line-number="4">    <span class="dt">media =</span> <span class="kw">mean</span>(nitro),</a>
-<a class="sourceLine" id="cb137-5" data-line-number="5">    <span class="dt">desvio_estandar =</span> <span class="kw">sd</span>(nitro),</a>
-<a class="sourceLine" id="cb137-6" data-line-number="6">    <span class="dt">n =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb137-7" data-line-number="7">  )</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">nitro <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(trt) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">media =</span> <span class="kw">mean</span>(nitro),
+    <span class="dt">desvio_estandar =</span> <span class="kw">sd</span>(nitro),
+    <span class="dt">n =</span> <span class="kw">n</span>()
+  )</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   trt   media desvio_estandar     n
 ##   &lt;chr&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;
@@ -515,11 +515,11 @@ función <code>group_by()</code> y a continuación la función <code>summarise()
 <p>Con esta misma secuencia se puede calcular el test de Lilliefors para normalidad.
 Aunque la secuencia algo más compleja porque el objeto que devuelve este test
 no es un único número sino que son varios.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">nitro <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(trt) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">normalidad =</span> <span class="kw">list</span>(<span class="kw">lillie.test</span>(nitro))) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">statistic =</span> <span class="kw">map_dbl</span>(normalidad, <span class="st">&quot;statistic&quot;</span>),</a>
-<a class="sourceLine" id="cb139-5" data-line-number="5">         <span class="dt">p.value =</span> <span class="kw">map_dbl</span>(normalidad, <span class="st">&quot;p.value&quot;</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">nitro <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(trt) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">normalidad =</span> <span class="kw">list</span>(<span class="kw">lillie.test</span>(nitro))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">statistic =</span> <span class="kw">map_dbl</span>(normalidad, <span class="st">&quot;statistic&quot;</span>),
+         <span class="dt">p.value =</span> <span class="kw">map_dbl</span>(normalidad, <span class="st">&quot;p.value&quot;</span>))</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   trt   normalidad  statistic p.value
 ##   &lt;chr&gt; &lt;list&gt;          &lt;dbl&gt;   &lt;dbl&gt;
@@ -625,20 +625,20 @@ datos desbalanceados)</li>
 <li>la varianza dentro de los grupos.</li>
 </ul>
 <p>A partir de la tabla de ANOVA es posible derivar todos los datos.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="co"># Número de grupos. Recordar que GL entre = K - 1 </span></a>
-<a class="sourceLine" id="cb141-2" data-line-number="2">g &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb141-3" data-line-number="3"><span class="co"># Número de réplicas por grupo N-I/I</span></a>
-<a class="sourceLine" id="cb141-4" data-line-number="4">n &lt;-<span class="st"> </span>(<span class="dv">54</span> <span class="op">+</span><span class="st"> </span>g) <span class="op">/</span><span class="st"> </span>g</a>
-<a class="sourceLine" id="cb141-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb141-6" data-line-number="6"><span class="co"># Varianza entre grupos CM entre /n</span></a>
-<a class="sourceLine" id="cb141-7" data-line-number="7">bv &lt;-<span class="st"> </span><span class="fl">754.25</span> <span class="op">/</span><span class="st"> </span><span class="dv">5</span> <span class="op">/</span><span class="st"> </span>n</a>
-<a class="sourceLine" id="cb141-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb141-9" data-line-number="9"><span class="co"># Varianza dentro de grupos CM dentro</span></a>
-<a class="sourceLine" id="cb141-10" data-line-number="10">wv &lt;-<span class="st"> </span><span class="fl">3648.08</span><span class="op">/</span><span class="st"> </span><span class="dv">54</span></a>
-<a class="sourceLine" id="cb141-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb141-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb141-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb141-14" data-line-number="14"><span class="kw">power.anova.test</span>(<span class="dt">groups =</span> g, <span class="dt">n =</span> n, <span class="dt">between.var =</span> bv, <span class="dt">within.var =</span> wv)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Número de grupos. Recordar que GL entre = K - 1 </span>
+g &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+<span class="co"># Número de réplicas por grupo N-I/I</span>
+n &lt;-<span class="st"> </span>(<span class="dv">54</span> <span class="op">+</span><span class="st"> </span>g) <span class="op">/</span><span class="st"> </span>g
+
+<span class="co"># Varianza entre grupos CM entre /n</span>
+bv &lt;-<span class="st"> </span><span class="fl">754.25</span> <span class="op">/</span><span class="st"> </span><span class="dv">5</span> <span class="op">/</span><span class="st"> </span>n
+
+<span class="co"># Varianza dentro de grupos CM dentro</span>
+wv &lt;-<span class="st"> </span><span class="fl">3648.08</span><span class="op">/</span><span class="st"> </span><span class="dv">54</span>
+
+
+
+<span class="kw">power.anova.test</span>(<span class="dt">groups =</span> g, <span class="dt">n =</span> n, <span class="dt">between.var =</span> bv, <span class="dt">within.var =</span> wv)</code></pre>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -656,7 +656,7 @@ significativa en función de su consumo por ratones silvestres. Los datos de la
 tabla se obtuvieron en cinco sitios diferentes por cebo y están expresados como
 porcentaje de consumo:</li>
 </ol>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">cebos</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cebos</code></pre>
 <pre><code>##    A  B
 ## 1 10 15
 ## 2 15 20
@@ -690,8 +690,8 @@ usar el paquete <code>emmeans</code> que además de estimar la medias marginales
 permite realizar comparaciones de a pares. La función <code>eemeans</code> devuelve por
 defecto las medias marginales junto con los errores estándar, grados de libertad,
 e intervalos de confianza.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">alga.em &lt;-<span class="st"> </span><span class="kw">emmeans</span>(alga.aov, <span class="op">~</span><span class="st"> </span>Color)</a>
-<a class="sourceLine" id="cb146-2" data-line-number="2">alga.em</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">alga.em &lt;-<span class="st"> </span><span class="kw">emmeans</span>(alga.aov, <span class="op">~</span><span class="st"> </span>Color)
+alga.em</code></pre>
 <pre><code>##  Color       emmean       SE df lower.CL upper.CL
 ##  Amarillo   7003.50 175.4702 15 6629.494 7377.506
 ##  Azul       7644.50 175.4702 15 7270.494 8018.506
@@ -704,7 +704,7 @@ e intervalos de confianza.</p>
 usa el método de Tukey. Se pueden usar otros métodos como Bonferroni
 (<code>bonferroni</code>), Scheffé (<code>scheffe</code>), LSD (<code>none</code>), y otro más
 (para más detalles ver <code>?summary.emmGrid</code> sección <em>P-value adjustment</em>)</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">pairs</span>(alga.em, <span class="dt">adjust =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(alga.em, <span class="dt">adjust =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
 <pre><code>##  contrast              estimate       SE df t.ratio p.value
 ##  Amarillo - Azul        -641.00 248.1523 15  -2.583  0.0208
 ##  Amarillo - Infrarrojo  -494.75 248.1523 15  -1.994  0.0647
@@ -716,7 +716,7 @@ usa el método de Tukey. Se pueden usar otros métodos como Bonferroni
 ##  Infrarrojo - Rojo      2744.25 248.1523 15  11.059  &lt;.0001
 ##  Infrarrojo - Verde     -430.00 248.1523 15  -1.733  0.1036
 ##  Rojo - Verde          -3174.25 248.1523 15 -12.792  &lt;.0001</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">LSD.test</span>(alga.aov, <span class="st">&quot;Color&quot;</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">LSD.test</span>(alga.aov, <span class="st">&quot;Color&quot;</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ## Study: alga.aov ~ &quot;Color&quot;
 ## 
@@ -748,14 +748,14 @@ usa el método de Tukey. Se pueden usar otros métodos como Bonferroni
 ## Rojo           4754.00      c</code></pre>
 <p>También se pueden graficar los intervalos de confianza de las medias estimadas,
 y de las comparaciones de entre ellas.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">plot</span>(alga.em, <span class="dt">comparisons =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(alga.em, <span class="dt">comparisons =</span> <span class="ot">TRUE</span>)</code></pre>
 <p><img src="anova-problemas_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Las barras azules son los intervalos de confianza para las medias y las flechas
 rojas son los intervalos de confianza de las comparaciones entre ellos. Si las
 flechas no se superponen las diferencias son significativas entre ellos.</p>
 <p>También es posible obtener lo que se llama <em>compact letter display</em> que es una
 forma muy práctica de ver comparaciones.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">cld</span>(alga.em)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cld</span>(alga.em)</code></pre>
 <pre><code>##        Color  emmean       SE df lower.CL upper.CL .group
 ## 4       Rojo 4754.00 175.4702 15 4379.994 5128.006    1  
 ## 1   Amarillo 7003.50 175.4702 15 6629.494 7377.506     2 
@@ -764,7 +764,7 @@ forma muy práctica de ver comparaciones.</p>
 ## 5      Verde 7928.25 175.4702 15 7554.244 8302.256      3</code></pre>
 <p>Los niveles que no comparten números o letras son significativamente distintos.</p>
 <p>También podemos ver cuales son los coeficientes de los contrastes usados.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">coef</span>(<span class="kw">pairs</span>(alga.em))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coef</span>(<span class="kw">pairs</span>(alga.em))</code></pre>
 <pre><code>##                 Color c.1 c.2 c.3 c.4 c.5 c.6 c.7 c.8 c.9 c.10
 ## Amarillo     Amarillo   1   1   1   1   0   0   0   0   0    0
 ## Azul             Azul  -1   0   0   0   1   1   1   0   0    0
@@ -772,28 +772,28 @@ forma muy práctica de ver comparaciones.</p>
 ## Rojo             Rojo   0   0  -1   0   0  -1   0  -1   0    1
 ## Verde           Verde   0   0   0  -1   0   0  -1   0  -1   -1</code></pre>
 <p>Ahora, la pregunta que nos hacen es poner a prueba el supuesto teórico de que
-solo las roja es efectiva. Podemos hacerlo de dos formas distintas. Una por contrastes
-ortogonales. Es quizás el método más complicado, aunque más poderoso, de hacer.
+solo las roja es efectiva. Podemos hacerlo de dos formas distintas. Una por
+<em>contrastes ortogonales</em>. Es quizás el método más complicado, aunque más poderoso, de hacer.
 Primero debemos implementar nuestros coeficientes. Los niveles del factor
 son ordenados por orden alfabético a menos que indiquemos otro orden. Por lo
 tanto, el orden de los niveles de <code>Color</code> es: Amarillo, Azul, Infrarrojo, Rojo,
 Creamos una matriz de tamaño I x (I-1). Cada columna es un contraste.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">contraste.algas &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">-1</span> , <span class="dv">4</span>, <span class="dv">-1</span>,</a>
-<a class="sourceLine" id="cb157-2" data-line-number="2">                            <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">0</span>, <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb157-3" data-line-number="3">                            <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">2</span>, <span class="dv">0</span> , <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb157-4" data-line-number="4">                            <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</a>
-<a class="sourceLine" id="cb157-5" data-line-number="5">                          <span class="dt">nrow =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb157-6" data-line-number="6"><span class="kw">row.names</span>(contraste.algas) &lt;-<span class="st"> </span><span class="kw">levels</span>(alga<span class="op">$</span>Color)</a>
-<a class="sourceLine" id="cb157-7" data-line-number="7"><span class="kw">colnames</span>(contraste.algas) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb157-8" data-line-number="8">contraste.algas</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">contraste.algas &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">-1</span> , <span class="dv">4</span>, <span class="dv">-1</span>,
+                            <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">0</span>, <span class="dv">3</span>,
+                            <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">2</span>, <span class="dv">0</span> , <span class="dv">0</span>,
+                            <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),
+                          <span class="dt">nrow =</span> <span class="dv">5</span>)
+<span class="kw">row.names</span>(contraste.algas) &lt;-<span class="st"> </span><span class="kw">levels</span>(alga<span class="op">$</span>Color)
+<span class="kw">colnames</span>(contraste.algas) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">sep =</span> <span class="st">&quot;.&quot;</span>)
+contraste.algas</code></pre>
 <pre><code>##            c.1 c.2 c.3 c.4
 ## Amarillo    -1  -1  -1   1
 ## Azul        -1  -1  -1  -1
 ## Infrarrojo  -1  -1   2   0
 ## Rojo         4   0   0   0
 ## Verde       -1   3   0   0</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="co"># Comprobar que son ortogonales, fuera de la diagonal debe dar 0</span></a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">crossprod</span>(contraste.algas)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comprobar que son ortogonales, fuera de la diagonal debe dar 0</span>
+<span class="kw">crossprod</span>(contraste.algas)</code></pre>
 <pre><code>##     c.1 c.2 c.3 c.4
 ## c.1  20   0   0   0
 ## c.2   0  12   0   0
@@ -802,16 +802,16 @@ Creamos una matriz de tamaño I x (I-1). Cada columna es un contraste.</p>
 <p>Una vez hecho la matriz de coeficientes, la usamos dentro de la función
 <code>aov</code> especificando el argumento <code>contrasts</code> que debe ser una lista con nombres
 igual a los variables explicatorias.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">alga.aov_or &lt;-<span class="st"> </span><span class="kw">aov</span>(esporangios <span class="op">~</span><span class="st"> </span>Color, <span class="dt">data =</span> alga, </a>
-<a class="sourceLine" id="cb161-2" data-line-number="2">                      <span class="dt">contrasts =</span> <span class="kw">list</span>(<span class="dt">Color =</span> contraste.algas))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">alga.aov_or &lt;-<span class="st"> </span><span class="kw">aov</span>(esporangios <span class="op">~</span><span class="st"> </span>Color, <span class="dt">data =</span> alga, 
+                      <span class="dt">contrasts =</span> <span class="kw">list</span>(<span class="dt">Color =</span> contraste.algas))</code></pre>
 <p>Luego hay que hacer algo similar para que <code>summary</code> muestre esos contrastes.
 Especificar el argumento <code>split</code> que también tiene que ser una lista con los
 nombres de los variables explicatorias, pero dentro de cada uno hay un vector
 con nombres donde el número indica que contraste es.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">summary</span>(alga.aov_or, <span class="dt">split =</span> <span class="kw">list</span>(<span class="dt">Color =</span> <span class="kw">c</span>(<span class="st">&quot;Rojo vs Todos&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb162-2" data-line-number="2">                                            <span class="st">&quot;Verde vs Amarillo, Azul, Infrarrojo&quot;</span>  =<span class="st"> </span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb162-3" data-line-number="3">                                            <span class="st">&quot;Amarillo Azul vs Infrarrojo&quot;</span> =<span class="st"> </span><span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb162-4" data-line-number="4">                                            <span class="st">&quot;Amarillo vs Azul&quot;</span> =<span class="st"> </span><span class="dv">4</span>)))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(alga.aov_or, <span class="dt">split =</span> <span class="kw">list</span>(<span class="dt">Color =</span> <span class="kw">c</span>(<span class="st">&quot;Rojo vs Todos&quot;</span> =<span class="st"> </span><span class="dv">1</span>,
+                                            <span class="st">&quot;Verde vs Amarillo, Azul, Infrarrojo&quot;</span>  =<span class="st"> </span><span class="dv">2</span>,
+                                            <span class="st">&quot;Amarillo Azul vs Infrarrojo&quot;</span> =<span class="st"> </span><span class="dv">3</span>,
+                                            <span class="st">&quot;Amarillo vs Azul&quot;</span> =<span class="st"> </span><span class="dv">4</span>)))</code></pre>
 <pre><code>##                                              Df   Sum Sq  Mean Sq F value
 ## Color                                         4 26255709  6563927  53.296
 ##   Color: Rojo vs Todos                        1 24458084 24458084 198.589
@@ -835,7 +835,7 @@ usando <code>emmeans</code> y resulta mucho más sencillo. La función a usar es
 Además de indicar el objeto sobre el que hay que realizar los contrastes,
 también es necesario indicar el método (<code>method</code>), y opcionalmente el número de
 nivel que corresponde al tratamiento control (<code>ref</code>)</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">contrast</span>(<span class="dt">object =</span> alga.em, <span class="dt">method =</span> <span class="st">&quot;trt.vs.ctrl&quot;</span>, <span class="dt">ref =</span> <span class="dv">4</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrast</span>(<span class="dt">object =</span> alga.em, <span class="dt">method =</span> <span class="st">&quot;trt.vs.ctrl&quot;</span>, <span class="dt">ref =</span> <span class="dv">4</span>)</code></pre>
 <pre><code>##  contrast          estimate       SE df t.ratio p.value
 ##  Amarillo - Rojo    2249.50 248.1523 15   9.065  &lt;.0001
 ##  Azul - Rojo        2890.50 248.1523 15  11.648  &lt;.0001
@@ -843,6 +843,15 @@ nivel que corresponde al tratamiento control (<code>ref</code>)</p>
 ##  Verde - Rojo       3174.25 248.1523 15  12.792  &lt;.0001
 ## 
 ## P value adjustment: dunnettx method for 4 tests</code></pre>
+<p>También es posible especificar un contraste o varios usando una lista
+donde cada item es un contraste:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrast</span>(<span class="dt">object =</span> alga.em, <span class="kw">list</span>(<span class="st">&quot;Rojo vs Todos&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">-1</span>, <span class="dv">4</span>, <span class="dv">-1</span>),
+                                <span class="st">&quot;Amarillo vs Verde&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-1</span>)))</code></pre>
+<pre><code>##  contrast           estimate       SE df t.ratio p.value
+##  Rojo vs Todos     -11058.50 784.7266 15 -14.092  &lt;.0001
+##  Amarillo vs Verde   -924.75 248.1523 15  -3.727  0.0020</code></pre>
+<p>Es importante recordar que el orden de los coeficientes del contraste deben ser
+igual a que como estan ordenados los niveles del factor.</p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>La faciolasis es una enfermedad parasitaria producida por la <em>Fasciola hepatica</em> (trematode hepático). Los trematodes adultos viven en el conducto biliar del huésped, donde segregan cantidades significativas de ciertos aminoácidos, en especial prolina; el huésped presenta, como característica, anemia (reducción en los glóbulos rojos de la sangre). Se tomaron 40 ratas Wistar, sanas de aproximadamente igual peso y edad, se dividieron al azar en 4 grupos de 10 ratas cada uno. Se adaptó un aparato para infundir material directamente al conducto biliar de las ratas mediante una cánula. Las ratas del grupo I recibieron 20 minimoles de prolina disuelta en suero fisiológico, las del grupo II recibieron un cóctel consistente siete aminoácidos (excluyendo prolina) segregados por el trematode, también disuelto en suero fisiológico; el grupo III recibió lo mismo que el II más el agregado de 20 milimoles de prolina (simulando a lo segregado por el trematode) y el grupo IV sólo se trató con suero fisiológico. En todos los casos se tomó como variable el número de glóbulos rojos del huésped, expresados en millones por mm3 de sangre. Los resultados se presentan en la siguiente tabla:</p>
 <pre><code>    GRUPO.I            GRUPO.II           GRUPO.III</code></pre>
@@ -897,7 +906,7 @@ GRUPO.IV
 <ol start="6" style="list-style-type: decimal">
 <li>En un estudio sobre viabilidad, se aíslan tres parejas de <em>Drosophila melanogaster</em> en 10 frascos y se hace un recuento del número de huevos al cabo de 8 días. Esta experiencia se repite 4 veces con parejas distintas. Los resultados obtenidos son:</li>
 </ol>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">mosca</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">mosca</code></pre>
 <pre><code>##    Serie.1 Serie.2 Serie.3 Serie.4
 ## 1       47      28      32      50
 ## 2       36      31      41      44

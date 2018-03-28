@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -435,8 +435,8 @@ datos de rendimiento, cilindrada y otros más de algunos modelos de autos.
 Los datos están una estructura rectangular llamada <em>data frame</em>, cada columna
 es una variable y cada fila una observación recolectadas por la Agencia de
 Protección ambiental de EE.UU.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">mpg</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+mpg</code></pre>
 <pre><code>## # A tibble: 234 x 11
 ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
 ##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
@@ -455,9 +455,9 @@ Protección ambiental de EE.UU.</p>
 <div id="graficos-con-ggplot" class="section level2">
 <h2><span class="header-section-number">3.3</span> Gráficos con ggplot</h2>
 <p>Podemos hacer un gráfico de la siguiente forma:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</code></pre>
 <p><img src="Graficos_files/figure-html/grafico-inicial-1.png" width="672" /></p>
 <p>Prueben escribiendo el código en la consola.</p>
 <p>En el gráfico vemos que hay una tendencia a disminuir el rendimiento a medida
@@ -490,8 +490,8 @@ general. Aquí están resaltados con rojo.</p>
 <p><img src="Graficos_files/figure-html/puntos-resaltados-1.png" width="672" /></p>
 <p>Para saber más el porque de estos puntos podríamos agregar más información
 al gráfico como por ejemplo el tipo de auto. Una opción es agregar colores.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> class))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> class))</code></pre>
 <p><img src="Graficos_files/figure-html/color-1.png" width="672" /></p>
 <p>Ahora podemos ver, que en general los autos con cilindrada grande son camionetas
 (<em>pickup</em>) o suv. Y que los
@@ -503,19 +503,19 @@ apropiada.</p>
 un <code>warning</code> porque no tiene mucho sentido mapear el tamaño con una variable
 discreta desordenada. Es decir, que no hay una correspondencia entre el tamaño
 del punto y la clase.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">size =</span> class))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">size =</span> class))</code></pre>
 <pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
 <p><img src="Graficos_files/figure-html/point-size-1.png" width="672" /></p>
 <p>También podriamos mapear la clase a la transparencia de los puntos (<code>alpha</code>) o
 a la forma (<code>shape</code>)</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Izquierda</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">alpha =</span> class))</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co"># Derecha</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">shape =</span> class))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Izquierda</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">alpha =</span> class))
+
+<span class="co"># Derecha</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">shape =</span> class))</code></pre>
 <p><img src="Graficos_files/figure-html/alpha-shape-1.png" width="672" /></p>
 <p>Si reproducen el código en sus computadoras verán que que ambos dan advertencias.
 Así como no tienen mucho sentido mapear el tamaño a algo sin orden intríseco,
@@ -530,8 +530,8 @@ la leyenda. De hecho, podemos ver que <em>x</em> e <em>y</em> también son carac
 gráfico pero en vez de mostrar una leyenda genera las marcas en los ejes.</p>
 <p>También es posible configurar alguna estética a un valor específico. Como por
 ejemplo hacer que todos los puntos sean rojos</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/manual-color-1.png" width="672" /></p>
 <p>Acá el color no muestra ninguna información extra. También es posible cambiar
 el:</p>
@@ -624,21 +624,21 @@ ejemplo:</p>
 usando <code>help(nombre_de_función)</code> en la consola) o en la documentación online
 que tiene la ventaja de tener graficados los ejemplos <a href="http://ggplot2.tidyverse.org/reference/" class="uri">http://ggplot2.tidyverse.org/reference/</a> .</p>
 <p>Para hacer los gráficos de arriba usamos:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># Izquierda</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="co"># Derecha</span></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Izquierda</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))
+
+<span class="co"># Derecha</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</code></pre>
 <p>Todos los <em>geoms</em> van luego de <code>ggplot</code> y se unen con un <code>+</code>. En ggplot cada forma geométrica es una capa y pueden combinarse varias en un mismo gráfico.</p>
 <p><img src="Graficos_files/figure-html/dos-geoms-1.png" width="50%" /></p>
 <p>Además, todos los <code>geoms</code> tienen un argumento <code>mapping</code> para la estética. Claro
 que no todos aceptan los mismas argumentos. No tienen sentido ponerle relleno
 a una línea o cambiar el tipo de línea a un punto. Pero si se puede cambiar el
 tipo de línea de `geom_smooth:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv))</code></pre>
 <p><img src="Graficos_files/figure-html/linetype-1.png" width="672" /></p>
 <p>Acá <code>geom_smooth</code> separa tres líneas según el valor de <code>drv</code>, que es la tracción.
 Una línea lisa para las que son 4x4 (4), rayas cortas para tracción delantera (f)
@@ -654,28 +654,28 @@ Figura 3.2: Varios geoms pueden usarse en un mismo gráfico.
 <p>Muchos <code>geoms</code> que resumen la información de varios datos con una sola forma
 tienen un argumento de éstetica llamado <code>group</code> que agrupa la observaciones que
 son iguales en una variable.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">              </a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">group =</span> drv))</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_smooth</span>(</a>
-<a class="sourceLine" id="cb23-9" data-line-number="9">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv),</a>
-<a class="sourceLine" id="cb23-10" data-line-number="10">    <span class="dt">show.legend =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb23-11" data-line-number="11">  )</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))
+              
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">group =</span> drv))
+    
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(
+    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv),
+    <span class="dt">show.legend =</span> <span class="ot">FALSE</span>
+  )</code></pre>
 <p><img src="Graficos_files/figure-html/ejemplo-group-1.png" width="672" /></p>
 <p>Arriba vimos que podiamos usar dos geoms en un mismo
 gráfico (y podríamos agregar más si quisieramos). Pero al hacerlo hemos duplicado
 el <code>mapping</code> en los dos <code>geoms</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">color =</span> drv))</code></pre>
 <p>Podemos evitarlo si ponemos el <code>mapping</code> dentro de la llamada de ggplot:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">linetype =</span> drv, <span class="dt">color =</span> drv)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
 <p>Esto funciona porque las capas heredan
 el <code>mapping</code> de <code>ggplot</code>. Por eso, va a funcionar en todas las capas que pongamos,
 de forma <em>global</em>.
@@ -683,14 +683,14 @@ A veces, esto introduce ciertos errores cuando usamos varias fuentes de datos y
 las variables no están en presentes en todos los conjuntos. Es posible cambiar
 el <code>mapping</code> de una capa específica y va a ser utilizada <em>solo</em> en esa capa; es
 decir, de forma de forma <em>local</em>.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping=</span>  <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class))</code></pre>
 <p><img src="Graficos_files/figure-html/mapping-ggplot-resumido-1.png" width="672" /></p>
 <p>O también podemos definir otro conjunto de datos para el <code>geom</code>:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> <span class="kw">filter</span>(mpg, class <span class="op">==</span><span class="st"> &quot;subcompact&quot;</span>), <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> <span class="kw">filter</span>(mpg, class <span class="op">==</span><span class="st"> &quot;subcompact&quot;</span>), <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/other-data-1.png" width="672" /></p>
 <p>Todavía no vieron <code>filter</code>, pero ya lo verán más adelante.</p>
 
@@ -719,8 +719,8 @@ primera vista los gráficos de barras parecen simples. En este caso estamos
 graficando datos de diamantes, del conjunto de datos <code>diamonds</code> que contiene
 cerca 54000 datos. En el gráfico vemos que hay muchos más diamantes de cortes
 buenos que regulares.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</code></pre>
 <p><img src="Graficos_files/figure-html/geom-bar-1.png" width="672" /></p>
 <p>En el eje <em>x</em> está puesto el corte, y en el eje <em>y</em> está puesto la cuenta
 (frecuencia) de cada uno. Pero si vemos el conjunto de datos veremos que esta
@@ -763,8 +763,8 @@ usa por defecto <code>stat_count</code> y <code>stat_count</code> usa por defect
 mostrar sus resultados y ambos están descriptos en la misma página de ayuda.
 Podemos ver que es calculado en la sección <em>Computed Variables</em>.</p>
 <p>Es posible intercambiar <code>geom</code> por su <code>stat</code>. Por ejemplo:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_count</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_count</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</code></pre>
 <p><img src="Graficos_files/figure-html/stat-count-1.png" width="672" /></p>
 <p>Esto funciona porque cada <em>stat</em> tiene un <em>geom</em> por defecto y cada <em>geom</em>
 tiene un <em>stat</em>. Lo que significa que podes usar cada <em>geom</em> sin preocuparte
@@ -776,17 +776,17 @@ código de abajo cambio el <em>stat</em> de <code>geom_bar</code> por <code>stat
 me permite graficar la altura de la variable <em>y</em> a algún valor del conjunto de
 datos.</li>
 </ol>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">demo &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="op">~</span>cut,         <span class="op">~</span>freq,</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">  <span class="st">&quot;Fair&quot;</span>,       <span class="dv">1610</span>,</a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="st">&quot;Good&quot;</span>,       <span class="dv">4906</span>,</a>
-<a class="sourceLine" id="cb32-5" data-line-number="5">  <span class="st">&quot;Very Good&quot;</span>,  <span class="dv">12082</span>,</a>
-<a class="sourceLine" id="cb32-6" data-line-number="6">  <span class="st">&quot;Premium&quot;</span>,    <span class="dv">13791</span>,</a>
-<a class="sourceLine" id="cb32-7" data-line-number="7">  <span class="st">&quot;Ideal&quot;</span>,      <span class="dv">21551</span></a>
-<a class="sourceLine" id="cb32-8" data-line-number="8">)</a>
-<a class="sourceLine" id="cb32-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="kw">ggplot</span>(<span class="dt">data =</span> demo) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> freq), <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">demo &lt;-<span class="st"> </span><span class="kw">tribble</span>(
+  <span class="op">~</span>cut,         <span class="op">~</span>freq,
+  <span class="st">&quot;Fair&quot;</span>,       <span class="dv">1610</span>,
+  <span class="st">&quot;Good&quot;</span>,       <span class="dv">4906</span>,
+  <span class="st">&quot;Very Good&quot;</span>,  <span class="dv">12082</span>,
+  <span class="st">&quot;Premium&quot;</span>,    <span class="dv">13791</span>,
+  <span class="st">&quot;Ideal&quot;</span>,      <span class="dv">21551</span>
+)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> demo) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> freq), <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/summary-data-1.png" width="672" /></p>
 <p>No te preocupes si no entiendes que hace <code>tribble</code> o <code>&lt;-</code>. Todavía no lo hemos
 visto pero quizá puedas entender que hacen por su contexto</p>
@@ -795,21 +795,21 @@ visto pero quizá puedas entender que hacen por su contexto</p>
 en lugar de graficar la frecuencia o cuenta, grafico la proporción o frecuencia
 relativa.</li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>))</code></pre>
 <p><img src="Graficos_files/figure-html/prop-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Quizás quieras llamar la atención sobre ciertos medidas de resumen que has
 calculado. Puedes hacer esto con <code>stat_summary</code>.</li>
 </ol>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw">stat_summary</span>(</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> depth),</a>
-<a class="sourceLine" id="cb34-4" data-line-number="4">    <span class="dt">fun.y =</span> median,</a>
-<a class="sourceLine" id="cb34-5" data-line-number="5">    <span class="dt">fun.ymax =</span> max,</a>
-<a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">fun.ymin =</span> min</a>
-<a class="sourceLine" id="cb34-7" data-line-number="7">    </a>
-<a class="sourceLine" id="cb34-8" data-line-number="8">  )</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_summary</span>(
+    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> depth),
+    <span class="dt">fun.y =</span> median,
+    <span class="dt">fun.ymax =</span> max,
+    <span class="dt">fun.ymin =</span> min
+    
+  )</code></pre>
 <p><img src="Graficos_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
 <div class="exercise">
@@ -834,11 +834,11 @@ otras palabras ¿Por qué los siguientes gráficos tienen problemas?</p></li>
 <h2><span class="header-section-number">3.7</span> Ajuste de Posiciones</h2>
 <p>El gráfico anterior revela algo interesante de los gráficos de barras. Tienen
 relleno (<em>fill</em>) y tienen color.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity))</code></pre>
 <p><img src="Graficos_files/figure-html/fill-1.png" width="672" /></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity))</code></pre>
 <p><img src="Graficos_files/figure-html/fill-2.png" width="672" /></p>
 <p>Es más claro trabajar con el relleno porque es más visible
 en el gráfico. Pero vemos que las distintas barras están apiladas, lo que
@@ -853,15 +853,15 @@ interpretación. Se puede mejorar agregando transparencia y usando color y no
 relleno, pero es complicado de interpetar si la barras se superponen o están
 apiladas.</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span>
+<span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">color =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/pos-identity-1.png" width="672" /></p>
 <ul>
 <li>Esquivar es quizás la más útil junto con relleno. Hace que las barras estén
 una al lado de la otra. Lo que hace que sea sencillo comparar la altura de estas.</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span>
+<span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/pos-dodge-1.png" width="672" /></p>
 <ul>
 <li>Recién vimos que que con esquivar podemos poner las barras una al lado de otra.
@@ -872,8 +872,8 @@ similar al apilado, pero estadariza cada columna a longitud uno. Entonces se
 ve las proporciones o frecuencias relativas de cada uno de los niveles de
 <code>clarity</code>.</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span>
+<span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">fill =</span> clarity), <span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/pos-fill-1.png" width="672" /></p>
 <p>Hay otros ajustes de posiciones que no son útiles para los gráficos de barras
 pero son muy útiles para los gráficos de puntos. En el gráfico de dispersión
@@ -881,8 +881,8 @@ entre <code>displ</code> y <code>hwy</code> hay menos puntos que el total
 31 vs 234. Muchos
 puntos se superponen, por eso vemos menos. Podemos evitarlo añadiendo un poco
 de movimiento aleatorio a cada punto.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy), <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/pos-jitter-1.png" width="672" /></p>
 <p>Si bien el gráfico no va a ser exacto, muestra más información que en el caso
 donde se superponen los puntos.</p>
@@ -903,25 +903,25 @@ donde se superponen los puntos.</p>
 <h2><span class="header-section-number">3.8</span> Sistemas de Coordenadas</h2>
 <p>Hasta ahora estuvimos graficando en un sistema de coordenadas cartesianas. Pero
 es posible cambiarlo, por ejemplo intercambiando el eje x e y.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a>
-<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre>
 <p><img src="Graficos_files/figure-html/coord-flip-plot-1.png" width="672" /></p>
 <p>En el primer caso las etiquetas del eje x se superponen, pero en el segundo
 es fácil verlas. No es la única forma de solucionar este problema. También es
 posible cambiar el ángulo de las etiquetas para que no se superpongan.</p>
 <p>Otras veces es mejor reemplazar las coordenadas cartesianas por coordenadas
 geográficas.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">arg &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>, <span class="dt">region =</span> <span class="st">&quot;Argentina&quot;</span>)</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a>
-<a class="sourceLine" id="cb42-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a>
-<a class="sourceLine" id="cb42-8" data-line-number="8">  <span class="kw">coord_quickmap</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">arg &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>, <span class="dt">region =</span> <span class="st">&quot;Argentina&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> arg, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)
+  <span class="kw">coord_quickmap</span>()</code></pre>
 <p><img src="Graficos_files/figure-html/coord-quickmap-plot-1.png" width="672" /></p>
 <p>Esto evita que el mapa se deforme, ya que los grados de longitud no miden lo
 mismo en todas las latitudes. Si van a hacer muchos mapas les recomiendo que
@@ -929,9 +929,9 @@ vean la extesión <code>ggmap</code> que tiene muchas utilidades para hacer mejo
 <p>También existen la coordenadas polares. Un gráfico de torta, que les recomiendo
 que no lo usen por los problemas de percepción que tiene, es un gráfico de
 barras apiladas en coordernadas polares.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">cxc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">cxc <span class="op">+</span><span class="st"> </span><span class="kw">coord_polar</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cxc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(cyl))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)
+cxc <span class="op">+</span><span class="st"> </span><span class="kw">coord_polar</span>()</code></pre>
 <p><img src="Graficos_files/figure-html/coord-polar-1.png" width="672" /></p>
 
 <div class="exercise">
@@ -952,30 +952,30 @@ cambiar el eje x se usa <code>scale_x_*</code> donde * es el tipo de dato que ti
 eje: si es númerico se usa <code>continuous</code> y si es categórico se usa <code>discrete</code>.
 Se pueden cambiar muchas cosas: el título del eje (<code>name</code>), el lugar de las
 marcas (<code>breaks</code>), las etiquetas de las marcas (<code>labels</code>), y muchas más opciones.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span></a>
-<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, </a>
-<a class="sourceLine" id="cb44-4" data-line-number="4">                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;uno&quot;</span>, <span class="st">&quot;dos&quot;</span>, <span class="st">&quot;tres&quot;</span>, <span class="st">&quot;cuatro&quot;</span>, <span class="st">&quot;cinco&quot;</span>, </a>
-<a class="sourceLine" id="cb44-5" data-line-number="5">                                <span class="st">&quot;seis&quot;</span>, <span class="st">&quot;siete&quot;</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, 
+                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;uno&quot;</span>, <span class="st">&quot;dos&quot;</span>, <span class="st">&quot;tres&quot;</span>, <span class="st">&quot;cuatro&quot;</span>, <span class="st">&quot;cinco&quot;</span>, 
+                                <span class="st">&quot;seis&quot;</span>, <span class="st">&quot;siete&quot;</span>))</code></pre>
 <p><img src="Graficos_files/figure-html/scale-1.png" width="672" /></p>
 <p>Un atajo para modificar los nombres de los ejes es usar la función <code>labs()</code>,
 pero solo se pueden modificar los nombres de los ejes y nada más.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span></a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Millas por galón en Autopista&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Cilindrada (l)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Millas por galón en Autopista&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/labs-1.png" width="672" /></p>
 <p>También se puede modificar los colores que se asignan.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>)</a>
-<a class="sourceLine" id="cb46-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>, <span class="dt">palette =</span> <span class="st">&quot;RdYlBu&quot;</span>)</a>
-<a class="sourceLine" id="cb46-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb46-9" data-line-number="9"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="st">&quot;Clase&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="st">&quot;Clase&quot;</span>, <span class="dt">palette =</span> <span class="st">&quot;RdYlBu&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="st">&quot;Clase&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/colores-plot-1.png" width="672" /></p>
 <p>Hay muchas más opciones disponibles, ya que como dice el dicho: “Para gustos,
 los colores”. Si quieren conocerlas te recomiendo que lean la ayuda de cada
@@ -993,32 +993,32 @@ de la líneas de los ejes, la dirección de marcas, la dirección del texto, y
 ¡todo lo demás!. Todo esto está unido a lo que es el tema (<code>theme</code>) del gráfico.
 Se pueden guardar las modificaciones para usarla facilmente y ya vienen algunas
 opciones en <code>ggplot</code> y hay más en el paquete <code>ggthemes</code> y otros.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
 <p><img src="Graficos_files/figure-html/temas-1.png" width="672" /></p>
 <p>Para modificar algún elemento en particular usamos la función <code>theme()</code> al final
 del gráfico. Dentro de la llamada a <code>theme</code> modificamos el argumento que queremos
 cambiar usando la función <code>element_*()</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</code></pre>
 <p><img src="Graficos_files/figure-html/personalizar-temas-1.png" width="672" /></p>
 <p>Sí, es bastante complicado. Pero por suerte se puede guardar y reutilizar.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">x_<span class="dv">45</span> &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="st">  </span>x_<span class="dv">45</span></a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">x_<span class="dv">45</span> &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span>
+<span class="st">  </span>x_<span class="dv">45</span></code></pre>
 <p><img src="Graficos_files/figure-html/a-45-grados-1.png" width="672" /></p>
 <p>También es posible cambiar la posición de la leyenda o eliminarla completamente.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-7" data-line-number="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">fill =</span> fl)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
 <p><img src="Graficos_files/figure-html/cambiar-leyenda-plot-1.png" width="672" /></p>
 
 <div class="exercise">

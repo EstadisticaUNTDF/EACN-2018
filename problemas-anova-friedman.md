@@ -169,55 +169,22 @@ library(PMCMR)
 ```
 
 ```r
-library(PMCMRplus)
 posthoc.friedman.nemenyi.test(performance ~ Pasto | Parcela, data = pasto)
 ```
 
 ```
 ## 
 ## 	Pairwise comparisons using Nemenyi multiple comparison test	
-##              with q approximation for unreplicated blocked data
-```
-
-```
-## data: performance and Pasto and Parcela
-```
-
-```
+##              with q approximation for unreplicated blocked data 
+## 
+## data:  performance and Pasto and Parcela 
+## 
 ##         Pasto.1 Pasto.2 Pasto.3
 ## Pasto.2 0.10    -       -      
 ## Pasto.3 0.14    1.00    -      
-## Pasto.4 0.92    0.34    0.44
-```
-
-```
+## Pasto.4 0.92    0.34    0.44   
 ## 
 ## P value adjustment method: none
-```
-
-```r
-pasto %$% frdAllPairsNemenyiTest(performance, Pasto, Parcela)
-```
-
-```
-## 
-## 	Pairwise comparisons using Nemenyi-Wilcoxon-Wilcox all-pairs test for a two-way balanced complete block design
-```
-
-```
-## data: performance , Pasto and Parcela
-```
-
-```
-##         Pasto.1 Pasto.1 Pasto.1
-## Pasto.1 0.82    -       -      
-## Pasto.1 0.98    0.96    -      
-## Pasto.1 0.99    0.64    0.89
-```
-
-```
-## 
-## P value adjustment method: single-step
 ```
 
 
@@ -259,6 +226,8 @@ fueron:
  Chanchita      0.6        0.2        0.2        1.86   
 --------------------------------------------------------
 
+Table: Porcentaje de consumo de presas según cuatro índices.
+
 
 
 
@@ -272,24 +241,41 @@ las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:
 
 
 ```r
-parasitosis 
+parasitosis %>% pander(caption = "Número de helmitos en intestino de ratones 
+                       tratados con cuatro antiparasitarios distintos.")
 ```
 
-```
-##    Camada Droga.1 Droga.2 Droga.3 Droga.4
-## 1       1      20      13      23      26
-## 2       2      22      12      23      15
-## 3       3      31      24      36      65
-## 4       4      18       9      10      62
-## 5       5      25      23      50      70
-## 6       6      17       7      25      60
-## 7       7      29      11      28      68
-## 8       8      26      21      15      15
-## 9       9      26      23      51      38
-## 10     10      29      15      31      13
-## 11     11      24      15      45      46
-## 12     12      19       6      24      42
-```
+
+------------------------------------------------
+ Camada   Droga.1   Droga.2   Droga.3   Droga.4 
+-------- --------- --------- --------- ---------
+   1        20        13        23        26    
+
+   2        22        12        23        15    
+
+   3        31        24        36        65    
+
+   4        18         9        10        62    
+
+   5        25        23        50        70    
+
+   6        17         7        25        60    
+
+   7        29        11        28        68    
+
+   8        26        21        15        15    
+
+   9        26        23        51        38    
+
+   10       29        15        31        13    
+
+   11       24        15        45        46    
+
+   12       19         6        24        42    
+------------------------------------------------
+
+Table: Número de helmitos en intestino de ratones 
+                       tratados con cuatro antiparasitarios distintos.
 
 
 
@@ -304,24 +290,41 @@ fertilizante fue:
 
 
 ```r
-soja
+soja %>% pander(caption = "Rendimiento en toneladas por parcela en 
+                parcelas fertilizadas con cuatro fertilizantes.")
 ```
 
-```
-##    Parcela Fertilizante.1 Fertilizante.2 Fertilizante.3 Fertilizante.4
-## 1        1            320            314            165            202
-## 2        2            244            277            171            121
-## 3        3            229            244            128            124
-## 4        4            301            301            209            212
-## 5        5            293            311            182            208
-## 6        6            260            292            153            197
-## 7        7            293            300            200            152
-## 8        8            295            316            130            212
-## 9        9            232            235            178            165
-## 10      10            310            281            181            201
-## 11      11            322            349            247            218
-## 12      12            315            306            160            219
-```
+
+-----------------------------------------------------------------------------
+ Parcela   Fertilizante.1   Fertilizante.2   Fertilizante.3   Fertilizante.4 
+--------- ---------------- ---------------- ---------------- ----------------
+    1           320              314              165              202       
+
+    2           244              277              171              121       
+
+    3           229              244              128              124       
+
+    4           301              301              209              212       
+
+    5           293              311              182              208       
+
+    6           260              292              153              197       
+
+    7           293              300              200              152       
+
+    8           295              316              130              212       
+
+    9           232              235              178              165       
+
+   10           310              281              181              201       
+
+   11           322              349              247              218       
+
+   12           315              306              160              219       
+-----------------------------------------------------------------------------
+
+Table: Rendimiento en toneladas por parcela en 
+                parcelas fertilizadas con cuatro fertilizantes.
 ¿Cuál fertilizante conviene utilizar?
 
 
@@ -338,23 +341,38 @@ merlucera? Sus resultados fueron:
 
 
 ```r
-pesca 
+pesca %>% pander(caption = "Porcentaje de descarte en las cuatro estaciones.")
 ```
 
-```
-##    Barco Primavera Verano Oto\xf1o Invierno
-## 1      1        32     25       43       43
-## 2      2        27     16       30       38
-## 3      3        27     30       38       37
-## 4      4        26     31       51       52
-## 5      5        28     32       52       44
-## 6      6        21     23       41       38
-## 7      7        21     21       44       48
-## 8      8        24     37       41       46
-## 9      9        33     29       45       54
-## 10    10        27     23       45       41
-## 11    11        35     22       44       43
-## 12    12        31     35       43       44
-```
+
+-----------------------------------------------
+ Barco   Primavera   Verano   Otono   Invierno 
+------- ----------- -------- ------- ----------
+   1        32         25      43        43    
+
+   2        27         16      30        38    
+
+   3        27         30      38        37    
+
+   4        26         31      51        52    
+
+   5        28         32      52        44    
+
+   6        21         23      41        38    
+
+   7        21         21      44        48    
+
+   8        24         37      41        46    
+
+   9        33         29      45        54    
+
+  10        27         23      45        41    
+
+  11        35         22      44        43    
+
+  12        31         35      43        44    
+-----------------------------------------------
+
+Table: Porcentaje de descarte en las cuatro estaciones.
 
 
