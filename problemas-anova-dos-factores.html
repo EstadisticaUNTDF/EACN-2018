@@ -455,10 +455,6 @@ cuando se les produce una mordedura. Aplican un método que supuestamente lo
 alarga y lo comparan con un control (método tradicional). Como les surgen dudas
 respecto a la hora en que se realiza el sangrado experimentan a la medianoche y
 a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sangrado <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">d$&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo</span>
-<span class="st">       el método tradicional y un nuevo método a la medianoche y a la </span>
-<span class="st">       madrugada.&quot;</span>)</code></pre>
 <table>
 <caption><span id="tab:sangrado">Tabla 8.1: </span> Minutos de sangrado en <em>Horno sapiens</em> bajo
 el método tradicional y un nuevo método a la medianoche y a la
@@ -524,10 +520,6 @@ madrugada.</caption>
 </ol>
 <p>2.- La siguiente tabla muestra la ganancia en peso de ratas macho sometidas a
 seis dietas diferentes:</p>
-<pre class="sourceCode r"><code class="sourceCode r">peso_rata <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">Alta.proteina =</span> Alta.proteina<span class="fl">.1</span>,
-                            <span class="dt">Baja.proteina =</span> Baja.proteina<span class="fl">.1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:peso-rata) Datos de ganancia de peso (en g.)</span>
-<span class="st">       en ratas macho sometidas a seis dietas diferentes&quot;</span>)</code></pre>
 <table>
 <caption><span id="tab:peso-rata">Tabla 8.2: </span> Datos de ganancia de peso (en g.)
 en ratas macho sometidas a seis dietas diferentes</caption>
@@ -668,10 +660,6 @@ observando si existen diferencias de viabilidad sembrando 100 y 800 huevos. De
 este modo para cada uno de los tratamientos se dispusieron 6 preparados y al
 cabo de un tiempo suficiente de ser sembrados los huevos se obtuvo el porcentaje
 de huevos que hablan eclosionado. Los resultados fueron:</p>
-<pre class="sourceCode r"><code class="sourceCode r">huevos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">d$&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:huevos) Viabilidad en porcentaje de huevos sembrados</span>
-<span class="st">       para tres genotipos (PP, NN, PN) sembrando distintas cantidades de</span>
-<span class="st">       huevos&quot;</span>)</code></pre>
 <table style="width:100%;">
 <caption><span id="tab:huevos">Tabla 8.3: </span> Viabilidad en porcentaje de huevos sembrados
 para tres genotipos (PP, NN, PN) sembrando distintas cantidades de
@@ -761,7 +749,6 @@ huevos</caption>
 afirmativa vuelva a realizar los análisis, comprobar supuestos y revise sus
 conclusiones.</li>
 </ol>
-<p>Datos transformados con arcoseno.</p>
 <p>4.- Se sembró <em>Lactobacíllus fermentus</em> en una mezcla de agar y un medio de
 cultivo sin tiamina se llenaron 18 tubos de ensayo con una cantidad fija de
 la mezcla. A grupos de tres, elegidos al azar, se les agregó un sobrenadante
@@ -769,9 +756,6 @@ que contenía una dosis fija de tres preparaciones de tiamina. Después de una
 incubación por 18 horas se midió el crecimiento de L. fermentus en términos
 del largo de la columna de nebulosidad que se desarrolla por debajo del
 sobrenadante:</p>
-<pre class="sourceCode r"><code class="sourceCode r">yogur <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">Concentracion_de_tiamina =</span> Concent..de.tiamina) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:yogur) Nebulosidad (1/Transmitancia) de cultivos</span>
-<span class="st">       de *Lactobacíllus fermentus* bajo varias concentraciones de tiamina.&quot;</span>)</code></pre>
 <table style="width:67%;">
 <caption><span id="tab:yogur">Tabla 8.4: </span> Nebulosidad (1/Transmitancia) de cultivos
 de <em>Lactobacíllus fermentus</em> bajo varias concentraciones de tiamina.</caption>
@@ -836,9 +820,6 @@ las preparaciones y entre las dosis. Interpretar los resultados.</li>
 </ol>
 <p>5.- La siguiente tabla ilustra el engorde semanal de cerdos clasificados por
 sexo, con tres tipos de alimentación A, B y C.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(<span class="kw">setNames</span>(cerdos, <span class="kw">c</span>(<span class="st">&quot;&amp;nbsp;&quot;</span>, LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])), <span class="dt">caption =</span> <span class="st">&quot;(#tab:cerdos) </span>
-<span class="st">       Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos </span>
-<span class="st">       de alimentación A, B y C&quot;</span>)</code></pre>
 <table style="width:42%;">
 <caption><span id="tab:cerdos">Tabla 8.5: </span>
 Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos
@@ -884,10 +865,6 @@ entregan recipientes con uno de los cuatro tipos de levadura, pero sin indicar
 cual. La concentración de humedad se analiza por secado de horno al vacío.
 Los datos que se dan a continuación corresponden al contenido de humedad (en
 términos de % de humedad - 6.00) de 4 alícuotas de 2 gramos cada una.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(levadura, <span class="dt">caption =</span> <span class="st">&quot;(#tab:levadura) Humedad (en porcentaje) de cuatro</span>
-<span class="st">       tipos de levadura (de panadería (I), liviana de cerveza (II),</span>
-<span class="st">pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios </span>
-<span class="st">diferentes.&quot;</span>)</code></pre>
 <table style="width:88%;">
 <caption><span id="tab:levadura">Tabla 8.6: </span> Humedad (en porcentaje) de cuatro
 tipos de levadura (de panadería (I), liviana de cerveza (II),
@@ -1062,9 +1039,6 @@ diferentes.</caption>
 </table>
 <p>7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
 diferentes profundidades, con los siguientes resultados</p>
-<pre class="sourceCode r"><code class="sourceCode r">lago <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_all</span>(<span class="kw">funs</span>(stringr<span class="op">::</span><span class="kw">str_replace</span>(., <span class="st">&quot;X&quot;</span>, <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;(#tab:lago) Temperatura de un lago (°C) en cuatro tardes</span>
-<span class="st">       elegidas al azar durante el verano en distintas profundidades (m).&quot;</span>)</code></pre>
 <table style="width:58%;">
 <caption><span id="tab:lago">Tabla 8.7: </span> Temperatura de un lago (°C) en cuatro tardes
 elegidas al azar durante el verano en distintas profundidades (m).</caption>

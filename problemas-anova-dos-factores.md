@@ -97,14 +97,6 @@ a la madrugada. Los datos corresponden al tiempo de sangrado, en minutos.
 
 	  
 
-```r
-sangrado %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
-pander(caption = "(#tab:sangrado) Minutos de sangrado en *Horno sapiens* bajo
-       el método tradicional y un nuevo método a la medianoche y a la 
-       madrugada.")
-```
-
-
 -----------------------------------------------------------------------
      medianoche           madrugada         medianoche     madrugada   
 -------------------- -------------------- -------------- --------------
@@ -141,14 +133,6 @@ c)	Si Ud. fuera uno de los mencionados galenos, ¿Cuándo y cómo realizaría el
 
 2.- La siguiente tabla muestra la ganancia en peso de ratas macho sometidas a
 seis dietas diferentes:
-
-
-```r
-peso_rata %>% dplyr::rename(Alta.proteina = Alta.proteina.1,
-                            Baja.proteina = Baja.proteina.1) %>% 
-pander(caption = "(#tab:peso-rata) Datos de ganancia de peso (en g.)
-       en ratas macho sometidas a seis dietas diferentes")
-```
 
 
 --------------------------------------------------------------------------------
@@ -216,14 +200,6 @@ cabo de un tiempo suficiente de ser sembrados los huevos se obtuvo el porcentaje
 de huevos que hablan eclosionado. Los resultados fueron:
 	
 
-```r
-huevos %>% select_all(funs(stringr::str_replace(., "\\.\\d$", ""))) %>% 
-pander(caption = "(#tab:huevos) Viabilidad en porcentaje de huevos sembrados
-       para tres genotipos (PP, NN, PN) sembrando distintas cantidades de
-       huevos")
-```
-
-
 ---------------------------------------------------------------------------------
  Huevos.Sembrados    PP     PP     PP     PN     PN     PN     NN     NN     NN  
 ------------------ ------ ------ ------ ------ ------ ------ ------ ------ ------
@@ -250,7 +226,7 @@ conclusiones.
 
 
 
-Datos transformados con arcoseno.
+
 
 
 
@@ -270,13 +246,6 @@ incubación por 18 horas se midió el crecimiento de L. fermentus en términos
 del largo de la columna de nebulosidad que se desarrolla por debajo del
 sobrenadante:
 	
-
-```r
-yogur %>% dplyr::rename(Concentracion_de_tiamina = Concent..de.tiamina) %>% 
-pander(caption = "(#tab:yogur) Nebulosidad (1/Transmitancia) de cultivos
-       de *Lactobacíllus fermentus* bajo varias concentraciones de tiamina.")
-```
-
 
 -----------------------------------------------
  Concentracion_de_tiamina    A      B      C   
@@ -310,13 +279,6 @@ c)	Hacer un estudio de perfiles.
 sexo, con tres tipos de alimentación A, B y C.
 
 
-```r
-pander(setNames(cerdos, c("&nbsp;", LETTERS[1:3])), caption = "(#tab:cerdos) 
-       Engorde semanal en kilos en cerdos de ambos sexos, con tres tipos 
-       de alimentación A, B y C")
-```
-
-
 -----------------------------
  &nbsp;    A      B      C   
 -------- ------ ------ ------
@@ -345,14 +307,6 @@ entregan recipientes con uno de los cuatro tipos de levadura, pero sin indicar
 cual. La concentración de humedad se analiza por secado de horno al vacío.
 Los datos que se dan a continuación corresponden al contenido de humedad (en
 términos de % de humedad - 6.00) de 4 alícuotas de 2 gramos cada una.
-
-
-```r
-pander(levadura, caption = "(#tab:levadura) Humedad (en porcentaje) de cuatro
-       tipos de levadura (de panadería (I), liviana de cerveza (II),
-pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios 
-diferentes.")
-```
 
 
 --------------------------------------------------------------
@@ -401,13 +355,6 @@ diferentes.
 
 7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
 diferentes profundidades, con los siguientes resultados
-
-
-```r
-lago %>% select_all(funs(stringr::str_replace(., "X", ""))) %>% 
-pander(caption = "(#tab:lago) Temperatura de un lago (°C) en cuatro tardes
-       elegidas al azar durante el verano en distintas profundidades (m).")
-```
 
 
 -----------------------------------------
