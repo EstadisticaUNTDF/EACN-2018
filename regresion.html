@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-28">
+<meta name="date" content="2018-04-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -352,7 +352,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.2" data-path="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html"><a href="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html#problema-4"><i class="fa fa-check"></i><b>16.2</b> Problema 4</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>17</b> Regresión</a><ul>
-<li class="chapter" data-level="17.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>17.1</b> Regresión Lineal Simple</a></li>
+<li class="chapter" data-level="17.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>17.1</b> Regresión Lineal Simple</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="regresion.html"><a href="regresion.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>17.1.1</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="regresion.html"><a href="regresion.html#regresion-con-replicacion"><i class="fa fa-check"></i><b>17.2</b> Regresión con Replicación</a></li>
+<li class="chapter" data-level="17.3" data-path="regresion.html"><a href="regresion.html#transformaciones-para-corregir-la-falta-de-linealidad"><i class="fa fa-check"></i><b>17.3</b> Transformaciones para corregir la falta de linealidad</a></li>
+<li class="chapter" data-level="17.4" data-path="regresion.html"><a href="regresion.html#uso-de-los-residuales-para-comprobar-los-supuestos"><i class="fa fa-check"></i><b>17.4</b> Uso de los Residuales para Comprobar los Supuestos</a></li>
+<li class="chapter" data-level="17.5" data-path="regresion.html"><a href="regresion.html#regresiones-multiples"><i class="fa fa-check"></i><b>17.5</b> Regresiones Múltiples</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>18</b> Ordenación en Espacios Reducidos</a><ul>
 <li class="chapter" data-level="18.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>18.1</b> Análisis de componentes principales</a><ul>
@@ -401,9 +407,9 @@ realizan con los resultados.</p>
 <p>(ref:regresion-espuria) Ejemplo de regresión espuria. Limones frescos importados
 desde México (ton) y tasa de mortalidad total en autopistas de EE.UU.</p>
 <div class="figure"><span id="fig:regresion-espuria"></span>
-<img src="fig/regresion-espuria.png" alt="(ref:regresion-espuria"  />
+<img src="fig/regresion-espuria.png" alt="(ref:regresion-espuria)" width="6" />
 <p class="caption">
-Figura 17.1: (ref:regresion-espuria
+Figura 17.1: (ref:regresion-espuria)
 </p>
 </div>
 <div id="regresion-lineal-simple" class="section level2">
@@ -418,7 +424,7 @@ Y_i = \beta_0 + \beta_1 X_i
 \tag{17.1}
 \end{equation}\]</span>
 <p>Por ejemplo, el se tiene la edad y la longitud de alas de gorriones de varias
-edades en la Tabla <a href="regresion.html#tab:gorriones">17.1</a>. La edad es la variable independiente y
+edades en la Tabla <a href="#tab:gorriones"><strong>??</strong></a>. La edad es la variable independiente y
 la longitud de ala es la variable dependiente. Se busca ajustar un modelo como
 en el da la Ecuación <a href="regresion.html#eq:reg1">(17.1)</a>. En la Figura <a href="regresion.html#fig:gorriones-grafico">17.2</a> la
 recta que mejor ajusta a esto datos en azul. Sin embargo, el ajuste no es
@@ -434,22 +440,25 @@ Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
 los <span class="math inline">\(\beta_i\)</span> consiste en minimizar el cuadrado de los errores. Por eso,
 el método se lo conoce como mínimos cuadrados o mínimos cuadrados ordinarios.
 Afortunadamente se pueden resolver de manera analítica por las siguientes
-ecuaciones</p>
-<span class="math display" id="eq:b1">\[\begin{equation}
+ecuaciones:</p>
+<span class="math display" id="eq:betas">\[\begin{equation}
 \begin{aligned}
-b_1 &amp;= \frac{\sum(X_i-\bar X)(Y_i-\bar Y)}{\sum (X_i-\bar X)^{2}}=
-\frac{\sum X_iY_i-\frac{\left (\sum X_i\right)\left ( \sum Y_i\right )}{n}}{\sum X_i^2-\frac{\left (\sum X_i \right )^2}{n}}
-\tag{17.3}\\
-b_0 &amp;= \bar Y - b_1\bar X
+b_1 &amp;= \frac{\sum(X_i-\overline{X})(Y_i-\overline{Y})}{\sum (X_i-\overline{X})^{2}}=\frac{\sum X_iY_i-\frac{\left (\sum X_i\right)\left ( \sum Y_i\right )}{n}}{\sum X_i^2-\frac{\left (\sum X_i \right )^2}{n}}\\
+b_0 &amp;= \overline{Y} - b_1\overline{X}
+\end{aligned}
+\tag{17.3}
+\end{equation}\]</span>
+<p>Para facilitar las formulas y hacerlas más compactas definimos:</p>
+<span class="math display">\[\begin{equation}
+\begin{aligned}
+\sum y^2 &amp;= \sum \left (Y_i - \overline{Y} \right )^2\\
+\sum x^2 &amp;= \sum \left (X_i - \overline{X} \right )^2\\
+\sum xy &amp;= \sum \left (X_i - \overline{X} \right )\left (Y_i - \overline{Y} \right )
 \end{aligned}
 \end{equation}\]</span>
-<table style="width:24%;">
-<caption><span id="tab:gorriones">Tabla 17.1: </span> Edad en días y longitud
+<table>
+<caption><span id="tab:gorriones-datos">Tabla 17.1: </span>Edad en días y longitud
 de ala en centímetros de 13 gorriones.</caption>
-<colgroup>
-<col width="9%" />
-<col width="13%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Edad</th>
@@ -507,7 +516,7 @@ de ala en centímetros de 13 gorriones.</caption>
 </tr>
 <tr class="odd">
 <td align="center">17</td>
-<td align="center">5</td>
+<td align="center">5.0</td>
 </tr>
 </tbody>
 </table>
@@ -522,6 +531,478 @@ y los valores observados.</p>
 Figura 17.2: (ref:gorriones-grafico)
 </p>
 </div>
+<p>Una vez que están determinados los <span class="math inline">\(\beta_i\)</span> es necesario determinar si son
+signficativos. Es decir, diferentes de cero. El <span class="math inline">\(\beta_1\)</span> puede ser muy grande
+(e.g. 100) pero si la varianza asociada a este número es muy grande puede que
+no sea significativamente distinto de cero. Existen dos estadísticos que
+permiten probar la significancia de <span class="math inline">\(\beta_1\)</span>.</p>
+<p>El primero es un estadístico F que se calcula a partir de una tabla de análisis
+de la varianza (ANOVA):</p>
+<p><span class="math display">\[
+F = \frac{CM_{regresion}}{CM_{residual}}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fuente de Variación</th>
+<th align="left">GL</th>
+<th align="left">Suma de Cuadrados (SC)</th>
+<th align="left">Cuadrados Medios (CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Regresión</td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(\frac{\left (\sum xy \right )^2}{\sum x^2}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{SC_{regresion}}{GL_{regresion}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Residual</td>
+<td align="left"><span class="math inline">\(n-2\)</span></td>
+<td align="left"><span class="math inline">\(SC_{total}-SC_{regresion}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{SC_{residual}}{GL_{residual}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left"><span class="math inline">\(n-1\)</span></td>
+<td align="left"><span class="math inline">\(\sum y^2\)</span></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Este estadístico <em>F</em> bajo la hipótesis nula <span class="math inline">\(H_0: \beta_1 = 0\)</span> se distribuye
+como <span class="math inline">\(F_{1;n-2}\)</span>. Entonces se compara con esa distribución y si el estadístico
+es mayor que el valor crítico al <span class="math inline">\(\alpha\)</span> especificado o si la probabilidad es
+de un valor mayor a estadístico es menor a <span class="math inline">\(\alpha\)</span> entonces se rechaza <span class="math inline">\(H_0\)</span>.</p>
+<p>Por ejemplo, con los datos de la tabla <a href="regresion.html#tab:gorriones-datos">17.1</a>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fuente de Variación</th>
+<th align="right">GL</th>
+<th align="right">Suma de Cuadrados (SC)</th>
+<th align="right">Cuadrados Medios (CM)</th>
+<th align="right">F</th>
+<th align="right">P(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Regresión</td>
+<td align="right">1</td>
+<td align="right">19.1322137</td>
+<td align="right">19.1322137</td>
+<td align="right">401.0875</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Residual</td>
+<td align="right">11</td>
+<td align="right">0.5247093</td>
+<td align="right">0.0477008</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">12</td>
+<td align="right">19.6569231</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>La otra forma de hacer esta prueba es usando el estadístico <em>t</em>:</p>
+<p><span class="math display" id="eq:test-beta">\[
+t = \frac{b_1 - \beta_1}{s_{b1}}
+\tag{17.4}
+\]</span></p>
+<p>En el caso de <span class="math inline">\(H_0: \beta_1 = 0\)</span> es claro que ese el valor que debe tomar
+<span class="math inline">\(\beta_1\)</span> en la Ecuación <a href="regresion.html#eq:test-beta">(17.4)</a>. Por otro lado, esta forma de
+probar la significancia del estimador <span class="math inline">\(b_1\)</span> tiene la ventaja de poder probar
+a una cola izquierda o derecha y con distintos valores de <span class="math inline">\(\beta_1\)</span> (e.g. 1, 3.
+100, etc.).</p>
+<p>La varianza de <span class="math inline">\(b_1\)</span> se calcula como:</p>
+<p><span class="math display">\[
+s_b^2=\frac{s^2_{YX}}{\sum x^2}
+\]</span></p>
+<p>Donde el estimador de <span class="math inline">\(s^2_{YX}\)</span> es el <span class="math inline">\(CM_{residual}\)</span> en la tabla de anovo.</p>
+<p>El coeficiente de determinación <span class="math inline">\(r^2\)</span> es igual a la proporción de la varianza
+de Y explicada por la regresion:</p>
+<p><span class="math display">\[
+r^2 = \frac{SC_{regresion}}{SC{total}}
+\]</span></p>
+<p>La interpretación de la función de regresión es que <span class="math inline">\(\beta_0\)</span> es el valor que toma
+<span class="math inline">\(Y\)</span> cuando <span class="math inline">\(X=0\)</span>. No siempre tiene sentido biológico este parámetro.
+Por ejemplo, si la variable <span class="math inline">\(X\)</span> es el peso de un animal, <strong>¡no existe un animal
+con peso 0!</strong>. Por otro lado, en el caso de los gorriones este valor representa
+la longitud media del ala de un gorrión al nacer.</p>
+<p>La interpretación de <span class="math inline">\(\beta_1\)</span> es cuanto aumenta (o disminuye) <span class="math inline">\(Y\)</span> por cada
+unidad de <span class="math inline">\(X\)</span>.</p>
+<div id="intervalos-de-confianza" class="section level3">
+<h3><span class="header-section-number">17.1.1</span> Intervalos de confianza</h3>
+<p>El intervalo de confianza para <span class="math inline">\(b_1\)</span> es:</p>
+<p><span class="math display">\[
+b_1 \pm t_{\alpha(2);n-2} s_b
+\]</span></p>
+<p>El intervalo de confianza para cada <span class="math inline">\(Y\)</span> es distinto que el de para
+una media. Debido a que la pendiente <span class="math inline">\(b_1\)</span> tiene varianza hace que los
+intervalos de confianza de <span class="math inline">\(Y\)</span> sean mayores en los extremos que en el centro.
+Podemos imaginarlo como un subibaja donde el punto donde está sostenido es
+igual a <span class="math inline">\(\overline{X}\)</span>. Por lo tanto la varianza de <span class="math inline">\(\hat{Y}\)</span> aumenta a medida
+que se aleja de <span class="math inline">\(\overline{X}\)</span></p>
+<p><span class="math display">\[
+S_{\hat{Y}}= \sqrt{S^2_{YX}\left[ \frac{1}{n} + \frac{\left( X_i - \overline{X} \right)^2}{\sum x^2} \right ]}
+\]</span>
+Luego se construye normalmente como cualquier otro intervalo de confianza:</p>
+<p><span class="math display">\[
+\hat Y \pm t_{\alpha(2);n-2}S_{\hat Y}
+\]</span></p>
+<p>En cambio, el intervalo de predicción para un nuevo <span class="math inline">\(Y\)</span> depende de la cantidad de
+nuevas estimaciones que se quieran predecir:</p>
+<p><span class="math display">\[
+(S_{\hat{Y}})_m= \sqrt{S^2_{YX}\left[\frac{1}{m} + \frac{1}{n} + \frac{\left( X_i - \overline{X} \right)^2}{\sum x^2} \right ]}
+\]</span></p>
+<p>Donde <span class="math inline">\(m\)</span> es el número de nuevas predicciones en en un mismo <span class="math inline">\(X_i\)</span>.</p>
+</div>
+</div>
+<div id="regresion-con-replicacion" class="section level2">
+<h2><span class="header-section-number">17.2</span> Regresión con Replicación</h2>
+<p>La regresión lineal simple vista anteriormente es para cuando solo hay una
+observación por cada <span class="math inline">\(X_i\)</span>. Cuando tenemos varias observaciones por cada
+<span class="math inline">\(X_i\)</span> es posible probar la hipótesis sobre la linealidad de los datos.
+Esto es posible de probar porque cada observación proviene de una distribución
+normal con media <span class="math inline">\(\beta_0 + \beta_1X\)</span>. Por lo tanto, la media de las réplicas
+de cada <span class="math inline">\(X_i\)</span> debería coincidir con el valor de <span class="math inline">\(\hat{Y}\)</span> de la regresión.
+Por ejemplo, se tienen mediciones de la presión sistólica de hombres de diferentes
+edades, con varias mediciones para la misma edad en la Tabla @ref(tab:presión-sistolica).
+En la Figura <a href="#fig:grafico-sistolica"><strong>??</strong></a> se graficaron estos datos. Además,
+se añadió la recta de regresión estimada.</p>
+<table>
+<caption><span id="tab:presión-sistolica">Tabla 17.2: </span>Presión sistólica (mm Hg) en hombres de varias edades.</caption>
+<thead>
+<tr class="header">
+<th align="right">edad</th>
+<th align="left">presion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">30</td>
+<td align="left">108, 110, 106</td>
+</tr>
+<tr class="even">
+<td align="right">40</td>
+<td align="left">125, 120, 118, 119</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="left">132, 137, 134</td>
+</tr>
+<tr class="even">
+<td align="right">60</td>
+<td align="left">148, 151, 146, 147, 144</td>
+</tr>
+<tr class="odd">
+<td align="right">70</td>
+<td align="left">162, 156, 164, 158, 159</td>
+</tr>
+</tbody>
+</table>
+<p><img src="regresion_files/figure-html/grafico-sistotlica-1.png" width="672" /></p>
+<p>Entonces, si tenemos réplicas por cada X es posible estimar las desviaciones de
+la linealidad. La hipótesis nula es que la población es linear vs la alternativa
+que no es linear:</p>
+<p><span class="math display">\[ 
+H_0 : \text{la población es linear}\\
+H_a: \text{la población no es linear}
+\]</span></p>
+<p>La forma de poner a prueba esta hipótesis es mediante un estadístico F.</p>
+<p><span class="math display">\[
+F = \frac{CM_{desviaciones}}{CM_{dentro}}
+\]</span></p>
+<p>La varianza total puede ser divididad entre la varianza residual o dentro de
+los grupos, y la varianza entre los grupos que además puede ser divida entre la
+que explicada por la regresión linear y la que no explicada por la regresión
+linear que se asume que es debida a desviaciones de la linealidad.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fuente de Variación</th>
+<th align="left">GL</th>
+<th align="left">Suma de Cuadrados (SC)</th>
+<th align="left">Cuadrados Medios (CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Entre grupos</td>
+<td align="left"><span class="math inline">\(I - 1\)</span></td>
+<td align="left"><span class="math inline">\(\sum\frac{\left(\sum Y_ij\right)^2}{n_i} - \frac{\left (\sum\sum Y_ij\right )}{N}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Regresión Lineal</td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(\frac{\left (\sum xy \right )^2}{\sum x^2}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Desviaciones de la linealidad</td>
+<td align="left"><span class="math inline">\(I - 2\)</span></td>
+<td align="left"><span class="math inline">\(SC_{entre} - SC{regresion}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{SC_{desviaciones}}{GL_{desviaciones}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Dentro de grupos</td>
+<td align="left">$N - I $</td>
+<td align="left"><span class="math inline">\(SC_{total}-SC_{entre}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{SC_{dentro}}{GL_{dentro}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left"><span class="math inline">\(N-1\)</span></td>
+<td align="left"><span class="math inline">\(\sum y^2\)</span></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>El estadístico F sigue una distribución F con I - 2 grados de libertad en el
+numerador y N-I en el denominador si <span class="math inline">\(H_0\)</span> es cierta.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fuente de Variación</th>
+<th align="left">GL</th>
+<th align="left">Suma de Cuadrados (SC)</th>
+<th align="left">Cuadrados Medios (CM)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Entre grupos</td>
+<td align="left"><span class="math inline">\(4\)</span></td>
+<td align="left"><span class="math inline">\(6751.93\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Regresión Lineal</td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(6750.29\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Desviaciones de la linealidad</td>
+<td align="left">3</td>
+<td align="left"><span class="math inline">\(1.64\)</span></td>
+<td align="left"><span class="math inline">\(0.55\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Dentro de grupos</td>
+<td align="left"><span class="math inline">\(14\)</span></td>
+<td align="left"><span class="math inline">\(117.27\)</span></td>
+<td align="left"><span class="math inline">\(7.82\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left"><span class="math inline">\(19\)</span></td>
+<td align="left"><span class="math inline">\(6869.20\)</span></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>El valor de <span class="math inline">\(F = \frac{0.55}{7.82} = 0.070 &lt; 1\)</span>. Por lo tanto no se rechaza
+<span class="math inline">\(H_0\)</span>.</p>
+<p>Luego podemos proceder y comprobar si la regresión es significativa como se
+hizo para una regresión lineal simple sin replicas en la sección anterior.</p>
+<p>En <em>R</em> es posible poner a prueba la linealidad de forma simple con una prueba
+de anova. La formula general que se debe utilizar es:</p>
+<pre class="sourceCode r"><code class="sourceCode r">variable_respuesta <span class="op">~</span><span class="st"> </span>variable_explicatoria <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(variable_explicatoria)</code></pre>
+<p>Si no ponemos el segundo término a mano derecha, solo se hará una regresión
+lineal. Por eso, se agrega la función <code>as.factor()</code> para que utilice la
+segunda variable explicatoria como variable de agrupamiento y no como variable
+continua como ya fue utilizada anteriomente. Por ejemplo, para los datos de
+presión sistólica:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(presion <span class="op">~</span><span class="st"> </span>edad <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(edad), <span class="dt">data =</span> presion_long))</code></pre>
+<pre><code>##                 Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## edad             1   6750    6750  863.45 1.13e-14 ***
+## as.factor(edad)  3      2       1    0.07    0.975    
+## Residuals       15    117       8                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>El orden de los factores <strong>altera el producto</strong>. No es lo mismo poner:</p>
+<pre class="sourceCode r"><code class="sourceCode r">variable_respuesta <span class="op">~</span><span class="st">  </span><span class="kw">as.factor</span>(variable_explicatoria) <span class="op">+</span><span class="st"> </span>variable_explicatoria</code></pre>
+<p>Comparase el resultado siguiente con el anterior</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(presion <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(edad) <span class="op">+</span><span class="st"> </span>edad, <span class="dt">data =</span> presion_long))</code></pre>
+<pre><code>##                 Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## as.factor(edad)  4   6752  1688.0   215.9 4.62e-13 ***
+## Residuals       15    117     7.8                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>¡Y llegaremos a conclusiones totalmente opuestas!</p>
+<p>Una vez que no rechazamos la hipotesis de que la población es linear podemos
+comprobar que la regresion linear es significativa y estimar los parametros.</p>
+<p>En el el ejemplo:</p>
+<p><span class="math display">\[
+b = \frac{\sum xy}{\sum x^2} = \frac{5180}{3975} = 1.3031447 \text{mm Hg/año}\\
+a = \overline{Y} - b \overline{X} = 137.2- 1.3031447 52.5 = 68.7849057
+\]</span>
+En <em>R</em> es posible ajustar un modelo lineal con la función <code>lm()</code> que funciona
+de forma similar a <code>aov()</code> (de hecho son lo mismo con cambios estéticos a
+la forma de presentar los datos). Necesita una fórmula y la ubicación de los
+datos.</p>
+<p>El resultado puedo verse con la función <code>summary()</code> y puede verse abajo.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(presion <span class="op">~</span><span class="st"> </span>edad, <span class="dt">data =</span> presion_long))</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = presion ~ edad, data = presion_long)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.0050 -1.9186 -0.4421  2.0264  4.0893 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 68.78491    2.21607   31.04   &lt;2e-16 ***
+## edad         1.30314    0.04077   31.97   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.57 on 18 degrees of freedom
+## Multiple R-squared:  0.9827, Adjusted R-squared:  0.9817 
+## F-statistic:  1022 on 1 and 18 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.aov</span>(<span class="kw">lm</span>(presion <span class="op">~</span><span class="st"> </span>edad, <span class="dt">data =</span> presion_long))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## edad         1   6750    6750    1022 &lt;2e-16 ***
+## Residuals   18    119       7                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Da casi toda la información necesaria.</p>
+<ul>
+<li><code>Call</code> da información de como fue ejecutado <code>lm()</code>.</li>
+<li><code>Residuals</code> un breve resumen de los residuales, mínimo, primer cuartil,
+mediana, tercer cuartila y máximo.</li>
+<li><code>Coefficients</code> los coeficientes de los parámetros del modelo. <code>(Intercept)</code> es
+la ordenada al origen y los siguientes coeficientes corresponden a la pendiente
+de la variable nombrada. Indica el valor estimado, su error estándar, el valor
+del estadístico <em>t</em> y la probabilidad de un valor mayor.</li>
+<li>Abajo da también información del error estándar del residual. El r<sup>2</sup> múltiple
+y ajustado. Y el estadístico F con sus grados de libertad y su valor de una
+probabilidad mayor.</li>
+</ul>
+</div>
+<div id="transformaciones-para-corregir-la-falta-de-linealidad" class="section level2">
+<h2><span class="header-section-number">17.3</span> Transformaciones para corregir la falta de linealidad</h2>
+<p>Muchas veces las relaciones entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> no son lineales. Anteriormente,
+vimos que se podía transformar <span class="math inline">\(Y\)</span> para cumplir los supuestos de normalidad y
+homocedasticidad. Ahora veremos que también se puede transformar <span class="math inline">\(X\)</span> para
+cumplir con la linealidad. En general, la transformación de <span class="math inline">\(X\)</span> no cambia
+la distribución de <span class="math inline">\(Y\)</span> por lo que puede trasnformarse el primero con
+impunidad.</p>
+<p>Sin embargo, hay que tener cuidado con la transformaciones de <span class="math inline">\(Y\)</span>. No deben
+hacerse en caso de que sí se cumplan los supuestos ya que se modificaría la
+distribución de <span class="math inline">\(Y\)</span> y podrían dejar de cumplir estos supuestos.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">X</th>
+<th align="left">Y</th>
+<th align="right">s2Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">10.72, 11.22, 11.75, 12.31</td>
+<td align="right">0.4684667</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">14.13, 14.79, 15.49, 16.22</td>
+<td align="right">0.8100917</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="left">18.61, 19.5, 20.4, 21.37</td>
+<td align="right">1.4051333</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">24.55, 25.7, 26.92, 28.18</td>
+<td align="right">2.4452250</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left">32.36, 33.88, 35.48, 37.15</td>
+<td align="right">4.2525583</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="right">X</th>
+<th align="left">Y</th>
+<th align="right">s2logY</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">1.03019, 1.04999, 1.07004, 1.09026</td>
+<td align="right">0.000668</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">1.15014, 1.16997, 1.19005, 1.21005</td>
+<td align="right">0.000665</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="left">1.26975, 1.29003, 1.30963, 1.3298</td>
+<td align="right">0.000665</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left">1.39005, 1.40993, 1.43008, 1.44994</td>
+<td align="right">0.000665</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="left">1.51001, 1.52994, 1.54998, 1.56996</td>
+<td align="right">0.000666</td>
+</tr>
+</tbody>
+</table>
+<p><img src="regresion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="uso-de-los-residuales-para-comprobar-los-supuestos" class="section level2">
+<h2><span class="header-section-number">17.4</span> Uso de los Residuales para Comprobar los Supuestos</h2>
+<p>Incluso si no tenemos réplicas para cada <span class="math inline">\(X\)</span> es posible comprobar los supuestos
+mediante el uso de gráficos de residuales. Una de las formas es graficando los
+residuos vs los valores ajustados. Si hay homocedasticidad y la
+regresión lineal es un buen modelo de ajuste a nuestros datos obtendremos
+un gráfico de ajuste como el que se muestra en la Figura <a href="regresion.html#fig:residuales">17.3</a>a.
+En este gráfico, los residuales muestran la misma varianza a lo largo de la
+valores de <span class="math inline">\(X\)</span> y están distribuidos de igual manera alrededor del cero.</p>
+<p>Si no se cumple el supuesto de homocedasticidad, es decir que hay
+heterocedaticidad, el gráfico de los residuos se verá como en la Figura
+<a href="regresion.html#fig:residuales">17.3</a>b. En este caso la variabilidad de los residuales aumenta
+a medida que aumentan los valores predichos. También podría darse el caso
+inverso, que la varianza disminuya a medida que aumente la media, pero es mucho
+más raro. Si ocurre el caso de la Figura <a href="regresion.html#fig:residuales">17.3</a>c es probable
+que falte una variable importante a nuestro modelo. Finalmente, si ocurre</p>
+<div class="figure"><span id="fig:residuales"></span>
+<img src="regresion_files/figure-html/residuales-1.png" alt="Gráficos de algunos de los posibles patrones que se pueden detectar al gráficar los residuales vs los valores ajustados." width="672" />
+<p class="caption">
+Figura 17.3: Gráficos de algunos de los posibles patrones que se pueden detectar al gráficar los residuales vs los valores ajustados.
+</p>
+</div>
+</div>
+<div id="regresiones-multiples" class="section level2">
+<h2><span class="header-section-number">17.5</span> Regresiones Múltiples</h2>
 
 </div>
 </div>

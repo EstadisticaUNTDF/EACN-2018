@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-03-28">
+<meta name="date" content="2018-04-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -352,7 +352,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.2" data-path="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html"><a href="practico-de-pruebas-no-parametricas-para-muestras-relacionadas.html#problema-4"><i class="fa fa-check"></i><b>16.2</b> Problema 4</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="regresion.html"><a href="regresion.html"><i class="fa fa-check"></i><b>17</b> Regresión</a><ul>
-<li class="chapter" data-level="17.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>17.1</b> Regresión Lineal Simple</a></li>
+<li class="chapter" data-level="17.1" data-path="regresion.html"><a href="regresion.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>17.1</b> Regresión Lineal Simple</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="regresion.html"><a href="regresion.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>17.1.1</b> Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="regresion.html"><a href="regresion.html#regresion-con-replicacion"><i class="fa fa-check"></i><b>17.2</b> Regresión con Replicación</a></li>
+<li class="chapter" data-level="17.3" data-path="regresion.html"><a href="regresion.html#transformaciones-para-corregir-la-falta-de-linealidad"><i class="fa fa-check"></i><b>17.3</b> Transformaciones para corregir la falta de linealidad</a></li>
+<li class="chapter" data-level="17.4" data-path="regresion.html"><a href="regresion.html#uso-de-los-residuales-para-comprobar-los-supuestos"><i class="fa fa-check"></i><b>17.4</b> Uso de los Residuales para Comprobar los Supuestos</a></li>
+<li class="chapter" data-level="17.5" data-path="regresion.html"><a href="regresion.html#regresiones-multiples"><i class="fa fa-check"></i><b>17.5</b> Regresiones Múltiples</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>18</b> Ordenación en Espacios Reducidos</a><ul>
 <li class="chapter" data-level="18.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>18.1</b> Análisis de componentes principales</a><ul>
@@ -444,44 +450,44 @@ Igualmente, los valores <span class="math inline">\(R_1\)</span> y <span class="
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">2</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="right">0</td>
+<td align="right">4</td>
 <td align="right">5</td>
 </tr>
 <tr class="even">
-<td align="right">3</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="right">0</td>
-<td align="right">5</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
 <td align="right">1</td>
 <td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">2</td>
 <td align="right">4</td>
 </tr>
 <tr class="even">
+<td align="right">2</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
 <td align="right">0</td>
 <td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">5</td>
 </tr>
 </tbody>
 </table>
@@ -498,31 +504,7 @@ identificación<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><
 <tbody>
 <tr class="odd">
 <td align="left">Pob1</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Pob1</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob1</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">Pob1</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob1</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">Pob1</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob1</td>
-<td align="right">1</td>
+<td align="right">4</td>
 </tr>
 <tr class="even">
 <td align="left">Pob1</td>
@@ -534,15 +516,31 @@ identificación<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><
 </tr>
 <tr class="even">
 <td align="left">Pob1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
 <td align="right">0</td>
 </tr>
 <tr class="odd">
-<td align="left">Pob2</td>
+<td align="left">Pob1</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Pob2</td>
+<td align="left">Pob1</td>
 <td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">4</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob2</td>
@@ -550,31 +548,39 @@ identificación<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><
 </tr>
 <tr class="even">
 <td align="left">Pob2</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob2</td>
-<td align="right">5</td>
-</tr>
-<tr class="even">
-<td align="left">Pob2</td>
-<td align="right">3</td>
+<td align="right">4</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob2</td>
 <td align="right">4</td>
 </tr>
 <tr class="even">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
 <td align="left">Pob2</td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
-<td align="left">Pob2</td>
-<td align="right">4</td>
-</tr>
 <tr class="even">
 <td align="left">Pob2</td>
-<td align="right">3</td>
+<td align="right">5</td>
 </tr>
 </tbody>
 </table>
@@ -601,119 +607,119 @@ valores de sus rangos (columna <code>Rango_Empates</code> )</p>
 <td align="left">Pob1</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">2.0</td>
-</tr>
-<tr class="even">
-<td align="left">Pob1</td>
-<td align="right">0</td>
-<td align="right">2</td>
-<td align="right">2.0</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2.0</td>
+<td align="right">1.0</td>
 </tr>
 <tr class="even">
 <td align="left">Pob2</td>
 <td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">3.5</td>
+</tr>
+<tr class="even">
+<td align="left">Pob1</td>
+<td align="right">1</td>
 <td align="right">4</td>
-<td align="right">6.5</td>
+<td align="right">3.5</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob1</td>
 <td align="right">1</td>
 <td align="right">5</td>
-<td align="right">6.5</td>
+<td align="right">3.5</td>
 </tr>
 <tr class="even">
 <td align="left">Pob2</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">6</td>
-<td align="right">6.5</td>
+<td align="right">7.5</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob1</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">7</td>
-<td align="right">6.5</td>
+<td align="right">7.5</td>
 </tr>
 <tr class="even">
 <td align="left">Pob1</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">8</td>
-<td align="right">6.5</td>
+<td align="right">7.5</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob1</td>
-<td align="right">1</td>
+<td align="right">2</td>
 <td align="right">9</td>
-<td align="right">6.5</td>
+<td align="right">7.5</td>
 </tr>
 <tr class="even">
-<td align="left">Pob1</td>
-<td align="right">2</td>
+<td align="left">Pob2</td>
+<td align="right">3</td>
 <td align="right">10</td>
-<td align="right">11.0</td>
+<td align="right">10.0</td>
 </tr>
 <tr class="odd">
-<td align="left">Pob1</td>
-<td align="right">2</td>
+<td align="left">Pob2</td>
+<td align="right">4</td>
 <td align="right">11</td>
-<td align="right">11.0</td>
+<td align="right">13.0</td>
 </tr>
 <tr class="even">
 <td align="left">Pob2</td>
-<td align="right">2</td>
+<td align="right">4</td>
 <td align="right">12</td>
-<td align="right">11.0</td>
+<td align="right">13.0</td>
 </tr>
 <tr class="odd">
-<td align="left">Pob2</td>
-<td align="right">3</td>
+<td align="left">Pob1</td>
+<td align="right">4</td>
 <td align="right">13</td>
-<td align="right">14.5</td>
-</tr>
-<tr class="even">
-<td align="left">Pob2</td>
-<td align="right">3</td>
-<td align="right">14</td>
-<td align="right">14.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Pob2</td>
-<td align="right">3</td>
-<td align="right">15</td>
-<td align="right">14.5</td>
+<td align="right">13.0</td>
 </tr>
 <tr class="even">
 <td align="left">Pob1</td>
-<td align="right">3</td>
-<td align="right">16</td>
-<td align="right">14.5</td>
+<td align="right">4</td>
+<td align="right">14</td>
+<td align="right">13.0</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob2</td>
 <td align="right">4</td>
-<td align="right">17</td>
-<td align="right">17.5</td>
+<td align="right">15</td>
+<td align="right">13.0</td>
 </tr>
 <tr class="even">
-<td align="left">Pob2</td>
-<td align="right">4</td>
-<td align="right">18</td>
-<td align="right">17.5</td>
+<td align="left">Pob1</td>
+<td align="right">5</td>
+<td align="right">16</td>
+<td align="right">17.0</td>
 </tr>
 <tr class="odd">
 <td align="left">Pob2</td>
 <td align="right">5</td>
+<td align="right">17</td>
+<td align="right">17.0</td>
+</tr>
+<tr class="even">
+<td align="left">Pob2</td>
+<td align="right">5</td>
+<td align="right">18</td>
+<td align="right">17.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pob2</td>
+<td align="right">6</td>
 <td align="right">19</td>
 <td align="right">19.5</td>
 </tr>
 <tr class="even">
 <td align="left">Pob2</td>
-<td align="right">5</td>
+<td align="right">6</td>
 <td align="right">20</td>
 <td align="right">19.5</td>
 </tr>

@@ -480,12 +480,16 @@ cld(alga.em)
 ```
 
 ```
-##        Color  emmean       SE df lower.CL upper.CL .group
-## 4       Rojo 4754.00 175.4702 15 4379.994 5128.006    1  
-## 1   Amarillo 7003.50 175.4702 15 6629.494 7377.506     2 
-## 3 Infrarrojo 7498.25 175.4702 15 7124.244 7872.256     23
-## 2       Azul 7644.50 175.4702 15 7270.494 8018.506     23
-## 5      Verde 7928.25 175.4702 15 7554.244 8302.256      3
+##  Color       emmean       SE df lower.CL upper.CL .group
+##  Rojo       4754.00 175.4702 15 4379.994 5128.006  1    
+##  Amarillo   7003.50 175.4702 15 6629.494 7377.506   2   
+##  Infrarrojo 7498.25 175.4702 15 7124.244 7872.256   23  
+##  Azul       7644.50 175.4702 15 7270.494 8018.506   23  
+##  Verde      7928.25 175.4702 15 7554.244 8302.256    3  
+## 
+## Confidence level used: 0.95 
+## P value adjustment: tukey method for comparing a family of 5 estimates 
+## significance level used: alpha = 0.05
 ```
 
 Los niveles que no comparten números o letras son significativamente distintos.

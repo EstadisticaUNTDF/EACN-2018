@@ -226,21 +226,34 @@ cld(fert_lsm)
 ```
 
 ```
+## NOTE: 'cld()' groupings are determined separately for each list member.
+```
+
+```
 ## $emmeans
-##     Fertilizante emmean       SE df  lower.CL  upper.CL .group
-## 1 Fertilizante.1    5.6 0.772442  8  3.818746  7.381254    1  
-## 2 Fertilizante.2    9.8 0.772442  8  8.018746 11.581254     2 
-## 3 Fertilizante.3   14.6 0.772442  8 12.818746 16.381254      3
+##  Fertilizante   emmean       SE df  lower.CL  upper.CL .group
+##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254  1    
+##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254   2   
+##  Fertilizante.3   14.6 0.772442  8 12.818746 16.381254    3  
+## 
+## Results are averaged over the levels of: Finca 
+## Confidence level used: 0.95 
+## P value adjustment: tukey method for comparing a family of 3 estimates 
+## significance level used: alpha = 0.05 
 ## 
 ## $contrasts
-##                          contrast estimate       SE df   t.ratio
-## 2 Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8 -8.238756
-## 3 Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8 -4.394003
-## 1 Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8 -3.844753
-##        p.value .group
-## 2 9.197288e-05     1 
-## 3 5.775734e-03      2
-## 1 1.212680e-02      2
+##  contrast                        estimate       SE df t.ratio p.value
+##  Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8  -8.239  0.0001
+##  Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8  -4.394  0.0058
+##  Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8  -3.845  0.0121
+##  .group
+##   1    
+##    2   
+##    2   
+## 
+## Results are averaged over the levels of: Finca 
+## P value adjustment: tukey method for comparing a family of 3 estimates 
+## significance level used: alpha = 0.05
 ```
 
 
