@@ -1,7 +1,7 @@
 ---
 title: "Informe Manejo de Datos"
 author: "Su Nombre"
-date: "`r format(Sys.time(), "%A, %d de %B de %Y ")`"
+date: "`r format(Sys.time(), '%A, %d de %B de %Y ')`"
 output: html_document
 ---
 
