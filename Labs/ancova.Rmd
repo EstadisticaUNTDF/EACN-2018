@@ -1,0 +1,264 @@
+```{r setup, include = FALSE}
+library(tidyverse)
+library(knitr)
+library(emmeans)
+library(car)
+library(additivityTests)
+library(cowplot)
+theme_set(theme_classic())
+```
+
+# ANCOVA
+
+ ANOVA (Análisis de la Varianza) y regresión lineal aparentemente no tienen 
+ relación entre sí. El primero se ocupa de variables explicatorias cualitativas,
+ mientras que el segundo de variables explicatorias cuantitativas. El análisis
+ de la Covarianza se ocupa de analizar datos con ambos tipos de variables. 
+ De esta forma se obtiene una regresión entre la variable de respuesta y la
+ variable explicatoria cuantitativa por cada nivel de la variable explicatoria
+ cualitativa. Supongamos que deseamos modelar el peso de acuerdo a la edad y
+ el sexo. El modelo máximo tiene cuatro parámetros: dos ordenadas al origen, y
+ dos pendientes (una para machos y otra para hembras). 
+ 
+ $$
+ peso_{hembra} = a_{hembra} + b_{hembra} \times edad\\
+ peso_{macho} = a_{macho} + b_{macho} \times edad
+ $$
+ 
+ Como debe cumplirse con el principio de parsimonia hay que simplificar el 
+ modelo lo más posible. En total hay seis modelos posibles, siendo el más 
+ complejo el de cuatro parámetros. Puede ser que los necesitemos todos ellos.
+ El modelo de cuatro parámetros está representado en la Figura
+ \@ref(modelos-figura-ejemplo)-a. Otra forma puede ser que solo necesitemos un
+ solo parámetro de pendiente como en la Figura \@ref(modelos-figura-ejemplo)-b.
+ Otra opción, es que la ordenada al origen sean iguales pero la pendientes sean
+ diferentes, como en la Figura \@ref(modelos-figura-ejemplo)-c. Puede ser que
+ la edad no tenga efecto sobre el peso entonces pero que el sexo si tenga efecto
+ como en la Figura \@ref(modelos-figura-ejemplo)-d. Entonces este modelo tendrá
+ solo dos parámetros. También puede darse el caso opuesto, que la edad tenga
+ efecto sobre el peso pero no el sexo, como en la Figura
+ \@ref(modelos-figura-ejemplo)-e. La última opción es que ni la edad ni el sexo
+ tengan efecto sobre el peso, como en la Figura \@ref(modelos-figura-ejemplo)-f.
+ Este último modelo solo tendrá un parámetro.
+ 
+ 
+ 
+```{r modelos-figura-ejemplo, echo = FALSE}
+base_plot <- ggplot(data = data.frame(x = 0, y = 0)) +
+  geom_point(aes(x, y), size = 0, color = "white") +
+  labs(x = "Edad", y = "Peso")+
+  coord_cartesian(xlim = c(0, 10), ylim = c(0,10))
+
+a <- base_plot +
+  geom_abline(intercept = 1, slope = 1) +
+  geom_abline(intercept = 2, slope = 1.2, linetype = "dashed") 
+
+b <- base_plot +
+  geom_abline(intercept = 1, slope = 1) +
+  geom_abline(intercept = 2, slope = 1, linetype = "dashed") 
+
+c <- base_plot +
+  geom_abline(intercept = 1, slope = 1) +
+  geom_abline(intercept = 1, slope = 1.2, linetype = "dashed") 
+
+d <- base_plot +
+  geom_abline(intercept = 1, slope = 0) +
+  geom_abline(intercept = 2, slope = 0, linetype = "dashed")
+
+e <- base_plot +
+  geom_abline(intercept = 1, slope = 1) +
+  geom_abline(intercept = 1, slope = 1, linetype = "dashed") 
+
+f <- base_plot +
+  geom_abline(intercept = 1, slope = 0) +
+  geom_abline(intercept = 1, slope = 0, linetype = "dashed") 
+
+plot_grid(a, b, c, d, e, f, labels = "auto")
+
+```
+ 
+ Como siempre, las decisión acerca de si conservar ambos parámetros o si son
+ significativos se realiza con pruebas de hipótesis. 
+ 
+ Por ejemplo, se quiere ver cual es la capacidad de regeneración de las plantas
+ y producir semillas luego del pastoreo. Antes del pastoreo, se registró el 
+ tamaño de la planta como el diámetro de la parte superior del rizoma. El
+ pastoreo tiene dos niveles: con pastoreo y sin pastoreo. La respuesta es el 
+ peso de las semillas producidas. Es de esperar que las plantas más grandes
+ produzcan más semillas. Y que las plantas pastoreadas produzcan menos semillas
+ que las plantas no pastoreadas. 
+ 
+```{r, message=FALSE}
+compensation <- read_csv("data/ipomopsis.csv")
+compensation
+```
+ 
+ Los datos tienen tres columnas, la primera `Root` corresponde al tamaño del
+ rizoma en centímetros. `Fruit` corresponde al peso de semillas en gramos. Y
+ por último, `Grazing` corresponde a si las plantas fueron pastoreadas `Grazed`
+ o no `Ungrazed`.
+ 
+```{r, root-fruit, fig.cap = "Diagrama de dispersión entre el tamaño del rizoma y el peso de las semillas"}
+ggplot(compensation, aes(x = Root, y = Fruit)) + 
+  geom_point()
+```
+ 
+ La Figura \@ref(root-fruit) muestra que las plantas más grandes produjeron
+ más semillas, tal y como se esperaba.
+ 
+ ¿Y qué pasó con el nivel de pastoreo? En la Figura \@ref(grazed-fruit) los
+ resultados no son tan claros. La línea se corresponde a la media de cada grupo
+ y muestra que ¡Las plantas pastoreadas producen más semillas que las no 
+ pasteoreadas! Un resultado completamente sorpredente, y contrario a lo 
+ esperado ¿Esto será así realmente o habrá alguna explicación?
+ 
+ 
+```{r grazed-fruit}
+ggplot(compensation, aes(x = Grazing, y = Fruit)) + 
+  geom_point() + 
+  stat_summary(fun.y = median, fun.ymin = median, fun.ymax = median,
+                 geom = "crossbar", width = 0.2)
+```
+ 
+ El modelo más complejo incluye cuatro parámetros. Dos ordenadas al origen 
+ y dos pendientes.
+ 
+ $$
+ Fruit_{grazed} = a_{grazed} + b_{grazed} \times Root\\
+ Fruit_{ungrazed} = a_{ungrazed} + b_{ungrazed} \times Root
+ $$
+Ajustando este modelo en *R* es parecido a hacer un modelo de regresión usando
+la función `lm()`
+
+```{r}
+semillas_completo <- lm(Fruit ~ Grazing + Root + Grazing:Root, data = compensation)
+```
+ 
+ Solo vamos a ver modelos de ANCOVA simples con una variable cualitativa y otra
+ cuantitativa. Como es el caso de una interacción entre una variable 
+ cualitativa y otra cuantitativa, el resultado es que haya varias pendientes. 
+ Una por cada nivel de la variable cualitativa. Veamos cual es el resultado de
+ este análisis:
+ 
+```{r}
+summary(semillas_completo)
+```
+ 
+ Empezando a leer los resultados desde abajo, vemos que el modelo es 
+ significativo. Es decir, al menos uno de los parámetros es distinto de 0. Y que
+ ajuste de los datos al modelo parece ser muy bueno, el R^2^ ajustado es mayor a
+ 90%. 
+ 
+ Más arriba tenemos los coeficientes del modelo. Recordemos que en *R* obtenemos
+ los coeficientes obtenemos son solo el valor real para la primera vez que 
+ aparece. Luego debemos obtener el valor del parámetro como la suma del 
+ parámetro principal y el efecto del nivel. Para aclarar, reemplazando la 
+ ecuación con los valores de $a$ y $b$ para cada una de las ecuaciones. El 
+ primer valor, `(Intercept)` corresponde a la ordenada al origen para *Grazed*
+ Esto es así porque el primer nivel del un factor va a ser el que sea asignado 
+ a `(Intercept)` y va a correponder a nivel de base para la determinación de
+ la pendiente. Por lo tanto, el coeficiente de `Root` que vemos corresponde
+ también al nivel *Grazed*
+ 
+ $$
+ Fruit_{grazed} = -125.173 + 23.24 \times Root\\
+ $$
+ Completar la ecuación para el nivel *Ungrazed* es un poco más complicado porque
+ lo que vemos es el efecto del nivel y no el parámetro. El efecto de los otros
+ niveles aparece como el nombre del factor seguido por el nombre del nivel.
+ En nuestro ejemplo, *Grazing* es el factor, el nivel es *Ungrazed* y aparece
+ como `GrazedUngrazed` en los coeficientes. Por otro lado, el efecto de 
+ *Ungrazed* sobre la pendiente aparece como la interacción entre 
+ `GrazedUngrazed` y `Root`. 
+ 
+ $$
+ Fruit_{ungrazed} = \left(-125.173 + 30.806\right) + \left( 23.24 + 0.756\right)\times Root \\ 
+ Fruit_{ungrazed} = \left(`r -125.173 + 30.806`\right) + \left( `r23.24 + 0.756`\right)\times Root \\ 
+ $$
+ Por otro lado, debemos considerar si debemos conservar todos esos parámetros o
+ si podemos poner algún parametro en común. Empezemos por ver si las pendientes
+ son distintas. Esto implica, realizar un nuevo modelo 
+ con una pendiente común para las plantas *Grazed* y *Ungrazed*:
+ 
+ $$
+ Fruit_{grazed} = a_{grazed} + b \times Root\\
+ Fruit_{ungrazed} = a_{ungrazed} + b \times Root
+ $$
+ 
+ Ajustarlo en *R* es como hacerlo en el caso anterior pero eliminando la
+ interacción en la formula.
+ 
+```{r}
+semillas_pendiente_comun <- lm(Fruit ~ Grazing + Root, data = compensation)
+```
+ 
+ Para comprobar si el modelo más simple debe ser preferido usamos la
+ función `anova()` para comprobar si el modelo más complejo es 
+ significativamente diferente del más simple. De no serlo, debemos descartarlo
+ y quedarnos con el más simple.
+ 
+```{r}
+anova(semillas_completo, semillas_pendiente_comun)
+```
+ 
+ Vemos que diferencia es muy pequeña, con un estadístico *F* asociado muy 
+ pequeño de 0.1031 y una probablidad de un *F* mayor de 0.75. Por lo tanto, 
+ no hay diferencias significativas entre los modelos, descartando el más
+ complejo.
+ 
+ Para ver los coeficientes usamos `summary()`
+ 
+```{r}
+summary(semillas_pendiente_comun)
+```
+ 
+ 
+ Volviendo a leer los coeficientes vemos que todos son significativos ya que
+ el valor del estadístico *t* asociado a cada uno es menor al 0.05. 
+ Por lo tanto, hay un efecto del tamaño del rizoma que es común a todas las 
+ plantas y hay diferencias significativas entre las plantas pastoreados y las
+ no pastoreadas. ¿Cuales producen más semillas? Viendo el signo positivo del
+ efecto de las plantas no pastoreadas (*GrazingUngrazed*) es posible deducir que
+ ellas son las que producen más semillas. La formula para cada una de las 
+ rectas es:
+ 
+
+ $$
+  Fruit_{grazed} = -127.829 +  23.56 \times Root \\ 
+  Fruit_{ungrazed} = \left(-127.829 + 36.103\right) + 23.56 \times Root  \\ 
+ Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times Root  
+ $$
+ 
+```{r}
+ggplot(compensation, aes(x = Root, y = Fruit, colour = Grazing)) + 
+  geom_point() +
+  geom_abline(intercept = -127.829, slope = 23.56, color = scales::hue_pal()(2)[1]) +
+  geom_abline(intercept = -127.829 + 36.103, slope = 23.56, color = scales::hue_pal()(2)[2])
+```
+ 
+ Viende este gráfico resulta claro porque el resultado de que las plantas 
+ pastoreadas producian más semillas era engañoso. Las plantas pastoreadas eran
+ más grandes, y el tamaño de la planta estaba oscurenciendo el resultado.
+ 
+ Si no hubiesemos tenido en cuenta el tamaño, habríamos llegado a la conclusión
+ equivocada. Realizando la prueba estadística sobre el modelo incorrecto 
+ llegariamos a la conclusión de que efectivamente el pastoreo aumenta la 
+ producción de semillas.
+ 
+```{r}
+anova(lm(Fruit ~ Grazing, data = compensation))
+```
+ 
+ Usando el modelo correcto vemos que la media de las plantas no pastoreadas
+ es mayor que las pastereadas (41.35 vs 77.46):
+ 
+```{r}
+emmeans(semillas_pendiente_comun, ~Grazing)
+```
+ 
+ Esto se obtiene usando la formula en la media de *Root*.
+ 
+ $$
+  Fruit_{grazed} = -127.829 +  23.56 \times \overline{Root} \\ 
+ Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times \overline{Root}
+ $$
