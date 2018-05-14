@@ -45,5 +45,7 @@ rmd_files:
     
     "regresion.Rmd",
     
+    "ancova.Rmd",
+    
     "ordenacion.Rmd"
   ]
