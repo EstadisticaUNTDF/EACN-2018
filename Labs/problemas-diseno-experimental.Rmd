@@ -48,15 +48,16 @@ fert %>%  pander(caption = "(#tab:papas) Rendimiento en toneladas de papa por
 
 El gráfico de perfiles de los datos
 
-```{r ej_plot, fig.width=5, fig.height=3, fig.cap="Perfiles", message=FALSE}
+```{r ej-plot, fig.width=5, fig.height=3, fig.cap="Gráfico de Perfiles para la producción de papas bajo tres fertilizantes, en cinco fincas.", warning=FALSE, echo = FALSE}
 fert_long <- fert %>%
   gather(key = "Fertilizante", value = "Produccion", -Finca) %>% 
-  mutate(Finca = factor(Finca))
+  mutate(Finca = factor(Finca),
+         Fertilizante = forcats::fct_rev(Fertilizante))
 
 p <- ggplot(fert_long, aes(Finca, Produccion, color = Fertilizante)) +
   geom_line(aes(group = Fertilizante, linetype = Fertilizante)) +
   geom_point(aes(shape = Fertilizante))
-direct.label(p, "last.qp")
+p
 ```
 
 Lo primero que hay comprobar es que se da el supuesto de supuesto de aditividad.
@@ -121,10 +122,10 @@ summary(fert_lsm)
 ```
 
 Para obtener los grupos la función `cld()` (*compact letter display*) permite 
-construirlos:
+construirlos o usar `cld` dentro de la formula:
 
 ```{r}
-cld(fert_lsm)
+emmeans(fert_aov, cld ~ Fertilizante)
 ```
 
 
@@ -256,7 +257,7 @@ summary(lipidos_aov)
 ```
 
 
-d) Estime $D_1 = \mu_1- \mu_2 $ y $D_2 = \mu_2 - \mu_3 $ , usando un
+d) Estime $D_1 = \mu_1- \mu_2$ y $D_2 = \mu_2 - \mu_3$ , usando un
 intervalo de confianza de Bonferroni. ¿Es significativo alguno de los contrastes?
 
 ```{r 2, eval=solucion, echo=solucion}
