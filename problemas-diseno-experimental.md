@@ -7,7 +7,7 @@
 <p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
 </div>
 
-`download.file("bit.ly/informe-bloques", "informe-bloques.Rmd")`
+`download.file("http://bit.ly/informe-bloques", "informe-bloques.Rmd")`
 
 <div class="atencion">
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
