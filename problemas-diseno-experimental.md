@@ -49,25 +49,9 @@ Table: (#tab:papas) Rendimiento en toneladas de papa por
 
 El gráfico de perfiles de los datos
 
-
-```r
-fert_long <- fert %>%
-  gather(key = "Fertilizante", value = "Produccion", -Finca) %>% 
-  mutate(Finca = factor(Finca))
-
-p <- ggplot(fert_long, aes(Finca, Produccion, color = Fertilizante)) +
-  geom_line(aes(group = Fertilizante, linetype = Fertilizante)) +
-  geom_point(aes(shape = Fertilizante))
-direct.label(p, "last.qp")
-```
-
-```
-## Warning: Ignoring unknown aesthetics: linetype
-```
-
 <div class="figure">
-<img src="problemas-diseno-experimental_files/figure-epub3/ej_plot-1.png" alt="Perfiles"  />
-<p class="caption">(\#fig:ej_plot)Perfiles</p>
+<img src="problemas-diseno-experimental_files/figure-epub3/ej-plot-1.png" alt="Gráfico de Perfiles para la producción de papas bajo tres fertilizantes, en cinco fincas."  />
+<p class="caption">(\#fig:ej-plot)Gráfico de Perfiles para la producción de papas bajo tres fertilizantes, en cinco fincas.</p>
 </div>
 
 Lo primero que hay comprobar es que se da el supuesto de supuesto de aditividad.
@@ -108,10 +92,10 @@ fert_long %>%
 ```
 ## # A tibble: 3 x 4
 ##   Fertilizante   media   var    sd
-##   <chr>          <dbl> <dbl> <dbl>
-## 1 Fertilizante.1  5.60  19.3  4.39
-## 2 Fertilizante.2  9.80  13.7  3.70
-## 3 Fertilizante.3 14.6   15.8  3.97
+##   <fct>          <dbl> <dbl> <dbl>
+## 1 Fertilizante.3  14.6  15.8  3.97
+## 2 Fertilizante.2   9.8  13.7  3.70
+## 3 Fertilizante.1   5.6  19.3  4.39
 ```
 
 Medias por Finca:
@@ -130,7 +114,7 @@ fert_long %>%
 ##   Finca media   var    sd
 ##   <fct> <dbl> <dbl> <dbl>
 ## 1 1      4.67 12.3   3.51
-## 2 2      8.00 36.0   6.00
+## 2 2      8    36     6   
 ## 3 3     10.7  22.3   4.73
 ## 4 4     12.3  36.3   6.03
 ## 5 5     14.3   6.33  2.52
@@ -154,11 +138,6 @@ bartlett.test(Produccion ~ Fertilizante,
 
 ```r
 leveneTest(Produccion ~ Fertilizante, data = fert_long)
-```
-
-```
-## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-## factor.
 ```
 
 ```
@@ -200,37 +179,32 @@ summary(fert_lsm)
 ```
 ## $emmeans
 ##  Fertilizante   emmean       SE df  lower.CL  upper.CL
-##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254
-##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254
 ##  Fertilizante.3   14.6 0.772442  8 12.818746 16.381254
+##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254
+##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254
 ## 
 ## Results are averaged over the levels of: Finca 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
 ##  contrast                        estimate       SE df t.ratio p.value
-##  Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8  -3.845  0.0121
-##  Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8  -8.239  0.0001
-##  Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8  -4.394  0.0058
+##  Fertilizante.3 - Fertilizante.2      4.8 1.092398  8   4.394  0.0058
+##  Fertilizante.3 - Fertilizante.1      9.0 1.092398  8   8.239  0.0001
+##  Fertilizante.2 - Fertilizante.1      4.2 1.092398  8   3.845  0.0121
 ## 
 ## Results are averaged over the levels of: Finca 
 ## P value adjustment: tukey method for comparing a family of 3 estimates
 ```
 
 Para obtener los grupos la función `cld()` (*compact letter display*) permite 
-construirlos:
+construirlos o usar `cld` dentro de la formula:
 
 
 ```r
-cld(fert_lsm)
+emmeans(fert_aov, cld ~ Fertilizante)
 ```
 
 ```
-## NOTE: 'cld()' groupings are determined separately for each list member.
-```
-
-```
-## $emmeans
 ##  Fertilizante   emmean       SE df  lower.CL  upper.CL .group
 ##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254  1    
 ##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254   2   
@@ -238,20 +212,6 @@ cld(fert_lsm)
 ## 
 ## Results are averaged over the levels of: Finca 
 ## Confidence level used: 0.95 
-## P value adjustment: tukey method for comparing a family of 3 estimates 
-## significance level used: alpha = 0.05 
-## 
-## $contrasts
-##  contrast                        estimate       SE df t.ratio p.value
-##  Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8  -8.239  0.0001
-##  Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8  -4.394  0.0058
-##  Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8  -3.845  0.0121
-##  .group
-##   1    
-##    2   
-##    2   
-## 
-## Results are averaged over the levels of: Finca 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05
 ```
@@ -345,7 +305,7 @@ c) Obtenga la tabla de ANOVA
 
 
 
-d) Estime $D_1 = \mu_1- \mu_2 $ y $D_2 = \mu_2 - \mu_3 $ , usando un
+d) Estime $D_1 = \mu_1- \mu_2$ y $D_2 = \mu_2 - \mu_3$ , usando un
 intervalo de confianza de Bonferroni. ¿Es significativo alguno de los contrastes?
 
 

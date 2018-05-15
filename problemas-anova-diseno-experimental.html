@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-04-15">
+<meta name="date" content="2018-05-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -360,13 +360,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.4" data-path="regresion.html"><a href="regresion.html#uso-de-los-residuales-para-comprobar-los-supuestos"><i class="fa fa-check"></i><b>17.4</b> Uso de los Residuales para Comprobar los Supuestos</a></li>
 <li class="chapter" data-level="17.5" data-path="regresion.html"><a href="regresion.html#regresiones-multiples"><i class="fa fa-check"></i><b>17.5</b> Regresiones Múltiples</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>18</b> Ordenación en Espacios Reducidos</a><ul>
-<li class="chapter" data-level="18.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>18.1</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>18.1.1</b> Biplots</a></li>
+<li class="chapter" data-level="18" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>18</b> ANCOVA</a></li>
+<li class="chapter" data-level="19" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>19</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="19.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>19.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>19.1.1</b> Biplots</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>18.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="18.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>18.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="18.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>18.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="19.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>19.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="19.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>19.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="19.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>19.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -462,19 +463,10 @@ ha en 5 fincas (bloques) bajo tres fertilizantes
 </tbody>
 </table>
 <p>El gráfico de perfiles de los datos</p>
-<pre class="sourceCode r"><code class="sourceCode r">fert_long &lt;-<span class="st"> </span>fert <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;Fertilizante&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;Produccion&quot;</span>, <span class="op">-</span>Finca) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Finca =</span> <span class="kw">factor</span>(Finca))
-
-p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fert_long, <span class="kw">aes</span>(Finca, Produccion, <span class="dt">color =</span> Fertilizante)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> Fertilizante, <span class="dt">linetype =</span> Fertilizante)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Fertilizante))
-<span class="kw">direct.label</span>(p, <span class="st">&quot;last.qp&quot;</span>)</code></pre>
-<pre><code>## Warning: Ignoring unknown aesthetics: linetype</code></pre>
-<div class="figure">
-<img src="problemas-diseno-experimental_files/figure-html/ej_plot-1.png" alt="Perfiles" width="480" />
+<div class="figure"><span id="fig:ej-plot"></span>
+<img src="problemas-diseno-experimental_files/figure-html/ej-plot-1.png" alt="Gráfico de Perfiles para la producción de papas bajo tres fertilizantes, en cinco fincas." width="480" />
 <p class="caption">
-(#fig:ej_plot)Perfiles
+Figura 14.1: Gráfico de Perfiles para la producción de papas bajo tres fertilizantes, en cinco fincas.
 </p>
 </div>
 <p>Lo primero que hay comprobar es que se da el supuesto de supuesto de aditividad.
@@ -501,10 +493,10 @@ los datos.</p>
              <span class="dt">sd =</span> <span class="kw">sd</span>(Produccion))</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   Fertilizante   media   var    sd
-##   &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Fertilizante.1  5.60  19.3  4.39
-## 2 Fertilizante.2  9.80  13.7  3.70
-## 3 Fertilizante.3 14.6   15.8  3.97</code></pre>
+##   &lt;fct&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Fertilizante.3  14.6  15.8  3.97
+## 2 Fertilizante.2   9.8  13.7  3.70
+## 3 Fertilizante.1   5.6  19.3  4.39</code></pre>
 <p>Medias por Finca:</p>
 <pre class="sourceCode r"><code class="sourceCode r">fert_long <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(Finca) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -515,7 +507,7 @@ los datos.</p>
 ##   Finca media   var    sd
 ##   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 1      4.67 12.3   3.51
-## 2 2      8.00 36.0   6.00
+## 2 2      8    36     6   
 ## 3 3     10.7  22.3   4.73
 ## 4 4     12.3  36.3   6.03
 ## 5 5     14.3   6.33  2.52</code></pre>
@@ -528,8 +520,6 @@ los datos.</p>
 ## data:  Produccion by Fertilizante
 ## Bartlett&#39;s K-squared = 0.10744, df = 2, p-value = 0.9477</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">leveneTest</span>(Produccion <span class="op">~</span><span class="st"> </span>Fertilizante, <span class="dt">data =</span> fert_long)</code></pre>
-<pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-## factor.</code></pre>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##       Df F value Pr(&gt;F)
 ## group  2   0.066 0.9364
@@ -552,47 +542,31 @@ la función <code>emmeans()</code> (<em>estimated marginal means</em>).</p>
 <span class="kw">summary</span>(fert_lsm)</code></pre>
 <pre><code>## $emmeans
 ##  Fertilizante   emmean       SE df  lower.CL  upper.CL
-##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254
-##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254
 ##  Fertilizante.3   14.6 0.772442  8 12.818746 16.381254
+##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254
+##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254
 ## 
 ## Results are averaged over the levels of: Finca 
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
 ##  contrast                        estimate       SE df t.ratio p.value
-##  Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8  -3.845  0.0121
-##  Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8  -8.239  0.0001
-##  Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8  -4.394  0.0058
+##  Fertilizante.3 - Fertilizante.2      4.8 1.092398  8   4.394  0.0058
+##  Fertilizante.3 - Fertilizante.1      9.0 1.092398  8   8.239  0.0001
+##  Fertilizante.2 - Fertilizante.1      4.2 1.092398  8   3.845  0.0121
 ## 
 ## Results are averaged over the levels of: Finca 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 <p>Para obtener los grupos la función <code>cld()</code> (<em>compact letter display</em>) permite
-construirlos:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cld</span>(fert_lsm)</code></pre>
-<pre><code>## NOTE: &#39;cld()&#39; groupings are determined separately for each list member.</code></pre>
-<pre><code>## $emmeans
-##  Fertilizante   emmean       SE df  lower.CL  upper.CL .group
+construirlos o usar <code>cld</code> dentro de la formula:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">emmeans</span>(fert_aov, cld <span class="op">~</span><span class="st"> </span>Fertilizante)</code></pre>
+<pre><code>##  Fertilizante   emmean       SE df  lower.CL  upper.CL .group
 ##  Fertilizante.1    5.6 0.772442  8  3.818746  7.381254  1    
 ##  Fertilizante.2    9.8 0.772442  8  8.018746 11.581254   2   
 ##  Fertilizante.3   14.6 0.772442  8 12.818746 16.381254    3  
 ## 
 ## Results are averaged over the levels of: Finca 
 ## Confidence level used: 0.95 
-## P value adjustment: tukey method for comparing a family of 3 estimates 
-## significance level used: alpha = 0.05 
-## 
-## $contrasts
-##  contrast                        estimate       SE df t.ratio p.value
-##  Fertilizante.1 - Fertilizante.3     -9.0 1.092398  8  -8.239  0.0001
-##  Fertilizante.2 - Fertilizante.3     -4.8 1.092398  8  -4.394  0.0058
-##  Fertilizante.1 - Fertilizante.2     -4.2 1.092398  8  -3.845  0.0121
-##  .group
-##   1    
-##    2   
-##    2   
-## 
-## Results are averaged over the levels of: Finca 
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## significance level used: alpha = 0.05</code></pre>
 </div>
@@ -737,7 +711,7 @@ de Tukey, ¿cuáles son sus conclusiones? (trabaje con <span class="math inline"
 <p>Asumiendo que un diseño en bloques al azar es el adecuado
 c) Obtenga la tabla de ANOVA</p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li><p>Estime $D_1 = _1- _2 $ y $D_2 = _2 - _3 $ , usando un
+<li><p>Estime <span class="math inline">\(D_1 = \mu_1- \mu_2\)</span> y <span class="math inline">\(D_2 = \mu_2 - \mu_3\)</span> , usando un
 intervalo de confianza de Bonferroni. ¿Es significativo alguno de los contrastes?</p></li>
 <li><p>En este experimento no fue usada una dieta estándar como control. ¿Que
 tipo de justificación puede haber tenido el investigador para no incluir un

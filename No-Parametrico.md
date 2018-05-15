@@ -24,20 +24,20 @@ lobos_marinos
 ## # A tibble: 14 x 2
 ##    Machos Hembras
 ##     <dbl>   <dbl>
-##  1    15.      9.
-##  2    10.      8.
-##  3    14.      5.
-##  4    17.      5.
-##  5    16.      5.
-##  6    11.      9.
-##  7    15.      9.
-##  8    20.     10.
-##  9    13.     13.
-## 10    NA      13.
-## 11    NA      15.
-## 12    NA       5.
-## 13    NA      12.
-## 14    NA       6.
+##  1     15       9
+##  2     10       8
+##  3     14       5
+##  4     17       5
+##  5     16       5
+##  6     11       9
+##  7     15       9
+##  8     20      10
+##  9     13      13
+## 10     NA      13
+## 11     NA      15
+## 12     NA       5
+## 13     NA      12
+## 14     NA       6
 ```
 
 Recordemos que primero cargué el paquete `tidyverse` que nos va facilitar
@@ -64,16 +64,16 @@ lobos_marinos %>%
 ## # A tibble: 28 x 2
 ##    Sexo      LT
 ##    <chr>  <dbl>
-##  1 Machos   15.
-##  2 Machos   10.
-##  3 Machos   14.
-##  4 Machos   17.
-##  5 Machos   16.
-##  6 Machos   11.
-##  7 Machos   15.
-##  8 Machos   20.
-##  9 Machos   13.
-## 10 Machos   NA 
+##  1 Machos    15
+##  2 Machos    10
+##  3 Machos    14
+##  4 Machos    17
+##  5 Machos    16
+##  6 Machos    11
+##  7 Machos    15
+##  8 Machos    20
+##  9 Machos    13
+## 10 Machos    NA
 ## # ... with 18 more rows
 ```
 
@@ -96,16 +96,16 @@ lobos_marinos %>%
 ## # A tibble: 23 x 2
 ##    Sexo       LT
 ##    <chr>   <dbl>
-##  1 Machos    15.
-##  2 Machos    10.
-##  3 Machos    14.
-##  4 Machos    17.
-##  5 Machos    16.
-##  6 Machos    11.
-##  7 Machos    15.
-##  8 Machos    20.
-##  9 Machos    13.
-## 10 Hembras    9.
+##  1 Machos     15
+##  2 Machos     10
+##  3 Machos     14
+##  4 Machos     17
+##  5 Machos     16
+##  6 Machos     11
+##  7 Machos     15
+##  8 Machos     20
+##  9 Machos     13
+## 10 Hembras     9
 ## # ... with 13 more rows
 ```
 
@@ -138,16 +138,16 @@ lobos_marinos
 ## # A tibble: 23 x 3
 ##    Sexo       LT rango
 ##    <chr>   <dbl> <dbl>
-##  1 Machos    15. 19.0 
-##  2 Machos    10. 10.5 
-##  3 Machos    14. 17.0 
-##  4 Machos    17. 22.0 
-##  5 Machos    16. 21.0 
-##  6 Machos    11. 12.0 
-##  7 Machos    15. 19.0 
-##  8 Machos    20. 23.0 
-##  9 Machos    13. 15.0 
-## 10 Hembras    9.  8.00
+##  1 Machos     15  19  
+##  2 Machos     10  10.5
+##  3 Machos     14  17  
+##  4 Machos     17  22  
+##  5 Machos     16  21  
+##  6 Machos     11  12  
+##  7 Machos     15  19  
+##  8 Machos     20  23  
+##  9 Machos     13  15  
+## 10 Hembras     9   8  
 ## # ... with 13 more rows
 ```
 
@@ -540,16 +540,16 @@ ratones
 ## # A tibble: 35 x 3
 ##     Peso Ambiente   row
 ##    <dbl> <fct>    <int>
-##  1   38. Valle        1
-##  2   47. Valle        2
-##  3   50. Valle        3
-##  4   51. Valle        4
-##  5   39. Valle        5
-##  6   39. Valle        6
-##  7   44. Valle        7
-##  8   40. Valle        8
-##  9   46. Valle        9
-## 10   50. Valle       10
+##  1    38 Valle        1
+##  2    47 Valle        2
+##  3    50 Valle        3
+##  4    51 Valle        4
+##  5    39 Valle        5
+##  6    39 Valle        6
+##  7    44 Valle        7
+##  8    40 Valle        8
+##  9    46 Valle        9
+## 10    50 Valle       10
 ## # ... with 25 more rows
 ```
 
@@ -577,16 +577,16 @@ jefes
 ## # A tibble: 35 x 3
 ##    Descarte  Jefe   row
 ##       <dbl> <dbl> <int>
-##  1      17.    1.     1
-##  2      10.    1.     2
-##  3      15.    1.     3
-##  4      22.    1.     4
-##  5      15.    1.     5
-##  6       9.    1.     6
-##  7      20.    1.     7
-##  8      14.    1.     8
-##  9      21.    1.     9
-## 10      19.    1.    10
+##  1       17     1     1
+##  2       10     1     2
+##  3       15     1     3
+##  4       22     1     4
+##  5       15     1     5
+##  6        9     1     6
+##  7       20     1     7
+##  8       14     1     8
+##  9       21     1     9
+## 10       19     1    10
 ## # ... with 25 more rows
 ```
 
@@ -624,23 +624,23 @@ cobayos
 ## # A tibble: 17 x 3
 ##    Ejemplar Antes Despues
 ##       <dbl> <dbl>   <dbl>
-##  1       1.    4.      6.
-##  2       2.   16.     12.
-##  3       3.   18.     14.
-##  4       4.    9.      7.
-##  5       5.   18.     18.
-##  6       6.   11.     11.
-##  7       7.    3.      2.
-##  8       8.   16.     14.
-##  9       9.   13.     10.
-## 10      10.    9.      6.
-## 11      11.    6.      1.
-## 12      12.   13.     12.
-## 13      13.   19.     19.
-## 14      14.    4.      4.
-## 15      15.    5.      7.
-## 16      16.   17.     15.
-## 17      17.   15.     14.
+##  1        1     4       6
+##  2        2    16      12
+##  3        3    18      14
+##  4        4     9       7
+##  5        5    18      18
+##  6        6    11      11
+##  7        7     3       2
+##  8        8    16      14
+##  9        9    13      10
+## 10       10     9       6
+## 11       11     6       1
+## 12       12    13      12
+## 13       13    19      19
+## 14       14     4       4
+## 15       15     5       7
+## 16       16    17      15
+## 17       17    15      14
 ```
 
 ¿Qué conclusiones puede Ud. sacar acerca de la efectividad del tratamiento?
@@ -665,21 +665,21 @@ focas
 ## # A tibble: 15 x 3
 ##    Ejemplar Hembra Macho
 ##       <dbl>  <dbl> <dbl>
-##  1       1.   128.  120.
-##  2       2.    95.  111.
-##  3       3.   104.  119.
-##  4       4.    99.  111.
-##  5       5.   111.  120.
-##  6       6.    93.  109.
-##  7       7.   132.  108.
-##  8       8.   129.  130.
-##  9       9.   127.  130.
-## 10      10.   100.  119.
-## 11      11.   122.  105.
-## 12      12.   124.  132.
-## 13      13.    94.  127.
-## 14      14.    96.  126.
-## 15      15.   127.  121.
+##  1        1    128   120
+##  2        2     95   111
+##  3        3    104   119
+##  4        4     99   111
+##  5        5    111   120
+##  6        6     93   109
+##  7        7    132   108
+##  8        8    129   130
+##  9        9    127   130
+## 10       10    100   119
+## 11       11    122   105
+## 12       12    124   132
+## 13       13     94   127
+## 14       14     96   126
+## 15       15    127   121
 ```
 
 ¿Depende el éxito reproductivo de las hembras del sexo de sus hijos? 
@@ -700,23 +700,23 @@ pichones
 ## # A tibble: 17 x 3
 ##     Nido Primer Segundo
 ##    <dbl>  <dbl>   <dbl>
-##  1    1.   102.    110.
-##  2    2.    86.     95.
-##  3    3.   112.    117.
-##  4    4.    85.    119.
-##  5    5.    91.    117.
-##  6    6.   101.     94.
-##  7    7.   102.    102.
-##  8    8.   111.     96.
-##  9    9.   116.    103.
-## 10   10.   114.    120.
-## 11   11.    83.    102.
-## 12   12.    85.     98.
-## 13   13.   105.    118.
-## 14   14.    95.    106.
-## 15   15.   107.     94.
-## 16   16.    94.    108.
-## 17   17.    99.    102.
+##  1     1    102     110
+##  2     2     86      95
+##  3     3    112     117
+##  4     4     85     119
+##  5     5     91     117
+##  6     6    101      94
+##  7     7    102     102
+##  8     8    111      96
+##  9     9    116     103
+## 10    10    114     120
+## 11    11     83     102
+## 12    12     85      98
+## 13    13    105     118
+## 14    14     95     106
+## 15    15    107      94
+## 16    16     94     108
+## 17    17     99     102
 ```
 
 ¿Cuál es la conclusión que debería sacar el biólogo?
@@ -738,23 +738,23 @@ osos
 ## # A tibble: 17 x 3
 ##      Oso Tiempo0 Tiempo6
 ##    <dbl>   <dbl>   <dbl>
-##  1    1.     42.     75.
-##  2    2.     47.     61.
-##  3    3.     58.     63.
-##  4    4.     40.     74.
-##  5    5.     56.     65.
-##  6    6.     60.     54.
-##  7    7.     45.     58.
-##  8    8.     72.     53.
-##  9    9.     63.     66.
-## 10   10.     79.     77.
-## 11   11.     43.     65.
-## 12   12.     45.     52.
-## 13   13.     79.     64.
-## 14   14.     45.     65.
-## 15   15.     42.     62.
-## 16   16.     49.     54.
-## 17   17.     53.     68.
+##  1     1      42      75
+##  2     2      47      61
+##  3     3      58      63
+##  4     4      40      74
+##  5     5      56      65
+##  6     6      60      54
+##  7     7      45      58
+##  8     8      72      53
+##  9     9      63      66
+## 10    10      79      77
+## 11    11      43      65
+## 12    12      45      52
+## 13    13      79      64
+## 14    14      45      65
+## 15    15      42      62
+## 16    16      49      54
+## 17    17      53      68
 ```
 
 ¿Mejora la capacidad de captura de los ositos con la experiencia?
@@ -784,16 +784,16 @@ pinguinos
 ## # A tibble: 32 x 3
 ##    Pichones Nido      row
 ##       <dbl> <fct>   <int>
-##  1      10. Arbusto     1
-##  2      13. Arbusto     2
-##  3       7. Arbusto     3
-##  4       7. Arbusto     4
-##  5      11. Arbusto     5
-##  6      11. Arbusto     6
-##  7       8. Arbusto     7
-##  8      11. Arbusto     8
-##  9       8. Arbusto     9
-## 10      12. Arbusto    10
+##  1       10 Arbusto     1
+##  2       13 Arbusto     2
+##  3        7 Arbusto     3
+##  4        7 Arbusto     4
+##  5       11 Arbusto     5
+##  6       11 Arbusto     6
+##  7        8 Arbusto     7
+##  8       11 Arbusto     8
+##  9        8 Arbusto     9
+## 10       12 Arbusto    10
 ## # ... with 22 more rows
 ```
 
@@ -817,8 +817,8 @@ LDM
 ## # A tibble: 37 x 3
 ##      LDM Especie   row
 ##    <dbl> <fct>   <int>
-##  1  26.0 Delfín      1
-##  2  21.0 Delfín      2
+##  1  26   Delfín      1
+##  2  21   Delfín      2
 ##  3  24.6 Delfín      3
 ##  4  20.9 Delfín      4
 ##  5  26.4 Delfín      5
@@ -887,16 +887,16 @@ nematodes
 ## # A tibble: 41 x 3
 ##    Larvas Anchoita     row
 ##     <dbl> <fct>      <int>
-##  1    14. Patagónica     1
-##  2    36. Patagónica     2
-##  3    26. Patagónica     3
-##  4    23. Patagónica     4
-##  5    14. Patagónica     5
-##  6    36. Patagónica     6
-##  7    26. Patagónica     7
-##  8    23. Patagónica     8
-##  9    14. Patagónica     9
-## 10    26. Patagónica    10
+##  1     14 Patagónica     1
+##  2     36 Patagónica     2
+##  3     26 Patagónica     3
+##  4     23 Patagónica     4
+##  5     14 Patagónica     5
+##  6     36 Patagónica     6
+##  7     26 Patagónica     7
+##  8     23 Patagónica     8
+##  9     14 Patagónica     9
+## 10     26 Patagónica    10
 ## # ... with 31 more rows
 ```
 
@@ -921,16 +921,16 @@ arana
 ## # A tibble: 36 x 3
 ##    Tiempo Especie   row
 ##     <dbl>   <dbl> <int>
-##  1   159.      1.     1
-##  2   143.      1.     2
-##  3    90.      1.     3
-##  4   130.      1.     4
-##  5   148.      1.     5
-##  6   150.      1.     6
-##  7   161.      1.     7
-##  8   166.      1.     8
-##  9   164.      1.     9
-## 10    87.      1.    10
+##  1    159       1     1
+##  2    143       1     2
+##  3     90       1     3
+##  4    130       1     4
+##  5    148       1     5
+##  6    150       1     6
+##  7    161       1     7
+##  8    166       1     8
+##  9    164       1     9
+## 10     87       1    10
 ## # ... with 26 more rows
 ```
 

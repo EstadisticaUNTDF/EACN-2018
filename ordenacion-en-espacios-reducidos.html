@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,14 +25,14 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-04-15">
+<meta name="date" content="2018-05-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="regresion.html">
+<link rel="prev" href="ancova.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -360,13 +360,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.4" data-path="regresion.html"><a href="regresion.html#uso-de-los-residuales-para-comprobar-los-supuestos"><i class="fa fa-check"></i><b>17.4</b> Uso de los Residuales para Comprobar los Supuestos</a></li>
 <li class="chapter" data-level="17.5" data-path="regresion.html"><a href="regresion.html#regresiones-multiples"><i class="fa fa-check"></i><b>17.5</b> Regresiones Múltiples</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>18</b> Ordenación en Espacios Reducidos</a><ul>
-<li class="chapter" data-level="18.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>18.1</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>18.1.1</b> Biplots</a></li>
+<li class="chapter" data-level="18" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>18</b> ANCOVA</a></li>
+<li class="chapter" data-level="19" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>19</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="19.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>19.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>19.1.1</b> Biplots</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>18.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="18.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>18.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="18.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>18.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="19.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>19.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="19.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>19.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="19.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>19.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -389,7 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="ordenacion-en-espacios-reducidos" class="section level1">
-<h1><span class="header-section-number">Capítulo 18</span> Ordenación en Espacios Reducidos</h1>
+<h1><span class="header-section-number">Capítulo 19</span> Ordenación en Espacios Reducidos</h1>
 <p>En la Ciencias Naturales, generalmente, se poseen varias variables por cada
 objeto o unidad. Pero en un diagrama de dispersión es solo posible ver dos
 dimensiones, como máximo se podrán ver tres. Cuando queremos ver cuáles son las
@@ -454,7 +455,7 @@ objetos cambien entre los dos espacios, entonces la proyección es inútil. Por 
 tanto, a veces es útil considera la ordenación aun cuando esta represente una
 pequeña parte de la variación total.</p>
 <div id="analisis-de-componentes-principales" class="section level2">
-<h2><span class="header-section-number">18.1</span> Análisis de componentes principales</h2>
+<h2><span class="header-section-number">19.1</span> Análisis de componentes principales</h2>
 <p>Supongamos que tenemos una distribución multivariada normal, el primer eje
 principal es la línea que atraviesa la mayor dimensión del elipsoide de densidad
 que describe la densidad. De la misma manera, los siguientes ejes principales
@@ -857,7 +858,7 @@ reducido.</p>
 </tbody>
 </table>
 <div id="biplots" class="section level3">
-<h3><span class="header-section-number">18.1.1</span> Biplots</h3>
+<h3><span class="header-section-number">19.1.1</span> Biplots</h3>
 <p>Se le llama biplot al gráfico de componentes principales en donde se grafican al
 mismo tiempo los ejes de las variables y los objetos en el espacio reducido.
 Existen dos tipos de gráficos biplots según el escalamiento que se use:</p>
@@ -898,7 +899,7 @@ por una constante para producir un gráfico claro.</p>
 </div>
 </div>
 <div id="componentes-principales-de-una-matriz-de-correlacion" class="section level2">
-<h2><span class="header-section-number">18.2</span> Componentes principales de una matriz de correlación</h2>
+<h2><span class="header-section-number">19.2</span> Componentes principales de una matriz de correlación</h2>
 <p>También puede realizar este análisis sobre una matriz <span class="math inline">\(\mathbf{R}\)</span> de
 correlación, ya que las correlaciones son las covarianzas estandarizadas de las
 variables. La suma de autovalores de <span class="math inline">\(S\)</span> es igual a la suma de varianzas,
@@ -999,7 +1000,7 @@ abajo.</p>
 </table>
 </div>
 <div id="cuantos-componentes-son-significativos" class="section level2">
-<h2><span class="header-section-number">18.3</span> ¿Cuantos componentes son significativos?</h2>
+<h2><span class="header-section-number">19.3</span> ¿Cuantos componentes son significativos?</h2>
 <p>Una propiedad de los componentes es que cada uno representa una cantidad cada
 vez menor de la varianza total. Por lo tanto, un problema es cuantos componentes
 son significativos en términos biológicos. La misma pregunta vista de otra
@@ -1036,7 +1037,7 @@ de 1 hasta <span class="math inline">\(k\)</span> con la suma de los valores de 
 prueba generalmente selecciona los primeros dos o tres componentes principales.</p>
 </div>
 <div id="mal-uso-de-los-componentes-principales" class="section level2">
-<h2><span class="header-section-number">18.4</span> Mal uso de los componentes principales</h2>
+<h2><span class="header-section-number">19.4</span> Mal uso de los componentes principales</h2>
 <p>Los errores más comunes son: uso de las variables para las cuales la covarianza
 no tiene sentido y la interpretación de la relación entre variables, en el
 espacio reducido, basa en las posiciones relativas de los ápices de los ejes en
@@ -1092,7 +1093,7 @@ datos solo se debe usar componentes principales en gradientes pequeños.</p></li
           </div>
         </div>
       </div>
-<a href="regresion.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ancova.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

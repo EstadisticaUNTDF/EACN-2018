@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-04-15">
+<meta name="date" content="2018-05-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -360,13 +360,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.4" data-path="regresion.html"><a href="regresion.html#uso-de-los-residuales-para-comprobar-los-supuestos"><i class="fa fa-check"></i><b>17.4</b> Uso de los Residuales para Comprobar los Supuestos</a></li>
 <li class="chapter" data-level="17.5" data-path="regresion.html"><a href="regresion.html#regresiones-multiples"><i class="fa fa-check"></i><b>17.5</b> Regresiones Múltiples</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>18</b> Ordenación en Espacios Reducidos</a><ul>
-<li class="chapter" data-level="18.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>18.1</b> Análisis de componentes principales</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>18.1.1</b> Biplots</a></li>
+<li class="chapter" data-level="18" data-path="ancova.html"><a href="ancova.html"><i class="fa fa-check"></i><b>18</b> ANCOVA</a></li>
+<li class="chapter" data-level="19" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html"><i class="fa fa-check"></i><b>19</b> Ordenación en Espacios Reducidos</a><ul>
+<li class="chapter" data-level="19.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#analisis-de-componentes-principales"><i class="fa fa-check"></i><b>19.1</b> Análisis de componentes principales</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#biplots"><i class="fa fa-check"></i><b>19.1.1</b> Biplots</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>18.2</b> Componentes principales de una matriz de correlación</a></li>
-<li class="chapter" data-level="18.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>18.3</b> ¿Cuantos componentes son significativos?</a></li>
-<li class="chapter" data-level="18.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>18.4</b> Mal uso de los componentes principales</a></li>
+<li class="chapter" data-level="19.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>19.2</b> Componentes principales de una matriz de correlación</a></li>
+<li class="chapter" data-level="19.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>19.3</b> ¿Cuantos componentes son significativos?</a></li>
+<li class="chapter" data-level="19.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>19.4</b> Mal uso de los componentes principales</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -404,20 +405,20 @@ lobos_marinos</code></pre>
 <pre><code>## # A tibble: 14 x 2
 ##    Machos Hembras
 ##     &lt;dbl&gt;   &lt;dbl&gt;
-##  1    15.      9.
-##  2    10.      8.
-##  3    14.      5.
-##  4    17.      5.
-##  5    16.      5.
-##  6    11.      9.
-##  7    15.      9.
-##  8    20.     10.
-##  9    13.     13.
-## 10    NA      13.
-## 11    NA      15.
-## 12    NA       5.
-## 13    NA      12.
-## 14    NA       6.</code></pre>
+##  1     15       9
+##  2     10       8
+##  3     14       5
+##  4     17       5
+##  5     16       5
+##  6     11       9
+##  7     15       9
+##  8     20      10
+##  9     13      13
+## 10     NA      13
+## 11     NA      15
+## 12     NA       5
+## 13     NA      12
+## 14     NA       6</code></pre>
 <p>Recordemos que primero cargué el paquete <code>tidyverse</code> que nos va facilitar
 muchas funciones para trabajar con los datos. Luego creé el objeto
 <code>lobos_marinos</code> que contiene los datos de la longitudes de raneyas consumidas
@@ -434,16 +435,16 @@ columna, sin perder de vista que datos corresponden a machos y cuales a hembras.
 <pre><code>## # A tibble: 28 x 2
 ##    Sexo      LT
 ##    &lt;chr&gt;  &lt;dbl&gt;
-##  1 Machos   15.
-##  2 Machos   10.
-##  3 Machos   14.
-##  4 Machos   17.
-##  5 Machos   16.
-##  6 Machos   11.
-##  7 Machos   15.
-##  8 Machos   20.
-##  9 Machos   13.
-## 10 Machos   NA 
+##  1 Machos    15
+##  2 Machos    10
+##  3 Machos    14
+##  4 Machos    17
+##  5 Machos    16
+##  6 Machos    11
+##  7 Machos    15
+##  8 Machos    20
+##  9 Machos    13
+## 10 Machos    NA
 ## # ... with 18 more rows</code></pre>
 <p>La función <code>gather()</code> se encarga de juntar los datos. Por defecto junta todas
 las columnas y devuelve dos. Una es la <code>key</code> (clave) que es el nombre de la
@@ -458,16 +459,16 @@ filas que contengan <code>NA</code>.</p>
 <pre><code>## # A tibble: 23 x 2
 ##    Sexo       LT
 ##    &lt;chr&gt;   &lt;dbl&gt;
-##  1 Machos    15.
-##  2 Machos    10.
-##  3 Machos    14.
-##  4 Machos    17.
-##  5 Machos    16.
-##  6 Machos    11.
-##  7 Machos    15.
-##  8 Machos    20.
-##  9 Machos    13.
-## 10 Hembras    9.
+##  1 Machos     15
+##  2 Machos     10
+##  3 Machos     14
+##  4 Machos     17
+##  5 Machos     16
+##  6 Machos     11
+##  7 Machos     15
+##  8 Machos     20
+##  9 Machos     13
+## 10 Hembras     9
 ## # ... with 13 more rows</code></pre>
 <p>Ya no están las filas con <code>NA</code>. Hay que tener mucho cuidado cuando usamos
 <code>na.omit</code> porque esto elimina la fila con tan solo un valor de <code>NA</code> y puede
@@ -490,16 +491,16 @@ lobos_marinos</code></pre>
 <pre><code>## # A tibble: 23 x 3
 ##    Sexo       LT rango
 ##    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
-##  1 Machos    15. 19.0 
-##  2 Machos    10. 10.5 
-##  3 Machos    14. 17.0 
-##  4 Machos    17. 22.0 
-##  5 Machos    16. 21.0 
-##  6 Machos    11. 12.0 
-##  7 Machos    15. 19.0 
-##  8 Machos    20. 23.0 
-##  9 Machos    13. 15.0 
-## 10 Hembras    9.  8.00
+##  1 Machos     15  19  
+##  2 Machos     10  10.5
+##  3 Machos     14  17  
+##  4 Machos     17  22  
+##  5 Machos     16  21  
+##  6 Machos     11  12  
+##  7 Machos     15  19  
+##  8 Machos     20  23  
+##  9 Machos     13  15  
+## 10 Hembras     9   8  
 ## # ... with 13 more rows</code></pre>
 <p>Usé la función <code>mutate()</code> que agrega una columna a un <em>data frame</em>. Bien, ya
 tengo los rangos y he resuelto el problema de los empates en un solo paso
@@ -756,16 +757,16 @@ obtenidos fueron:</p>
 <pre><code>## # A tibble: 35 x 3
 ##     Peso Ambiente   row
 ##    &lt;dbl&gt; &lt;fct&gt;    &lt;int&gt;
-##  1   38. Valle        1
-##  2   47. Valle        2
-##  3   50. Valle        3
-##  4   51. Valle        4
-##  5   39. Valle        5
-##  6   39. Valle        6
-##  7   44. Valle        7
-##  8   40. Valle        8
-##  9   46. Valle        9
-## 10   50. Valle       10
+##  1    38 Valle        1
+##  2    47 Valle        2
+##  3    50 Valle        3
+##  4    51 Valle        4
+##  5    39 Valle        5
+##  6    39 Valle        6
+##  7    44 Valle        7
+##  8    40 Valle        8
+##  9    46 Valle        9
+## 10    50 Valle       10
 ## # ... with 25 more rows</code></pre>
 <p>¿Qué conclusión se puede sacar con estos datos?</p>
 <p>2.- Una empresa pesquera desea evaluar si existen diferencias entre dos jefes
@@ -780,16 +781,16 @@ resultados obtenidos fueron:</p>
 <pre><code>## # A tibble: 35 x 3
 ##    Descarte  Jefe   row
 ##       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-##  1      17.    1.     1
-##  2      10.    1.     2
-##  3      15.    1.     3
-##  4      22.    1.     4
-##  5      15.    1.     5
-##  6       9.    1.     6
-##  7      20.    1.     7
-##  8      14.    1.     8
-##  9      21.    1.     9
-## 10      19.    1.    10
+##  1       17     1     1
+##  2       10     1     2
+##  3       15     1     3
+##  4       22     1     4
+##  5       15     1     5
+##  6        9     1     6
+##  7       20     1     7
+##  8       14     1     8
+##  9       21     1     9
+## 10       19     1    10
 ## # ... with 25 more rows</code></pre>
 <p>¿Tiene razón el capitán?</p>
 
@@ -816,23 +817,23 @@ resultados obtenidos fueron:</p>
 <pre><code>## # A tibble: 17 x 3
 ##    Ejemplar Antes Despues
 ##       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-##  1       1.    4.      6.
-##  2       2.   16.     12.
-##  3       3.   18.     14.
-##  4       4.    9.      7.
-##  5       5.   18.     18.
-##  6       6.   11.     11.
-##  7       7.    3.      2.
-##  8       8.   16.     14.
-##  9       9.   13.     10.
-## 10      10.    9.      6.
-## 11      11.    6.      1.
-## 12      12.   13.     12.
-## 13      13.   19.     19.
-## 14      14.    4.      4.
-## 15      15.    5.      7.
-## 16      16.   17.     15.
-## 17      17.   15.     14.</code></pre>
+##  1        1     4       6
+##  2        2    16      12
+##  3        3    18      14
+##  4        4     9       7
+##  5        5    18      18
+##  6        6    11      11
+##  7        7     3       2
+##  8        8    16      14
+##  9        9    13      10
+## 10       10     9       6
+## 11       11     6       1
+## 12       12    13      12
+## 13       13    19      19
+## 14       14     4       4
+## 15       15     5       7
+## 16       16    17      15
+## 17       17    15      14</code></pre>
 <p>¿Qué conclusiones puede Ud. sacar acerca de la efectividad del tratamiento?</p>
 <p>4 - Un ecólogo desea evaluar en una especie de foca si el éxito reproductivo de
 las hembras está asociado al sexo de sus crías. Para ello utilizó información
@@ -843,21 +844,21 @@ fueron:</p>
 <pre><code>## # A tibble: 15 x 3
 ##    Ejemplar Hembra Macho
 ##       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-##  1       1.   128.  120.
-##  2       2.    95.  111.
-##  3       3.   104.  119.
-##  4       4.    99.  111.
-##  5       5.   111.  120.
-##  6       6.    93.  109.
-##  7       7.   132.  108.
-##  8       8.   129.  130.
-##  9       9.   127.  130.
-## 10      10.   100.  119.
-## 11      11.   122.  105.
-## 12      12.   124.  132.
-## 13      13.    94.  127.
-## 14      14.    96.  126.
-## 15      15.   127.  121.</code></pre>
+##  1        1    128   120
+##  2        2     95   111
+##  3        3    104   119
+##  4        4     99   111
+##  5        5    111   120
+##  6        6     93   109
+##  7        7    132   108
+##  8        8    129   130
+##  9        9    127   130
+## 10       10    100   119
+## 11       11    122   105
+## 12       12    124   132
+## 13       13     94   127
+## 14       14     96   126
+## 15       15    127   121</code></pre>
 <p>¿Depende el éxito reproductivo de las hembras del sexo de sus hijos?</p>
 <p>5.- Una especie de ave pone dos huevos por temporada reproductiva. Se ha visto
 que de los dos pichones el primero en eclosionar tiene mayores probabilidades de sobrevivir. Un biólogo desea establecer si esta situación está relacionada con
@@ -867,23 +868,23 @@ pichones al momento de la eclosión del huevo, obteniendo los siguientes datos:<
 <pre><code>## # A tibble: 17 x 3
 ##     Nido Primer Segundo
 ##    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-##  1    1.   102.    110.
-##  2    2.    86.     95.
-##  3    3.   112.    117.
-##  4    4.    85.    119.
-##  5    5.    91.    117.
-##  6    6.   101.     94.
-##  7    7.   102.    102.
-##  8    8.   111.     96.
-##  9    9.   116.    103.
-## 10   10.   114.    120.
-## 11   11.    83.    102.
-## 12   12.    85.     98.
-## 13   13.   105.    118.
-## 14   14.    95.    106.
-## 15   15.   107.     94.
-## 16   16.    94.    108.
-## 17   17.    99.    102.</code></pre>
+##  1     1    102     110
+##  2     2     86      95
+##  3     3    112     117
+##  4     4     85     119
+##  5     5     91     117
+##  6     6    101      94
+##  7     7    102     102
+##  8     8    111      96
+##  9     9    116     103
+## 10    10    114     120
+## 11    11     83     102
+## 12    12     85      98
+## 13    13    105     118
+## 14    14     95     106
+## 15    15    107      94
+## 16    16     94     108
+## 17    17     99     102</code></pre>
 <p>¿Cuál es la conclusión que debería sacar el biólogo?</p>
 <p>6.- Un biólogo está estudiando el efecto del aprendizaje en la habilidad de los
 osos para capturar peces. Para ello registra el porcentaje de éxitos de captura
@@ -893,23 +894,23 @@ durante una semana de 17 ositos cuando comienzan a pescar y repite el análisis
 <pre><code>## # A tibble: 17 x 3
 ##      Oso Tiempo0 Tiempo6
 ##    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1    1.     42.     75.
-##  2    2.     47.     61.
-##  3    3.     58.     63.
-##  4    4.     40.     74.
-##  5    5.     56.     65.
-##  6    6.     60.     54.
-##  7    7.     45.     58.
-##  8    8.     72.     53.
-##  9    9.     63.     66.
-## 10   10.     79.     77.
-## 11   11.     43.     65.
-## 12   12.     45.     52.
-## 13   13.     79.     64.
-## 14   14.     45.     65.
-## 15   15.     42.     62.
-## 16   16.     49.     54.
-## 17   17.     53.     68.</code></pre>
+##  1     1      42      75
+##  2     2      47      61
+##  3     3      58      63
+##  4     4      40      74
+##  5     5      56      65
+##  6     6      60      54
+##  7     7      45      58
+##  8     8      72      53
+##  9     9      63      66
+## 10    10      79      77
+## 11    11      43      65
+## 12    12      45      52
+## 13    13      79      64
+## 14    14      45      65
+## 15    15      42      62
+## 16    16      49      54
+## 17    17      53      68</code></pre>
 <p>¿Mejora la capacidad de captura de los ositos con la experiencia?</p>
 <p>7.- Los pingüinos de Magallanes hacen sus nidos en cuevas en las laderas o bajo
 de los arbustos. Un biólogo sostiene que el éxito reproductivo de las hembras
@@ -925,16 +926,16 @@ de su vida, discriminado por el tipo de nido que utilizaron.</p>
 <pre><code>## # A tibble: 32 x 3
 ##    Pichones Nido      row
 ##       &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;
-##  1      10. Arbusto     1
-##  2      13. Arbusto     2
-##  3       7. Arbusto     3
-##  4       7. Arbusto     4
-##  5      11. Arbusto     5
-##  6      11. Arbusto     6
-##  7       8. Arbusto     7
-##  8      11. Arbusto     8
-##  9       8. Arbusto     9
-## 10      12. Arbusto    10
+##  1       10 Arbusto     1
+##  2       13 Arbusto     2
+##  3        7 Arbusto     3
+##  4        7 Arbusto     4
+##  5       11 Arbusto     5
+##  6       11 Arbusto     6
+##  7        8 Arbusto     7
+##  8       11 Arbusto     8
+##  9        8 Arbusto     9
+## 10       12 Arbusto    10
 ## # ... with 22 more rows</code></pre>
 <p>¿Está Ud. de acuerdo con el biólogo?</p>
 <p>8.- Estudiando la dieta de un delfín y del lobo marino, un biólogo desea
@@ -947,8 +948,8 @@ Los datos obtenidos fueron:</p>
 <pre><code>## # A tibble: 37 x 3
 ##      LDM Especie   row
 ##    &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;
-##  1  26.0 Delfín      1
-##  2  21.0 Delfín      2
+##  1  26   Delfín      1
+##  2  21   Delfín      2
 ##  3  24.6 Delfín      3
 ##  4  20.9 Delfín      4
 ##  5  26.4 Delfín      5
@@ -993,16 +994,16 @@ Número de larvas de nematodes en el músculo de anchoitas discriminadas por pob
 <pre><code>## # A tibble: 41 x 3
 ##    Larvas Anchoita     row
 ##     &lt;dbl&gt; &lt;fct&gt;      &lt;int&gt;
-##  1    14. Patagónica     1
-##  2    36. Patagónica     2
-##  3    26. Patagónica     3
-##  4    23. Patagónica     4
-##  5    14. Patagónica     5
-##  6    36. Patagónica     6
-##  7    26. Patagónica     7
-##  8    23. Patagónica     8
-##  9    14. Patagónica     9
-## 10    26. Patagónica    10
+##  1     14 Patagónica     1
+##  2     36 Patagónica     2
+##  3     26 Patagónica     3
+##  4     23 Patagónica     4
+##  5     14 Patagónica     5
+##  6     36 Patagónica     6
+##  7     26 Patagónica     7
+##  8     23 Patagónica     8
+##  9     14 Patagónica     9
+## 10     26 Patagónica    10
 ## # ... with 31 more rows</code></pre>
 <p>¿Existen diferencias entre poblaciones de anchoita con respecto a la parasitosis
 por nematodes en músculo?</p>
@@ -1016,16 +1017,16 @@ Tiempo de captura de la mosca en segundos.</p>
 <pre><code>## # A tibble: 36 x 3
 ##    Tiempo Especie   row
 ##     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
-##  1   159.      1.     1
-##  2   143.      1.     2
-##  3    90.      1.     3
-##  4   130.      1.     4
-##  5   148.      1.     5
-##  6   150.      1.     6
-##  7   161.      1.     7
-##  8   166.      1.     8
-##  9   164.      1.     9
-## 10    87.      1.    10
+##  1    159       1     1
+##  2    143       1     2
+##  3     90       1     3
+##  4    130       1     4
+##  5    148       1     5
+##  6    150       1     6
+##  7    161       1     7
+##  8    166       1     8
+##  9    164       1     9
+## 10     87       1    10
 ## # ... with 26 more rows</code></pre>
 <p>¿Existen diferencias en las eficiencias de captura entre las especies de araña?</p>
 <ol start="12" style="list-style-type: decimal">

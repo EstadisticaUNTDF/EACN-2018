@@ -63,16 +63,16 @@ mpg
 ## # A tibble: 234 x 11
 ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
 ##    <chr>        <chr>    <dbl> <int> <int> <chr>   <chr> <int> <int> <chr>
-##  1 audi         a4        1.80  1999     4 auto(l… f        18    29 p    
-##  2 audi         a4        1.80  1999     4 manual… f        21    29 p    
-##  3 audi         a4        2.00  2008     4 manual… f        20    31 p    
-##  4 audi         a4        2.00  2008     4 auto(a… f        21    30 p    
-##  5 audi         a4        2.80  1999     6 auto(l… f        16    26 p    
-##  6 audi         a4        2.80  1999     6 manual… f        18    26 p    
-##  7 audi         a4        3.10  2008     6 auto(a… f        18    27 p    
-##  8 audi         a4 quat…  1.80  1999     4 manual… 4        18    26 p    
-##  9 audi         a4 quat…  1.80  1999     4 auto(l… 4        16    25 p    
-## 10 audi         a4 quat…  2.00  2008     4 manual… 4        20    28 p    
+##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    
+##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    
+##  3 audi         a4         2    2008     4 manual… f        20    31 p    
+##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    
+##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    
+##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    
+##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    
+##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    
+##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    
+## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    
 ## # ... with 224 more rows, and 1 more variable: class <chr>
 ```
 
@@ -483,12 +483,12 @@ Empieza con los datos
 ## # A tibble: 6 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-## 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43
-## 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31
-## 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31
-## 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63
-## 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75
-## 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48
+## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 ```
 
 `geom_bar` calcula las nuevas variables usando el `stat` `count` que devuelve
@@ -498,11 +498,11 @@ un nuevo data.frame
 ## # A tibble: 5 x 3
 ##   cut       count  prop
 ##   <ord>     <int> <dbl>
-## 1 Fair       1610    1.
-## 2 Good       4906    1.
-## 3 Very Good 12082    1.
-## 4 Premium   13791    1.
-## 5 Ideal     21551    1.
+## 1 Fair       1610     1
+## 2 Good       4906     1
+## 3 Very Good 12082     1
+## 4 Premium   13791     1
+## 5 Ideal     21551     1
 ```
 
 `geom_bar` luego usa esos datos para graficar:

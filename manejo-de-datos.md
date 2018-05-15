@@ -526,14 +526,14 @@ nombres %>%
 ## # A tibble: 121,926 x 4
 ##    nombre   anio cantidad log_cantidad
 ##    <chr>   <int>    <int>        <dbl>
-##  1 Aaaraon  2013        1        0.   
-##  2 Aadil    1992        1        0.   
+##  1 Aaaraon  2013        1        0    
+##  2 Aadil    1992        1        0    
 ##  3 Aakash   1985        2        0.301
-##  4 Aaminah  2011        1        0.   
-##  5 Aanisa   2013        1        0.   
+##  4 Aaminah  2011        1        0    
+##  5 Aanisa   2013        1        0    
 ##  6 Aaran    1988        2        0.301
 ##  7 Aarav    2011        2        0.301
-##  8 Aariel   1985        1        0.   
+##  8 Aariel   1985        1        0    
 ##  9 Aaron    1980        2        0.301
 ## 10 Aaron    1981       11        1.04 
 ## # ... with 121,916 more rows

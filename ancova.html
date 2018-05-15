@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="pruebas-para-varias-muestras-pareadas.html">
-<link rel="next" href="regresion.html">
+<link rel="prev" href="regresion.html">
+<link rel="next" href="ordenacion-en-espacios-reducidos.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -389,607 +389,268 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="practico-de-pruebas-no-parametricas-para-muestras-relacionadas" class="section level1">
-<h1><span class="header-section-number">Capítulo 16</span> Práctico de Pruebas no paramétricas para muestras relacionadas</h1>
-<p>Es posible realizar el equivalente no paramétrico de un anova simple con bloques.
-Hay al menos dos formas de hacerlo en <em>R</em>. Una es con la función
-<code>friedman.test()</code> del paquete <code>stats</code>. Tiene una interfaz de vectores y otra
-de formula. La de vectores tiene tres argumentos, <code>y</code> la variable de respuesta,
-<code>groups</code> la variable tratamiento, y <code>blocks</code> los bloques. La interfaz de formula
-usa la ya conocida forma <code>y ~ groups</code> pero para indicar los bloques usa una
-barra recta de esta manera <code>y ~ groups | blocks</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">pasto</code></pre>
-<pre><code>##    Parcela Pasto.1 Pasto.2 Pasto.3 Pasto.4
-## 1        1   14.00   10.50    7.00    3.50
-## 2        2   14.00    7.00   10.50    3.50
-## 3        3   10.50    5.25    5.25   14.00
-## 4        4   10.50    3.50    7.00   14.00
-## 5        5   14.00    7.00    3.50   10.50
-## 6        6    7.00    7.00    7.00   14.00
-## 7        7    3.50   10.50    7.00   14.00
-## 8        8    7.00   14.00    3.50   10.50
-## 9        9   12.25    3.50    7.00   12.25
-## 10      10   14.00    3.50   10.50    7.00
-## 11      11   14.00    7.00   10.50    3.50
-## 12      12   12.25    3.50    7.00   12.25</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">pasto &lt;-<span class="st"> </span><span class="kw">gather</span>(pasto, <span class="dt">key =</span> <span class="st">&quot;Pasto&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;performance&quot;</span>, <span class="op">-</span>Parcela)
-
-<span class="kw">friedman.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</code></pre>
-<pre><code>## 
-##  Friedman rank sum test
-## 
-## data:  performance and Pasto and Parcela
-## Friedman chi-squared = 8.0973, df = 3, p-value = 0.04404</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span>pasto <span class="op">%$%</span><span class="st"> </span><span class="kw">friedman</span>(Parcela, Pasto, performance, <span class="dt">group =</span> <span class="ot">FALSE</span>, <span class="dt">console =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre><code>## 
-## Study: performance ~ Parcela + Pasto 
-## 
-## Pasto,  Sum of the ranks
-## 
-##         performance  r
-## Pasto.1        38.0 12
-## Pasto.2        23.5 12
-## Pasto.3        24.5 12
-## Pasto.4        34.0 12
-## 
-## Friedman&#39;s Test
-## ===============
-## Adjusted for ties
-## Critical Value: 8.097345
-## P.Value Chisq: 0.04404214
-## F Value: 3.192198
-## P.Value F: 0.03621547 
-## 
-## Post Hoc Analysis
-## 
-## Comparison between treatments
-## Sum of the ranks
-## 
-##                   difference pvalue signif.    LCL   UCL
-## Pasto.1 - Pasto.2       14.5 0.0149       *   3.02 25.98
-## Pasto.1 - Pasto.3       13.5 0.0226       *   2.02 24.98
-## Pasto.1 - Pasto.4        4.0 0.4834          -7.48 15.48
-## Pasto.2 - Pasto.3       -1.0 0.8604         -12.48 10.48
-## Pasto.2 - Pasto.4      -10.5 0.0717       . -21.98  0.98
-## Pasto.3 - Pasto.4       -9.5 0.1017         -20.98  1.98</code></pre>
-<p>La función imprime el resultado en la pantalla. Pero si no lo guardamos no es
-posible seguir trabajando con él. Por eso, al guardarlo, podemos ver la misma
-información que vemos arribal y algunos datos extra con la diferencia mínima
-significativa.</p>
-<pre class="sourceCode r"><code class="sourceCode r">out</code></pre>
-<pre><code>## $statistics
-##      Chisq Df    p.chisq        F DFerror        p.F  t.value      LSD
-##   8.097345  3 0.04404214 3.192198      33 0.03621547 2.034515 11.48168
-## 
-## $parameters
-##       test name.t ntr alpha
-##   Friedman  Pasto   4  0.05
-## 
-## $means
-##         performance rankSum      std  r Min  Max    Q25    Q50    Q75
-## Pasto.1   11.083333    38.0 3.526415 12 3.5 14.0 9.6250 12.250 14.000
-## Pasto.2    6.854167    23.5 3.375140 12 3.5 14.0 3.5000  7.000  7.875
-## Pasto.3    7.145833    24.5 2.413170 12 3.5 10.5 6.5625  7.000  7.875
-## Pasto.4    9.916667    34.0 4.372348 12 3.5 14.0 6.1250 11.375 14.000
-## 
-## $comparison
-##                   difference pvalue signif.    LCL   UCL
-## Pasto.1 - Pasto.2       14.5 0.0149       *   3.02 25.98
-## Pasto.1 - Pasto.3       13.5 0.0226       *   2.02 24.98
-## Pasto.1 - Pasto.4        4.0 0.4834          -7.48 15.48
-## Pasto.2 - Pasto.3       -1.0 0.8604         -12.48 10.48
-## Pasto.2 - Pasto.4      -10.5 0.0717       . -21.98  0.98
-## Pasto.3 - Pasto.4       -9.5 0.1017         -20.98  1.98
-## 
-## $groups
-## NULL
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;group&quot;</code></pre>
-<p>Podemos usar los datos que nos da para calcular a mano el valor crítico con la
-distribución <em>q</em>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>
-c &lt;-<span class="st"> </span><span class="kw">nrow</span>(out<span class="op">$</span>means)
-Z &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">qnorm</span>(alpha<span class="op">/</span>(c<span class="op">*</span>(c<span class="dv">-1</span>))))
-r &lt;-<span class="st"> </span><span class="kw">unique</span>(out<span class="op">$</span>means<span class="op">$</span>r)
-VC &lt;-<span class="st"> </span>Z <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(r<span class="op">*</span>c<span class="op">*</span>(c<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">6</span>)
-VC</code></pre>
-<pre><code>## [1] 16.6858</code></pre>
-<p>Con el paquete</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PMCMR)</code></pre>
-<pre><code>## PMCMR is superseded by PMCMRplus and will be no longer maintained. You may wish to install PMCMRplus instead.</code></pre>
-<pre><code>## 
-## Attaching package: &#39;PMCMR&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:agricolae&#39;:
-## 
-##     durbin.test</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">posthoc.friedman.nemenyi.test</span>(performance <span class="op">~</span><span class="st"> </span>Pasto <span class="op">|</span><span class="st"> </span>Parcela, <span class="dt">data =</span> pasto)</code></pre>
-<pre><code>## 
-##  Pairwise comparisons using Nemenyi multiple comparison test 
-##              with q approximation for unreplicated blocked data 
-## 
-## data:  performance and Pasto and Parcela 
-## 
-##         Pasto.1 Pasto.2 Pasto.3
-## Pasto.2 0.10    -       -      
-## Pasto.3 0.14    1.00    -      
-## Pasto.4 0.92    0.34    0.44   
-## 
-## P value adjustment method: none</code></pre>
-<div id="problemas-5" class="section level2">
-<h2><span class="header-section-number">16.1</span> Problemas</h2>
-<ol style="list-style-type: decimal">
-<li>Un ecólogo desea determinar si cuatro índices de importancia relativa empleados
-para análisis de la dieta evalúan en forma similar la importancia relativa de
-las presas. Para ello utilizó datos de dieta del lobo marino, calculó todos
-los índices y los expresó en porcentaje. ¿Son equivalentes estos índices para
-estudiar la importancia relativa de las presas?. Los resultados obtenidos
-fueron:</li>
-</ol>
-<table style="width:79%;">
-<caption>Porcentaje de consumo de presas según cuatro índices.</caption>
-<colgroup>
-<col width="18%" />
-<col width="15%" />
-<col width="15%" />
-<col width="15%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Presa</th>
-<th align="center">Indice.1</th>
-<th align="center">Indice.2</th>
-<th align="center">Indice.3</th>
-<th align="center">Indice.4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Merluza</td>
-<td align="center">34.6</td>
-<td align="center">35.09</td>
-<td align="center">34.43</td>
-<td align="center">35.1</td>
-</tr>
-<tr class="even">
-<td align="center">Pulpo</td>
-<td align="center">20.24</td>
-<td align="center">20.12</td>
-<td align="center">20.46</td>
-<td align="center">19.71</td>
-</tr>
-<tr class="odd">
-<td align="center">Calamar</td>
-<td align="center">22.93</td>
-<td align="center">22.24</td>
-<td align="center">23.75</td>
-<td align="center">21.96</td>
-</tr>
-<tr class="even">
-<td align="center">Raneya</td>
-<td align="center">5.48</td>
-<td align="center">5.16</td>
-<td align="center">4.89</td>
-<td align="center">4.02</td>
-</tr>
-<tr class="odd">
-<td align="center">Anchoíta</td>
-<td align="center">3.39</td>
-<td align="center">3.54</td>
-<td align="center">3.19</td>
-<td align="center">2.84</td>
-</tr>
-<tr class="even">
-<td align="center">Nototenia</td>
-<td align="center">2.39</td>
-<td align="center">2.43</td>
-<td align="center">3.59</td>
-<td align="center">2.94</td>
-</tr>
-<tr class="odd">
-<td align="center">Pampanito</td>
-<td align="center">6.68</td>
-<td align="center">6.47</td>
-<td align="center">5.99</td>
-<td align="center">6.47</td>
-</tr>
-<tr class="even">
-<td align="center">Abadejo</td>
-<td align="center">0.1</td>
-<td align="center">0.71</td>
-<td align="center">0.9</td>
-<td align="center">1.76</td>
-</tr>
-<tr class="odd">
-<td align="center">Cangrejos</td>
-<td align="center">0.7</td>
-<td align="center">1.82</td>
-<td align="center">0.7</td>
-<td align="center">1.27</td>
-</tr>
-<tr class="even">
-<td align="center">Langostino</td>
-<td align="center">1.4</td>
-<td align="center">1.92</td>
-<td align="center">1.6</td>
-<td align="center">0.78</td>
-</tr>
-<tr class="odd">
-<td align="center">Salmón</td>
-<td align="center">1.5</td>
-<td align="center">0.3</td>
-<td align="center">0.3</td>
-<td align="center">1.27</td>
-</tr>
-<tr class="even">
-<td align="center">Chanchita</td>
-<td align="center">0.6</td>
-<td align="center">0.2</td>
-<td align="center">0.2</td>
-<td align="center">1.86</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" style="list-style-type: decimal">
-<li>En un estudio veterinario se desea determinar la efectividad de distintas drogas
-para minimizar el nivel de parasitosis intestinales. Para ello se tomaron al
-azar camadas de ratones y a diferentes individuos de cada camada se les aplicó
-al azar una de las drogas. Posteriormente, se alimentó a los ratones con comida
-infestada y luego de un mes fueron sacrificados, realizándose la necropsia para
-determinar el número de helmintos hallados en el intestino. ¿Existe un efecto de
-las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:</li>
-</ol>
-<pre class="sourceCode r"><code class="sourceCode r">parasitosis <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Número de helmitos en intestino de ratones </span>
-<span class="st">                       tratados con cuatro antiparasitarios distintos.&quot;</span>)</code></pre>
-<table style="width:68%;">
-<caption>Número de helmitos en intestino de ratones
-tratados con cuatro antiparasitarios distintos.</caption>
-<colgroup>
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Camada</th>
-<th align="center">Droga.1</th>
-<th align="center">Droga.2</th>
-<th align="center">Droga.3</th>
-<th align="center">Droga.4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center">20</td>
-<td align="center">13</td>
-<td align="center">23</td>
-<td align="center">26</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">22</td>
-<td align="center">12</td>
-<td align="center">23</td>
-<td align="center">15</td>
-</tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">31</td>
-<td align="center">24</td>
-<td align="center">36</td>
-<td align="center">65</td>
-</tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">18</td>
-<td align="center">9</td>
-<td align="center">10</td>
-<td align="center">62</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">25</td>
-<td align="center">23</td>
-<td align="center">50</td>
-<td align="center">70</td>
-</tr>
-<tr class="even">
-<td align="center">6</td>
-<td align="center">17</td>
-<td align="center">7</td>
-<td align="center">25</td>
-<td align="center">60</td>
-</tr>
-<tr class="odd">
-<td align="center">7</td>
-<td align="center">29</td>
-<td align="center">11</td>
-<td align="center">28</td>
-<td align="center">68</td>
-</tr>
-<tr class="even">
-<td align="center">8</td>
-<td align="center">26</td>
-<td align="center">21</td>
-<td align="center">15</td>
-<td align="center">15</td>
-</tr>
-<tr class="odd">
-<td align="center">9</td>
-<td align="center">26</td>
-<td align="center">23</td>
-<td align="center">51</td>
-<td align="center">38</td>
-</tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center">29</td>
-<td align="center">15</td>
-<td align="center">31</td>
-<td align="center">13</td>
-</tr>
-<tr class="odd">
-<td align="center">11</td>
-<td align="center">24</td>
-<td align="center">15</td>
-<td align="center">45</td>
-<td align="center">46</td>
-</tr>
-<tr class="even">
-<td align="center">12</td>
-<td align="center">19</td>
-<td align="center">6</td>
-<td align="center">24</td>
-<td align="center">42</td>
-</tr>
-</tbody>
-</table>
-<ol start="3" style="list-style-type: decimal">
-<li>Un ingeniero agrónomo desea determinar si cuatro fertilizantes tienen igual
-efecto en la producción de soja. Para ello seleccionó al azar 12 parcelas
-con características de suelo diferentes, aplicando al azar cada uno de los
-fertilizantes en distintos sectores de iguales dimensiones de cada parcela.
-La producción de soja en toneladas obtenida en cada parcela con cada tipo de
-fertilizante fue:</li>
-</ol>
-<pre class="sourceCode r"><code class="sourceCode r">soja <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Rendimiento en toneladas por parcela en </span>
-<span class="st">                parcelas fertilizadas con cuatro fertilizantes.&quot;</span>)</code></pre>
-<table>
-<caption>Rendimiento en toneladas por parcela en
-parcelas fertilizadas con cuatro fertilizantes.
-¿Cuál fertilizante conviene utilizar?</caption>
-<colgroup>
-<col width="12%" />
-<col width="21%" />
-<col width="21%" />
-<col width="21%" />
-<col width="21%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Parcela</th>
-<th align="center">Fertilizante.1</th>
-<th align="center">Fertilizante.2</th>
-<th align="center">Fertilizante.3</th>
-<th align="center">Fertilizante.4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center">320</td>
-<td align="center">314</td>
-<td align="center">165</td>
-<td align="center">202</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">244</td>
-<td align="center">277</td>
-<td align="center">171</td>
-<td align="center">121</td>
-</tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">229</td>
-<td align="center">244</td>
-<td align="center">128</td>
-<td align="center">124</td>
-</tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">301</td>
-<td align="center">301</td>
-<td align="center">209</td>
-<td align="center">212</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">293</td>
-<td align="center">311</td>
-<td align="center">182</td>
-<td align="center">208</td>
-</tr>
-<tr class="even">
-<td align="center">6</td>
-<td align="center">260</td>
-<td align="center">292</td>
-<td align="center">153</td>
-<td align="center">197</td>
-</tr>
-<tr class="odd">
-<td align="center">7</td>
-<td align="center">293</td>
-<td align="center">300</td>
-<td align="center">200</td>
-<td align="center">152</td>
-</tr>
-<tr class="even">
-<td align="center">8</td>
-<td align="center">295</td>
-<td align="center">316</td>
-<td align="center">130</td>
-<td align="center">212</td>
-</tr>
-<tr class="odd">
-<td align="center">9</td>
-<td align="center">232</td>
-<td align="center">235</td>
-<td align="center">178</td>
-<td align="center">165</td>
-</tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center">310</td>
-<td align="center">281</td>
-<td align="center">181</td>
-<td align="center">201</td>
-</tr>
-<tr class="odd">
-<td align="center">11</td>
-<td align="center">322</td>
-<td align="center">349</td>
-<td align="center">247</td>
-<td align="center">218</td>
-</tr>
-<tr class="even">
-<td align="center">12</td>
-<td align="center">315</td>
-<td align="center">306</td>
-<td align="center">160</td>
-<td align="center">219</td>
-</tr>
-</tbody>
-</table>
+<div id="ancova" class="section level1">
+<h1><span class="header-section-number">Capítulo 18</span> ANCOVA</h1>
+<p>ANOVA (Análisis de la Varianza) y regresión lineal aparentemente no tienen
+relación entre sí. El primero se ocupa de variables explicatorias cualitativas,
+mientras que el segundo de variables explicatorias cuantitativas. El análisis
+de la Covarianza se ocupa de analizar datos con ambos tipos de variables.
+De esta forma se obtiene una regresión entre la variable de respuesta y la
+variable explicatoria cuantitativa por cada nivel de la variable explicatoria
+cualitativa. Supongamos que deseamos modelar el peso de acuerdo a la edad y
+el sexo. El modelo máximo tiene cuatro parámetros: dos ordenadas al origen, y
+dos pendientes (una para machos y otra para hembras).</p>
+<p><span class="math display">\[
+ peso_{hembra} = a_{hembra} + b_{hembra} \times edad\\
+ peso_{macho} = a_{macho} + b_{macho} \times edad
+ \]</span></p>
+<p>Como debe cumplirse con el principio de parsimonia hay que simplificar el
+modelo lo más posible. En total hay seis modelos posibles, siendo el más
+complejo el de cuatro parámetros. Puede ser que los necesitemos todos ellos.
+El modelo de cuatro parámetros está representado en la Figura
+<a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-a. Otra forma puede ser que solo necesitemos un
+solo parámetro de pendiente como en la Figura <a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-b.
+Otra opción, es que la ordenada al origen sean iguales pero la pendientes sean
+diferentes, como en la Figura <a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-c. Puede ser que
+la edad no tenga efecto sobre el peso entonces pero que el sexo si tenga efecto
+como en la Figura <a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-d. Entonces este modelo tendrá
+solo dos parámetros. También puede darse el caso opuesto, que la edad tenga
+efecto sobre el peso pero no el sexo, como en la Figura
+<a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-e. La última opción es que ni la edad ni el sexo
+tengan efecto sobre el peso, como en la Figura <a href="ancova.html#fig:modelos-figura-ejemplo">18.1</a>-f.
+Este último modelo solo tendrá un parámetro.</p>
+<div class="figure"><span id="fig:modelos-figura-ejemplo"></span>
+<img src="ancova_files/figure-html/modelos-figura-ejemplo-1.png" alt="Varios modelos de ANCOVA con un número diferente de parámetros. a) Dos ordenadas al origen y dos pendientes. b) dos ordenadas al origen y una pendiente común. c) Una ordenada al origen y dos pendientes. d) Dos ordenadas al origen, sin pendiente. e) Una ordenada al origen y una pendiente. f) Una ordenada al origen, sin pendiente." width="672" />
+<p class="caption">
+Figura 18.1: Varios modelos de ANCOVA con un número diferente de parámetros. a) Dos ordenadas al origen y dos pendientes. b) dos ordenadas al origen y una pendiente común. c) Una ordenada al origen y dos pendientes. d) Dos ordenadas al origen, sin pendiente. e) Una ordenada al origen y una pendiente. f) Una ordenada al origen, sin pendiente.
+</p>
 </div>
-<div id="problema-4" class="section level2">
-<h2><span class="header-section-number">16.2</span> Problema 4</h2>
-<p>Un biólogo pesquero desea establecer si el descarte de especies asociadas (by-
-catch) en la pesquería de merluza varía estacionalmente. Para ello realizó un
-seguimiento de 12 barcos de la flota pesquera comercial, determinando para cada
-uno de ellos el porcentaje en biomasa del descarte realizado en cada estación
-del año. ¿Existe una variación estacional en el descarte realizado por la flota
-merlucera? Sus resultados fueron:</p>
-<pre class="sourceCode r"><code class="sourceCode r">pesca <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pander</span>(<span class="dt">caption =</span> <span class="st">&quot;Porcentaje de descarte en las cuatro estaciones.&quot;</span>)</code></pre>
-<table style="width:65%;">
-<caption>Porcentaje de descarte en las cuatro estaciones.</caption>
-<colgroup>
-<col width="11%" />
-<col width="16%" />
-<col width="12%" />
-<col width="11%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Barco</th>
-<th align="center">Primavera</th>
-<th align="center">Verano</th>
-<th align="center">Otono</th>
-<th align="center">Invierno</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center">32</td>
-<td align="center">25</td>
-<td align="center">43</td>
-<td align="center">43</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">27</td>
-<td align="center">16</td>
-<td align="center">30</td>
-<td align="center">38</td>
-</tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">27</td>
-<td align="center">30</td>
-<td align="center">38</td>
-<td align="center">37</td>
-</tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">26</td>
-<td align="center">31</td>
-<td align="center">51</td>
-<td align="center">52</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">28</td>
-<td align="center">32</td>
-<td align="center">52</td>
-<td align="center">44</td>
-</tr>
-<tr class="even">
-<td align="center">6</td>
-<td align="center">21</td>
-<td align="center">23</td>
-<td align="center">41</td>
-<td align="center">38</td>
-</tr>
-<tr class="odd">
-<td align="center">7</td>
-<td align="center">21</td>
-<td align="center">21</td>
-<td align="center">44</td>
-<td align="center">48</td>
-</tr>
-<tr class="even">
-<td align="center">8</td>
-<td align="center">24</td>
-<td align="center">37</td>
-<td align="center">41</td>
-<td align="center">46</td>
-</tr>
-<tr class="odd">
-<td align="center">9</td>
-<td align="center">33</td>
-<td align="center">29</td>
-<td align="center">45</td>
-<td align="center">54</td>
-</tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center">27</td>
-<td align="center">23</td>
-<td align="center">45</td>
-<td align="center">41</td>
-</tr>
-<tr class="odd">
-<td align="center">11</td>
-<td align="center">35</td>
-<td align="center">22</td>
-<td align="center">44</td>
-<td align="center">43</td>
-</tr>
-<tr class="even">
-<td align="center">12</td>
-<td align="center">31</td>
-<td align="center">35</td>
-<td align="center">43</td>
-<td align="center">44</td>
-</tr>
-</tbody>
-</table>
-
+<p>Como siempre, las decisión acerca de si conservar ambos parámetros o si son
+significativos se realiza con pruebas de hipótesis.</p>
+<p>Por ejemplo, se quiere ver cual es la capacidad de regeneración de las plantas
+y producir semillas luego del pastoreo. Antes del pastoreo, se registró el
+tamaño de la planta como el diámetro de la parte superior del rizoma. El
+pastoreo tiene dos niveles: con pastoreo y sin pastoreo. La respuesta es el
+peso de las semillas producidas. Es de esperar que las plantas más grandes
+produzcan más semillas. Y que las plantas pastoreadas produzcan menos semillas
+que las plantas no pastoreadas.</p>
+<pre class="sourceCode r"><code class="sourceCode r">compensation &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/ipomopsis.csv&quot;</span>)
+compensation</code></pre>
+<pre><code>## # A tibble: 40 x 3
+##     Root Fruit Grazing 
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   
+##  1  6.22  59.8 Ungrazed
+##  2  6.49  61.0 Ungrazed
+##  3  4.92  14.7 Ungrazed
+##  4  5.13  19.3 Ungrazed
+##  5  5.42  34.2 Ungrazed
+##  6  5.36  35.5 Ungrazed
+##  7  7.61  87.7 Ungrazed
+##  8  6.35  63.2 Ungrazed
+##  9  4.97  24.2 Ungrazed
+## 10  6.93  64.3 Ungrazed
+## # ... with 30 more rows</code></pre>
+<p>Los datos tienen tres columnas, la primera <code>Root</code> corresponde al tamaño del
+rizoma en centímetros. <code>Fruit</code> corresponde al peso de semillas en gramos. Y
+por último, <code>Grazing</code> corresponde a si las plantas fueron pastoreadas <code>Grazed</code>
+o no <code>Ungrazed</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(compensation, <span class="kw">aes</span>(<span class="dt">x =</span> Root, <span class="dt">y =</span> Fruit)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="figure"><span id="fig:root-fruit"></span>
+<img src="ancova_files/figure-html/root-fruit-1.png" alt="Diagrama de dispersión entre el tamaño del rizoma y el peso de las semillas" width="672" />
+<p class="caption">
+Figura 18.2: Diagrama de dispersión entre el tamaño del rizoma y el peso de las semillas
+</p>
 </div>
+<p>La Figura <a href="ancova.html#fig:root-fruit">18.2</a> muestra que las plantas más grandes produjeron
+más semillas, tal y como se esperaba.</p>
+<p>¿Y qué pasó con el nivel de pastoreo? En la Figura <a href="ancova.html#fig:grazed-fruit">18.3</a> los
+resultados no son tan claros. La línea se corresponde a la media de cada grupo
+y muestra que ¡Las plantas pastoreadas producen más semillas que las no
+pasteoreadas! Un resultado completamente sorpredente, y contrario a lo
+esperado ¿Esto será así realmente o habrá alguna explicación?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(compensation, <span class="kw">aes</span>(<span class="dt">x =</span> Grazing, <span class="dt">y =</span> Fruit)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">fun.ymin =</span> mean, <span class="dt">fun.ymax =</span> mean,
+                 <span class="dt">geom =</span> <span class="st">&quot;crossbar&quot;</span>, <span class="dt">width =</span> <span class="fl">0.2</span>)</code></pre>
+<div class="figure"><span id="fig:grazed-fruit"></span>
+<img src="ancova_files/figure-html/grazed-fruit-1.png" alt="Datos de niveles de pastoreo y peso de semillas, la barra representa la media." width="672" />
+<p class="caption">
+Figura 18.3: Datos de niveles de pastoreo y peso de semillas, la barra representa la media.
+</p>
+</div>
+<p>El modelo más complejo incluye cuatro parámetros. Dos ordenadas al origen
+y dos pendientes.</p>
+<p><span class="math display">\[
+ Fruit_{grazed} = a_{grazed} + b_{grazed} \times Root\\
+ Fruit_{ungrazed} = a_{ungrazed} + b_{ungrazed} \times Root
+ \]</span>
+Ajustando este modelo en <em>R</em> es parecido a hacer un modelo de regresión usando
+la función <code>lm()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">semillas_completo &lt;-<span class="st"> </span><span class="kw">lm</span>(Fruit <span class="op">~</span><span class="st"> </span>Grazing <span class="op">+</span><span class="st"> </span>Root <span class="op">+</span><span class="st"> </span>Grazing<span class="op">:</span>Root, <span class="dt">data =</span> compensation)</code></pre>
+<p>Solo vamos a ver modelos de ANCOVA simples con una variable cualitativa y otra
+cuantitativa. Como es el caso de una interacción entre una variable
+cualitativa y otra cuantitativa, el resultado es que haya varias pendientes.
+Una por cada nivel de la variable cualitativa. Veamos cual es el resultado de
+este análisis:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(semillas_completo)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Fruit ~ Grazing + Root + Grazing:Root, data = compensation)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -17.3177  -2.8320   0.1247   3.8511  17.1313 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)          -125.173     12.811  -9.771 1.15e-11 ***
+## GrazingUngrazed        30.806     16.842   1.829   0.0757 .  
+## Root                   23.240      1.531  15.182  &lt; 2e-16 ***
+## GrazingUngrazed:Root    0.756      2.354   0.321   0.7500    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.831 on 36 degrees of freedom
+## Multiple R-squared:  0.9293, Adjusted R-squared:  0.9234 
+## F-statistic: 157.6 on 3 and 36 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Empezando a leer los resultados desde abajo, vemos que el modelo es
+significativo. Es decir, al menos uno de los parámetros es distinto de 0. Y que
+ajuste de los datos al modelo parece ser muy bueno, el R<sup>2</sup> ajustado es mayor a
+90%.</p>
+<p>Más arriba tenemos los coeficientes del modelo. Recordemos que en <em>R</em> obtenemos
+los coeficientes obtenemos son solo el valor real para la primera vez que
+aparece. Luego debemos obtener el valor del parámetro como la suma del
+parámetro principal y el efecto del nivel. Para aclarar, reemplazando la
+ecuación con los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> para cada una de las ecuaciones. El
+primer valor, <code>(Intercept)</code> corresponde a la ordenada al origen para <em>Grazed</em>
+Esto es así porque el primer nivel del un factor va a ser el que sea asignado
+a <code>(Intercept)</code> y va a correponder a nivel de base para la determinación de
+la pendiente. Por lo tanto, el coeficiente de <code>Root</code> que vemos corresponde
+también al nivel <em>Grazed</em></p>
+<p><span class="math display">\[
+ Fruit_{grazed} = -125.173 + 23.24 \times Root\\
+ \]</span>
+Completar la ecuación para el nivel <em>Ungrazed</em> es un poco más complicado porque
+lo que vemos es el efecto del nivel y no el parámetro. El efecto de los otros
+niveles aparece como el nombre del factor seguido por el nombre del nivel.
+En nuestro ejemplo, <em>Grazing</em> es el factor, el nivel es <em>Ungrazed</em> y aparece
+como <code>GrazedUngrazed</code> en los coeficientes. Por otro lado, el efecto de
+<em>Ungrazed</em> sobre la pendiente aparece como la interacción entre
+<code>GrazedUngrazed</code> y <code>Root</code>.</p>
+<p><span class="math display">\[
+ Fruit_{ungrazed} = \left(-125.173 + 30.806\right) + \left( 23.24 + 0.756\right)\times Root \\ 
+ Fruit_{ungrazed} = \left(-94.367\right) + \left( `r23.24 + 0.756`\right)\times Root \\ 
+ \]</span>
+Por otro lado, debemos considerar si debemos conservar todos esos parámetros o
+si podemos poner algún parametro en común. Empezemos por ver si las pendientes
+son distintas. Esto implica, realizar un nuevo modelo
+con una pendiente común para las plantas <em>Grazed</em> y <em>Ungrazed</em>:</p>
+<p><span class="math display">\[
+ Fruit_{grazed} = a_{grazed} + b \times Root\\
+ Fruit_{ungrazed} = a_{ungrazed} + b \times Root
+ \]</span></p>
+<p>Ajustarlo en <em>R</em> es como hacerlo en el caso anterior pero eliminando la
+interacción en la formula.</p>
+<pre class="sourceCode r"><code class="sourceCode r">semillas_pendiente_comun &lt;-<span class="st"> </span><span class="kw">lm</span>(Fruit <span class="op">~</span><span class="st"> </span>Grazing <span class="op">+</span><span class="st"> </span>Root, <span class="dt">data =</span> compensation)</code></pre>
+<p>Para comprobar si el modelo más simple debe ser preferido usamos la
+función <code>anova()</code> para comprobar si el modelo más complejo es
+significativamente diferente del más simple. De no serlo, debemos descartarlo
+y quedarnos con el más simple.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(semillas_completo, semillas_pendiente_comun)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: Fruit ~ Grazing + Root + Grazing:Root
+## Model 2: Fruit ~ Grazing + Root
+##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+## 1     36 1679.7                           
+## 2     37 1684.5 -1   -4.8122 0.1031   0.75</code></pre>
+<p>Vemos que diferencia es muy pequeña, con un estadístico <em>F</em> asociado muy
+pequeño de 0.1031 y una probablidad de un <em>F</em> mayor de 0.75. Por lo tanto,
+no hay diferencias significativas entre los modelos, descartando el más
+complejo.</p>
+<p>Para ver los coeficientes usamos <code>summary()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(semillas_pendiente_comun)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Fruit ~ Grazing + Root, data = compensation)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -17.1920  -2.8224   0.3223   3.9144  17.3290 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     -127.829      9.664  -13.23 1.35e-15 ***
+## GrazingUngrazed   36.103      3.357   10.75 6.11e-13 ***
+## Root              23.560      1.149   20.51  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.747 on 37 degrees of freedom
+## Multiple R-squared:  0.9291, Adjusted R-squared:  0.9252 
+## F-statistic: 242.3 on 2 and 37 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Volviendo a leer los coeficientes vemos que todos son significativos ya que
+el valor del estadístico <em>t</em> asociado a cada uno es menor al 0.05.
+Por lo tanto, hay un efecto del tamaño del rizoma que es común a todas las
+plantas y hay diferencias significativas entre las plantas pastoreados y las
+no pastoreadas. ¿Cuales producen más semillas? Viendo el signo positivo del
+efecto de las plantas no pastoreadas (<em>GrazingUngrazed</em>) es posible deducir que
+ellas son las que producen más semillas. La formula para cada una de las
+rectas es:</p>
+<p><span class="math display">\[
+  Fruit_{grazed} = -127.829 +  23.56 \times Root \\ 
+  Fruit_{ungrazed} = \left(-127.829 + 36.103\right) + 23.56 \times Root  \\ 
+ Fruit_{ungrazed} = \left(-91.726\right) + 23.56 \times Root  
+ \]</span></p>
+<div class="figure"><span id="fig:fig-modelo-final"></span>
+<img src="ancova_files/figure-html/fig-modelo-final-1.png" alt="Gráfico de dispersión entre el tamaño del rizoma y el peso de las semillas. Se muestra la línea de regresión estimada por el modelo ANCOVA final." width="672" />
+<p class="caption">
+Figura 18.4: Gráfico de dispersión entre el tamaño del rizoma y el peso de las semillas. Se muestra la línea de regresión estimada por el modelo ANCOVA final.
+</p>
+</div>
+<p>Viendo la Figura <a href="ancova.html#fig:fig-modelo-final">18.4</a> resulta claro porque el resultado de que las plantas
+pastoreadas producian más semillas era engañoso. Las plantas pastoreadas eran
+más grandes, y el tamaño de la planta estaba oscurenciendo el resultado.</p>
+<p>Si no hubiesemos tenido en cuenta el tamaño, habríamos llegado a la conclusión
+equivocada. Realizando la prueba estadística sobre el modelo incorrecto
+llegariamos a la conclusión de que efectivamente el pastoreo aumenta la
+producción de semillas.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(<span class="kw">lm</span>(Fruit <span class="op">~</span><span class="st"> </span>Grazing, <span class="dt">data =</span> compensation))</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: Fruit
+##           Df  Sum Sq Mean Sq F value  Pr(&gt;F)  
+## Grazing    1  2910.4 2910.44  5.3086 0.02678 *
+## Residuals 38 20833.4  548.25                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Usando el modelo correcto vemos que la media de las plantas no pastoreadas
+es mayor que las pastereadas (41.35 vs 77.46):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">emmeans</span>(semillas_pendiente_comun, <span class="op">~</span>Grazing)) </code></pre>
+<pre><code>##  Grazing    emmean       SE df lower.CL upper.CL
+##  Grazed   41.35888 1.989014 37 37.32875 45.38900
+##  Ungrazed 77.46212 1.989014 37 73.43200 81.49225
+## 
+## Confidence level used: 0.95</code></pre>
+<p>Esto se obtiene usando la formula en la media de <em>Root</em>.</p>
+<p><span class="math display">\[
+ Fruit_{grazed} = -127.829 +  23.56 \times \overline{Root} \\ 
+ Fruit_{ungrazed} = \left(-91.726\right) + 23.56 \times \overline{Root}\\
+ Fruit_{grazed} = -127.829 +  23.56 \times 7.18115 \\ 
+ Fruit_{ungrazed} = \left(-91.726\right) + 23.56 \times 7.18115\\
+  Fruit_{grazed} = 41.358894 \\ 
+ Fruit_{ungrazed} = 77.461894
+ \]</span></p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="pruebas-para-varias-muestras-pareadas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regresion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regresion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ordenacion-en-espacios-reducidos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1019,7 +680,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/problemas-anova-friedman.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/ancova.Rmd",
 "text": "Edit"
 },
 "download": ["EACN.pdf", "EACN.epub"],
