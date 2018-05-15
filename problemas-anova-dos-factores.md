@@ -36,7 +36,7 @@ hay más de dos variables:
 Y ~ X * Z * W
 Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W
 ```
-### Test de aditividad de Tukey {#aditividad-tukey}.
+### Test de aditividad de Tukey {#aditividadtukey}
 
 Para probar que $H_0: D=0$ se debe realizar el [test de aditividad de Tukey][Prueba de Tukey (Aditividad)]. 
 En *R* está implementado como una función del paquete `additivityTests`. 
@@ -83,10 +83,6 @@ para un ejemplo de como se aplica.
 <p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
 <p>En todos los casos recuerden hacer gráficos, comprobar supuestos e indicar que tipo de diseño es.</p>
 </div>
-
-
-
-
 
 1.- Los Dres. V Vampirus y José Dracul deciden llevar a cabo una experiencia
 para determinar el tiempo de sangrado de ciertos animales (*Horno sapiens*),

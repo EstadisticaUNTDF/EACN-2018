@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="problemas-anova-dos-factores.html"><a href="problemas-anova-dos-factores.html"><i class="fa fa-check"></i><b>8</b> Problemas ANOVA Dos Factores</a><ul>
 <li class="chapter" data-level="8.1" data-path="problemas-anova-dos-factores.html"><a href="problemas-anova-dos-factores.html#formulas-con-mas-de-una-variable-independiente"><i class="fa fa-check"></i><b>8.1</b> Formulas con más de una variable independiente</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="problemas-anova-dos-factores.html"><a href="problemas-anova-dos-factores.html#test-de-aditividad-de-tukey-aditividad-tukey."><i class="fa fa-check"></i><b>8.1.1</b> Test de aditividad de Tukey {#aditividad-tukey}.</a></li>
+<li class="chapter" data-level="8.1.1" data-path="problemas-anova-dos-factores.html"><a href="problemas-anova-dos-factores.html#aditividadtukey"><i class="fa fa-check"></i><b>8.1.1</b> Test de aditividad de Tukey</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="problemas-anova-dos-factores.html"><a href="problemas-anova-dos-factores.html#problemas-1"><i class="fa fa-check"></i><b>8.2</b> Problemas</a></li>
 </ul></li>
@@ -411,8 +411,8 @@ los efectos principales más la interacción entre ellos. Por ejemplo,
 hay más de dos variables:</p>
 <pre><code>Y ~ X * Z * W
 Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W</code></pre>
-<div id="test-de-aditividad-de-tukey-aditividad-tukey." class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Test de aditividad de Tukey {#aditividad-tukey}.</h3>
+<div id="aditividadtukey" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Test de aditividad de Tukey</h3>
 <p>Para probar que <span class="math inline">\(H_0: D=0\)</span> se debe realizar el <a href="anova-de-dos-factores.html#prueba-de-tukey-aditividad">test de aditividad de Tukey</a>.
 En <em>R</em> está implementado como una función del paquete <code>additivityTests</code>.
 Especificamente en la función <code>tukey.test</code>. Tiene dos argumentos, <code>data</code>, los
