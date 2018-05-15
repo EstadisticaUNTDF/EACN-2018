@@ -22,7 +22,7 @@ En la consola copien este código:
 
 ```
 
-`download.file("bit.ly/informe-bloques", "informe-bloques.Rmd")`
+`download.file("http://bit.ly/informe-bloques", "informe-bloques.Rmd")`
 
 ```{block, type = "atencion"}
 Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre 
