@@ -29,21 +29,21 @@ theme_set(theme_classic())
  modelo lo más posible. En total hay seis modelos posibles, siendo el más 
  complejo el de cuatro parámetros. Puede ser que los necesitemos todos ellos.
  El modelo de cuatro parámetros está representado en la Figura
- \@ref(modelos-figura-ejemplo)-a. Otra forma puede ser que solo necesitemos un
- solo parámetro de pendiente como en la Figura \@ref(modelos-figura-ejemplo)-b.
+ \@ref(fig:modelos-figura-ejemplo)-a. Otra forma puede ser que solo necesitemos un
+ solo parámetro de pendiente como en la Figura \@ref(fig:modelos-figura-ejemplo)-b.
  Otra opción, es que la ordenada al origen sean iguales pero la pendientes sean
- diferentes, como en la Figura \@ref(modelos-figura-ejemplo)-c. Puede ser que
+ diferentes, como en la Figura \@ref(fig:modelos-figura-ejemplo)-c. Puede ser que
  la edad no tenga efecto sobre el peso entonces pero que el sexo si tenga efecto
- como en la Figura \@ref(modelos-figura-ejemplo)-d. Entonces este modelo tendrá
+ como en la Figura \@ref(fig:modelos-figura-ejemplo)-d. Entonces este modelo tendrá
  solo dos parámetros. También puede darse el caso opuesto, que la edad tenga
  efecto sobre el peso pero no el sexo, como en la Figura
- \@ref(modelos-figura-ejemplo)-e. La última opción es que ni la edad ni el sexo
- tengan efecto sobre el peso, como en la Figura \@ref(modelos-figura-ejemplo)-f.
+ \@ref(fig:modelos-figura-ejemplo)-e. La última opción es que ni la edad ni el sexo
+ tengan efecto sobre el peso, como en la Figura \@ref(fig:modelos-figura-ejemplo)-f.
  Este último modelo solo tendrá un parámetro.
  
  
  
-```{r modelos-figura-ejemplo, echo = FALSE}
+```{r modelos-figura-ejemplo, echo = FALSE, fig.cap="Varios modelos de ANCOVA con un número diferente de parámetros. a) Dos ordenadas al origen y dos pendientes. b) dos ordenadas al origen y una pendiente común. c) Una ordenada al origen y dos pendientes. d) Dos ordenadas al origen, sin pendiente. e) Una ordenada al origen y una pendiente. f) Una ordenada al origen, sin pendiente."}
 base_plot <- ggplot(data = data.frame(x = 0, y = 0)) +
   geom_point(aes(x, y), size = 0, color = "white") +
   labs(x = "Edad", y = "Peso")+
@@ -103,20 +103,20 @@ ggplot(compensation, aes(x = Root, y = Fruit)) +
   geom_point()
 ```
  
- La Figura \@ref(root-fruit) muestra que las plantas más grandes produjeron
+ La Figura \@ref(fig:root-fruit) muestra que las plantas más grandes produjeron
  más semillas, tal y como se esperaba.
  
- ¿Y qué pasó con el nivel de pastoreo? En la Figura \@ref(grazed-fruit) los
+ ¿Y qué pasó con el nivel de pastoreo? En la Figura \@ref(fig:grazed-fruit) los
  resultados no son tan claros. La línea se corresponde a la media de cada grupo
  y muestra que ¡Las plantas pastoreadas producen más semillas que las no 
  pasteoreadas! Un resultado completamente sorpredente, y contrario a lo 
  esperado ¿Esto será así realmente o habrá alguna explicación?
  
  
-```{r grazed-fruit}
+```{r grazed-fruit, fig.cap="Datos de niveles de pastoreo y peso de semillas, la barra representa la media."}
 ggplot(compensation, aes(x = Grazing, y = Fruit)) + 
   geom_point() + 
-  stat_summary(fun.y = median, fun.ymin = median, fun.ymax = median,
+  stat_summary(fun.y = mean, fun.ymin = mean, fun.ymax = mean,
                  geom = "crossbar", width = 0.2)
 ```
  
@@ -229,14 +229,14 @@ summary(semillas_pendiente_comun)
  Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times Root  
  $$
  
-```{r}
+```{r fig-modelo-final, echo=FALSE, fig.cap="Gráfico de dispersión entre el tamaño del rizoma y el peso de las semillas. Se muestra la línea de regresión estimada por el modelo ANCOVA final."}
 ggplot(compensation, aes(x = Root, y = Fruit, colour = Grazing)) + 
   geom_point() +
   geom_abline(intercept = -127.829, slope = 23.56, color = scales::hue_pal()(2)[1]) +
   geom_abline(intercept = -127.829 + 36.103, slope = 23.56, color = scales::hue_pal()(2)[2])
 ```
  
- Viende este gráfico resulta claro porque el resultado de que las plantas 
+ Viendo la Figura \@ref(fig:fig-modelo-final) resulta claro porque el resultado de que las plantas 
  pastoreadas producian más semillas era engañoso. Las plantas pastoreadas eran
  más grandes, y el tamaño de la planta estaba oscurenciendo el resultado.
  
@@ -253,12 +253,16 @@ anova(lm(Fruit ~ Grazing, data = compensation))
  es mayor que las pastereadas (41.35 vs 77.46):
  
 ```{r}
-emmeans(semillas_pendiente_comun, ~Grazing)
+summary(emmeans(semillas_pendiente_comun, ~Grazing)) 
 ```
  
  Esto se obtiene usando la formula en la media de *Root*.
  
  $$
-  Fruit_{grazed} = -127.829 +  23.56 \times \overline{Root} \\ 
- Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times \overline{Root}
+ Fruit_{grazed} = -127.829 +  23.56 \times \overline{Root} \\ 
+ Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times \overline{Root}\\
+ Fruit_{grazed} = -127.829 +  23.56 \times `r mean(compensation$Root)` \\ 
+ Fruit_{ungrazed} = \left(`r -127.829 + 36.103`\right) + 23.56 \times `r mean(compensation$Root)`\\
+  Fruit_{grazed} = `r -127.829 +  23.56 * mean(compensation$Root)` \\ 
+ Fruit_{ungrazed} = `r -127.829 + 36.103 + 23.56 * mean(compensation$Root)`
  $$
