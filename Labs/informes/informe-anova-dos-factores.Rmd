@@ -87,7 +87,10 @@ peso_rata
 
 peso_rata_largo <- peso_rata %>% 
   gather(key = "Dieta", value = "Ganancia", -Fuente) %>% 
-  mutate(Dieta = forcats::fct_collapse(Dieta))
+  mutate(Dieta = as.factor(Dieta),
+    Dieta = forcats::fct_collapse(Dieta,
+                                       Alta.proteina = c("Alta.proteina", "Alta.proteina.1"),
+                                       Baja.proteina = c("Baja.proteina", "Baja.proteina.1")))
 
 peso_rata_largo
 ```
