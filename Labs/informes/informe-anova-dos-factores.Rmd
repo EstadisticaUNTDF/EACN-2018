@@ -271,6 +271,9 @@ pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios
 diferentes.")
 ```
 
+a) ¿Qué tipo de diseño es? Tipo I, II o III.
+b) Analice si se cumplen los supuestos.
+c) ¿Hay diferencias entre los tipos de levadura? ¿Entre cuales?
 
 ```{r levadura-formato}
 levadura <- levadura %>%  
