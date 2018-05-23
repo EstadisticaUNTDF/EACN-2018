@@ -347,6 +347,12 @@ pesada de cerveza (III) y Torula (IV)) analizada por seis laboratorios
 diferentes.
 
 
+a) ¿Qué tipo de diseño es? Tipo I, II o III.
+b) Analice si se cumplen los supuestos.
+c) ¿Hay diferencias entre los tipos de levadura? ¿Entre cuales?
+
+
+
 
 
 7.- Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
