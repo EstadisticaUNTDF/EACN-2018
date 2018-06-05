@@ -281,3 +281,26 @@ levadura <- levadura %>%
   gather(laboratorio, humedad, -tipo)
 ```
 
+
+## Problema 7
+
+Eligiendo 4 tardes al azar del verano, se midió la temperatura de un lago a
+diferentes profundidades, con los siguientes resultados
+
+¿Que tipo de diseño se utilizó? 
+Examinar si hay diferencias entre profundidades y entre fechas
+
+```{r formato, echo=FALSE}
+lago %>% select_all(funs(stringr::str_replace(., "X", ""))) %>% 
+pander(caption = "(#tab:lago) Temperatura de un lago (°C) en cuatro tardes
+       elegidas al azar durante el verano en distintas profundidades (m).")
+```
+
+```{r lago-formato}
+
+lago_largo <- lago %>% 
+  gather(dia, temp, -profundidad) %>% 
+  mutate(profundidad = as.factor(profundidad),
+         dia = stringr::str_remove(dia, "X"))
+```
+

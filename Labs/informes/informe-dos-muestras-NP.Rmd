@@ -1,30 +1,27 @@
 ---
-title: "Problemas ANOVA simple"
+title: "Problemas dos muestras no paramétrico"
 author: "Su Nombre"
 date: "`r format(Sys.time(), '%A, %d de %B de %Y ')`"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width = 4,
+                      fig.height = 2.5)
 
 #Cargar paquetes
-library(pander)
 library(tidyverse)
-library(ggfortify)
-library(emmeans)
-library(nortest) #normality test
-library(car)
-library(pwr)
-library(agricolae)
-library(compute.es)
 
 ```
 
 ## Problemas
 
 En todos los casos indicar la hipótesis nula y la alternativa. Graficar y 
-realizar la prueba apropiada.
+realizar la prueba apropiada. 
+
+Tip: Si van usar la notación x e y indicar quien es quien. Recuerden que R
+ordena los niveles alfabéticamente.
 
 
 Los datos de los problemas ya se encuentran guardados. Hay que cargarlos con:
@@ -44,16 +41,18 @@ obtenidos fueron:
 ratones
 ```
 
+```{r ratones-grafico}
+ggplot(ratones, aes(Ambiente, Peso)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
 ¿Qué conclusión se puede sacar con estos datos?
 
 ```{r ratones-analisis }
 wilcox.test(Peso ~ Ambiente, alternative = , data = ratones)
 ```
 
-```{r ratones-grafico}
-ggplot(ratones, aes(Ambiente, Peso)) +
-  geom_boxplot()
-```
 
 2.- Una empresa pesquera desea evaluar si existen diferencias entre dos jefes
 de planta que trabajan en uno de sus buques factoría. De acuerdo a lo expresado
@@ -68,10 +67,17 @@ resultados obtenidos fueron:
 jefes 
 ```
 
+```{r jefe-grafico}
+ggplot(jefes, aes(as.factor(Jefe), Descarte)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
 ¿Tiene razón el capitán?
 
-```{r jefes-analisis }
 
+```{r jefes-analisis }
+wilcox.test(Descarte ~ Jefe, alternative = , data = jefes)
 ```
 
 
@@ -86,16 +92,22 @@ resultados obtenidos fueron:
 cobayos
 ```
 
+¿Qué tipo de diseño es?
+
 ¿Qué conclusiones puede Ud. sacar acerca de la efectividad del tratamiento?
+
+```{r cobayos-grafico}
+cobayos %>% 
+  gather(Tratamiento, Virus, -Ejemplar) %>% 
+ggplot(aes(Tratamiento, Virus)) +
+  geom_boxplot() +
+  coord_flip()
+```
 
 ```{r cobayos-analisis }
 # Abajo se usa un operador nuevo %$% es como %>% pero expone las columnas a 
 # la siguiente función.
 cobayos %$% wilcox.test(x = Despues, y =  Antes, alternative = "", paired = )
-```
-
-```{r cobayos-grafico}
-
 ```
 
 
@@ -111,13 +123,19 @@ focas
 
 ¿Depende el éxito reproductivo de las hembras del sexo de sus hijos? 
 
-```{r focas-analisis }
-
-```
-
 ```{r focas-grafico }
-
+focas %>% 
+  gather(Sexo, Hijos, -Ejemplar) %>% 
+ggplot(aes(Sexo, Hijos)) +
+  geom_boxplot() +
+  coord_flip()
 ```
+
+
+```{r focas-analisis }
+focas %$% wilcox.test(x = , y =  , alternative = "", paired = )
+```
+
 
 5.- Una especie de ave pone dos huevos por temporada reproductiva. Se ha visto 
 que de los dos pichones el primero en eclosionar tiene mayores probabilidades de sobrevivir. Un biólogo desea establecer si esta situación está relacionada con 
@@ -128,13 +146,20 @@ pichones al momento de la eclosión del huevo, obteniendo los siguientes datos:
 pichones
 ```
 
+```{r pichones-grafico}
+pichones %>% 
+  gather(Pichon, Peso, -Nido) %>% 
+ggplot(aes(Pichon, Peso)) +
+  geom_boxplot() +
+  coord_flip()
+
+```
+
+
 ¿Cuál es la conclusión que debería sacar el biólogo?
 
 ```{r pichones-analisis }
-
-```
-```{r pichones-grafico}
-
+pichones %$% wilcox.test(x = , y =  , alternative = "", paired = )
 ```
 
 6.- Un biólogo está estudiando el efecto del aprendizaje en la habilidad de los
@@ -142,19 +167,29 @@ osos para capturar peces. Para ello registra el porcentaje de éxitos de captura
 durante una semana de 17 ositos cuando comienzan a pescar y repite el análisis
 6 meses después. Los resultados obtenidos fueron:
 
+
+
 ```{r osos, results='markup'}
 osos
 ```
 
+```{r osos-grafico}
+osos %>% 
+  gather(Tiempo, Exito, -Oso) %>% 
+ggplot(aes(Tiempo, Exito)) +
+  geom_boxplot() +
+  coord_flip()
+
+```
+
+
 ¿Mejora la capacidad de captura de los ositos con la experiencia?
 
 ```{r osos-analisis }
-
+osos %$% wilcox.test(x = , y =  , alternative = "", paired = )
 ```
 
-```{r osos-grafico}
 
-```
 
 7.- Los pingüinos de Magallanes hacen sus nidos en cuevas en las laderas o bajo
 de los arbustos. Un biólogo sostiene que el éxito reproductivo de las hembras 
@@ -174,13 +209,17 @@ pinguinos
 
 ¿Está Ud. de acuerdo con el biólogo?
 
-```{r pinguinos-analisis }
-
-```
-
 ```{r pinguinos-grafico }
-
+ggplot(pinguinos, aes(Nido, Pichones)) +
+  geom_boxplot() +
+  coord_flip()
 ```
+
+
+```{r pinguinos-analisis }
+wilcox.test( ~ , alternative = , data = pinguinos)
+```
+
 
 8.- Estudiando la dieta de un delfín y del lobo marino, un biólogo desea
 establecer si las tallas consumidas de calamares por estos predadores son
@@ -196,14 +235,17 @@ LDM
 ¿Qué puede concluir sobre las tallas de los calamares consumidos por los 
 delfines y lobos marinos?
 
-```{r LDM-analisis }
-
-```
-
-
 ```{r LDM-grafico }
-
+ggplot(LDM, aes(Especie, LDM)) +
+  geom_boxplot() +
+  coord_flip()
 ```
+
+
+```{r LDM-analisis }
+wilcox.test( ~ , alternative = , data = LDM)
+```
+
 
 
 9.- Para determinar si una droga es eficaz para disminuir la concentración de un
@@ -220,14 +262,16 @@ droga
 ```
 
  ¿Es eficaz la droga para disminuir la concentración del virus en sangre?
- 
-```{r droga-analisis }
-
-```
 
 
 ```{r droga-grafico }
-
+ggplot(droga, aes(Tratamiento, Virus)) +
+  geom_boxplot() +
+  coord_flip()
+```
+ 
+```{r droga-analisis }
+wilcox.test( ~ , alternative = , data = droga)
 ```
 
 
@@ -246,13 +290,17 @@ nematodes
 ¿Existen diferencias entre poblaciones de anchoita con respecto a la parasitosis
 por nematodes en músculo?
 
-```{r nematodes-analisis }
-
-```
-
 ```{r nematodes-grafico }
-
+ggplot(nematodes, aes(Anchoita, Larvas)) +
+  geom_boxplot() +
+  coord_flip()
 ```
+
+```{r nematodes-analisis }
+wilcox.test( ~ , alternative = , data = nematodes)
+```
+
+
 
 
 11.- Un ecólogo desea determinar si la eficiencia de captura de dos especies de
@@ -268,11 +316,11 @@ arana
 
 ¿Existen diferencias en las eficiencias de captura entre las especies de araña?
 
-```{r arana-analisis }
+```{r arana-grafico }
 
 ```
 
-```{r arana-grafico }
+```{r arana-analisis }
 
 ```
 
@@ -284,12 +332,23 @@ se preocupó de seleccionar al azar las parcelas. Los datos obtenidos fueron:
 Producción de fruta fina (kg) en cada parcela, discriminada por localidad
 
 
-```{r}
+```{r fruta}
 fruta
 ```
 
 
 Una vez tomados los datos, el productor acude a Ud. en busca de ayuda para 
 responder su pregunta. ¿Qué le dirá al productor?
+
+
+```{r fruta-grafico }
+
+```
+
+
+```{r fruta-analisis }
+
+```
+
 
 
