@@ -7,14 +7,14 @@
 
 Las dos pruebas de ANOVA No Paramétrico están implentandas en *R*  bajo las
 funciones `Median.test()` del paquete `agricolae` y la funcion `kruskal.test()`
-en el paquete `stats` de *R* o la función `krukal()` de `agricolae`. 
+en el paquete `stats` de *R* o la función `kruskal()` de `agricolae`. 
 
 La función `Median.test()` tiene varios argumentos, el primero `y = ` 
 corresponde a la variable de respuesta, el segundo `trt = ` es la 
 columna que contiene la identificación del tratamiento. Esos dos son los
 únicos argumentos obligatorios. Otro argumento interesante es `groups` que 
 puede ser verdadero o falso y agrupa los tratamientos según si hay diferencias
-significativas entre sí. La función `krukal()` tiene los mismos argumentos 
+significativas entre sí. La función `kruskal()` tiene los mismos argumentos 
 principales. Ambos requieren acceso directo a las columnas, de igual forma
 que la función  `wilcox.test()` para muestras apareadas por eso es necesario 
 usar el operador de exposición `%$%`. 

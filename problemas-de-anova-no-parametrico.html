@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-06-05">
+<meta name="date" content="2018-06-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -393,13 +393,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 12</span> Problemas de ANOVA No Paramétrico</h1>
 <p>Las dos pruebas de ANOVA No Paramétrico están implentandas en <em>R</em> bajo las
 funciones <code>Median.test()</code> del paquete <code>agricolae</code> y la funcion <code>kruskal.test()</code>
-en el paquete <code>stats</code> de <em>R</em> o la función <code>krukal()</code> de <code>agricolae</code>.</p>
+en el paquete <code>stats</code> de <em>R</em> o la función <code>kruskal()</code> de <code>agricolae</code>.</p>
 <p>La función <code>Median.test()</code> tiene varios argumentos, el primero <code>y =</code>
 corresponde a la variable de respuesta, el segundo <code>trt =</code> es la
 columna que contiene la identificación del tratamiento. Esos dos son los
 únicos argumentos obligatorios. Otro argumento interesante es <code>groups</code> que
 puede ser verdadero o falso y agrupa los tratamientos según si hay diferencias
-significativas entre sí. La función <code>krukal()</code> tiene los mismos argumentos
+significativas entre sí. La función <code>kruskal()</code> tiene los mismos argumentos
 principales. Ambos requieren acceso directo a las columnas, de igual forma
 que la función <code>wilcox.test()</code> para muestras apareadas por eso es necesario
 usar el operador de exposición <code>%$%</code>.</p>
