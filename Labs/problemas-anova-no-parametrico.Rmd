@@ -22,14 +22,14 @@ load("data/anova-np.RData")
 
 Las dos pruebas de ANOVA No Paramétrico están implentandas en *R*  bajo las
 funciones `Median.test()` del paquete `agricolae` y la funcion `kruskal.test()`
-en el paquete `stats` de *R* o la función `krukal()` de `agricolae`. 
+en el paquete `stats` de *R* o la función `kruskal()` de `agricolae`. 
 
 La función `Median.test()` tiene varios argumentos, el primero `y = ` 
 corresponde a la variable de respuesta, el segundo `trt = ` es la 
 columna que contiene la identificación del tratamiento. Esos dos son los
 únicos argumentos obligatorios. Otro argumento interesante es `groups` que 
 puede ser verdadero o falso y agrupa los tratamientos según si hay diferencias
-significativas entre sí. La función `krukal()` tiene los mismos argumentos 
+significativas entre sí. La función `kruskal()` tiene los mismos argumentos 
 principales. Ambos requieren acceso directo a las columnas, de igual forma
 que la función  `wilcox.test()` para muestras apareadas por eso es necesario 
 usar el operador de exposición `%$%`. 
@@ -121,7 +121,7 @@ ggplot(dieta, aes(Consumidor, largo_total)) + geom_boxplot()
 ```{r dieta-mediana, echo = solucion, eval = solucion}
 with(dieta, Median.test(largo_total, Consumidor))
 ```
-```{r dieta-krukal, echo = solucion, eval = solucion}
+```{r dieta-kruskal, echo = solucion, eval = solucion}
 with(dieta, kruskal(largo_total, Consumidor, group = TRUE, console = TRUE))
 ```
 ¿Cuál es su conclusión?
@@ -147,7 +147,7 @@ ggplot(red, aes(tipo_red, kg_x_lance)) + geom_boxplot()
 with(red, Median.test(kg_x_lance, tipo_red))
 ```
 
-```{r pesca-krukal, echo = solucion, eval = solucion}
+```{r pesca-kruskal, echo = solucion, eval = solucion}
 with(red, kruskal(kg_x_lance, tipo_red, group = TRUE, console = TRUE))
 ```
 
