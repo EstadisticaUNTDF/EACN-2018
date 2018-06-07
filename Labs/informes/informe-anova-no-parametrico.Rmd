@@ -36,14 +36,22 @@ lobos
 ```
 ¿Qué concluyó el ecólogo a partir de estos datos?
 
-```{r, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
-
+```{r lobos-grafico, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
+lobos <- lobos %>% 
+  gather(Sexo_Edad, dm) %>% 
+  filter(!is.na(dm))
+ggplot(lobos, aes(Sexo_Edad, dm)) + geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
 ```
 
 ```{r lobos-analisis}
+lobos %$% kruskal(y = dm, trt = Sexo_Edad, console = TRUE)
 
 ```
 
+```{r lobos-test-Mediana}
+lobos %$% Median.test(dm, Sexo_Edad)
+```
 
 ## Problema 2
 
@@ -64,15 +72,23 @@ sustentada o no.
 dieta 
 ```
 
-```{r dieta-figura, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
-
-```
-
-```{r dieta-analisis}
-
-```
-
 ¿Cuál es su conclusión?
+
+```{r dieta-figura, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
+dieta <- dieta %>% 
+  gather(Consumidor, largo_total) %>% 
+  filter(!is.na(largo_total))
+ggplot(dieta, aes(Consumidor, largo_total)) + geom_boxplot()
+```
+
+```{r dieta-mediana}
+dieta %$% Median.test(largo_total, Consumidor)
+```
+```{r dieta-kruskal}
+dieta %$% kruskal(largo_total, Consumidor, group = TRUE, console = TRUE)
+```
+
+
 
 ## Problema 3
 
@@ -86,17 +102,25 @@ resultados obtenidos fueron:
 red 
 ```
 
-```{r pesca-figura, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
-
-```
-
-```{r pesca-analisis}
-
-```
-
 ¿Se podría recomendar alguna red en particular?
 
-## Problema 
+```{r pesca-figura, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
+red <- red %>%
+  gather(tipo_red, kg_x_lance) %>% 
+  filter(!is.na(kg_x_lance))
+ggplot(red, aes(tipo_red, kg_x_lance)) + geom_boxplot()
+```
+
+```{r pesca-mediana}
+red %$% Median.test(y = , trt =  )
+```
+
+```{r pesca-kruskal}
+red %$% kruskal(y = , trt = , group = TRUE, console = TRUE)
+```
+
+## Problema 4
+### COMPLETAR EL CÓDIGO
 
 4. En una primera etapa de un proyecto sobre el cultivo de pulpos, se desea
 determinar si es posible aumentar la tasa de crecimiento de los pulpos mediante
@@ -124,10 +148,21 @@ pulpos
 
 
 ```{r pulpos-grafico, fig.width=4, fig.height=3, fig.cap="Grafico de cajas y barras"}
+pulpos <- pulpos %>% 
+  gather(temperatura, peso) %>% 
+  filter(!is.na(peso))
 
+ggplot(data = ,aes()) +
+  geom_boxplot()
 ```
 
 ```{r pulpos-analisis}
-
+pulpos %$% Median.test(y = , trt =  )
 ```
+
+```{r pulpos-kruskal}
+red %$% kruskal(y = , trt =  , group = TRUE, console = TRUE)
+```
+
+
 ¿Es factible aumentar la tasa de crecimiento de los pulpos aumentando la temperatura del medio?
