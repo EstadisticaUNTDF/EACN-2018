@@ -187,6 +187,17 @@ posthoc.friedman.nemenyi.test(performance ~ Pasto | Parcela, data = pasto)
 ## P value adjustment method: none
 ```
 
+<div class="atencion">
+<p>Antes de comenzar bajen el archivo donde realizarán su informe reproducible. En la consola copien este código:</p>
+</div>
+
+`download.file("http://bit.ly/informe-friedman", "informe-friedman.Rmd")`
+
+<div class="atencion">
+<p>Pueden abrirlo desde la pestaña de archivos, a la derecha. Cambien el nombre por el suyo en el encabezado y mientras leen este capítulo respondan las preguntas.</p>
+<p>En todos los casos recuerden hacer gráficos.</p>
+</div>
+
 
 ## Problemas
 

@@ -65,16 +65,16 @@ Table: (\#tab:ejemplo-ranking)Datos de dos poblaciones de ejemplo
 
  Pob1   Pob2
 -----  -----
-    2      6
-    4      8
-    2      4
+    1      7
+    1      4
+    2      5
+    2      3
+    3      9
     1      2
+    0      7
+    3      5
+    1      9
     2      1
-    2      4
-    1      6
-    5      4
-    3      3
-    1      5
 
 A continuación debemos reunir esos datos en una solo conjunto, agregando una
 identificación [^1]
@@ -87,26 +87,26 @@ Table: (\#tab:ejemplo-ranking-gather)Datos de ambas poblaciones juntas
 
 Pob     Valor
 -----  ------
-Pob1        2
-Pob1        4
-Pob1        2
+Pob1        1
 Pob1        1
 Pob1        2
 Pob1        2
-Pob1        1
-Pob1        5
 Pob1        3
 Pob1        1
-Pob2        6
-Pob2        8
+Pob1        0
+Pob1        3
+Pob1        1
+Pob1        2
+Pob2        7
 Pob2        4
-Pob2        2
-Pob2        1
-Pob2        4
-Pob2        6
-Pob2        4
-Pob2        3
 Pob2        5
+Pob2        3
+Pob2        9
+Pob2        2
+Pob2        7
+Pob2        5
+Pob2        9
+Pob2        1
 
 A continuación se ordenan y se la asigna un número de 1 hasta $N_1+N_2$ según 
 el orden (columna `Rango`)[^2]. Los empates deben tratarse de forma especial ya que
@@ -128,26 +128,26 @@ kable(datos_long)
 
 Pob     Valor   Rango   Rango_Empates
 -----  ------  ------  --------------
-Pob2        1       1             2.5
-Pob1        1       2             2.5
-Pob1        1       3             2.5
-Pob1        1       4             2.5
-Pob1        2       5             7.0
-Pob1        2       6             7.0
-Pob2        2       7             7.0
-Pob1        2       8             7.0
-Pob1        2       9             7.0
-Pob2        3      10            10.5
-Pob1        3      11            10.5
-Pob2        4      12            13.5
-Pob2        4      13            13.5
-Pob1        4      14            13.5
-Pob2        4      15            13.5
-Pob1        5      16            16.5
-Pob2        5      17            16.5
-Pob2        6      18            18.5
-Pob2        6      19            18.5
-Pob2        8      20            20.0
+Pob1        0       1             1.0
+Pob1        1       2             4.0
+Pob1        1       3             4.0
+Pob1        1       4             4.0
+Pob2        1       5             4.0
+Pob1        1       6             4.0
+Pob1        2       7             8.5
+Pob2        2       8             8.5
+Pob1        2       9             8.5
+Pob1        2      10             8.5
+Pob2        3      11            12.0
+Pob1        3      12            12.0
+Pob1        3      13            12.0
+Pob2        4      14            14.0
+Pob2        5      15            15.5
+Pob2        5      16            15.5
+Pob2        7      17            17.5
+Pob2        7      18            17.5
+Pob2        9      19            19.5
+Pob2        9      20            19.5
 
 
 ## Estadísticos
