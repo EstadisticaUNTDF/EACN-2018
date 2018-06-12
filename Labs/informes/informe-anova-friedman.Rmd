@@ -1,0 +1,95 @@
+---
+title: "Informe  ANOVA No Parametrico"
+author: "Su Nombre"
+date: "`r format(Sys.time(), '%A, %d de %B de %Y ')`"
+output: html_document
+---
+```{r setup, include=FALSE}
+# Setup -------------------------------------------------------------------
+library(tidyverse)
+library(magrittr)
+library(agricolae)
+library(PMCMR)
+
+
+load(url("http://bit.ly/anova-np-bloques"))
+```
+
+
+
+1. Un ecólogo desea determinar si cuatro índices de importancia relativa empleados
+para análisis de la dieta evalúan en forma similar la importancia relativa de
+las presas. Para ello utilizó datos de dieta del lobo marino, calculó todos
+los índices y los expresó en porcentaje. ¿Son equivalentes estos índices para
+estudiar la importancia relativa de las presas?. Los resultados obtenidos
+fueron:
+
+```{r 1, echo=FALSE}
+dieta %>% pander(caption = "Porcentaje de consumo de presas según cuatro índices.")
+```
+
+```{r, echo=solucion, eval=solucion}
+dieta <- gather(dieta, key = "Indice", value = "porcentaje", -Presa)
+
+
+# judge es el bloque, trt es el tratamiento, y evaluation es la variable de respuesta.
+dieta %$% friedman(judge = , trt = , evaluation = , group = FALSE)
+```
+
+
+2. En un estudio veterinario se desea determinar la efectividad de distintas drogas
+para minimizar el nivel de parasitosis intestinales. Para ello se tomaron al
+azar camadas de ratones y a diferentes individuos de cada camada se les aplicó
+al azar una de las drogas. Posteriormente, se alimentó a los ratones con comida
+infestada y luego de un mes fueron sacrificados, realizándose la necropsia para
+determinar el número de helmintos hallados en el intestino. ¿Existe un efecto de
+las drogas sobre el nivel de parasitosis de los ratones? Los resultados fueron:
+
+```{r 2}
+parasitosis %>% pander(caption = "Número de helmitos en intestino de ratones 
+                       tratados con cuatro antiparasitarios distintos.")
+```
+
+```{r, echo=solucion, eval=solucion}
+parasitosis <- gather(parasitosis, key = "Droga", value = "helmintos", -Camada)
+
+```
+
+
+
+3. Un ingeniero agrónomo desea determinar si cuatro fertilizantes tienen igual
+efecto en la producción de soja. Para ello seleccionó al azar 12 parcelas
+con características de suelo diferentes, aplicando al azar cada uno de los
+fertilizantes en distintos sectores de iguales dimensiones de cada parcela.
+La producción de soja en toneladas obtenida en cada parcela con cada tipo de
+fertilizante fue:
+
+```{r 3}
+soja %>% pander(caption = "Rendimiento en toneladas por parcela en 
+                parcelas fertilizadas con cuatro fertilizantes.")
+```
+¿Cuál fertilizante conviene utilizar?
+
+```{r, echo = solucion, eval = solucion}
+soja <- gather(soja, key = "Fertilizante",value= "produccion", -Parcela )
+
+```
+
+
+## Problema 4
+
+Un biólogo pesquero desea establecer si el descarte de especies asociadas (by-
+catch) en la pesquería de merluza varía estacionalmente. Para ello realizó un
+seguimiento de 12 barcos de la flota pesquera comercial, determinando para cada
+uno de ellos el porcentaje en biomasa del descarte realizado en cada estación
+del año. ¿Existe una variación estacional en el descarte realizado por la flota
+merlucera? Sus resultados fueron:
+
+```{r 4}
+pesca %>% pander(caption = "Porcentaje de descarte en las cuatro estaciones.")
+```
+```{r, echo = solucion, eval=solucion}
+pesca <- gather(pesca, key =  "Estacion", value = "Biomasa", -Barco)
+
+```
+
