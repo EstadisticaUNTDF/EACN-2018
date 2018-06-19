@@ -2,8 +2,11 @@
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = TRUE)
+if(!require(ggbiplot)){
+  devtools::install_github("vqv/ggbiplot")
+  library(ggbiplot)
+}
 library(ggfortify)
-library(ggbiplot)
 library(dplyr)
 library(knitr)
 
