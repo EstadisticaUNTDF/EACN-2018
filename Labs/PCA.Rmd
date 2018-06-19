@@ -231,6 +231,10 @@ ggbiplot(wine.pca, obs.scale = 1, var.scale = 1, groups = wine.class) +
 ### Matriz $U\Lambda^{\frac{-1}{2}}$
 
 ```{r}
-
+matriz_UA(wine.pca) %>% 
+  as_tibble() %>% 
+  mutate(Variable = row.names(wine.pca$rotation)) %>% 
+  select(Variable, PC1:PC4) %>% 
+  kable()
 ```
 
