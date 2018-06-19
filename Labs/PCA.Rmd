@@ -222,10 +222,11 @@ ggbiplot(wine.pca, obs.scale = 1, var.scale = 1, groups = wine.class) +
   scale_color_discrete("Vino") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
   geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") 
-matriz_UA(wine.pca) %>% 
-  as_tibble() %>% 
-  mutate(Variable = row.names(matriz_UA(wine.pca))) %>% 
-  select(Variable, PC1:PC4) %>% 
-  kable()
+```
+
+### Matriz $U\Lambda^{\frac{-1}{2}}$
+
+```{r}
+
 ```
 
