@@ -1,0 +1,231 @@
+# Practico Análisis de Componentes Principales
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE)
+library(GGally)
+library(ggfortify)
+library(ggbiplot)
+library(dplyr)
+library(knitr)
+
+opts_chunk$set(echo = FALSE, 
+               message = FALSE)
+theme_set(theme_bw())
+
+matriz_UA <- function(x){
+  ans <- x$rotation %*% diag(x$sdev)
+  colnames(ans) <- colnames(x$rotation)
+  ans
+}
+
+autovalores <- function(x) {
+  ans <- x[["sdev"]]
+  names(ans) <- paste0("PC", seq_along(ans))
+  ans^2
+}
+```
+
+![Fisher](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/R._A._Fischer.jpg/200px-R._A._Fischer.jpg)
+
+En 1936, el biólogo y estadístico Ronald Fisher, recopila datos de 150 lirios (*Iris spp.*) para cuantificar la variación geográfica de estas flores en la Penínusula de Gaspé, en Canadá. 
+
+|  ![Iris setosa](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg/180px-Kosaciec_szczecinkowaty_Iris_setosa.jpg) |  ![Iris versicolor](https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Iris_versicolor_3.jpg/220px-Iris_versicolor_3.jpg) |  ![Iris virginica](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg) |
+|---|---|---|
+|  *Iris setosa* | *Iris versicolor*  | *Iris virginica*  |
+
+## Problema 1
+
+
+1. ¿Cuál es el porcentaje de variabilidad explicado por cada componente principal?
+2. ¿Cuál es el porcentaje de variabilidad explicado por los dos primeros ejes?
+3. ¿Cuál es el porcentaje de variabilidad explicado el primero y tercer eje?
+4. ¿Qué matriz de autovectores corresponde a la matriz normalizada (i.e. longitud 1) 
+   y que matriz corresponde a los autovectores escalados por $\Lambda^{\frac{-1}{2}}$?
+5. ¿Cuál es porcentaje de reconstrucción de cada variable en los dos primeros 
+    ejes?
+6. Observando el biplot de correlación: ¿Qué variables están más correlacionadas con el eje 1? ¿Qué variables lo están con el eje 2?
+7. ¿Es posible concluir sobre los objetos de en el biplot de correlación?
+8. Observando el biplot adeacuado: ¿Qué puede concluir sobre las especies? ¿En que caracterísiticas se parecen? ¿Qué especies son más parecidas?
+
+
+```{r cargar-data}
+data("iris")
+```
+
+
+### Matriz S (varianza-covarianza)
+
+```{r}
+iris_mat <- iris %>% 
+  select_if(is.numeric) %>% 
+  log
+var(iris_mat) %>% 
+  kable()
+```
+
+### Autovalores $\lambda$:
+
+```{r}
+iris_pca <- prcomp(iris_mat, center = TRUE) 
+
+autovalores(iris_pca) %>% 
+  t() %>%
+  kable()
+```
+
+
+### Autovectores
+
+Matriz 1:
+
+```{r pca-2}
+
+iris_UA <- iris_pca$rotation %*% diag(iris_pca$sdev)
+colnames(iris_UA) <- paste0("PC", 1:4)
+kable(iris_pca$rotation)
+
+```
+
+Matriz 2:
+
+```{r}
+kable(iris_UA)
+```
+
+```{r, fig.height=3}
+g <- ggbiplot(iris_pca, obs.scale = 1, var.scale = 1,
+              groups = iris$Species,
+              ellipse = FALSE)
+g <- g + scale_color_discrete(name = '')
+g <- g + theme(legend.direction = 'horizontal', 
+               legend.position = 'top') +
+  labs(x = "PC1", y = "PC2", title = "Biplot Correlación") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50")
+print(g)
+```
+
+```{r, fig.width=4, fig.height=5}
+g <- ggbiplot(iris_pca, obs.scale = 0, var.scale = 0,
+              groups = iris$Species,
+              ellipse = FALSE, 
+              circle = TRUE)
+g <- g + scale_color_discrete(name = '')
+g <- g +
+  labs(x = "PC1", y = "PC2", title = "Biplot Distancia") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  coord_equal(xlim = c(-2.1, 2))
+print(g)
+```
+
+
+
+
+## Problema 2
+
+
+Los mismos datos pero trabajando con la matriz de correlación:
+
+1. La matriz $U$ y $U\Lambda^{\frac{-1}{2}}$ ¿serán igual o no? ¿Por qué?
+2. ¿Que porcentaje de la varianza explica cada eje principal?
+3. ¿Que porcentaje de reconstrucción tiene cada una de las variables en los
+dos primeros ejes?
+4. Contruyan el biplot de correlación graficando solo las variables. 
+5. ¿Qué puede concluir sobre las especies? ¿En que caracterísiticas se parecen?
+¿Qué especies son más parecidas?
+6. Comparando los resultados con el problema anterior, ¿en que se parecen
+o diferencian los gráficos?
+
+
+### Matriz R
+
+```{r}
+iris_z <- scale(iris_mat, center = TRUE, scale = TRUE)
+var(iris_z) %>% 
+  kable()
+```
+
+### Autovalores $\lambda$:
+
+```{r}
+iris_z_pca <- prcomp(iris_z, center = TRUE) 
+autovalores(iris_z_pca) %>% 
+  t() %>% 
+  kable()
+```
+
+### Autovectores
+
+Matriz normalizada $U$
+
+```{r pca}
+iris_z_pca$rotation %>% 
+  kable()
+
+```
+
+Matriz escalada $U\Lambda^{\frac{-1}{2}}$ 
+
+```{r}
+iris_z_UA <- matriz_UA(iris_z_pca)
+kable(iris_z_UA)
+```
+
+
+```{r}
+ggplot(iris_z_UA, aes(PC1, PC2)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  theme_bw()
+```
+
+
+```{r, fig.width=4, fig.height=5}
+g <- ggbiplot(iris_z_pca, obs.scale = 0, var.scale = 0,
+              groups = iris$Species,
+              ellipse = FALSE, 
+              circle = TRUE)
+g <- g + scale_color_discrete(name = '')
+g <- g +
+  labs(x = "PC1", y = "PC2", title = "Biplot Distancia") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  coord_equal(xlim = c(-2.1, 2))
+print(g)
+```
+
+## Problema 3
+
+
+Se midieron 13 variables de 3 tipos de vinos y se realizó un análisis de 
+componentes principales. Responda:
+
+1. ¿Cuántos ejes se pueden construir?
+2. ¿Cuanta variación explica cada eje?
+3. ¿Qué variables están correlacionadas positivamente? ¿Cuales lo están
+negativamente? ¿Y cuales están incorreladas?
+4. ¿Sirve este gráfico para ver las relaciones entre los vinos? ¿Por qué?
+5. El análisis se realizó con la matriz de correlación. ¿Por qué creo que se hizo
+de esta manera?
+6. Calcule el porcentaje de reconstrucción de las variables en los primeros dos
+ejes
+7. ¿Cuál es la longitud esperada de cada variable en el espacio reducido?
+
+```{r}
+data(wine)
+wine.pca <- prcomp(wine, scale. = TRUE)
+autovalores(wine.pca) %>% 
+  pander::pander()
+ggbiplot(wine.pca, obs.scale = 1, var.scale = 1, groups = wine.class) + 
+  labs(x = "PC1", y = "PC2", title = "Biplot de Correlación") +
+  scale_color_discrete("Vino") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") + 
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") 
+matriz_UA(wine.pca) %>% 
+  as_tibble() %>% 
+  mutate(Variable = row.names(matriz_UA(wine.pca))) %>% 
+  select(Variable, PC1:PC4) %>% 
+  kable()
+```
+

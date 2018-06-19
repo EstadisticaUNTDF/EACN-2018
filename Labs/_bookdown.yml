@@ -47,5 +47,6 @@ rmd_files:
     
     "ancova.Rmd",
     
-    "ordenacion.Rmd"
+    "ordenacion.Rmd",
+    "PCA.Rmd"
   ]
