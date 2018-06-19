@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Avanzada para Ciencias Naturales</title>
   <meta name="description" content="Un libro con la teoría, ejemplos y práctica de Estadística Avanzada para Ciencias Naturales.">
-  <meta name="generator" content="bookdown 0.7.12 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.13 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Avanzada para Ciencias Naturales" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Dr. Luciano Selzer">
 
 
-<meta name="date" content="2018-06-13">
+<meta name="date" content="2018-06-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="ancova.html">
-
+<link rel="next" href="practico-analisis-de-componentes-principales.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -368,6 +368,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#componentes-principales-de-una-matriz-de-correlacion"><i class="fa fa-check"></i><b>19.2</b> Componentes principales de una matriz de correlación</a></li>
 <li class="chapter" data-level="19.3" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#cuantos-componentes-son-significativos"><i class="fa fa-check"></i><b>19.3</b> ¿Cuantos componentes son significativos?</a></li>
 <li class="chapter" data-level="19.4" data-path="ordenacion-en-espacios-reducidos.html"><a href="ordenacion-en-espacios-reducidos.html#mal-uso-de-los-componentes-principales"><i class="fa fa-check"></i><b>19.4</b> Mal uso de los componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>20</b> Practico Análisis de Componentes Principales</a><ul>
+<li class="chapter" data-level="20.1" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#problema-1"><i class="fa fa-check"></i><b>20.1</b> Problema 1</a><ul>
+<li class="chapter" data-level="20.1.1" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#matriz-s-varianza-covarianza"><i class="fa fa-check"></i><b>20.1.1</b> Matriz S (varianza-covarianza)</a></li>
+<li class="chapter" data-level="20.1.2" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#autovalores-lambda"><i class="fa fa-check"></i><b>20.1.2</b> Autovalores <span class="math inline">\(\lambda\)</span>:</a></li>
+<li class="chapter" data-level="20.1.3" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#autovectores"><i class="fa fa-check"></i><b>20.1.3</b> Autovectores</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#problema-2"><i class="fa fa-check"></i><b>20.2</b> Problema 2</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#matriz-r"><i class="fa fa-check"></i><b>20.2.1</b> Matriz R</a></li>
+<li class="chapter" data-level="20.2.2" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#autovalores-lambda-1"><i class="fa fa-check"></i><b>20.2.2</b> Autovalores <span class="math inline">\(\lambda\)</span>:</a></li>
+<li class="chapter" data-level="20.2.3" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#autovectores-1"><i class="fa fa-check"></i><b>20.2.3</b> Autovectores</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#problema-3"><i class="fa fa-check"></i><b>20.3</b> Problema 3</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="practico-analisis-de-componentes-principales.html"><a href="practico-analisis-de-componentes-principales.html#matriz-ulambdafrac-12"><i class="fa fa-check"></i><b>20.3.1</b> Matriz <span class="math inline">\(U\Lambda^{\frac{-1}{2}}\)</span></a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1080,21 +1095,13 @@ datos solo se debe usar componentes principales en gradientes pequeños.</p></li
 
 </div>
 </div>
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="ancova.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="ancova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practico-analisis-de-componentes-principales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

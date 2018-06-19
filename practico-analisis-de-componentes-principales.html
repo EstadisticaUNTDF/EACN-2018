@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="visualizacion-de-datos.html">
+<link rel="prev" href="ordenacion-en-espacios-reducidos.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -404,268 +404,469 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduccion-a-r-y-rstudio" class="section level1">
-<h1><span class="header-section-number">Capítulo 2</span> Introducción a <em>R</em> y RStudio</h1>
-<p>En la materia de Estadística Avanzada para Ciencias Naturales vamos a usar
-métodos estadísticos complejos. Por lo que, en muchos casos, es muy poco
-práctico realizar los cálculos a mano. Por eso, es necesario usar software
-estadístico específico para poder trabajar eficientemente. Existen múltiples
-programas, entre los más conocidos podes mencionar Statistica, Stata, SPSS,
-SAS, o Infostat, desarrollado en Argentina. Todos ellos son comerciales,
-y por lo tanto hay que pagar por las licencias de uso. Por otro lado, <em>R</em> es
-gratis y es usado ampliamente en el mundo. Otra de las ventajas, es la gran
-comunidad de usuarios y desarrolladores que se ha formado. Lo que hace que
-esté siendo constantemente actualizado y que las últimas técnicas estadísticas
-estén, muchas veces, implementadas directamente en R. Sin embargo, una de
-las dificultades es que hay que escribir comandos para hacer que funcione. Lo
-que es una desventaja al aprender pero luego se convierte en una ventaja, ya que
-permite automatizar tareas tediosas y además realizar análisis <strong>reproducibles</strong>
-de datos.</p>
-<p>Otro problema de <em>R</em> es su interfaz muy poco amigable. Por eso se han desarrollado
-otras interfaces (llamadas entornos de desarrollo integrado o IDE por sus siglas
-en inglés) que hacen más fácil trabajar con este programa. Hay varias: RStudio,
-Tinn-R, RKward, etc. Nosotros vamos a usar RStudio por ser la más trabajo tiene
-encima y está más pulida.</p>
-<p>Se puede bajar e instalar ambos programas en cualquier computadora. Hay que
-instalar <em>R</em> descargando desde <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> y seguir las
-instrucciones del instalador. Para bajar RStudio hay que ir a
-<a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> y también seguir las
-instrucciones de instalación.</p>
-<p>Para las clases tenemos instalado estos programas en un servidor de la
-Universidad y se puede acceder desde cualquier red (LAN o WiFi) de la sede de
-Yrigoyen entrando a <a href="https://rstudio.untdf.edu.ar" class="uri">https://rstudio.untdf.edu.ar</a>. Verán una pantalla de login.</p>
-<p>Una vez que entren verán una pantalla así.</p>
-<p><img src="fig/rstudio.png" /><!-- --></p>
-<div id="rstudio" class="section level2">
-<h2><span class="header-section-number">2.1</span> RStudio</h2>
-<p>La interfaz de RStudio está dividida en varios paneles, y cada uno tiene
-varias pestañas. Arriba a la derecha está el <em>espacio de trabajo</em>
-(<em>Environment</em>), es donde van a aparecer los objetos que creen a medida
-que trabajan en R. La otra pestaña es el <em>historial</em> (<em>History</em> ),
-donde quedan guardados todos los comandos que hayan ejecutado. Abajo de
-estos dos hay un panel con varias pestañas. <em>Archivos</em> (<em>Files</em>), muestra
-los archivos. <em>Gráficos</em> (<em>Plots</em>) es donde van a aparecer los gráficos
-que vayamos haciendo. <em>Paquetes</em> (<em>Packages</em>) muestra las librerías que
-tenemos y sus paquetes instalados y con un tilde los cargados (más
-adelante vamos a ver que son los paquetes). La <em>ayuda</em> (<em>Help</em>) es donde
-vamos a poder la ayuda de funciones de <strong>R</strong>. Y además está las pestaña
-del <em>Visor</em> (<em>Viewer</em>) que nos muestra una vista de los documentos que
-creemos.</p>
-<p>Por el lado izquierdo está la <em>consola</em>, es donde pasa toda la acción.
-Todo lo que hagamos va a ser escrito como un orden o comando ahí y luego
-vamos a ver el resultado ahí o si es un gráfico en el panel de gráficos.
-Cada vez que iniciemos RStudio va a mostrar la consola con un mensaje que
-indica la versión de <em>R</em> y otros detalles. Debajo de ese mensaje está el
-<em>prompt</em>. Aquí es donde <em>R</em> espera que se ingresen los comandos. Y para
-interactuar con <em>R</em> hay que decirle que tiene que hacer. Los comandos y
-su sintaxis han evolucionado a lo largo de décadas y ahora proveen a los
-usuarios una manera natural de acceder y procesar datos, aplicar
-procedimientos estadísticos, etc.</p>
-<p>Se puede usar <em>R</em> como una calculadora. Podemos poner una cuenta a realizar
-en el prompt y <em>R</em> nos devolverá el resultado. Por ejemplo, podemos poner:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre>
-<pre><code>## [1] 4</code></pre>
-<p>Prueben escribirlo en su consola justo después del “&gt;”.</p>
-<p>También es posible guardar los resultados en un objeto:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre>
-<p>Prueben hacerlo en su consola.
-En este caso, parece que no pasó nada. No apareció el resultado. Pero si
-observan en panel del espacio de trabajo verán que hay un nuevo objeto
-llamado <code>x</code>.</p>
-<p>Prueben que sucede si escriben <code>x</code> en la consola.</p>
+<div id="practico-analisis-de-componentes-principales" class="section level1">
+<h1><span class="header-section-number">Capítulo 20</span> Practico Análisis de Componentes Principales</h1>
+<div class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/R._A._Fischer.jpg/200px-R._A._Fischer.jpg" alt="Fisher" />
+<p class="caption">Fisher</p>
 </div>
-<div id="analisis-reproducible" class="section level2">
-<h2><span class="header-section-number">2.2</span> Análisis Reproducible</h2>
-<p>Una ventaja que tiene <em>R</em> respecto a otros programas estadísticos es que permite
-reproducir el análisis de los datos. Reproducible significa que a partir de los
-mismos datos otro analista va a llegar a los mismos resultados. En cambio,
-replicable es que otro experimentador al repetir el experimento va a llegar a
-resultados diferentes, que pueden ser o no similares (Figura <a href="introduccion-a-r-y-rstudio.html#fig:reproducible-figura">2.1</a>)</p>
-<div class="figure" style="text-align: center"><span id="fig:reproducible-figura"></span>
-<img src="Introduccion_files/figure-html/reproducible-figura-1.png" alt="Diferencias entre reproducible y replicable." width="576" />
-<p class="caption">
-Figura 2.1: Diferencias entre reproducible y replicable.
-</p>
+<p>En 1936, el biólogo y estadístico Ronald Fisher, recopila datos de 150 lirios (<em>Iris spp.</em>) para cuantificar la variación geográfica de estas flores en la Penínusula de Gaspé, en Canadá.</p>
+<table>
+<thead>
+<tr class="header">
+<th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg/180px-Kosaciec_szczecinkowaty_Iris_setosa.jpg" alt="Iris setosa" /></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Iris_versicolor_3.jpg/220px-Iris_versicolor_3.jpg" alt="Iris versicolor" /></th>
+<th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/220px-Iris_virginica.jpg" alt="Iris virginica" /></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Iris setosa</em></td>
+<td><em>Iris versicolor</em></td>
+<td><em>Iris virginica</em></td>
+</tr>
+</tbody>
+</table>
+<div id="problema-1" class="section level2">
+<h2><span class="header-section-number">20.1</span> Problema 1</h2>
+<ol style="list-style-type: decimal">
+<li>¿Cuál es el porcentaje de variabilidad explicado por cada componente principal?</li>
+<li>¿Cuál es el porcentaje de variabilidad explicado por los dos primeros ejes?</li>
+<li>¿Cuál es el porcentaje de variabilidad explicado el primero y tercer eje?</li>
+<li>¿Qué matriz de autovectores corresponde a la matriz normalizada (i.e. longitud 1)
+y que matriz corresponde a los autovectores escalados por <span class="math inline">\(\Lambda^{\frac{-1}{2}}\)</span>?</li>
+<li>¿Cuál es porcentaje de reconstrucción de cada variable en los dos primeros
+ejes?</li>
+<li>Observando el biplot de correlación: ¿Qué variables están más correlacionadas con el eje 1? ¿Qué variables lo están con el eje 2?</li>
+<li>¿Es posible concluir sobre los objetos de en el biplot de correlación?</li>
+<li>Observando el biplot adeacuado: ¿Qué puede concluir sobre las especies? ¿En que caracterísiticas se parecen? ¿Qué especies son más parecidas?</li>
+</ol>
+<div id="matriz-s-varianza-covarianza" class="section level3">
+<h3><span class="header-section-number">20.1.1</span> Matriz S (varianza-covarianza)</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">0.0199344</td>
+<td align="right">-0.0022517</td>
+<td align="right">0.0700984</td>
+<td align="right">0.1111952</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.0022517</td>
+<td align="right">0.0204602</td>
+<td align="right">-0.0398892</td>
+<td align="right">-0.0633270</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.0700984</td>
+<td align="right">-0.0398892</td>
+<td align="right">0.3482471</td>
+<td align="right">0.5600465</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.1111952</td>
+<td align="right">-0.0633270</td>
+<td align="right">0.5600465</td>
+<td align="right">0.9662883</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Los programas de interfaz gráfica, que no usan código o no lo proveen, complican
-la reproducibilidad de los análisis. Esto se debe a que es más complicado de
-comunicar como se realizó el análisis. La ventaja del código es que queda
-todo explícito en él.</p>
-<p>Hay varias formas de trabajar con R. Una es de forma interactiva en la consola.
-Como cuando pusieron <code>2 + 2</code>. Esto es muy útil cuando estamos probando si algo
-funciona. Pero no guardamos el código de esta forma. Aunque, en verdad queda
-guardado en el orden en que lo ejecutamos en el historial no es útil porque se
-va sobreescribiendo y va quedando lo que funcionó y lo no que no. Otra forma de
-usar <em>R</em> es utilizando <em>scripts</em> (archivos con extensión <em>.R</em>). Es indispensable
-para crear nuevas funciones pero para analizar datos tiene sus desventajas.
-Ya que, si bien el código se puede comentar anteponiendo <em>#</em> a la línea que
-queremos comentar, es límitado el formato que podemos usar en el comentario.
-Además, tendremos que volver a correr el script para ver los resultados si no
-los guardamos explicitamente en un documento, hoja de cálculo, o imagen. Por
-último, tenemos los documentos de programación letrada. La programación letrada
-consiste en mezclar código con texto plano, como en un procesador de texto.</p>
-<p>En R, hay varias aproximaciones a esto. La que más éxito ha tenido es <em>knitr</em>.
-<em>To knit</em> es tejer en inglés, lo que hace es “tejer” el documento final con
-el resultado del código, es decir los análisis que hagamos, y texto explicando
-que hicimos, porque, y como. Es decir, podemos escribir un paper o informe
-completo. Para darle formato al texto se usa <em>markdown</em> que permite usar marcas
-livianas para poner <em>cursivas</em>, <strong>negritas</strong> o <del>tachado</del>.</p>
-<div id="rmarkdown" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Rmarkdown</h3>
-<p>Hay muchas opciones para formatear el texto. La idea detrás de markdown es que
-se pueda escribir en un procesador de texto sencillo y las marcas sean
-fáciles de poner y no interrumpan la lectura. Algunos ejemplos:</p>
-<div id="enfasis" class="section level4">
-<h4><span class="header-section-number">2.2.1.1</span> Énfasis</h4>
-<pre><code>*cursiva*   **negrita**
+<div id="autovalores-lambda" class="section level3">
+<h3><span class="header-section-number">20.1.2</span> Autovalores <span class="math inline">\(\lambda\)</span>:</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1.314598</td>
+<td align="right">0.0191415</td>
+<td align="right">0.0182946</td>
+<td align="right">0.0028955</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="autovectores" class="section level3">
+<h3><span class="header-section-number">20.1.3</span> Autovectores</h3>
+<p>Matriz 1:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">0.1009002</td>
+<td align="right">-0.0008537</td>
+<td align="right">-0.4891583</td>
+<td align="right">0.8663386</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.0575930</td>
+<td align="right">0.5745111</td>
+<td align="right">-0.7140592</td>
+<td align="right">-0.3959034</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.5052703</td>
+<td align="right">-0.6870939</td>
+<td align="right">-0.4269180</td>
+<td align="right">-0.3005742</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.8551047</td>
+<td align="right">0.4447901</td>
+<td align="right">0.2618865</td>
+<td align="right">0.0487148</td>
+</tr>
+</tbody>
+</table>
+<p>Matriz 2:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">0.1156881</td>
+<td align="right">-0.0001181</td>
+<td align="right">-0.0661623</td>
+<td align="right">0.0466172</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.0660338</td>
+<td align="right">0.0794851</td>
+<td align="right">-0.0965818</td>
+<td align="right">-0.0213033</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.5793224</td>
+<td align="right">-0.0950613</td>
+<td align="right">-0.0577439</td>
+<td align="right">-0.0161737</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.9804284</td>
+<td align="right">0.0615379</td>
+<td align="right">0.0354221</td>
+<td align="right">0.0026213</td>
+</tr>
+</tbody>
+</table>
+<p><img src="PCA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-5-1.png" width="384" /></p>
+</div>
+</div>
+<div id="problema-2" class="section level2">
+<h2><span class="header-section-number">20.2</span> Problema 2</h2>
+<p>Los mismos datos pero trabajando con la matriz de correlación:</p>
+<ol style="list-style-type: decimal">
+<li>La matriz <span class="math inline">\(U\)</span> y <span class="math inline">\(U\Lambda^{\frac{-1}{2}}\)</span> ¿serán igual o no? ¿Por qué?</li>
+<li>¿Que porcentaje de la varianza explica cada eje principal?</li>
+<li>¿Que porcentaje de reconstrucción tiene cada una de las variables en los
+dos primeros ejes?</li>
+<li>Contruyan el biplot de correlación graficando solo las variables.</li>
+<li>¿Qué puede concluir sobre las especies? ¿En que caracterísiticas se parecen?
+¿Qué especies son más parecidas?</li>
+<li>Comparando los resultados con el problema anterior, ¿en que se parecen
+o diferencian los gráficos?</li>
+</ol>
+<div id="matriz-r" class="section level3">
+<h3><span class="header-section-number">20.2.1</span> Matriz R</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.1114962</td>
+<td align="right">0.8413242</td>
+<td align="right">0.8011826</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.1114962</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.4725598</td>
+<td align="right">-0.4503814</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.8413242</td>
+<td align="right">-0.4725598</td>
+<td align="right">1.0000000</td>
+<td align="right">0.9654437</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.8011826</td>
+<td align="right">-0.4503814</td>
+<td align="right">0.9654437</td>
+<td align="right">1.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="autovalores-lambda-1" class="section level3">
+<h3><span class="header-section-number">20.2.2</span> Autovalores <span class="math inline">\(\lambda\)</span>:</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2.932514</td>
+<td align="right">0.9070271</td>
+<td align="right">0.1330082</td>
+<td align="right">0.0274512</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="autovectores-1" class="section level3">
+<h3><span class="header-section-number">20.2.3</span> Autovectores</h3>
+<p>Matriz normalizada <span class="math inline">\(U\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">0.5038236</td>
+<td align="right">-0.4549987</td>
+<td align="right">0.7088547</td>
+<td align="right">0.1914757</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.3023682</td>
+<td align="right">-0.8891442</td>
+<td align="right">-0.3311628</td>
+<td align="right">-0.0912541</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.5767881</td>
+<td align="right">-0.0337880</td>
+<td align="right">-0.2192793</td>
+<td align="right">-0.7861873</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.5674952</td>
+<td align="right">-0.0354563</td>
+<td align="right">-0.5829003</td>
+<td align="right">0.5804474</td>
+</tr>
+</tbody>
+</table>
+<p>Matriz escalada <span class="math inline">\(U\Lambda^{\frac{-1}{2}}\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">PC1</th>
+<th align="right">PC2</th>
+<th align="right">PC3</th>
+<th align="right">PC4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sepal.Length</td>
+<td align="right">0.8627769</td>
+<td align="right">-0.4333315</td>
+<td align="right">0.2585214</td>
+<td align="right">0.0317245</td>
+</tr>
+<tr class="even">
+<td>Sepal.Width</td>
+<td align="right">-0.5177929</td>
+<td align="right">-0.8468029</td>
+<td align="right">-0.1207761</td>
+<td align="right">-0.0151193</td>
+</tr>
+<tr class="odd">
+<td>Petal.Length</td>
+<td align="right">0.9877255</td>
+<td align="right">-0.0321790</td>
+<td align="right">-0.0799718</td>
+<td align="right">-0.1302587</td>
+</tr>
+<tr class="even">
+<td>Petal.Width</td>
+<td align="right">0.9718119</td>
+<td align="right">-0.0337678</td>
+<td align="right">-0.2125855</td>
+<td align="right">0.0961709</td>
+</tr>
+</tbody>
+</table>
+<p><img src="PCA_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-10-1.png" width="384" /></p>
+</div>
+</div>
+<div id="problema-3" class="section level2">
+<h2><span class="header-section-number">20.3</span> Problema 3</h2>
+<p>Se midieron 13 variables de 3 tipos de vinos y se realizó un análisis de
+componentes principales. Responda:</p>
+<ol style="list-style-type: decimal">
+<li>¿Cuántos ejes se pueden construir?</li>
+<li>¿Cuanta variación explica cada eje?</li>
+<li>¿Qué variables están correlacionadas positivamente? ¿Cuales lo están
+negativamente? ¿Y cuales están incorreladas?</li>
+<li>¿Sirve este gráfico para ver las relaciones entre los vinos? ¿Por qué?</li>
+<li>El análisis se realizó con la matriz de correlación. ¿Por qué creo que se hizo
+de esta manera?</li>
+<li>Calcule el porcentaje de reconstrucción de las variables en los primeros dos
+ejes</li>
+<li>¿Cuál es la longitud esperada de cada variable en el espacio reducido?</li>
+</ol>
+<table>
+<caption>Table continues below</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="11%" />
+<col width="11%" />
+<col width="10%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">PC1</th>
+<th align="center">PC2</th>
+<th align="center">PC3</th>
+<th align="center">PC4</th>
+<th align="center">PC5</th>
+<th align="center">PC6</th>
+<th align="center">PC7</th>
+<th align="center">PC8</th>
+<th align="center">PC9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">4.706</td>
+<td align="center">2.497</td>
+<td align="center">1.446</td>
+<td align="center">0.919</td>
+<td align="center">0.8532</td>
+<td align="center">0.6417</td>
+<td align="center">0.551</td>
+<td align="center">0.3485</td>
+<td align="center">0.2889</td>
+</tr>
+</tbody>
+</table>
+<table style="width:50%;">
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">PC10</th>
+<th align="center">PC11</th>
+<th align="center">PC12</th>
+<th align="center">PC13</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.2509</td>
+<td align="center">0.2258</td>
+<td align="center">0.1688</td>
+<td align="center">0.1034</td>
+</tr>
+</tbody>
+</table>
+<p><img src="PCA_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div id="matriz-ulambdafrac-12" class="section level3">
+<h3><span class="header-section-number">20.3.1</span> Matriz <span class="math inline">\(U\Lambda^{\frac{-1}{2}}\)</span></h3>
 
-_cursiva_   __negrita__</code></pre>
-</div>
-<div id="titulos" class="section level4">
-<h4><span class="header-section-number">2.2.1.2</span> Títulos</h4>
-<pre><code># Título 1
-
-## Título 2
-
-### Título 3</code></pre>
-</div>
-<div id="listas" class="section level4">
-<h4><span class="header-section-number">2.2.1.3</span> Listas</h4>
-<pre><code>Lista Desordenada
-* Item 1
-* Item 2
-    + Item 2a
-    + Item 2b
-Lista Ordenada
-1. Item 1
-2. Item 2
-3. Item 3
-    + Item 3a
-    + Item 3b</code></pre>
-</div>
-<div id="saltos-de-linea-manuales" class="section level4">
-<h4><span class="header-section-number">2.2.1.4</span> Saltos de línea manuales</h4>
-<p>Termina una línea con dos o más espacios:</p>
-<p>Las rosas son rojas,<br />
-las violetas son azules.</p>
-</div>
-<div id="vinculos" class="section level4">
-<h4><span class="header-section-number">2.2.1.5</span> Vínculos</h4>
-<p>Usa una dirección http simple o agrega un vínculo a una frase:</p>
-<pre><code>http://example.com
-
-[frase vínculada](http://example.com)</code></pre>
-</div>
-<div id="imagenes" class="section level4">
-<h4><span class="header-section-number">2.2.1.6</span> Imágenes</h4>
-<p>Imágenes en la web o en el mismo directorio de trabajo:</p>
-<pre><code>![alt text](http://example.com/logo.png)
-
-![alt text](figures/img.png)</code></pre>
-
-<div class="exercise">
-<p><span id="exr:ejercicio-1" class="exercise"><strong>Ejercicio 2.1  (Probando markdown)  </strong></span>Descarguen un archivo de RMarkdown usando este código en la consola:</p>
-<p><code>download.file(&quot;url&quot;, &quot;ejercicio-1.Rmd&quot;)</code></p>
-Una vez descargado, abranlo desde el panel <em>Files</em>.
-</div>
-
-<p>Los prácticos en general se harán en un archivo similar a este. En la parte
-superior encontran el encabezado entre guiones. Ahí deberán poner sus nombres
-y el nombre del grupo.</p>
-
-<div class="exercise">
-<span id="exr:ejercicio-2" class="exercise"><strong>Ejercicio 2.2  (Personalizando)  </strong></span>Cambien en encabezado y pongan sus nombres, el nombre del grupo y la fecha de
-hoy.
-</div>
-
-<p>Abajo encontraran espacio para ir contestando la preguntas. Una consideración
-que deben tomar en cuenta es que todo el texto que escriban va a ser
-considerado como un <em>único</em> párrafo a menos que este separado por
-<strong>una línea en blanco</strong>.</p>
-<p>Por ejemplo, prueben escribir esto en el documento (pueden copiarlo):</p>
-<blockquote>
-<p>Mucho antes de que el lector haya llegado a esta
-parte de mi obra se le habrán ocurrido una multitud
-de dificultades. Algunas son tan graves, que aun hoy
-dia apenas puedo reflexionar sobre ellas sin vacilar
-algo; pero, según mi leal saber y entender, la mayor
-parte son solo aparentes, y las que son reales no son,
-creo yo, funestas para mi teoria.</p>
-</blockquote>
-<blockquote>
-<p>Estas dificultades y objeciones pueden clasificarse
-en los siguientes grupos:</p>
-</blockquote>
-<blockquote>
-<p>1° Si las especies han descendido de otras especies
-por suaves gradaciones, ¿por qué no encontramos
-en todas partes innumerables formas de transicion?
-¿Por qué no está toda la naturaleza confusa,
-en lugar de estar las especies bien definidas según
-las vemos?</p>
-<p>2° ¿Es posible que un animal que tiene, por
-ejemplo, la conformación y costumbres de un murciélago
-pueda haber sido formado por modificación
-de otro animal de costumbres y estructura muy
-diferentes? ¿Podemos creer que la selecci6n natural
-pueda producir, de una parte, un órgano insignificante,
-tal como la cola de la jirafa, que sirve de
-mosqueador, y, de otra, un órgano tan maravilloso
-como el ojo?</p>
-<p>3° ¿Pueden los instintos adquirirse y modificarse
-por selección natural? ¿Qué diremos del instinto
-que lleva a la abeja a hacer celdas y que prácticamente
-se ha anticipado a los descubrimientos de
-profundos matemáticos?</p>
-<p>4° ¿Cómo podemos explicar que cuando se cruzan
-las especies son esteriles o producen descendencia esteril,
-mientras que cuando se cruzan las variedades su
-fecundidad es sin igual?</p>
-</blockquote>
-<p>Luego, hagan clic en el botón <em>Knit</em> que tienen arriba, al lado de un ovillo y
-una aguja de tejer. El desafío es mantener el formato con cada párrafo separado.</p>
-<p>La misma consideración se debe tener en cuenta para otros formatos como
-títulos o listas. Un consejo para ver como va quedando el documento, es tejerlo
-seguido. Así podremos ver cualquier problema pronto.</p>
 </div>
 </div>
-</div>
-<div id="integrando-codigo" class="section level2">
-<h2><span class="header-section-number">2.3</span> Integrando código</h2>
-<p>En los documentos de RMarkdown se puede integrar bloques de código (de <em>R</em> y otros
-lenguajes). Para insertar un bloque pueden hacer clic en el botón de “Insert/R”
-que hay arriba o por el atajo del teclado “Ctrl+Alt+I”.</p>
-<pre><code>```{r}</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">Acá va el código</code></pre>
-<pre><code>```</code></pre>
-<p>Es importante mantener las comillas invertidas tal cual están ya que con ellas
-se define donde empieza y termina el bloque. Entre las llaves se incluye como
-se va a ejecutar el código (con <em>R</em> en este caso). También se puede poner nombre
-al bloque, cosa que es muy recomendable porque sino van a estar nombrados como
-chunk-#, donde # son números consecutivos. Ahora, imaginen que el chunk-34 de
-60 falla. Va a ser un poco tedioso buscarlo, con nombre será más sencillo saber
-donde estar el fallo. Además se pueden poner otras opciones, como ocultar el
-código, cambiar el tamaño de figuras, etc. Luego de las llaves, en <em>la línea
-siguiente</em>, deben introducir el código que quieran ejecutar, siempre teniendo en
-cuenta de dejar la línea con las comillas invertidas tal cual está. También es
-buena idea dejar una línea en blanco luego.</p>
-
-<div class="exercise">
-<span id="exr:ejercicio-3" class="exercise"><strong>Ejercicio 2.3  </strong></span>Incluyan un bloque de código y pongan un nombre descriptivo.
-Luego, escriban una operación matemática simple.
-Finalmente, tejan el documento.
 </div>
 
 
-</div>
-</div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualizacion-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ordenacion-en-espacios-reducidos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -695,7 +896,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/Introduccion.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/PCA.Rmd",
 "text": "Edit"
 },
 "download": ["EACN.pdf", "EACN.epub"],
